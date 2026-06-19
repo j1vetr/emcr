@@ -14,6 +14,7 @@ import evoStill1 from "@assets/evo-still-1.webp";
 import evoStill2 from "@assets/evo-still-2.webp";
 import evoStill3 from "@assets/evo-still-3.webp";
 import neogenEvoFront from "@assets/neogen-evo-front.webp";
+import neogenDevicePlatform from "@assets/ChatGPT_Image_19_Haz_2026_14_45_57_1781870711491.png";
 import heroDeviceImg from "@assets/hero-device.webp";
 import showcaseVideo from "@assets/showcase.mp4";
 
@@ -414,69 +415,99 @@ export default function Home() {
       </section>
 
       {/* ── NEOGEN BRAND MOMENT ───────────────────────────────────── */}
-      <section id="neogen" className="relative overflow-hidden py-32 bg-[#080c18]" data-testid="brand-section">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(79,195,195,0.06)_0%,_transparent_65%)]" />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section id="neogen" className="relative overflow-hidden min-h-screen flex items-center bg-[#070b17]" data-testid="brand-section">
+        {/* Subtle ambient glow right side */}
+        <div className="absolute right-[20%] top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/6 blur-[140px] rounded-full pointer-events-none" />
+
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 w-full py-24">
+          <div className="grid lg:grid-cols-[1fr_1.15fr] gap-8 items-center">
+
+            {/* ── LEFT COLUMN ── */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             >
+              {/* Logo */}
               <img
                 src={neogenLogo}
                 alt="NeoGen"
-                className="w-full max-w-[360px] mb-12 invert opacity-90"
+                className="w-full max-w-[260px] mb-10 invert opacity-95"
               />
-              <p className="text-xs tracking-[0.3em] uppercase text-primary/60 mb-4">Nitrogen Plasma</p>
-              <h2 className="font-display font-bold text-4xl md:text-5xl leading-tight mb-6">
+
+              {/* Label */}
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-5">
+                Nitrogen Plasma
+              </p>
+
+              {/* Heading */}
+              <h2
+                className="font-display font-bold leading-[1.05] mb-6"
+                style={{ fontSize: "clamp(2.4rem, 3.8vw, 4rem)" }}
+              >
                 Kontrollü Enerji.<br />
                 <span className="text-primary">Görünür Sonuç.</span>
               </h2>
-              <p className="text-foreground/50 text-lg leading-relaxed mb-10">
+
+              {/* Description */}
+              <p className="text-foreground/50 text-base leading-relaxed mb-10 max-w-[440px]">
                 NeoGen Plasma, nitrogen gazını plazma enerjisine dönüştürerek cilt yüzeyi
                 korunurken derin dermal yenilenme sağlar. Kontrollü termal etki,
                 protokol esnekliği ve üstün klinik sonuçlar tek sistemde.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+
+              {/* Feature grid — 2×2 */}
+              <div className="grid grid-cols-2 gap-3">
                 {[
-                  { icon: <Activity className="w-5 h-5" />, title: "Kontrollü Termal Etki", desc: "Epidermisi koruyarak derin dermal ısınma" },
-                  { icon: <Settings className="w-5 h-5" />, title: "Protokol Esnekliği", desc: "Düşükten yüksek enerjiye geniş yelpazen" },
-                  { icon: <Layers className="w-5 h-5" />, title: "Doku ve Ton Odaklı", desc: "Kapsamlı cilt kalitesi iyileştirmesi" },
-                  { icon: <GraduationCap className="w-5 h-5" />, title: "Klinik Destek", desc: "Sürekli eğitim ve teknik danışmanlık" },
+                  { icon: <Activity className="w-4 h-4" />, title: "Kontrollü Termal Etki", desc: "Epidermisi koruyarak derin dermal ısınma" },
+                  { icon: <Settings className="w-4 h-4" />, title: "Protokol Esnekliği", desc: "Düşükten yükseğe enerjiye geniş yelpaze" },
+                  { icon: <Layers className="w-4 h-4" />, title: "Doku ve Ton Odaklı", desc: "Kapsamlı cilt kalitesi iyileştirmesi" },
+                  { icon: <GraduationCap className="w-4 h-4" />, title: "Klinik Destek", desc: "Sürekli eğitim ve teknik danışmanlık" },
                 ].map((f, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.1 + i * 0.08, duration: 0.6 }}
-                    className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-primary/30 hover:bg-white/[0.05] transition-all group"
+                    transition={{ delay: 0.3 + i * 0.08, duration: 0.55 }}
+                    className="flex flex-col gap-2 p-4 rounded-xl bg-white/[0.03] border border-white/[0.05] hover:border-primary/25 hover:bg-white/[0.05] transition-all group"
                   >
-                    <div className="text-primary mb-3 group-hover:scale-110 transition-transform w-fit">{f.icon}</div>
-                    <h4 className="font-semibold text-sm mb-1">{f.title}</h4>
-                    <p className="text-foreground/45 text-xs leading-relaxed">{f.desc}</p>
+                    <div className="text-primary w-fit group-hover:scale-110 transition-transform">{f.icon}</div>
+                    <h4 className="font-semibold text-[13px] leading-snug">{f.title}</h4>
+                    <p className="text-foreground/45 text-[11px] leading-relaxed">{f.desc}</p>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
 
+            {/* ── RIGHT COLUMN — device + ring ── */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.94 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
               className="relative flex items-center justify-center"
             >
-              <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full scale-75" />
+              {/* Outer decorative ring */}
+              <div
+                className="absolute w-[520px] h-[520px] rounded-full border border-primary/25 pointer-events-none"
+                style={{ boxShadow: "0 0 60px rgba(79,195,195,0.08), inset 0 0 60px rgba(79,195,195,0.04)" }}
+              />
+              {/* Inner ring */}
+              <div className="absolute w-[380px] h-[380px] rounded-full border border-primary/10 pointer-events-none" />
+              {/* Core glow */}
+              <div className="absolute w-[280px] h-[280px] bg-primary/6 blur-[60px] rounded-full pointer-events-none" />
+
+              {/* Device image */}
               <img
-                src={neogenEvoFront}
-                alt="NeoGen EVO Front View"
-                className="relative z-10 w-full max-w-[520px] drop-shadow-2xl"
-                style={{ filter: "drop-shadow(0 0 80px rgba(79,195,195,0.18))" }}
+                src={neogenDevicePlatform}
+                alt="NeoGen Plasma Device"
+                className="relative z-10 w-full max-w-[520px] object-contain"
+                style={{ filter: "drop-shadow(0 20px 80px rgba(0,0,0,0.6))" }}
               />
             </motion.div>
+
           </div>
         </div>
       </section>
