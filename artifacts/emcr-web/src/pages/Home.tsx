@@ -316,101 +316,129 @@ export default function Home() {
       </section>
 
       {/* ── DEVICE TRIO ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background" data-testid="device-trio">
-        {/* Decorative horizontal lines — left edge */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col gap-3 opacity-10 pointer-events-none">
-          {Array.from({ length: 18 }).map((_, i) => (
-            <div key={i} className="h-px bg-foreground/40" style={{ width: `${60 - i * 2}px` }} />
-          ))}
-        </div>
+      <section className="relative overflow-hidden bg-background pt-24 pb-0" data-testid="device-trio">
 
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14">
-          {/* Header row */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex items-start justify-between pt-24 mb-10"
-          >
-            <div>
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-5">
-                Premium Sistem
-              </p>
-              <h2 className="font-display font-bold leading-[1] whitespace-nowrap" style={{ fontSize: "clamp(2rem, 4.5vw, 4.5rem)" }}>
-                NeoGen <span className="text-primary">EVO</span>
-                {" · "}
-                <span
-                  className="italic"
-                  style={{
-                    textShadow:
-                      "1px 1px 0 rgba(79,195,195,0.55), 2px 2px 0 rgba(79,195,195,0.35), 3px 3px 0 rgba(79,195,195,0.2), 4px 4px 0 rgba(79,195,195,0.1), 5px 5px 0 rgba(79,195,195,0.05)",
-                  }}
-                >
-                  Üç Boyut.
-                </span>
-              </h2>
-              <div className="w-8 h-0.5 bg-primary mt-5" />
-            </div>
-
-            {/* Navigation dots — top right */}
-            <div className="hidden md:flex items-center gap-2 pt-2">
-              {[0, 1, 2].map(i => (
-                <button
-                  key={i}
-                  onClick={() => setActiveDevice(i)}
-                  data-testid={`device-dot-${i}`}
-                  className={`h-0.5 rounded-full transition-all duration-400 ${
-                    activeDevice === i
-                      ? "w-10 bg-primary"
-                      : "w-6 bg-white/25 hover:bg-white/40"
-                  }`}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pb-24">
-            {deviceImages.map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -6 }}
-                onClick={() => setActiveDevice(i)}
-                className={`relative rounded-2xl overflow-hidden cursor-pointer group transition-all duration-500
-                  border ${activeDevice === i
-                    ? "border-primary/30 shadow-[0_0_40px_rgba(79,195,195,0.08)]"
-                    : "border-white/[0.06] hover:border-white/[0.12]"
-                  }`}
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-[1440px] mx-auto px-6 md:px-14 flex items-end justify-between mb-12"
+        >
+          <div>
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-4">
+              Premium Sistem
+            </p>
+            <h2
+              className="font-display font-bold leading-[1] whitespace-nowrap"
+              style={{ fontSize: "clamp(2.2rem, 4.8vw, 4.8rem)" }}
+            >
+              NeoGen <span className="text-primary">EVO</span>
+              {"  "}
+              <span
+                className="italic font-light tracking-tight"
+                style={{
+                  WebkitTextStroke: "1px rgba(79,195,195,0.6)",
+                  color: "transparent",
+                  textShadow: "none",
+                  letterSpacing: "-0.01em",
+                }}
               >
-                {/* Device image */}
-                <div className="aspect-[4/5] relative">
-                  <img
-                    src={img}
-                    alt={`NeoGen EVO açı ${i + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  {/* Bottom gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
+                Üç Boyut.
+              </span>
+            </h2>
+          </div>
 
-                  {/* Bottom label */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-[10px] tracking-[0.25em] uppercase text-primary/60 mb-1">
-                      {["Açı 01", "Açı 02", "Açı 03"][i]}
-                    </p>
-                    <p className="font-display font-semibold text-[15px] text-foreground/85">
-                      NeoGen EVO System
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+          <div className="hidden md:flex items-center gap-2 mb-1">
+            {[0, 1, 2].map(i => (
+              <button
+                key={i}
+                onClick={() => setActiveDevice(i)}
+                data-testid={`device-dot-${i}`}
+                className={`h-px rounded-full transition-all duration-500 ${
+                  activeDevice === i ? "w-12 bg-primary" : "w-6 bg-white/20 hover:bg-white/35"
+                }`}
+              />
             ))}
           </div>
+        </motion.div>
+
+        {/* Staggered gallery — bottom-aligned */}
+        <div className="flex items-end gap-3 px-6 md:px-14 max-w-[1440px] mx-auto">
+          {deviceImages.map((img, i) => {
+            const heights = [520, 660, 580];
+            const isActive = activeDevice === i;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                onClick={() => setActiveDevice(i)}
+                className="relative flex-1 rounded-2xl overflow-hidden cursor-pointer group"
+                style={{ height: heights[i] }}
+              >
+                {/* Teal top accent line on active */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-0.5 z-20 transition-all duration-500"
+                  style={{
+                    background: isActive
+                      ? "linear-gradient(90deg, transparent, rgba(79,195,195,0.8), transparent)"
+                      : "transparent",
+                  }}
+                />
+
+                {/* Image */}
+                <motion.img
+                  src={img}
+                  alt={`NeoGen EVO açı ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  animate={{ scale: isActive ? 1.03 : 1, filter: isActive ? "brightness(1)" : "brightness(0.7)" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                />
+
+                {/* Ghost number — top right */}
+                <div
+                  className="absolute top-4 right-5 font-display font-bold leading-none select-none z-10 transition-opacity duration-500"
+                  style={{
+                    fontSize: "clamp(4rem, 7vw, 7rem)",
+                    WebkitTextStroke: "1px rgba(255,255,255,0.08)",
+                    color: "transparent",
+                    opacity: isActive ? 0.6 : 0.25,
+                  }}
+                >
+                  {["01", "02", "03"][i]}
+                </div>
+
+                {/* Bottom gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080c18]/95 via-[#080c18]/20 to-transparent z-10" />
+
+                {/* Bottom label — slides up on hover/active */}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 p-6 z-20"
+                  animate={{ y: isActive ? 0 : 8, opacity: isActive ? 1 : 0.5 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div
+                    className="w-6 h-px mb-3 transition-all duration-500"
+                    style={{ background: isActive ? "rgba(79,195,195,0.8)" : "rgba(255,255,255,0.2)" }}
+                  />
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-primary/70 mb-1.5">
+                    {["Açı 01", "Açı 02", "Açı 03"][i]}
+                  </p>
+                  <p className="font-display font-semibold text-base text-foreground/90">
+                    NeoGen EVO System
+                  </p>
+                </motion.div>
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* Bottom fade into next section */}
+        <div className="h-24 bg-gradient-to-b from-transparent to-background" />
       </section>
 
       {/* ── NEOGEN BRAND MOMENT ───────────────────────────────────── */}
