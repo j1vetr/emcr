@@ -15,6 +15,12 @@ import evoStill2 from "@assets/evo-still-2.webp";
 import evoStill3 from "@assets/evo-still-3.webp";
 import neogenEvoFront from "@assets/neogen-evo-front.webp";
 import neogenDevicePlatform from "@assets/ChatGPT_Image_19_Haz_2026_14_45_57_1781870711491.png";
+import baRef1 from "@assets/ref1_1781870893595.jpg";
+import baRef2 from "@assets/ref2_1781870893596.jpg";
+import baRef3 from "@assets/ref3_1781870893597.jpg";
+import baRef4 from "@assets/ref4_1781870893597.jpg";
+import baRef5 from "@assets/ref5_1781870893598.jpg";
+import baRef6 from "@assets/ref6_1781870893598.jpg";
 import heroDeviceImg from "@assets/hero-device.webp";
 import showcaseVideo from "@assets/showcase.mp4";
 
@@ -39,6 +45,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDevice, setActiveDevice] = useState(0);
+  const [activePatient, setActivePatient] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const showcaseVideoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -511,6 +518,159 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── BEFORE / AFTER GALLERY ───────────────────────────────── */}
+      {(() => {
+        const patients = [
+          { img: baRef1, label: "Yüz Yenileme · 1 Seans" },
+          { img: baRef2, label: "Cilt Tonu Eşitleme · 2 Seans" },
+          { img: baRef3, label: "Derin Dermal Yenilenme · 1 Seans" },
+          { img: baRef4, label: "Leke & Ton Düzeltme · 2 Seans" },
+          { img: baRef5, label: "Göz Çevresi & Cilt Tonu · 1 Seans" },
+          { img: baRef6, label: "Sıkılaştırma & Yenileme · 3 Seans" },
+        ];
+        return (
+          <section className="relative bg-[#060a15] overflow-hidden py-24" data-testid="before-after">
+            {/* Ambient top glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-primary/4 blur-[120px] pointer-events-none" />
+
+            <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
+              {/* Header row */}
+              <div className="flex items-end justify-between mb-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-3">
+                    Klinik Kanıt · NeoGen EVO
+                  </p>
+                  <h2
+                    className="font-display font-bold leading-[1]"
+                    style={{ fontSize: "clamp(2.2rem, 4.5vw, 4.5rem)" }}
+                  >
+                    Gerçek Sonuçlar.
+                  </h2>
+                </motion.div>
+
+                {/* Counter + arrows */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="hidden md:flex items-center gap-6"
+                >
+                  <span className="font-display text-4xl font-bold tabular-nums text-foreground/20 tracking-tight select-none">
+                    {String(activePatient + 1).padStart(2, "0")}
+                    <span className="text-xl text-foreground/10 mx-1">/</span>
+                    06
+                  </span>
+                  <div className="flex gap-2">
+                    {[-1, 1].map((dir, di) => (
+                      <button
+                        key={di}
+                        onClick={() => setActivePatient(p => (p + dir + patients.length) % patients.length)}
+                        className="w-10 h-10 rounded-full border border-white/10 hover:border-primary/40 hover:bg-white/5 flex items-center justify-center transition-all duration-300"
+                      >
+                        <ChevronRight
+                          size={16}
+                          className={`text-foreground/50 hover:text-foreground transition-colors ${dir === -1 ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Main viewer */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-2xl overflow-hidden mb-4"
+                style={{ aspectRatio: "21/9" }}
+              >
+                {patients.map((p, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute inset-0"
+                    animate={{ opacity: activePatient === i ? 1 : 0 }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                  >
+                    <img
+                      src={p.img}
+                      alt={`Hasta ${i + 1} önce/sonra`}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    {/* Dark vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#060a15]/70 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#060a15]/30 via-transparent to-[#060a15]/30" />
+                  </motion.div>
+                ))}
+
+                {/* ÖNCE / SONRA labels */}
+                <div className="absolute top-5 left-6 z-20">
+                  <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-foreground/70">
+                    ÖNCE
+                  </span>
+                </div>
+                <div className="absolute top-5 right-6 z-20">
+                  <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary">
+                    SONRA
+                  </span>
+                </div>
+
+                {/* Center divider line */}
+                <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/10 z-10 pointer-events-none" />
+
+                {/* Bottom label */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
+                  <div>
+                    <p className="text-[10px] tracking-[0.25em] uppercase text-primary/70 mb-1">
+                      NeoGen EVO · {patients[activePatient].label}
+                    </p>
+                  </div>
+                  <div className="font-display font-bold text-6xl text-white/5 select-none leading-none tabular-nums">
+                    {String(activePatient + 1).padStart(2, "0")}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Thumbnail strip */}
+              <div className="grid grid-cols-6 gap-2">
+                {patients.map((p, i) => (
+                  <motion.button
+                    key={i}
+                    onClick={() => setActivePatient(i)}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06, duration: 0.5 }}
+                    className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-400 group ${
+                      activePatient === i
+                        ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#060a15]"
+                        : "opacity-50 hover:opacity-80"
+                    }`}
+                  >
+                    <img
+                      src={p.img}
+                      alt={`Hasta ${i + 1}`}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className={`absolute inset-0 transition-all duration-400 ${activePatient === i ? "bg-primary/10" : "bg-black/30"}`} />
+                    <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-foreground/60">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ── HOW IT WORKS ──────────────────────────────────────────── */}
       <section className="py-32 relative overflow-hidden" data-testid="how-it-works">
