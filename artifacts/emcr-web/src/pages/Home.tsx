@@ -55,6 +55,7 @@ export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDevice, setActiveDevice] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
+  const showcaseVideoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
@@ -68,6 +69,24 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => setActiveDevice(p => (p + 1) % 3), 3500);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const video = showcaseVideoRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.src = showcaseVideo;
+          video.load();
+          video.play().catch(() => {});
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
   }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -110,7 +129,7 @@ export default function Home() {
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} data-testid="logo-button">
-            <img src={emcrLogoWhite} alt="EMCR Medikal" className="h-9 md:h-11 object-contain" />
+            <img src={emcrLogoWhite} alt="EMCR Medikal" className="h-12 md:h-16 object-contain" />
           </button>
 
           <nav className="hidden lg:flex items-center gap-10">
@@ -176,6 +195,7 @@ export default function Home() {
             muted
             loop
             playsInline
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/30" />
@@ -474,11 +494,11 @@ export default function Home() {
             className="relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#0f1423] shadow-2xl"
           >
             <video
-              src={showcaseVideo}
-              autoPlay
+              ref={showcaseVideoRef}
               muted
               loop
               playsInline
+              preload="none"
               className="w-full aspect-video object-cover"
               data-testid="showcase-video"
             />
@@ -761,7 +781,7 @@ export default function Home() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
             <div className="col-span-2 md:col-span-1 space-y-6">
-              <img src={emcrLogoWhite} alt="EMCR Medikal" className="h-10 object-contain" />
+              <img src={emcrLogoWhite} alt="EMCR Medikal" className="h-12 object-contain" />
               <p className="text-foreground/35 text-sm leading-relaxed">
                 Premium medikal estetik teknolojileri ve kesintisiz klinik destek hizmetleri.
               </p>
