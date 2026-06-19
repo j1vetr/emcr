@@ -15,6 +15,7 @@ import evoStill2 from "@assets/evo-still-2.webp";
 import evoStill3 from "@assets/evo-still-3.webp";
 import neogenEvoFront from "@assets/neogen-evo-front.webp";
 import neogenDevicePlatform from "@assets/ChatGPT_Image_19_Haz_2026_14_45_57_1781870711491.png";
+import ultraClearDevice from "@assets/ultraclear_gorsel_1781871316981.webp";
 import baRef1 from "@assets/ref1_1781870893595.jpg";
 import baRef2 from "@assets/ref2_1781870893596.jpg";
 import baRef3 from "@assets/ref3_1781870893597.jpg";
@@ -809,53 +810,106 @@ export default function Home() {
       </section>
 
       {/* ── ULTRACLEAR ────────────────────────────────────────────── */}
-      <section id="ultraclear" className="py-32 relative overflow-hidden" data-testid="ultraclear-section">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
-            className="relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#0a0e1a]"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,_rgba(79,195,195,0.07)_0%,_transparent_65%)]" />
-            <div className="relative z-10 p-12 md:p-20 grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-foreground/60 text-xs tracking-widest uppercase mb-8">
-                  Premium Laser System
-                </div>
-                <h2 className="font-display font-bold text-4xl md:text-6xl leading-tight mb-6">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-primary">UltraClear™</span>
-                  <br />
-                  <span className="text-foreground/80 text-[0.75em]">Yeni Nesil Lazer</span>
-                </h2>
-                <p className="text-foreground/50 text-lg leading-relaxed mb-10 max-w-lg">
-                  Soğuk ablasyon teknolojisi ile ağrısız, hızlı iyileşme süreci ve
-                  her cilt tipine uygun cilt yenileme devrimi. Kliniğinizdeki lazer
-                  portföyünü bir üst seviyeye taşıyın.
-                </p>
-                <Button
-                  data-testid="ultraclear-cta"
-                  className="h-13 px-8 text-[15px] font-semibold rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-foreground"
-                >
-                  UltraClear'ı İncele
-                  <ChevronRight className="ml-2 w-4 h-4" />
-                </Button>
+      <section id="ultraclear" className="relative overflow-hidden min-h-screen bg-[#05090f]" data-testid="ultraclear-section">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_50%,rgba(56,189,248,0.05)_0%,transparent_70%)] pointer-events-none" />
+
+        {/* ── LEFT PANEL — full-height device image ── */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-y-0 left-0 w-[52%] flex items-end justify-center pb-0 pointer-events-none"
+        >
+          {/* Sky-blue glow behind device */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-sky-400/8 blur-[120px] rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/6 blur-[80px] rounded-full" />
+
+          {/* Right-side fade so device blends into text area */}
+          <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#05090f] to-transparent z-10" />
+
+          {/* Device — sits on the bottom, bleeds upward */}
+          <img
+            src={ultraClearDevice}
+            alt="UltraClear Laser Device"
+            className="relative z-20 w-full max-w-[540px] object-contain object-bottom h-[95vh]"
+            style={{ filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.5)) drop-shadow(0 0 40px rgba(56,189,248,0.12))" }}
+          />
+        </motion.div>
+
+        {/* ── RIGHT TEXT — vertically centered ── */}
+        <div className="relative z-10 min-h-screen flex items-center justify-end">
+          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-28 flex justify-end">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-[500px]"
+            >
+              {/* Label */}
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/70 mb-5">
+                Cold Ablation Laser
+              </p>
+
+              {/* Heading */}
+              <h2
+                className="font-display font-bold leading-[1.0] mb-6"
+                style={{ fontSize: "clamp(2.8rem, 4.5vw, 5rem)" }}
+              >
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-primary to-sky-400">
+                  UltraClear™
+                </span>
+                <br />
+                <span className="text-foreground/85 font-light italic" style={{ fontSize: "0.65em" }}>
+                  Yeni Nesil Lazer.
+                </span>
+              </h2>
+
+              {/* Divider */}
+              <div className="w-10 h-px bg-sky-400/50 mb-8" />
+
+              {/* Description */}
+              <p className="text-foreground/50 text-base leading-relaxed mb-10">
+                Soğuk ablasyon teknolojisi ile ağrısız, hızlı iyileşme süreci ve
+                her cilt tipine uygun cilt yenileme devrimi. Kliniğinizdeki lazer
+                portföyünü bir üst seviyeye taşıyın.
+              </p>
+
+              {/* Spec list */}
+              <div className="space-y-3 mb-10">
+                {[
+                  { label: "Teknoloji", value: "Soğuk Ablasyon (Cold Ablation)" },
+                  { label: "Uygulama", value: "Cilt Yenileme · Leke · Sıkılaştırma" },
+                  { label: "Uyumluluk", value: "Tüm Fitz Patrick Cilt Tipleri" },
+                  { label: "İyileşme", value: "Minimal Downtime" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + i * 0.07, duration: 0.5 }}
+                    className="flex items-center gap-4 py-3 border-b border-white/[0.05]"
+                  >
+                    <span className="text-[10px] tracking-[0.2em] uppercase text-sky-400/60 w-24 flex-shrink-0">{s.label}</span>
+                    <span className="text-[13px] text-foreground/70">{s.value}</span>
+                  </motion.div>
+                ))}
               </div>
-              <div className="relative flex items-center justify-center min-h-[320px]">
-                <div className="absolute inset-0 bg-sky-400/5 blur-[80px] rounded-full" />
-                <div className="relative z-10 w-full max-w-[400px] mx-auto aspect-square rounded-2xl bg-[#0f1620] border border-white/[0.05] flex items-center justify-center p-8 overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="font-display font-bold text-6xl text-transparent bg-clip-text bg-gradient-to-br from-sky-300 to-primary">UC</p>
-                      <p className="text-foreground/30 text-sm tracking-widest mt-2">ULTRA CLEAR</p>
-                      <p className="text-foreground/20 text-xs mt-1">Cold Ablation Technology</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+
+              {/* CTA */}
+              <Button
+                onClick={() => scrollTo("contact")}
+                data-testid="ultraclear-cta"
+                className="h-12 px-8 text-sm font-semibold rounded-sm border border-sky-400/25 bg-sky-400/8 hover:bg-sky-400/15 text-sky-300 hover:text-sky-200 transition-all duration-300"
+              >
+                UltraClear'ı İncele
+                <ChevronRight className="ml-2 w-4 h-4" />
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </section>
 
