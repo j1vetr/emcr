@@ -8,15 +8,13 @@ import {
 
 import { Button } from "@/components/ui/button";
 
-import emcrLogoWhite from "@assets/ChatGPT_Image_19_Haz_2026_12_54_31_1781862958295.png";
-import neogenLogo from "@assets/a1_1781862958294.png";
+import emcrLogoWhite from "@assets/emcr-logo-white.webp";
+import neogenLogo from "@assets/neogen-logo.webp";
 import evoStill1 from "@assets/evo-still-1.webp";
 import evoStill2 from "@assets/evo-still-2.webp";
 import evoStill3 from "@assets/evo-still-3.webp";
-import neogenEvoFront from "@assets/neogen-evo-front.webp";
-import neogenDevicePlatform from "@assets/ChatGPT_Image_19_Haz_2026_14_45_57_1781870711491.png";
-import ultraClearDevice from "@assets/ultraclear_gorsel_1781871316981.webp";
-import ultraClearStudio from "@assets/ChatGPT_Image_19_Haz_2026_15_26_29_1781872045508.png";
+import neogenDevicePlatform from "@assets/neogen-platform.webp";
+import ultraClearStudio from "@assets/ultraclear-studio.webp";
 import baRef1 from "@assets/ref1_1781870893595.jpg";
 import baRef2 from "@assets/ref2_1781870893596.jpg";
 import baRef3 from "@assets/ref3_1781870893597.jpg";
