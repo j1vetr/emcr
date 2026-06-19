@@ -337,10 +337,18 @@ export default function Home() {
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-5">
                 Premium Sistem
               </p>
-              <h2 className="font-display font-bold leading-[0.95]" style={{ fontSize: "clamp(2.8rem, 6vw, 5.5rem)" }}>
+              <h2 className="font-display font-bold leading-[1] whitespace-nowrap" style={{ fontSize: "clamp(2rem, 4.5vw, 4.5rem)" }}>
                 NeoGen <span className="text-primary">EVO</span>
-                <br />
-                Üç Boyut.
+                {" · "}
+                <span
+                  className="italic"
+                  style={{
+                    textShadow:
+                      "1px 1px 0 rgba(79,195,195,0.55), 2px 2px 0 rgba(79,195,195,0.35), 3px 3px 0 rgba(79,195,195,0.2), 4px 4px 0 rgba(79,195,195,0.1), 5px 5px 0 rgba(79,195,195,0.05)",
+                  }}
+                >
+                  Üç Boyut.
+                </span>
               </h2>
               <div className="w-8 h-0.5 bg-primary mt-5" />
             </div>
@@ -380,14 +388,14 @@ export default function Home() {
                   }`}
               >
                 {/* Device image */}
-                <div className="aspect-[4/5] relative bg-[#0d1120]">
+                <div className="aspect-[4/5] relative">
                   <img
                     src={img}
                     alt={`NeoGen EVO açı ${i + 1}`}
-                    className="absolute inset-0 w-full h-full object-contain object-center p-6 transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                   {/* Bottom gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1120] via-[#0d1120]/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
 
                   {/* Bottom label */}
                   <div className="absolute bottom-0 left-0 right-0 p-5">
