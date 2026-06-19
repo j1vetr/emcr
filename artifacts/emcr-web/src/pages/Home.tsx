@@ -17,12 +17,12 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 
 import emcrLogoWhite from "@assets/ChatGPT_Image_19_Haz_2026_12_54_31_1781862958295.png";
 import neogenLogo from "@assets/a1_1781862958294.png";
-import evoStill1 from "@assets/EVO_Still_1_V2_1781862958295.png";
-import evoStill2 from "@assets/EVO_Still_2_V2_1781862958295.png";
-import evoStill3 from "@assets/EVO_Still_3_V2_1781862958296.png";
-import neogenEvoFront from "@assets/NeoGen_Evo_Front_1781862958297.png";
-import heroVideo from "@assets/GS1_2392_1781862958296.mp4";
-import showcaseVideo from "@assets/GS1_2384b_1781862958296.mp4";
+import evoStill1 from "@assets/evo-still-1.webp";
+import evoStill2 from "@assets/evo-still-2.webp";
+import evoStill3 from "@assets/evo-still-3.webp";
+import neogenEvoFront from "@assets/neogen-evo-front.webp";
+import heroVideo from "@assets/hero.mp4";
+import showcaseVideo from "@assets/showcase.mp4";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Ad Soyad en az 2 karakter olmalıdır." }),
@@ -210,17 +210,6 @@ export default function Home() {
           className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 w-full pt-32"
         >
           <div className="max-w-3xl">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={0}
-              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/8 text-primary text-xs font-semibold tracking-widest uppercase mb-8"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Nitrogen Plasma Teknolojisi
-            </motion.div>
-
             <motion.h1
               variants={fadeUp}
               initial="hidden"
