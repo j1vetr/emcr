@@ -316,60 +316,87 @@ export default function Home() {
       </section>
 
       {/* ── DEVICE TRIO ───────────────────────────────────────────── */}
-      <section className="relative py-0 overflow-hidden bg-background" data-testid="device-trio">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <section className="relative overflow-hidden bg-background" data-testid="device-trio">
+        {/* Decorative horizontal lines — left edge */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col gap-3 opacity-10 pointer-events-none">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <div key={i} className="h-px bg-foreground/40" style={{ width: `${60 - i * 2}px` }} />
+          ))}
+        </div>
+
+        <div className="max-w-[1440px] mx-auto px-6 md:px-14">
+          {/* Header row */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex items-end justify-between mb-12 pt-24"
+            className="flex items-start justify-between pt-24 mb-10"
           >
             <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-primary/70 mb-3">Premium Sistem</p>
-              <h2 className="font-display font-bold text-4xl md:text-6xl leading-tight">
-                NeoGen EVO<br />
-                <span className="text-foreground/40">Üç Boyut.</span>
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-5">
+                Premium Sistem
+              </p>
+              <h2 className="font-display font-bold leading-[0.95]" style={{ fontSize: "clamp(2.8rem, 6vw, 5.5rem)" }}>
+                NeoGen <span className="text-primary">EVO</span>
+                <br />
+                Üç Boyut.
               </h2>
+              <div className="w-8 h-0.5 bg-primary mt-5" />
             </div>
-            <div className="hidden md:flex gap-2">
+
+            {/* Navigation dots — top right */}
+            <div className="hidden md:flex items-center gap-2 pt-2">
               {[0, 1, 2].map(i => (
                 <button
                   key={i}
                   onClick={() => setActiveDevice(i)}
                   data-testid={`device-dot-${i}`}
-                  className={`w-8 h-1 rounded-full transition-all duration-300 ${activeDevice === i ? "bg-primary w-12" : "bg-white/20"}`}
+                  className={`h-0.5 rounded-full transition-all duration-400 ${
+                    activeDevice === i
+                      ? "w-10 bg-primary"
+                      : "w-6 bg-white/25 hover:bg-white/40"
+                  }`}
                 />
               ))}
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-24">
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pb-24">
             {deviceImages.map((img, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: i === 1 ? -24 : 0 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ scale: 1.02, y: i === 1 ? -32 : -8 }}
-                className={`relative rounded-2xl overflow-hidden bg-[#0f1423] border border-white/[0.06] group cursor-pointer transition-all duration-500 ${
-                  activeDevice === i ? "ring-1 ring-primary/40 shadow-[0_0_50px_rgba(79,195,195,0.12)]" : ""
-                }`}
+                transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -6 }}
                 onClick={() => setActiveDevice(i)}
+                className={`relative rounded-2xl overflow-hidden cursor-pointer group transition-all duration-500
+                  border ${activeDevice === i
+                    ? "border-primary/30 shadow-[0_0_40px_rgba(79,195,195,0.08)]"
+                    : "border-white/[0.06] hover:border-white/[0.12]"
+                  }`}
               >
-                <div className="aspect-[3/4] relative">
+                {/* Device image */}
+                <div className="aspect-[4/5] relative bg-[#0d1120]">
                   <img
                     src={img}
-                    alt={`NeoGen EVO view ${i + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    alt={`NeoGen EVO açı ${i + 1}`}
+                    className="absolute inset-0 w-full h-full object-contain object-center p-6 transition-transform duration-700 group-hover:scale-[1.04]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e1a]/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <p className="text-[11px] tracking-[0.2em] uppercase text-primary/70 mb-1">
+                  {/* Bottom gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1120] via-[#0d1120]/20 to-transparent" />
+
+                  {/* Bottom label */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <p className="text-[10px] tracking-[0.25em] uppercase text-primary/60 mb-1">
                       {["Açı 01", "Açı 02", "Açı 03"][i]}
                     </p>
-                    <p className="font-display font-semibold text-foreground/90">NeoGen EVO System</p>
+                    <p className="font-display font-semibold text-[15px] text-foreground/85">
+                      NeoGen EVO System
+                    </p>
                   </div>
                 </div>
               </motion.div>
