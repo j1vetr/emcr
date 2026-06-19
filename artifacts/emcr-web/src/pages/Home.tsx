@@ -22,6 +22,12 @@ import baRef3 from "@assets/ref3_1781870893597.jpg";
 import baRef4 from "@assets/ref4_1781870893597.jpg";
 import baRef5 from "@assets/ref5_1781870893598.jpg";
 import baRef6 from "@assets/ref6_1781870893598.jpg";
+import ucRef1 from "@assets/ref1_1781871404352.jpg";
+import ucRef2 from "@assets/ref2_1781871404353.jpg";
+import ucRef3 from "@assets/ref3_1781871404353.jpg";
+import ucRef4 from "@assets/ref4_1781871404353.jpg";
+import ucRef5 from "@assets/ref5_1781871404354.jpg";
+import ucRef6 from "@assets/ref6_1781871404354.jpg";
 import heroDeviceImg from "@assets/hero-device.webp";
 import showcaseVideo from "@assets/showcase.mp4";
 
@@ -47,6 +53,7 @@ export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDevice, setActiveDevice] = useState(0);
   const [activePatient, setActivePatient] = useState(0);
+  const [ucActivePatient, setUcActivePatient] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const showcaseVideoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -88,10 +95,10 @@ export default function Home() {
   };
 
   const navLinks = [
-    { label: "Hakkımızda", id: "about" },
     { label: "NeoGen", id: "neogen" },
+    { label: "NeoGen Sonuçlar", id: "results" },
     { label: "UltraClear", id: "ultraclear" },
-    { label: "Klinik Sonuçlar", id: "results" },
+    { label: "UltraClear Sonuçlar", id: "ultraclear-results" },
     { label: "İletişim", id: "contact" },
   ];
 
@@ -912,6 +919,158 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── ULTRACLEAR BEFORE / AFTER ─────────────────────────────── */}
+      {(() => {
+        const ucPatients = [
+          { img: ucRef1, label: "Cilt Tonu Düzeltme" },
+          { img: ucRef2, label: "Rosacea · Kızarıklık" },
+          { img: ucRef3, label: "Cilt Yenileme · Sıkılaştırma" },
+          { img: ucRef4, label: "Pigmentasyon · Leke" },
+          { img: ucRef5, label: "Gözenek ve Doku" },
+          { img: ucRef6, label: "Akne İzleri" },
+        ];
+        return (
+          <section id="ultraclear-results" className="relative bg-[#04080e] overflow-hidden py-24" data-testid="ultraclear-before-after">
+            {/* Ambient top glow — sky blue */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-sky-400/4 blur-[120px] pointer-events-none" />
+
+            <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
+              {/* Header row */}
+              <div className="flex items-end justify-between mb-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-3">
+                    Klinik Kanıt · UltraClear™
+                  </p>
+                  <h2
+                    className="font-display font-bold leading-[1]"
+                    style={{ fontSize: "clamp(2.2rem, 4.5vw, 4.5rem)" }}
+                  >
+                    Gerçek Sonuçlar.
+                  </h2>
+                </motion.div>
+
+                {/* Counter + arrows */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="hidden md:flex items-center gap-6"
+                >
+                  <span className="font-display text-4xl font-bold tabular-nums text-foreground/20 tracking-tight select-none">
+                    {String(ucActivePatient + 1).padStart(2, "0")}
+                    <span className="text-xl text-foreground/10 mx-1">/</span>
+                    06
+                  </span>
+                  <div className="flex gap-2">
+                    {[-1, 1].map((dir, di) => (
+                      <button
+                        key={di}
+                        onClick={() => setUcActivePatient(p => (p + dir + ucPatients.length) % ucPatients.length)}
+                        className="w-10 h-10 rounded-full border border-white/10 hover:border-sky-400/40 hover:bg-white/5 flex items-center justify-center transition-all duration-300"
+                      >
+                        <ChevronRight
+                          size={16}
+                          className={`text-foreground/50 hover:text-foreground transition-colors ${dir === -1 ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Main viewer */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-2xl overflow-hidden mb-4"
+                style={{ aspectRatio: "21/9" }}
+              >
+                {ucPatients.map((p, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute inset-0"
+                    animate={{ opacity: ucActivePatient === i ? 1 : 0 }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                  >
+                    <img
+                      src={p.img}
+                      alt={`UltraClear hasta ${i + 1} önce/sonra`}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#04080e]/70 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#04080e]/30 via-transparent to-[#04080e]/30" />
+                  </motion.div>
+                ))}
+
+                {/* ÖNCE / SONRA labels */}
+                <div className="absolute top-5 left-6 z-20">
+                  <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-foreground/70">
+                    ÖNCE
+                  </span>
+                </div>
+                <div className="absolute top-5 right-6 z-20">
+                  <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-sky-400/20 backdrop-blur-md border border-sky-400/30 text-sky-300">
+                    SONRA
+                  </span>
+                </div>
+
+                {/* Center divider line */}
+                <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/10 z-10 pointer-events-none" />
+
+                {/* Bottom label */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
+                  <div>
+                    <p className="text-[10px] tracking-[0.25em] uppercase text-sky-400/70 mb-1">
+                      UltraClear™ · {ucPatients[ucActivePatient].label}
+                    </p>
+                  </div>
+                  <div className="font-display font-bold text-6xl text-white/5 select-none leading-none tabular-nums">
+                    {String(ucActivePatient + 1).padStart(2, "0")}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Thumbnail strip */}
+              <div className="grid grid-cols-6 gap-2">
+                {ucPatients.map((p, i) => (
+                  <motion.button
+                    key={i}
+                    onClick={() => setUcActivePatient(i)}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06, duration: 0.5 }}
+                    className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-400 group ${
+                      ucActivePatient === i
+                        ? "ring-2 ring-sky-400/60 ring-offset-1 ring-offset-[#04080e]"
+                        : "opacity-50 hover:opacity-80"
+                    }`}
+                  >
+                    <img
+                      src={p.img}
+                      alt={`UltraClear hasta ${i + 1}`}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className={`absolute inset-0 transition-all duration-400 ${ucActivePatient === i ? "bg-sky-400/10" : "bg-black/30"}`} />
+                    <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-foreground/60">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ── TRUST ─────────────────────────────────────────────────── */}
       <section className="py-32 bg-[#080c18] relative" data-testid="trust-section">
