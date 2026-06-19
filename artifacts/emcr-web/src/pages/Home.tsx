@@ -1,19 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { toast } from "sonner";
 import {
   Menu, X, ChevronRight, ArrowRight, Activity, Zap, Layers,
-  GraduationCap, Settings, ShieldCheck, Wrench, CheckCircle2,
+  GraduationCap, Settings, ShieldCheck, Wrench,
   Phone, Mail, MapPin, Instagram, Linkedin, Youtube
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
 import emcrLogoWhite from "@assets/ChatGPT_Image_19_Haz_2026_12_54_31_1781862958295.png";
 import neogenLogo from "@assets/a1_1781862958294.png";
@@ -22,17 +15,7 @@ import evoStill2 from "@assets/evo-still-2.webp";
 import evoStill3 from "@assets/evo-still-3.webp";
 import neogenEvoFront from "@assets/neogen-evo-front.webp";
 import heroDeviceImg from "@assets/hero-device.webp";
-import heroVideo from "@assets/hero.mp4";
 import showcaseVideo from "@assets/showcase.mp4";
-
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Ad Soyad en az 2 karakter olmalıdır." }),
-  clinic: z.string().min(2, { message: "Klinik/Kurum Adı zorunludur." }),
-  phone: z.string().min(10, { message: "Geçerli bir telefon numarası giriniz." }),
-  email: z.string().email({ message: "Geçerli bir e-posta adresi giriniz." }),
-  city: z.string().min(2, { message: "Şehir zorunludur." }),
-  message: z.string().optional(),
-});
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -90,17 +73,6 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { name: "", clinic: "", phone: "", email: "", city: "", message: "" },
-  });
-
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    toast.success("Demo talebiniz alındı. Ekibimiz sizinle iletişime geçecek.");
-    form.reset();
-  };
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMobileOpen(false);
@@ -148,11 +120,11 @@ export default function Home() {
 
           <div className="hidden lg:flex items-center gap-4">
             <Button
-              onClick={() => scrollTo("demo-form")}
+              onClick={() => scrollTo("contact")}
               data-testid="header-cta"
               className="h-11 px-6 text-sm font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-full shadow-[0_0_24px_rgba(79,195,195,0.25)]"
             >
-              Demo Talep Et
+              İletişim
             </Button>
           </div>
 
@@ -178,8 +150,8 @@ export default function Home() {
                   {l.label}
                 </button>
               ))}
-              <Button onClick={() => scrollTo("demo-form")} className="mt-2 w-full bg-primary text-[#0a0e1a] rounded-full">
-                Demo Talep Et
+              <Button onClick={() => scrollTo("contact")} className="mt-2 w-full bg-primary text-[#0a0e1a] rounded-full">
+                İletişim
               </Button>
             </motion.div>
           )}
@@ -280,11 +252,11 @@ export default function Home() {
               className="flex flex-wrap items-center gap-4"
             >
               <Button
-                onClick={() => scrollTo("demo-form")}
+                onClick={() => scrollTo("contact")}
                 data-testid="hero-cta-primary"
                 className="h-13 px-7 text-[14px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-sm"
               >
-                Demo Talep Et
+                İletişime Geç
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button
@@ -741,129 +713,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DEMO FORM ─────────────────────────────────────────────── */}
-      <section id="demo-form" className="py-32 relative overflow-hidden" data-testid="demo-form-section">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-start">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="lg:sticky lg:top-32"
-            >
-              <p className="text-xs tracking-[0.3em] uppercase text-primary/60 mb-4">Demo Talebi</p>
-              <h2 className="font-display font-bold text-4xl md:text-6xl leading-tight mb-8">
-                Kliniğiniz için<br />
-                <span className="text-primary">NeoGen</span><br />
-                demosu talep edin.
-              </h2>
-              <p className="text-foreground/45 text-lg leading-relaxed mb-10">
-                İletişim bilgilerinizi bırakın, uzman ekibimiz en kısa sürede sizinle iletişime geçsin.
-              </p>
-              <div className="space-y-4 text-sm text-foreground/40">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                  Ücretsiz klinik danışmanlık
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                  Cihaz demo ve tanıtım
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                  Finansman seçenekleri
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              <div className="p-8 md:p-12 rounded-3xl bg-white/[0.025] border border-white/[0.06] backdrop-blur-xl">
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                    <div className="grid md:grid-cols-2 gap-5">
-                      <FormField control={form.control} name="name" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-foreground/60 text-xs tracking-wide uppercase">Ad Soyad</FormLabel>
-                          <FormControl>
-                            <Input data-testid="input-name" placeholder="Dr. Ahmet Yılmaz" className="h-12 bg-white/[0.03] border-white/[0.08] focus:border-primary/50 rounded-xl" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={form.control} name="clinic" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-foreground/60 text-xs tracking-wide uppercase">Klinik / Kurum</FormLabel>
-                          <FormControl>
-                            <Input data-testid="input-clinic" placeholder="Estetik Klinik" className="h-12 bg-white/[0.03] border-white/[0.08] focus:border-primary/50 rounded-xl" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-5">
-                      <FormField control={form.control} name="phone" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-foreground/60 text-xs tracking-wide uppercase">Telefon</FormLabel>
-                          <FormControl>
-                            <Input data-testid="input-phone" placeholder="05XX XXX XX XX" className="h-12 bg-white/[0.03] border-white/[0.08] focus:border-primary/50 rounded-xl" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={form.control} name="email" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-foreground/60 text-xs tracking-wide uppercase">E-posta</FormLabel>
-                          <FormControl>
-                            <Input data-testid="input-email" placeholder="doktor@klinik.com" className="h-12 bg-white/[0.03] border-white/[0.08] focus:border-primary/50 rounded-xl" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                    </div>
-
-                    <FormField control={form.control} name="city" render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-foreground/60 text-xs tracking-wide uppercase">Şehir</FormLabel>
-                        <FormControl>
-                          <Input data-testid="input-city" placeholder="İstanbul" className="h-12 bg-white/[0.03] border-white/[0.08] focus:border-primary/50 rounded-xl" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-
-                    <FormField control={form.control} name="message" render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-foreground/60 text-xs tracking-wide uppercase">Mesaj (Opsiyonel)</FormLabel>
-                        <FormControl>
-                          <Textarea data-testid="input-message" placeholder="Eklemek istedikleriniz..." className="min-h-[120px] bg-white/[0.03] border-white/[0.08] focus:border-primary/50 rounded-xl resize-none" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-
-                    <Button
-                      type="submit"
-                      data-testid="button-submit"
-                      className="w-full h-14 text-[15px] font-bold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-2xl shadow-[0_0_40px_rgba(79,195,195,0.25)] transition-all duration-300"
-                    >
-                      Demo Talep Et
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </form>
-                </Form>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* ── FOOTER ────────────────────────────────────────────────── */}
       <footer id="contact" className="bg-[#060912] border-t border-white/[0.04] pt-24 pb-12" data-testid="footer">
