@@ -422,25 +422,51 @@ export default function Home() {
       </section>
 
       {/* ── NEOGEN BRAND MOMENT ───────────────────────────────────── */}
-      <section id="neogen" className="relative overflow-hidden min-h-screen flex items-center bg-[#070b17]" data-testid="brand-section">
-        {/* Subtle ambient glow right side */}
-        <div className="absolute right-[20%] top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/6 blur-[140px] rounded-full pointer-events-none" />
+      <section id="neogen" className="relative overflow-hidden min-h-screen bg-[#070b17]" data-testid="brand-section">
 
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 w-full py-24">
-          <div className="grid lg:grid-cols-[1fr_1.15fr] gap-8 items-center">
+        {/* ── RIGHT PANEL — full-height device image ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-y-0 right-0 w-[55%] flex items-center justify-center pointer-events-none"
+        >
+          {/* Left-side fade so it blends with text */}
+          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#070b17] to-transparent z-10" />
 
-            {/* ── LEFT COLUMN ── */}
+          {/* Decorative rings — centered in panel */}
+          <div
+            className="absolute w-[680px] h-[680px] rounded-full border border-primary/20"
+            style={{ boxShadow: "0 0 80px rgba(79,195,195,0.06), inset 0 0 80px rgba(79,195,195,0.03)" }}
+          />
+          <div className="absolute w-[500px] h-[500px] rounded-full border border-primary/10" />
+          <div className="absolute w-[320px] h-[320px] bg-primary/5 blur-[80px] rounded-full" />
+
+          {/* Device image fills full panel height */}
+          <img
+            src={neogenDevicePlatform}
+            alt="NeoGen Plasma Device"
+            className="relative z-20 w-full h-full object-contain object-center"
+            style={{ filter: "drop-shadow(0 30px 100px rgba(0,0,0,0.7))" }}
+          />
+        </motion.div>
+
+        {/* ── LEFT TEXT — sits above image ── */}
+        <div className="relative z-10 min-h-screen flex items-center">
+          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-28">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-[520px]"
             >
               {/* Logo */}
               <img
                 src={neogenLogo}
                 alt="NeoGen"
-                className="w-full max-w-[260px] mb-10 invert opacity-95"
+                className="w-full max-w-[240px] mb-10 invert opacity-95"
               />
 
               {/* Label */}
@@ -451,14 +477,14 @@ export default function Home() {
               {/* Heading */}
               <h2
                 className="font-display font-bold leading-[1.05] mb-6"
-                style={{ fontSize: "clamp(2.4rem, 3.8vw, 4rem)" }}
+                style={{ fontSize: "clamp(2.4rem, 3.6vw, 4rem)" }}
               >
                 Kontrollü Enerji.<br />
                 <span className="text-primary">Görünür Sonuç.</span>
               </h2>
 
               {/* Description */}
-              <p className="text-foreground/50 text-base leading-relaxed mb-10 max-w-[440px]">
+              <p className="text-foreground/50 text-base leading-relaxed mb-10">
                 NeoGen Plasma, nitrogen gazını plazma enerjisine dönüştürerek cilt yüzeyi
                 korunurken derin dermal yenilenme sağlar. Kontrollü termal etki,
                 protokol esnekliği ve üstün klinik sonuçlar tek sistemde.
@@ -487,34 +513,6 @@ export default function Home() {
                 ))}
               </div>
             </motion.div>
-
-            {/* ── RIGHT COLUMN — device + ring ── */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.94 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex items-center justify-center"
-            >
-              {/* Outer decorative ring */}
-              <div
-                className="absolute w-[520px] h-[520px] rounded-full border border-primary/25 pointer-events-none"
-                style={{ boxShadow: "0 0 60px rgba(79,195,195,0.08), inset 0 0 60px rgba(79,195,195,0.04)" }}
-              />
-              {/* Inner ring */}
-              <div className="absolute w-[380px] h-[380px] rounded-full border border-primary/10 pointer-events-none" />
-              {/* Core glow */}
-              <div className="absolute w-[280px] h-[280px] bg-primary/6 blur-[60px] rounded-full pointer-events-none" />
-
-              {/* Device image */}
-              <img
-                src={neogenDevicePlatform}
-                alt="NeoGen Plasma Device"
-                className="relative z-10 w-full max-w-[520px] object-contain"
-                style={{ filter: "drop-shadow(0 20px 80px rgba(0,0,0,0.6))" }}
-              />
-            </motion.div>
-
           </div>
         </div>
       </section>
