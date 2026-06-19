@@ -195,7 +195,7 @@ export default function Home() {
         {/* Device image — right side, bleeds to edge */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="absolute inset-y-0 right-0 w-[62%] z-0 pointer-events-none"
+          className="absolute inset-y-0 right-0 w-[78%] z-0 pointer-events-none"
         >
           <img
             src={heroDeviceImg}
