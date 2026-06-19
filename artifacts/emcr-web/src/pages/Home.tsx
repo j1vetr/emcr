@@ -21,6 +21,7 @@ import evoStill1 from "@assets/evo-still-1.webp";
 import evoStill2 from "@assets/evo-still-2.webp";
 import evoStill3 from "@assets/evo-still-3.webp";
 import neogenEvoFront from "@assets/neogen-evo-front.webp";
+import heroDeviceImg from "@assets/hero-device.webp";
 import heroVideo from "@assets/hero.mp4";
 import showcaseVideo from "@assets/showcase.mp4";
 
@@ -186,66 +187,102 @@ export default function Home() {
       </header>
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center" data-testid="hero-section">
-        {/* Video BG */}
-        <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
-          <video
-            src={heroVideo}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-        </motion.div>
-
-        {/* Floating orb */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px] pointer-events-none z-0" />
-
+      <section
+        ref={heroRef}
+        className="relative min-h-screen overflow-hidden flex items-center bg-background"
+        data-testid="hero-section"
+      >
+        {/* Device image — right side, bleeds to edge */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 w-full pt-32"
+          className="absolute inset-y-0 right-0 w-[62%] z-0 pointer-events-none"
         >
-          <div className="max-w-3xl">
-            <motion.h1
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={1}
-              className="font-display font-bold leading-[0.92] mb-6"
-              style={{ fontSize: "clamp(4rem, 10vw, 9rem)" }}
-            >
-              <span className="text-foreground">Neo</span>
-              <span className="text-primary">Gen</span>
-              <br />
-              <span className="text-foreground/50 text-[0.55em]">Plasma</span>
-            </motion.h1>
+          <img
+            src={heroDeviceImg}
+            alt="NeoGen EVO Device"
+            className="absolute inset-0 w-full h-full object-cover object-left"
+          />
+          {/* Left-to-right gradient so image fades into dark background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
+          {/* Bottom fade */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+        </motion.div>
 
+        {/* Subtle orb behind text */}
+        <div className="absolute left-0 top-1/3 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[140px] pointer-events-none z-0" />
+
+        {/* Left text content */}
+        <motion.div
+          style={{ opacity: heroOpacity }}
+          className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16 pt-28 pb-24"
+        >
+          <div className="max-w-[520px]">
+
+            {/* Label */}
             <motion.p
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              custom={2}
-              className="text-lg md:text-xl text-foreground/55 max-w-xl leading-relaxed mb-10"
+              custom={0}
+              className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-8"
             >
-              Klinikler için ileri seviye cilt yenileme, elastikiyet, ton ve doku kalitesi odaklı
-              premium enerji tabanlı sistem.
+              Premium Sistem
             </motion.p>
 
+            {/* Main headline */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="visible"
+              custom={1}
+            >
+              <h1
+                className="font-display font-bold leading-[0.9] mb-0"
+                style={{ fontSize: "clamp(4.5rem, 9vw, 8.5rem)" }}
+              >
+                <span className="text-foreground">Neo</span><span className="text-primary">Gen</span>
+              </h1>
+              <h1
+                className="font-display font-bold leading-[0.9] mb-6"
+                style={{ fontSize: "clamp(4.5rem, 9vw, 8.5rem)" }}
+              >
+                <span className="text-foreground">Plasma</span>
+              </h1>
+            </motion.div>
+
+            {/* Accent line */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={2}
+              className="w-10 h-0.5 bg-primary mb-8"
+            />
+
+            {/* Body text */}
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
               custom={3}
-              className="flex flex-wrap gap-4"
+              className="text-[15px] text-foreground/50 leading-relaxed mb-10 max-w-[400px]"
+            >
+              Klinikler için ileri seviye cilt yenileme, elastikiyet,
+              ton ve doku kalitesi odaklı premium enerji tabanlı sistem.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={4}
+              className="flex flex-wrap items-center gap-4"
             >
               <Button
                 onClick={() => scrollTo("demo-form")}
                 data-testid="hero-cta-primary"
-                className="h-14 px-8 text-[15px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-full shadow-[0_0_40px_rgba(79,195,195,0.3)]"
+                className="h-13 px-7 text-[14px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-sm"
               >
                 Demo Talep Et
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -254,27 +291,27 @@ export default function Home() {
                 onClick={() => scrollTo("neogen")}
                 data-testid="hero-cta-secondary"
                 variant="ghost"
-                className="h-14 px-8 text-[15px] font-medium border border-white/15 hover:bg-white/5 rounded-full"
+                className="h-13 px-7 text-[14px] font-medium border border-white/20 hover:bg-white/5 rounded-sm"
               >
                 Teknolojiyi İncele
               </Button>
             </motion.div>
-          </div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.4 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-foreground/30"
-          >
-            <span className="text-[11px] tracking-[0.2em] uppercase">Keşfet</span>
+            {/* KEŞFET scroll indicator */}
             <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-              className="w-px h-10 bg-gradient-to-b from-foreground/30 to-transparent"
-            />
-          </motion.div>
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.6 }}
+              className="flex flex-col items-center gap-3 mt-16 w-fit"
+            >
+              <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/25">Keşfet</span>
+              <motion.div
+                animate={{ scaleY: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                className="w-px h-10 bg-gradient-to-b from-foreground/40 to-transparent origin-top"
+              />
+            </motion.div>
+          </div>
         </motion.div>
       </section>
 
