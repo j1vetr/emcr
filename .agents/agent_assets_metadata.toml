@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "Ve_xtbLQOqeoTouIrriZS"
+uri = "file://artifacts/emcr-web/src/assets/images/neogen-hero.png"
+type = "image"
+title = "NeoGen Plasma Hero Device"
+
+[[generated]]
+id = "INb-aSkvgHOchqhxiZBMj"
+uri = "file://artifacts/emcr-web/src/assets/images/neogen-evo.png"
+type = "image"
+title = "NeoGen EVO System"
+
+[[generated]]
+id = "GwFUEfWLsOGRoyOBHrnnh"
+uri = "file://artifacts/emcr-web/src/assets/images/ultraclear.png"
+type = "image"
+title = "UltraClear Laser Device"
+
+[[generated]]
+id = "yRNHHg6k-HXy3OIl0tTE5"
+uri = "file://artifacts/emcr-web/src/assets/images/before-1.png"
+type = "image"
+title = "Before Treatment Skin"
+
+[[generated]]
+id = "2l3utvhrUkXd3IOIW7y7P"
+uri = "file://artifacts/emcr-web/src/assets/images/after-1.png"
+type = "image"
+title = "After Treatment Skin"

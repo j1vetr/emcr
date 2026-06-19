@@ -1,0 +1,106 @@
+Mevcut EMCR web sitesini tamamen yeniden tasarlamak istiyorum. Site medikal estetik cihazları satan/distribütörlüğünü yapan premium bir marka sitesi olacak. Ana öncelik NeoGen Plasma cihazı olacak. UltraClear ikinci ürün olarak konumlanacak.
+
+Hedef kitle doktorlar, estetik klinikleri ve medikal cihaz yatırımcılarıdır. Bu yüzden tasarım sıradan bir kurumsal site gibi değil, pahalı ve üst segment bir medikal teknoloji markası gibi görünmeli. Siteye giren doktor “bu cihaz premium, firma ciddi ve güvenilir” hissini almalı.
+
+Tasarım dili:
+- Premium medikal teknoloji hissi
+- Çok temiz, modern, lüks ve güven veren arayüz
+- Derin lacivert, buz beyazı, açık gri, mint/aqua vurgu renkleri
+- Gerektiği yerlerde çok hafif şampanya/altın premium vurgu
+- Bol boşluklu, büyük tipografili, modern grid yapısı
+- Soft gradient, glassmorphism, hafif glow, ince teknoloji çizgileri
+- Eski slider ve klasik kurumsal görünüm kesinlikle olmasın
+- Mobil görünüm çok güçlü ve premium olmalı
+
+Font önerisi:
+- Başlıklar için Sora, Manrope veya Space Grotesk
+- Metinler için Inter veya Plus Jakarta Sans
+
+Ana sayfa yapısı:
+
+1. Premium Hero Section
+- NeoGen Plasma ana ürün olarak öne çıksın.
+- Başlık: "NeoGen Plasma"
+- Alt başlık: "Nitrogen Plasma ile Kontrollü Cilt Yenilenmesi"
+- Kısa açıklama: "Klinikler için ileri seviye cilt yenileme, elastikiyet, ton ve doku kalitesi odaklı premium enerji tabanlı sistem."
+- CTA butonları: "Demo Talep Et" ve "Teknolojiyi İncele"
+- Sağ tarafta premium cihaz görseli veya medikal estetik teknoloji hissi veren görsel alanı
+- Arka planda soft gradient ve premium teknoloji dokusu
+
+2. Doktorlara Özel Değer Önerisi
+Başlık: "Kliniğiniz İçin Üst Segment Plasma Teknolojisi"
+4 adet premium kart:
+- Kontrollü termal etki
+- Protokol esnekliği
+- Cilt dokusu, ton ve elastikiyet odaklı yaklaşım
+- Eğitim, kurulum ve teknik destek
+
+3. NeoGen Teknolojisi
+Başlık: "Nitrogen Plasma Teknolojisi Nasıl Çalışır?"
+3 adımlı premium infografik:
+- Enerji Aktarımı
+- Kontrollü Yenilenme Süreci
+- Klinik Protokol Esnekliği
+
+4. Öncesi / Sonrası Galeri
+- Premium before-after kartları tasarla.
+- Eski tip slider gibi olmasın.
+- Görseller modern kartlar içinde gözüksün.
+- Hasta gizliliği için siyah bant yerine daha estetik blur/mask yaklaşımı kullan.
+- Her kartta kısa bilgi alanı olsun.
+
+5. NeoGen EVO Cihaz Bölümü
+Başlık: "NeoGen EVO Sistem"
+Altında cihazın klinik avantajları anlatılsın.
+Kartlar:
+- Farklı tedavi protokolleri
+- Klinik kullanım esnekliği
+- Hasta deneyimi odaklı yaklaşım
+- Distribütör eğitim ve servis desteği
+
+6. UltraClear Bölümü
+UltraClear ikinci ürün olarak daha küçük ama yine premium bir bölümde sunulsun.
+Başlık: "UltraClear™ ile Yeni Nesil Lazer Yaklaşımı"
+CTA: "UltraClear'ı İncele"
+
+7. EMCR Güven Bölümü
+Başlık: "Satıştan Sonra da Kliniğinizin Yanındayız"
+Kartlar:
+- Kurulum desteği
+- Doktor ve ekip eğitimi
+- Teknik servis
+- Klinik adaptasyon danışmanlığı
+- Türkiye distribütör desteği
+
+8. Demo Talep Formu
+Başlık: "Kliniğiniz için NeoGen demosu talep edin"
+Form alanları:
+- Ad Soyad
+- Klinik / Kurum Adı
+- Telefon
+- E-posta
+- Şehir
+- Mesaj
+Buton: "Demo Talep Et"
+
+Header:
+- Sol tarafta EMCR logo
+- Menü: Hakkımızda, NeoGen, UltraClear, Markalarımız, Klinik Sonuçlar, İletişim
+- Sağda belirgin CTA butonu: "Demo Talep Et"
+- Header sticky ve premium glass effect olmalı.
+
+Footer:
+- EMCR logo
+- Kısa açıklama
+- Menü linkleri
+- İletişim bilgileri
+- Sosyal medya ikonları
+
+Önemli:
+- Site tamamen responsive olmalı.
+- Doktorlara satış odaklı olmalı.
+- Neogen ana ürün gibi hissettirmeli.
+- Premium cihaz algısı çok güçlü olmalı.
+- Eski sitedeki açık renkli basit kurumsal görünümden uzaklaş.
+- Gereksiz uzun paragraflar yerine güçlü başlıklar, kısa açıklamalar ve premium kart yapıları kullan.
+- Animasyonlar soft ve profesyonel olsun; abartılı olmasın.
