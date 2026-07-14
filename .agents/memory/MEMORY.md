@@ -1,0 +1,1 @@
+- [EMCR site architecture](emcr-site.md) — multi-page SPA: Navbar+Footer shared components, 7 wouter routes, no EVO/LinkedIn/YouTube
