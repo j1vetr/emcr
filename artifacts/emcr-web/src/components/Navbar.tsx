@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Instagram } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import emcrLogoWhite from "@assets/emcr-logo-white.webp";
 
 type Sub = { label: string; href: string };
@@ -53,20 +52,20 @@ export default function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         transparent
-          ? "py-6 bg-transparent"
-          : "py-3 bg-background/75 backdrop-blur-2xl border-b border-white/[0.06]"
+          ? "py-5 bg-transparent"
+          : "py-3.5 bg-background/80 backdrop-blur-2xl border-b border-white/[0.05]"
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-8 md:px-14 flex items-center justify-between">
         <Link href="/">
           <img
             src={emcrLogoWhite}
             alt="EMCR Medikal"
-            className="h-12 md:h-14 object-contain cursor-pointer"
+            className="h-8 md:h-9 object-contain cursor-pointer"
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-10">
           {navItems.map((item) => (
             <div
               key={item.label}
@@ -77,15 +76,15 @@ export default function Navbar() {
               {item.href ? (
                 <Link
                   href={item.href}
-                  className="text-[13px] font-medium tracking-wide text-foreground/60 hover:text-foreground transition-colors duration-200"
+                  className="text-[11px] font-medium tracking-[0.12em] text-foreground/50 hover:text-foreground/90 transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <button className="flex items-center gap-1 text-[13px] font-medium tracking-wide text-foreground/60 hover:text-foreground transition-colors duration-200">
+                <button className="flex items-center gap-1 text-[11px] font-medium tracking-[0.12em] text-foreground/50 hover:text-foreground/90 transition-colors duration-200">
                   {item.label}
                   <ChevronDown
-                    size={12}
+                    size={10}
                     className={`transition-transform duration-200 ${
                       openDropdown === item.label ? "rotate-180" : ""
                     }`}
@@ -97,17 +96,17 @@ export default function Navbar() {
                 <AnimatePresence>
                   {openDropdown === item.label && (
                     <motion.div
-                      initial={{ opacity: 0, y: 6 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 6 }}
-                      transition={{ duration: 0.16 }}
-                      className="absolute top-full left-0 mt-4 min-w-[210px] rounded-2xl bg-[#0d1422]/98 backdrop-blur-2xl border border-white/[0.07] shadow-2xl overflow-hidden py-2"
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.14 }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-5 min-w-[190px] rounded-xl bg-[#0d1422]/98 backdrop-blur-2xl border border-white/[0.07] shadow-2xl overflow-hidden py-1.5"
                     >
                       {item.dropdown.map((sub) => (
                         <Link
                           key={sub.href}
                           href={sub.href}
-                          className="block px-5 py-3 text-[13px] text-foreground/55 hover:text-foreground hover:bg-white/[0.04] transition-all"
+                          className="block px-5 py-2.5 text-[11px] tracking-[0.06em] text-foreground/50 hover:text-foreground/90 hover:bg-white/[0.04] transition-all"
                         >
                           {sub.label}
                         </Link>
@@ -120,28 +119,28 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-5">
+        <div className="hidden lg:flex items-center gap-6">
           <a
             href="https://www.instagram.com/emcrmedikal/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground/35 hover:text-primary transition-colors"
+            className="text-foreground/30 hover:text-primary transition-colors duration-200"
           >
-            <Instagram size={17} />
+            <Instagram size={15} />
           </a>
-          <Button
-            asChild
-            className="h-10 px-6 text-sm font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-full shadow-[0_0_24px_rgba(79,195,195,0.22)]"
+          <a
+            href="mailto:info@emcr.com.tr"
+            className="h-8 px-5 text-[11px] font-semibold tracking-[0.06em] bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-full inline-flex items-center transition-colors shadow-[0_0_20px_rgba(79,195,195,0.18)]"
           >
-            <a href="mailto:info@emcr.com.tr">İletişim</a>
-          </Button>
+            İletişim
+          </a>
         </div>
 
         <button
-          className="lg:hidden text-foreground/80 p-1"
+          className="lg:hidden text-foreground/70 p-1"
           onClick={() => setMobileOpen((p) => !p)}
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -158,7 +157,7 @@ export default function Navbar() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="block py-3 text-lg font-medium hover:text-primary transition-colors"
+                    className="block py-3 text-base font-medium tracking-wide hover:text-primary transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -170,11 +169,11 @@ export default function Navbar() {
                           p === item.label ? null : item.label
                         )
                       }
-                      className="flex items-center justify-between w-full py-3 text-lg font-medium hover:text-primary transition-colors"
+                      className="flex items-center justify-between w-full py-3 text-base font-medium tracking-wide hover:text-primary transition-colors"
                     >
                       {item.label}
                       <ChevronDown
-                        size={16}
+                        size={14}
                         className={`transition-transform ${
                           mobileExpanded === item.label ? "rotate-180" : ""
                         }`}
@@ -192,7 +191,7 @@ export default function Navbar() {
                             <Link
                               key={sub.href}
                               href={sub.href}
-                              className="block py-2.5 text-base text-foreground/55 hover:text-primary transition-colors"
+                              className="block py-2.5 text-sm text-foreground/50 hover:text-primary transition-colors"
                             >
                               {sub.label}
                             </Link>
@@ -205,16 +204,19 @@ export default function Navbar() {
               </div>
             ))}
             <div className="pt-5 mt-3 border-t border-white/[0.06] flex items-center gap-4">
-              <Button asChild className="flex-1 bg-primary text-[#0a0e1a] rounded-full font-semibold">
-                <a href="mailto:info@emcr.com.tr">İletişim</a>
-              </Button>
+              <a
+                href="mailto:info@emcr.com.tr"
+                className="flex-1 h-10 bg-primary text-[#0a0e1a] rounded-full font-semibold text-sm flex items-center justify-center"
+              >
+                İletişim
+              </a>
               <a
                 href="https://www.instagram.com/emcrmedikal/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-foreground/40 hover:text-primary hover:border-primary/30 transition-all"
               >
-                <Instagram size={16} />
+                <Instagram size={15} />
               </a>
             </div>
           </motion.div>

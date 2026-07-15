@@ -105,7 +105,7 @@ export default function Etkinliklerimiz() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-40 pb-20 overflow-hidden">
+      <section className="relative pt-32 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(79,195,195,0.06)_0%,_transparent_55%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <motion.p
@@ -120,7 +120,7 @@ export default function Etkinliklerimiz() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="font-display font-bold leading-[1.05] max-w-2xl mb-6"
-            style={{ fontSize: "clamp(2.8rem, 5vw, 5.5rem)" }}
+            style={{ fontSize: "clamp(2.4rem, 4.5vw, 4.8rem)" }}
           >
             Kongre, Eğitim &{" "}
             <span className="text-primary">Demo Günleri</span>
@@ -239,7 +239,7 @@ export default function Etkinliklerimiz() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-[#070b17] relative overflow-hidden">
+      <section className="py-20 bg-[#070b17] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(79,195,195,0.06)_0%,_transparent_60%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 text-center relative z-10">
           <motion.div

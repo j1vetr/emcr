@@ -12,12 +12,12 @@ const fadeUp = {
 };
 
 const certs = [
-  { title: "CE Sertifikası", sub: "NeoGen Plasma — Avrupa Uyum Belgesi" },
+  { title: "CE Sertifikası", sub: "NeoGen Plasma, Avrupa Uyum Belgesi" },
   { title: "ISO 13485", sub: "Medikal Cihaz Kalite Yönetim Sistemi" },
-  { title: "FDA Clearance", sub: "UltraClear — ABD Onayı" },
+  { title: "FDA Clearance", sub: "UltraClear, ABD Onayı" },
   { title: "TÜRKAK Akreditasyon", sub: "Teknik Servis Yetkilendirmesi" },
-  { title: "Distribütörlük Sözleşmesi", sub: "Energist UK — Türkiye Yetkili Distribütör" },
-  { title: "Distribütörlük Sözleşmesi", sub: "Actech — UltraClear Türkiye Yetkili Distribütör" },
+  { title: "Distribütörlük Sözleşmesi", sub: "Energist UK, Türkiye Yetkili Distribütör" },
+  { title: "Distribütörlük Sözleşmesi", sub: "Actech, UltraClear Türkiye Yetkili Distribütör" },
 ];
 
 const values = [
@@ -49,7 +49,7 @@ export default function Hakkimizda() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-40 pb-24 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(79,195,195,0.07)_0%,_transparent_55%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <motion.p
@@ -65,7 +65,7 @@ export default function Hakkimizda() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display font-bold leading-[1.05] max-w-3xl"
-            style={{ fontSize: "clamp(2.8rem, 5vw, 5.5rem)" }}
+            style={{ fontSize: "clamp(2.4rem, 4.5vw, 4.8rem)" }}
           >
             Türkiye'nin Lider Medikal Estetik{" "}
             <span className="text-primary">Distribütörü</span>
@@ -90,7 +90,7 @@ export default function Hakkimizda() {
       </section>
 
       {/* Story */}
-      <section className="py-24 bg-[#080c18] relative overflow-hidden">
+      <section className="py-20 bg-[#080c18] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(79,195,195,0.04)_0%,_transparent_60%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -147,18 +147,18 @@ export default function Hakkimizda() {
       </section>
 
       {/* Values */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16 text-center"
+            className="mb-14 text-center"
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-4">
               Değerlerimiz
             </p>
-            <h2 className="font-display font-bold text-4xl md:text-5xl">
+            <h2 className="font-display font-bold text-3xl md:text-4xl">
               Bizi <span className="text-primary">Biz Yapan</span>
             </h2>
           </motion.div>
@@ -186,7 +186,7 @@ export default function Hakkimizda() {
       </section>
 
       {/* Certificates */}
-      <section className="py-24 bg-[#070b17] relative overflow-hidden">
+      <section className="py-20 bg-[#070b17] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(79,195,195,0.05)_0%,_transparent_55%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <motion.div
@@ -198,7 +198,7 @@ export default function Hakkimizda() {
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-4">
               Belgeler & Sertifikalar
             </p>
-            <h2 className="font-display font-bold text-4xl md:text-5xl max-w-xl leading-tight">
+            <h2 className="font-display font-bold text-3xl md:text-4xl max-w-xl leading-tight">
               Uluslararası Onaylı{" "}
               <span className="text-primary">Sertifikalar</span>
             </h2>

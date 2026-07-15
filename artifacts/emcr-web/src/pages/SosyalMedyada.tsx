@@ -46,7 +46,7 @@ export default function SosyalMedyada() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-40 pb-20 overflow-hidden">
+      <section className="relative pt-32 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(131,58,180,0.05)_0%,_rgba(79,195,195,0.04)_50%,_transparent_75%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <motion.div className="flex items-center gap-3 mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -60,7 +60,7 @@ export default function SosyalMedyada() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="font-display font-bold leading-[1.05] max-w-2xl mb-6"
-            style={{ fontSize: "clamp(2.8rem, 5vw, 5.5rem)" }}
+            style={{ fontSize: "clamp(2.4rem, 4.5vw, 4.8rem)" }}
           >
             EMCR Medikal{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E1306C] via-[#fd5949] to-primary">

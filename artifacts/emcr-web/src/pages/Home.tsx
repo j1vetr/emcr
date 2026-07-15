@@ -76,7 +76,7 @@ export default function Home() {
         >
           <img
             src={heroDeviceImg}
-            alt="EMCR Medikal — NeoGen Plasma & UltraClear"
+            alt="EMCR Medikal, NeoGen Plasma ve UltraClear"
             className="absolute inset-0 w-full h-full object-cover object-left"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
@@ -188,7 +188,7 @@ export default function Home() {
         </motion.div>
 
         <div className="relative z-10 min-h-screen flex items-center">
-          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-28">
+          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-20">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -249,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* ── NEOGEN BEFORE / AFTER ─────────────────────────────────── */}
-      <section id="results" className="relative bg-[#060a15] overflow-hidden py-24">
+      <section id="results" className="relative bg-[#060a15] overflow-hidden py-20">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-primary/4 blur-[120px] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-10">
@@ -392,7 +392,7 @@ export default function Home() {
         </motion.div>
 
         <div className="relative z-10 min-h-screen flex items-center">
-          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-28">
+          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-20">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -454,7 +454,7 @@ export default function Home() {
       </section>
 
       {/* ── ULTRACLEAR BEFORE / AFTER ─────────────────────────────── */}
-      <section id="ultraclear-results" className="relative bg-[#04080e] overflow-hidden py-24">
+      <section id="ultraclear-results" className="relative bg-[#04080e] overflow-hidden py-20">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] bg-sky-400/3 blur-[100px] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-10">

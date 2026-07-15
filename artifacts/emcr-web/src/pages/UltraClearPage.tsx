@@ -114,7 +114,7 @@ export default function UltraClearPage() {
           </motion.div>
         </div>
 
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-14 pt-36 pb-24">
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-14 pt-28 pb-20">
           <div className="max-w-[500px]">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -164,7 +164,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* Modes */}
-      <section className="py-28 bg-[#04080e] relative overflow-hidden">
+      <section className="py-20 bg-[#04080e] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(56,189,248,0.04)_0%,_transparent_60%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <motion.div
@@ -211,7 +211,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* Indications + Specs */}
-      <section className="py-28 relative">
+      <section className="py-20 relative">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
           <div className="grid md:grid-cols-2 gap-16">
             <motion.div
@@ -283,7 +283,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* Before / After Gallery */}
-      <section className="py-28 bg-[#04080e] relative overflow-hidden">
+      <section className="py-20 bg-[#04080e] relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[220px] bg-sky-400/3 blur-[100px] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-10">
@@ -370,7 +370,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(56,189,248,0.06)_0%,_transparent_65%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 text-center relative z-10">
           <motion.div
