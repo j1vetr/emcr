@@ -248,7 +248,7 @@ export default function Etkinliklerimiz() {
             viewport={{ once: true }}
           >
             <h2 className="font-display font-bold text-3xl md:text-4xl mb-5">
-              Etkinlik ve Eğitim Bilgileri için{" "}
+              Etkinlik Ve Eğitim Bilgileri İçin{" "}
               <span className="text-primary">Bize Ulaşın</span>
             </h2>
             <p className="text-foreground/45 max-w-lg mx-auto mb-8">

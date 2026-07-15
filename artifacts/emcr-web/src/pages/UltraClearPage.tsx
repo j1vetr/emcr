@@ -174,7 +174,7 @@ export default function UltraClearPage() {
             className="mb-16 text-center"
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-4">Teknoloji</p>
-            <h2 className="font-display font-bold text-4xl md:text-5xl mb-4">
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
               Üç Farklı{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-primary">
                 Tedavi Modu
@@ -379,7 +379,7 @@ export default function UltraClearPage() {
             viewport={{ once: true }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-5">Sıradaki Adım</p>
-            <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-6">
               Kliniğiniz İçin{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-primary">
                 Demo Talep Edin

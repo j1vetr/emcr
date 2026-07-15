@@ -52,8 +52,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         transparent
-          ? "py-5 bg-transparent"
-          : "py-3.5 bg-background/80 backdrop-blur-2xl border-b border-white/[0.05]"
+          ? "py-6 bg-transparent"
+          : "py-4 bg-background/80 backdrop-blur-2xl border-b border-white/[0.05]"
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-8 md:px-14 flex items-center justify-between">
@@ -76,12 +76,12 @@ export default function Navbar() {
               {item.href ? (
                 <Link
                   href={item.href}
-                  className="text-[11px] font-medium tracking-[0.12em] text-foreground/50 hover:text-foreground/90 transition-colors duration-200"
+                  className="text-[12px] font-medium tracking-[0.12em] text-foreground/50 hover:text-foreground/90 transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <button className="flex items-center gap-1 text-[11px] font-medium tracking-[0.12em] text-foreground/50 hover:text-foreground/90 transition-colors duration-200">
+                <button className="flex items-center gap-1 text-[12px] font-medium tracking-[0.12em] text-foreground/50 hover:text-foreground/90 transition-colors duration-200">
                   {item.label}
                   <ChevronDown
                     size={10}

@@ -159,7 +159,7 @@ export default function NeoGenPlasma() {
             className="mb-16 text-center"
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-4">Teknoloji</p>
-            <h2 className="font-display font-bold text-4xl md:text-5xl mb-4">
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
               Üç Farklı <span className="text-primary">Tedavi Modu</span>
             </h2>
             <p className="text-foreground/45 max-w-xl mx-auto text-base">
@@ -372,7 +372,7 @@ export default function NeoGenPlasma() {
             viewport={{ once: true }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-5">Sıradaki Adım</p>
-            <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-6">
               Kliniğiniz İçin <span className="text-primary">Demo Talep Edin</span>
             </h2>
             <p className="text-foreground/45 max-w-lg mx-auto mb-10">

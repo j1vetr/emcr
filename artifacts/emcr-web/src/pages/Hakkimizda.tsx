@@ -103,7 +103,7 @@ export default function Hakkimizda() {
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-5">
                 Hikayemiz
               </p>
-              <h2 className="font-display font-bold text-3xl md:text-5xl mb-6 leading-tight">
+              <h2 className="font-display font-bold text-3xl md:text-4xl mb-6 leading-tight">
                 Premium Teknolojiyi<br />
                 <span className="text-primary">Kliniğinize Taşıyoruz</span>
               </h2>

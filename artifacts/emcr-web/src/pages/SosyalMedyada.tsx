@@ -108,7 +108,7 @@ export default function SosyalMedyada() {
             transition={{ duration: 0.8 }}
             className="relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#0d1422] shadow-2xl"
           >
-            {/* Instagram Embed — replace the src with the actual pinned post embed URL */}
+            {/* Instagram Embed: replace the src with the actual pinned post embed URL */}
             <div
               className="w-full flex items-center justify-center"
               style={{ minHeight: 480 }}
