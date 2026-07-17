@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ChevronRight, ArrowRight, Activity, Layers, Settings, GraduationCap } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ArrowUpRight, ChevronRight, Activity, Layers, Settings, GraduationCap } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -50,114 +50,18 @@ const ucPatients = [
   { img: ucRef6, label: "Akne İzleri" },
 ];
 
-// Segment definitions (seconds)
-const SEG_A_START = 15;
-const SEG_A_END   = 31;
-const SEG_B_START = 36;
-const SEG_B_END   = 46;
-
 export default function Home() {
   const [activePatient, setActivePatient] = useState(0);
   const [ucActivePatient, setUcActivePatient] = useState(0);
-  const [videoReady, setVideoReady] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
-  const ytContainerRef = useRef<HTMLDivElement>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ytPlayerRef = useRef<any>(null);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
-
-  // Load YouTube IFrame API and create player
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const win = window as any;
-
-    const initPlayer = () => {
-      if (!ytContainerRef.current) return;
-      ytPlayerRef.current = new win.YT.Player(ytContainerRef.current, {
-        videoId: "NFQNsYPq3WU",
-        playerVars: {
-          autoplay: 1,
-          mute: 1,
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          loop: 0,
-          modestbranding: 1,
-          rel: 0,
-          iv_load_policy: 3,
-          cc_load_policy: 0,
-          cc_lang_pref: "none",
-          playsinline: 1,
-          start: SEG_A_START,
-        },
-        events: {
-          onReady: (e: { target: any }) => {
-            e.target.mute();
-            e.target.playVideo();
-          },
-          onStateChange: (e: { data: number; target: any }) => {
-            // PLAYING (1) → video is live, show it and start segment control
-            if (e.data === 1) {
-              setVideoReady(true);
-              if (!intervalRef.current) {
-                intervalRef.current = setInterval(() => {
-                  const player = ytPlayerRef.current;
-                  if (!player?.getCurrentTime) return;
-                  const t = player.getCurrentTime() as number;
-                  const state = player.getPlayerState() as number;
-
-                  // Segment A end → jump to B
-                  if (t >= SEG_A_END && t < SEG_B_START) {
-                    player.seekTo(SEG_B_START, true);
-                  }
-                  // Segment B end → loop back to A
-                  else if (t >= SEG_B_END) {
-                    player.seekTo(SEG_A_START, true);
-                  }
-                  // Paused/ended unexpectedly → resume
-                  if (state === 2 || state === 0) {
-                    player.playVideo();
-                  }
-                }, 150);
-              }
-            }
-            // ENDED (0) → restart from A
-            if (e.data === 0) {
-              e.target.seekTo(SEG_A_START, true);
-              e.target.playVideo();
-            }
-          },
-        },
-      });
-    };
-
-    if (win.YT && win.YT.Player) {
-      initPlayer();
-    } else {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      tag.async = true;
-      document.head.appendChild(tag);
-
-      const prev = win.onYouTubeIframeAPIReady;
-      win.onYouTubeIframeAPIReady = () => {
-        if (prev) prev();
-        initPlayer();
-      };
-    }
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      ytPlayerRef.current?.destroy?.();
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
@@ -166,117 +70,201 @@ export default function Home() {
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen overflow-hidden flex items-center bg-[#070b17]"
+        className="relative min-h-screen overflow-hidden bg-[#070b17]"
       >
-        {/* ── Full-screen YouTube video ─────────────────────────── */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* ── Ambient background glows ─────────────────────────── */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          {/* Main teal radial — right center where device lives */}
           <div
+            className="absolute"
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "100%",
-              height: "100%",
-              minWidth: "177.78vh",
-              minHeight: "56.25vw",
-              opacity: videoReady ? 1 : 0,
-              transition: "opacity 1.4s ease",
+              right: "0%",
+              top: "10%",
+              width: "55%",
+              height: "80%",
+              background: "radial-gradient(ellipse at 70% 50%, rgba(20,184,166,0.11) 0%, rgba(20,184,166,0.04) 45%, transparent 75%)",
             }}
-          >
-            <div ref={ytContainerRef} style={{ width: "100%", height: "100%" }} />
-          </div>
+          />
+          {/* Indigo accent — top left */}
+          <div
+            className="absolute"
+            style={{
+              left: "-5%",
+              top: "-10%",
+              width: "45%",
+              height: "60%",
+              background: "radial-gradient(ellipse at 30% 30%, rgba(99,102,241,0.05) 0%, transparent 65%)",
+            }}
+          />
+          {/* Subtle grid lines */}
+          <div
+            className="absolute inset-0 opacity-[0.025]"
+            style={{
+              backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+              backgroundSize: "80px 80px",
+            }}
+          />
         </div>
 
-        {/* ── Left panel: solid navy — no video bleed, pure dark ── */}
-        <div className="absolute inset-y-0 left-0 w-1/2 z-[1] bg-[#070b17] pointer-events-none" />
-
-        {/* ── Right panel: device image, clean hard cut, no gradient ── */}
+        {/* ── Device image — floating right, no hard edge ────────── */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="absolute inset-y-0 right-0 w-1/2 z-[1] pointer-events-none overflow-hidden"
+          className="absolute inset-y-0 right-0 w-[52%] pointer-events-none z-[1]"
         >
+          {/* Glow ring behind device */}
+          <div
+            className="absolute"
+            style={{
+              right: "5%",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "70%",
+              height: "70%",
+              background: "radial-gradient(ellipse, rgba(20,184,166,0.09) 0%, transparent 70%)",
+              filter: "blur(40px)",
+            }}
+          />
           <img
             src={heroDeviceImg}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-contain"
+            style={{ objectPosition: "60% center" }}
           />
-          {/* Subtle depth overlay — no left-edge gradient */}
-          <div className="absolute inset-0 bg-[#070b17]/20" />
+          {/* Left soft fade — very subtle, just 25% of container */}
+          <div
+            className="absolute inset-y-0 left-0 w-[28%]"
+            style={{ background: "linear-gradient(to right, #070b17 0%, rgba(7,11,23,0.6) 50%, transparent 100%)" }}
+          />
+          {/* Bottom fade */}
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#070b17] to-transparent" />
         </motion.div>
 
-        {/* ── Top + bottom fades span full width above both panels ─ */}
-        <div className="absolute inset-x-0 top-0 h-32 z-[2] pointer-events-none bg-gradient-to-b from-[#070b17] to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-56 z-[2] pointer-events-none bg-gradient-to-t from-[#070b17] via-[#070b17]/90 to-transparent" />
+        {/* ── Top + bottom edge fades ───────────────────────────── */}
+        <div className="absolute inset-x-0 top-0 h-28 z-[2] pointer-events-none bg-gradient-to-b from-[#070b17] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-48 z-[2] pointer-events-none bg-gradient-to-t from-[#070b17] to-transparent" />
 
-        {/* Teal glow accent left */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px] pointer-events-none z-2" />
-
+        {/* ── Hero content ──────────────────────────────────────── */}
         <motion.div
-          style={{ opacity: heroOpacity }}
-          className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16 flex items-center min-h-screen"
+          style={{ opacity: heroOpacity, y: heroY }}
+          className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-14 lg:px-16 min-h-screen flex flex-col justify-center"
         >
-          <div className="max-w-[560px] pb-12" style={{ paddingTop: "clamp(100px, 12vh, 160px)" }}>
+          <div className="max-w-[620px]" style={{ paddingTop: "clamp(90px, 10vh, 130px)", paddingBottom: "clamp(60px, 8vh, 100px)" }}>
 
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
-              <h1 className="font-display font-black leading-[0.88] tracking-tight"
-                style={{ fontSize: "clamp(5rem, 10.5vw, 10rem)" }}>
-                <span className="text-foreground">Neo</span><span className="text-primary">Gen</span>
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-3 mb-8"
+            >
+              <div className="h-px w-8 bg-primary/70" />
+              <span className="text-[11px] font-medium tracking-[0.22em] uppercase text-primary/80">
+                Medikal Estetik Teknolojisi
+              </span>
+            </motion.div>
+
+            {/* Main headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 32 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h1
+                className="font-display font-black leading-[0.92] tracking-[-0.02em] text-foreground"
+                style={{ fontSize: "clamp(4.2rem, 8.5vw, 8.5rem)" }}
+              >
+                Medikal
               </h1>
-              <h1 className="font-display font-black leading-[0.88] tracking-tight mb-8"
-                style={{ fontSize: "clamp(5rem, 10.5vw, 10rem)" }}>
-                <span className="text-foreground">Plasma</span>
+              <h1
+                className="font-display font-black leading-[0.92] tracking-[-0.02em] mb-2"
+                style={{
+                  fontSize: "clamp(4.2rem, 8.5vw, 8.5rem)",
+                  background: "linear-gradient(135deg, #14b8a6 0%, #5eead4 50%, #38bdf8 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Estetiğin
+              </h1>
+              <h1
+                className="font-display font-black leading-[0.92] tracking-[-0.02em] text-foreground/80"
+                style={{ fontSize: "clamp(4.2rem, 8.5vw, 8.5rem)" }}
+              >
+                Geleceği
               </h1>
             </motion.div>
 
+            {/* Description */}
             <motion.p
-              variants={fadeUp} initial="hidden" animate="visible" custom={2}
-              className="text-[15px] text-foreground/45 leading-relaxed mb-10 max-w-[420px]"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8 text-[15px] text-foreground/45 leading-[1.8] max-w-[430px]"
             >
-              Klinikler için ileri seviye cilt yenileme, elastikiyet,
-              ton ve doku kalitesi odaklı premium enerji tabanlı sistem.
+              NeoGen Plasma ve UltraClear sistemlerinin Türkiye yetkili distribütörü.
+              Kliniğiniz için FDA onaylı, klinik kanıtlı premium teknoloji.
             </motion.p>
 
+            {/* CTAs */}
             <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={4}
-              className="flex flex-wrap items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-4 mt-10"
             >
-              <Button
-                asChild
-                className="h-13 px-7 text-[14px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-sm"
+              <a
+                href="mailto:info@emcr.com.tr"
+                className="h-12 px-7 inline-flex items-center gap-2.5 text-[13.5px] font-semibold bg-primary text-[#07090f] rounded-xl hover:bg-primary/90 transition-all"
+                style={{ boxShadow: "0 0 32px rgba(20,184,166,0.28), 0 4px 16px rgba(0,0,0,0.3)" }}
               >
-                <a href="mailto:info@emcr.com.tr">
-                  İletişime Geç
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="ghost"
-                className="h-13 px-7 text-[14px] font-medium border border-white/20 hover:bg-white/5 rounded-sm"
+                İletişime Geç
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <Link
+                href="/urunler/neogen-plasma"
+                className="h-12 px-7 inline-flex items-center gap-2 text-[13.5px] font-medium text-foreground/70 hover:text-foreground border border-white/[0.12] hover:border-white/20 rounded-xl hover:bg-white/[0.04] transition-all"
               >
-                <Link href="/urunler/neogen-plasma">Teknolojiyi İncele</Link>
-              </Button>
+                Ürünleri Keşfet
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </motion.div>
 
+            {/* Stats row */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.6 }}
-              className="flex flex-col items-center gap-3 mt-16 w-fit"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-8 mt-14 pt-8 border-t border-white/[0.07]"
             >
-              <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/25">Keşfet</span>
-              <motion.div
-                animate={{ scaleY: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                className="w-px h-10 bg-gradient-to-b from-foreground/40 to-transparent origin-top"
-              />
+              {[
+                { value: "FDA", label: "510(k) Onaylı" },
+                { value: "CE", label: "Sertifikalı" },
+                { value: "2", label: "Premium Sistem" },
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col gap-0.5">
+                  <span className="text-[22px] font-bold text-foreground/90 leading-none tracking-tight">{stat.value}</span>
+                  <span className="text-[11px] text-foreground/35 tracking-[0.06em]">{stat.label}</span>
+                </div>
+              ))}
             </motion.div>
           </div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.4 }}
+            className="absolute bottom-10 left-6 md:left-16 flex flex-col items-center gap-2.5"
+          >
+            <span className="text-[9px] tracking-[0.35em] uppercase text-foreground/20">Keşfet</span>
+            <motion.div
+              animate={{ scaleY: [1, 1.4, 1], opacity: [0.2, 0.5, 0.2] }}
+              transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+              className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent origin-top"
+            />
+          </motion.div>
         </motion.div>
       </section>
 
