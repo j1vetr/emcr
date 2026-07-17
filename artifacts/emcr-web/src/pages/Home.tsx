@@ -224,18 +224,7 @@ export default function Home() {
         >
           <div className="max-w-[560px] pb-12" style={{ paddingTop: "clamp(100px, 12vh, 160px)" }}>
 
-            {/* Eyebrow badge */}
-            <motion.div
-              variants={fadeUp} initial="hidden" animate="visible" custom={0}
-              className="inline-flex items-center gap-2 mb-8"
-            >
-              <span className="h-px w-6 bg-primary/60" />
-              <span className="text-[10px] font-bold tracking-[0.35em] uppercase text-primary/75">
-                Türkiye Yetkili Distribütör
-              </span>
-            </motion.div>
-
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={1}>
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
               <h1 className="font-display font-black leading-[0.88] tracking-tight"
                 style={{ fontSize: "clamp(5rem, 10.5vw, 10rem)" }}>
                 <span className="text-foreground">Neo</span><span className="text-primary">Gen</span>

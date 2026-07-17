@@ -98,16 +98,9 @@ export default function Navbar() {
           borderBottom: "1px solid rgba(255,255,255,0.05)",
         }}
       >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 h-full flex items-center justify-between">
-          {/* Left: tagline */}
-          <p className="text-[10px] tracking-[0.25em] uppercase text-foreground/25 font-medium hidden md:block">
-            Türkiye Yetkili Distribütör
-            <span className="mx-3 text-foreground/15">·</span>
-            NeoGen Plasma &amp; UltraClear
-          </p>
-
-          {/* Right: contact items */}
-          <div className="flex items-center gap-5 ml-auto">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-14 h-full flex items-center justify-end">
+          {/* Contact items */}
+          <div className="flex items-center gap-5">
             <a
               href="tel:+902972060272"
               className="flex items-center gap-1.5 text-[10px] text-foreground/35 hover:text-primary transition-colors tracking-wide"
@@ -150,17 +143,15 @@ export default function Navbar() {
         <div
           className={`transition-all duration-500 ${
             transparent
-              ? "bg-transparent border-b border-transparent"
-              : "bg-[#070b17]/92 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_4px_40px_rgba(0,0,0,0.5)]"
+              ? "bg-[#070b17]/40 backdrop-blur-md border-b border-white/[0.06]"
+              : "bg-[#070b17]/95 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_40px_rgba(0,0,0,0.6)]"
           }`}
         >
-          {/* Top accent line — only when not transparent */}
-          {!transparent && (
-            <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-          )}
+          {/* Top accent line */}
+          <div className={`h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent transition-opacity duration-500 ${transparent ? "opacity-40" : "opacity-100"}`} />
 
           <div className="max-w-[1440px] mx-auto px-6 md:px-14 flex items-center justify-between"
-            style={{ height: transparent ? "90px" : "68px", transition: "height 0.5s ease" }}
+            style={{ height: transparent ? "96px" : "72px", transition: "height 0.5s ease" }}
           >
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 relative z-10">
@@ -188,10 +179,10 @@ export default function Navbar() {
                     {item.href ? (
                       <Link
                         href={item.href}
-                        className={`relative flex items-center px-5 py-2 text-[12px] font-medium tracking-[0.1em] uppercase transition-all duration-200
+                        className={`relative flex items-center px-5 py-2.5 text-[13px] font-semibold tracking-[0.08em] uppercase transition-all duration-200
                           ${active
-                            ? "text-foreground/95"
-                            : "text-foreground/45 hover:text-foreground/80"
+                            ? "text-foreground"
+                            : "text-foreground/70 hover:text-foreground"
                           }`}
                       >
                         {item.label}
@@ -201,10 +192,10 @@ export default function Navbar() {
                       </Link>
                     ) : (
                       <button
-                        className={`relative flex items-center gap-1 px-5 py-2 text-[12px] font-medium tracking-[0.1em] uppercase transition-all duration-200
+                        className={`relative flex items-center gap-1.5 px-5 py-2.5 text-[13px] font-semibold tracking-[0.08em] uppercase transition-all duration-200
                           ${active
-                            ? "text-foreground/95"
-                            : "text-foreground/45 hover:text-foreground/80"
+                            ? "text-foreground"
+                            : "text-foreground/70 hover:text-foreground"
                           }`}
                       >
                         {item.label}
