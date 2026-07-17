@@ -92,6 +92,8 @@ export default function Home() {
           modestbranding: 1,
           rel: 0,
           iv_load_policy: 3,
+          cc_load_policy: 0,
+          cc_lang_pref: "none",
           playsinline: 1,
           start: SEG_A_START,
         },
@@ -166,14 +168,9 @@ export default function Home() {
         ref={heroRef}
         className="relative min-h-screen overflow-hidden flex items-center bg-[#070b17]"
       >
-        {/* YouTube background — clipped to right 58% only so left text area is always clean */}
-        <motion.div
-          style={{
-            opacity: heroOpacity,
-            clipPath: "inset(8% 0 12% 42%)",
-          }}
-          className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
-        >
+        {/* ── Full-screen YouTube video background ───────────────── */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {/* Centered iframe — covers whole hero at any aspect ratio */}
           <div
             style={{
               position: "absolute",
@@ -186,51 +183,40 @@ export default function Home() {
               minHeight: "56.25vw",
               opacity: videoReady ? 1 : 0,
               transition: "opacity 1.4s ease",
-              pointerEvents: "none",
             }}
           >
             <div ref={ytContainerRef} style={{ width: "100%", height: "100%" }} />
           </div>
-        </motion.div>
 
-        {/* Device image — right side */}
+          {/* Base dark overlay */}
+          <div className="absolute inset-0 bg-[#070b17]/50" />
+          {/* Left gradient — text area nearly opaque */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17]/95 via-[#070b17]/55 to-transparent" />
+          {/* Top edge */}
+          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#070b17] to-transparent" />
+          {/* Bottom edge — tall + strong to bury captions */}
+          <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#070b17] via-[#070b17]/95 to-transparent" />
+        </div>
+
+        {/* ── Device image — right side, layered above video ──────── */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="absolute inset-y-0 right-0 w-[62%] z-1 pointer-events-none"
+          className="absolute inset-y-0 right-0 w-[55%] z-1 pointer-events-none"
         >
           <img
             src={heroDeviceImg}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-left"
           />
-          {/* Left fade into dark bg */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17] via-[#070b17]/15 to-transparent" />
+          {/* Soft left fade into the video/text area */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17] via-[#070b17]/25 to-transparent" />
           {/* Bottom fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/70 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/65 via-transparent to-transparent" />
         </motion.div>
 
-        {/* ── Solid left panel — hides YouTube on text side completely ── */}
-        <div
-          className="absolute inset-y-0 left-0 z-3 pointer-events-none"
-          style={{ width: "42%", background: "#070b17" }}
-        />
-        {/* Gradient bridge from solid to device image */}
-        <div
-          className="absolute inset-y-0 z-3 pointer-events-none"
-          style={{
-            left: "38%",
-            width: "22%",
-            background: "linear-gradient(to right, #070b17 0%, rgba(7,11,23,0.6) 50%, transparent 100%)",
-          }}
-        />
-        {/* Bottom cover — hides any YT UI at bottom */}
-        <div className="absolute bottom-0 inset-x-0 h-40 z-3 pointer-events-none bg-gradient-to-t from-[#070b17] to-transparent" />
-        {/* Top cover — hides any YT UI at top */}
-        <div className="absolute top-0 inset-x-0 h-32 z-3 pointer-events-none bg-gradient-to-b from-[#070b17]/80 to-transparent" />
-
-        {/* Teal glow left */}
-        <div className="absolute left-[-80px] top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[180px] pointer-events-none z-4" />
+        {/* Teal glow accent left */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px] pointer-events-none z-2" />
 
         <motion.div
           style={{ opacity: heroOpacity }}
