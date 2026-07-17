@@ -28,11 +28,11 @@ interface Indication {
 const indications: Indication[] = [
   {
     name: "Yüz Kırışıklıkları",
-    description: "Alın, göz çevresi, nasolabial kıvrımlar ve dudak çevresindeki yüzeysel ile derin kırışıklıklar. Her iki sistem de yüksek etkinlik gösterir; seçim yaşa, derinliğe ve hasta profiline göre yapılır.",
+    description: "Alın, göz çevresi, nasolabial kıvrımlar ve dudak çevresindeki yüzeysel ile derin kırışıklıklar. Her iki sistem de yüksek etkinlik gösterir. Seçim yaşa, derinliğe ve hasta profiline göre yapılır.",
     device: "her-ikisi",
     sessions: "1–3 seans",
     downtime: "1–7 gün",
-    notes: "NeoGen yüksek enerji modunda CO₂'ye eşdeğer sonuç; UltraClear ablative modda derin kırışıklar için ideal.",
+    notes: "NeoGen yüksek enerji modunda CO₂'ye eşdeğer sonuç verir. UltraClear ablative modda derin kırışıklar için idealdir.",
   },
   {
     name: "Cilt Sıkılaştırma ve Laksitesi",
@@ -52,7 +52,7 @@ const indications: Indication[] = [
   },
   {
     name: "Pigmentasyon ve Melazma",
-    description: "Güneş lekesi, yaşa bağlı pigmentasyon, melazma ve genel ton düzensizliği. NeoGen pigmente lezyonlarda FDA onaylı; UltraClear dalga boyu pigment seçiciliği nedeniyle etkilidir.",
+    description: "Güneş lekesi, yaşa bağlı pigmentasyon, melazma ve genel ton düzensizliği. NeoGen pigmente lezyonlarda FDA onaylıdır. UltraClear dalga boyu pigment seçiciliği nedeniyle etkilidir.",
     device: "her-ikisi",
     sessions: "1–3 seans",
     downtime: "1–5 gün",
@@ -100,7 +100,7 @@ const indications: Indication[] = [
   },
   {
     name: "Rosacea ve Vasküler Lezyonlar",
-    description: "Yaygın yüz kızarıklığı, telanjiektazi ve rosacea. UltraClear'ın 2910 nm dalga boyu vasküler hedeflerde etkin; non-ablative modda sıfır downtime ile başlanabilir.",
+    description: "Yaygın yüz kızarıklığı, telanjiektazi ve rosacea. UltraClear'ın 2910 nm dalga boyu vasküler hedeflerde etkindir, non-ablative modda sıfır downtime ile başlanabilir.",
     device: "ultraclear",
     sessions: "2–4 seans",
     downtime: "0–3 gün",
@@ -182,7 +182,7 @@ export default function TedaviEndikasyonlari() {
             </h1>
             <p className="text-foreground/50 text-base leading-relaxed max-w-xl mb-10">
               Cilt sorununa göre hangi sistem, kaç seans ve ne kadar iyileşme süresi. NeoGen Plasma
-              ve UltraClear için klinik endikasyon rehberi — doktorlar ve estetik klinikler için.
+              ve UltraClear için klinik endikasyon rehberi. Doktorlar ve estetik klinikler için.
             </p>
 
             {/* Device legend */}

@@ -82,7 +82,7 @@ export default function Hakkimizda() {
             transition={{ duration: 0.7, delay: 0.35 }}
             className="text-foreground/50 text-lg leading-relaxed max-w-2xl"
           >
-            EMCR Medikal; NeoGen Plasma ve UltraClear lazer sistemlerinin Türkiye yetkili
+            EMCR Medikal, NeoGen Plasma ve UltraClear lazer sistemlerinin Türkiye yetkili
             distribütörü olarak, kliniklere dünya standartlarında medikal estetik
             teknolojisi ve kesintisiz teknik destek hizmetleri sunmaktadır.
           </motion.p>
@@ -115,7 +115,7 @@ export default function Hakkimizda() {
               </p>
               <p className="text-foreground/50 leading-relaxed">
                 Portföyümüzde yer alan her ürün, titiz bir seçim sürecinden geçerek
-                belirlenmektedir. NeoGen Plasma ile UltraClear; etkinlikleri, güvenliliği ve
+                belirlenmektedir. NeoGen Plasma ile UltraClear, etkinlikleri, güvenliliği ve
                 klinik kanıtları ile Türk doktorlarının güvenilir tercihi olmayı
                 hak etmiştir.
               </p>

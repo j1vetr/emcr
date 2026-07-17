@@ -67,7 +67,7 @@ const modes = [
     color: "rgba(56,189,248,0.07)",
     border: "rgba(56,189,248,0.15)",
     desc: "Orta seviye yenileme. İnce çizgiler, doku düzensizliği ve pigmentasyon sorunlarında etkin, kısa iyileşmeli tedavi.",
-    detail: "2910 nm dalga boyu su ile maksimum etkileşim sağlar; bu Erbiyum lazerler içindeki en yüksek su absorpsiyon noktasıdır.",
+    detail: "2910 nm dalga boyu su ile maksimum etkileşim sağlar. Bu Erbiyum lazerler içindeki en yüksek su absorpsiyon noktasıdır.",
     downtime: "1–3 gün",
   },
   {
@@ -96,7 +96,7 @@ const indications = [
 const specs = [
   { label: "DALGA BOYU", value: "2910 nm (Erbiyum Florür Cam Fiber)" },
   { label: "TEKNOLOJİ", value: "3DMIRACL® Cold Fiber Laser Platform" },
-  { label: "NABIZ TEKNOLOJİSİ", value: "3DIntelliPulse® — ablasyon + koagülasyon optimizasyonu" },
+  { label: "NABIZ TEKNOLOJİSİ", value: "3DIntelliPulse®: ablasyon ve koagülasyon optimizasyonu" },
   { label: "MOD", value: "Non-Ablative / Micro-Ablative / Ablative" },
   { label: "CİLT TİPİ", value: "Fitzpatrick I–VI Tüm Tipler" },
   { label: "ÜRETİCİ", value: "Acclaro Medical Corporation, Smithfield RI, ABD" },
@@ -232,7 +232,7 @@ export default function UltraClearPage() {
               </span>
             </h2>
             <p className="text-foreground/35 text-sm mt-3 max-w-lg mx-auto">
-              2025 yılında üç önemli medya markasından eş zamanlı ödül — lazer estetik alanında
+              2025 yılında üç önemli medya markasından eş zamanlı ödül. Lazer estetik alanında
               benzeri görülmemiş bir başarı.
             </p>
           </motion.div>
@@ -287,7 +287,7 @@ export default function UltraClearPage() {
             <p className="text-foreground/60 text-sm leading-relaxed mb-4">
               <span className="text-sky-300 font-semibold">2910 nm</span>, suyun en yüksek absorpsiyon gösterdiği
               dalga boyudur. Cilt dokusu büyük oranda sudan oluştuğu için bu dalga boyu doku ile maksimum
-              etkileşim sağlar — hem ablasyon hem koagülasyon enerjisi optimize edilir, kollateral ısıl
+              etkileşim sağlar. Hem ablasyon hem koagülasyon enerjisi optimize edilir, kollateral ısıl
               hasar minimumda tutulur.
             </p>
             <p className="text-foreground/45 text-sm leading-relaxed">

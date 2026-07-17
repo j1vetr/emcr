@@ -19,7 +19,7 @@ const fadeUp = {
 const faqs = [
   {
     q: "Garanti Süresi Ne Kadardır?",
-    a: "EMCR Medikal aracılığıyla satın alınan tüm NeoGen Plasma ve UltraClear sistemleri 2 yıl üretici garantisi kapsamındadır. Garanti; cihaz gövdesi, elektronik bileşenler ve lazer/plazma modüllerini içermektedir.",
+    a: "EMCR Medikal aracılığıyla satın alınan tüm NeoGen Plasma ve UltraClear sistemleri 2 yıl üretici garantisi kapsamındadır. Garanti kapsamı: cihaz gövdesi, elektronik bileşenler ve lazer/plazma modüllerini içermektedir.",
   },
   {
     q: "Periyodik Bakım Ne Zaman Yapılmalıdır?",
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "Yedek Parça Temin Süresi Ne Kadar?",
-    a: "Standart yedek parçalar Türkiye deposundan 1–3 iş gününde karşılanmaktadır. Özel bileşenler için üretici firmayla koordinasyon sağlanmakta; ortalama temin süresi 5–10 iş günüdür. Tüm parçalar üretici onaylı orijinal parçalardır.",
+    a: "Standart yedek parçalar Türkiye deposundan 1–3 iş gününde karşılanmaktadır. Özel bileşenler için üretici firmayla koordinasyon sağlanmaktadır. Ortalama temin süresi 5–10 iş günüdür. Tüm parçalar üretici onaylı orijinal parçalardır.",
   },
   {
     q: "Operatör Eğitimi Kim Tarafından Verilir?",
@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "Garanti Dışı Kalan Cihazlarım İçin Servis Var Mı?",
-    a: "Evet. Garanti süresi dolan cihazlar için EMCR Medikal bünyesinde ücretli teknik servis hizmeti sunulmaktadır. Yıllık bakım sözleşmesi imzalayarak kapsamlı bir koruma paketi elde edebilirsiniz; bu sayede beklenmedik arıza maliyetlerini minimize edebilirsiniz.",
+    a: "Evet. Garanti süresi dolan cihazlar için EMCR Medikal bünyesinde ücretli teknik servis hizmeti sunulmaktadır. Yıllık bakım sözleşmesi imzalayarak kapsamlı bir koruma paketi elde edebilir, beklenmedik arıza maliyetlerini minimize edebilirsiniz.",
   },
 ];
 
@@ -67,7 +67,7 @@ const services = [
   {
     icon: <ShieldCheck className="w-6 h-6" />,
     title: "Garanti Kapsamı",
-    desc: "2 yıl üretici garantisi; cihaz gövdesi, elektronik ve lazer/plazma modülleri dahil.",
+    desc: "2 yıl üretici garantisi. Cihaz gövdesi, elektronik ve lazer/plazma modülleri dahil.",
   },
   {
     icon: <Zap className="w-6 h-6" />,
@@ -119,7 +119,7 @@ export default function TeknikDestek() {
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
             className="text-foreground/50 text-lg leading-relaxed max-w-xl">
-            EMCR Medikal; kapsamlı kurulum, sertifikalı eğitim, periyodik bakım ve teknik servis
+            EMCR Medikal, kapsamlı kurulum, sertifikalı eğitim, periyodik bakım ve teknik servis
             hizmetleriyle cihazınızın tüm yaşam döngüsü boyunca yanınızdadır.
           </motion.p>
         </div>
@@ -141,7 +141,7 @@ export default function TeknikDestek() {
                 </h2>
                 <p className="text-foreground/50 leading-relaxed mb-5">
                   EMCR Medikal bünyesinde yetiştirilmiş, üretici firmalar tarafından sertifikalandırılmış
-                  teknik ekibimiz; kurulum gününden itibaren cihazınızın kesintisiz ve verimli
+                  teknik ekibimiz, kurulum gününden itibaren cihazınızın kesintisiz ve verimli
                   çalışmasını güvence altına alır. Orijinal yedek parça stoku ve yerinde servis
                   kapasitesiyle Türkiye genelinde hızlı müdahale sunmaktayız.
                 </p>
