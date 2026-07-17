@@ -6,7 +6,18 @@ import emcrLogoWhite from "@assets/emcr-logo-white.webp";
 
 const TOPBAR_H = 32; // px — matches h-8
 
-const products = [
+type Product = {
+  label: string;
+  sub: string;
+  href: string;
+  tag: string;
+  color: string;
+  border: string;
+  accent: string;
+  iconKey: "zap" | "layers";
+};
+
+const products: Product[] = [
   {
     label: "NeoGen Plasma",
     sub: "Nitrogen Plasma Skin Regeneration",
@@ -15,7 +26,7 @@ const products = [
     color: "rgba(79,195,195,0.07)",
     border: "rgba(79,195,195,0.18)",
     accent: "text-primary",
-    icon: <Zap size={15} className="text-primary" />,
+    iconKey: "zap",
   },
   {
     label: "UltraClear",
@@ -25,9 +36,14 @@ const products = [
     color: "rgba(56,189,248,0.05)",
     border: "rgba(56,189,248,0.16)",
     accent: "text-sky-300",
-    icon: <Layers size={15} className="text-sky-400" />,
+    iconKey: "layers",
   },
 ];
+
+function ProductIcon({ iconKey }: { iconKey: Product["iconKey"] }) {
+  if (iconKey === "zap") return <Zap size={15} className="text-primary" />;
+  return <Layers size={15} className="text-sky-400" />;
+}
 
 type NavItem = {
   label: string;
@@ -226,7 +242,7 @@ export default function Navbar() {
                                 >
                                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                                     style={{ background: p.color, border: `1px solid ${p.border}` }}>
-                                    {p.icon}
+                                    <ProductIcon iconKey={p.iconKey} />
                                   </div>
                                   <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-2 mb-0.5">
@@ -352,7 +368,7 @@ export default function Navbar() {
                                     <Link key={p.href} href={p.href}
                                       className="flex items-center gap-3 p-3 rounded-xl"
                                       style={{ background: p.color, border: `1px solid ${p.border}` }}>
-                                      {p.icon}
+                                      <ProductIcon iconKey={p.iconKey} />
                                       <div>
                                         <p className={`font-semibold text-[12px] ${p.accent}`}>{p.label}</p>
                                         <p className="text-foreground/30 text-[10px]">{p.tag}</p>
