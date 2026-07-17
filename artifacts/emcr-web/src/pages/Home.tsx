@@ -166,20 +166,11 @@ export default function Home() {
         ref={heroRef}
         className="relative min-h-screen overflow-hidden flex items-center bg-[#070b17]"
       >
-        {/* YouTube background */}
+        {/* YouTube full-screen background */}
         <motion.div
           style={{ opacity: heroOpacity }}
           className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
         >
-          {/* Fallback image shown until video is ready */}
-          <img
-            src={heroDeviceImg}
-            alt=""
-            aria-hidden
-            className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
-            style={{ opacity: videoReady ? 0 : 1 }}
-          />
-
           {/* YouTube iframe — centered + scaled to cover */}
           <div
             style={{
@@ -192,23 +183,34 @@ export default function Home() {
               minWidth: "177.78vh",
               minHeight: "56.25vw",
               opacity: videoReady ? 1 : 0,
-              transition: "opacity 1.2s ease",
+              transition: "opacity 1.4s ease",
             }}
           >
-            <div
-              ref={ytContainerRef}
-              style={{ width: "100%", height: "100%" }}
-            />
+            <div ref={ytContainerRef} style={{ width: "100%", height: "100%" }} />
           </div>
+          {/* Dark base overlay */}
+          <div className="absolute inset-0 bg-[#070b17]/40" />
+        </motion.div>
 
-          {/* Overlays for premium dark look */}
-          <div className="absolute inset-0 bg-[#070b17]/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17] via-[#070b17]/55 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/70 via-transparent to-[#070b17]/15" />
+        {/* Device image — right side, above YT video */}
+        <motion.div
+          style={{ opacity: heroOpacity }}
+          className="absolute inset-y-0 right-0 w-[72%] z-1 pointer-events-none"
+        >
+          <img
+            src={heroDeviceImg}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover object-left"
+          />
+          {/* Left fade so device blends with content */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17] via-[#070b17]/40 to-transparent" />
+          {/* Bottom fade */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/50 via-transparent to-transparent" />
         </motion.div>
 
         {/* Glow accent */}
-        <div className="absolute left-0 top-1/3 w-[500px] h-[500px] rounded-full bg-primary/6 blur-[160px] pointer-events-none z-0" />
+        <div className="absolute left-0 top-1/3 w-[500px] h-[500px] rounded-full bg-primary/6 blur-[160px] pointer-events-none z-2" />
 
         <motion.div
           style={{ opacity: heroOpacity }}
