@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ChevronRight, ShieldCheck } from "lucide-react";
+import { ChevronRight, ShieldCheck, Award, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -26,8 +26,29 @@ const ucPatients = [
   { img: ucRef2, label: "Rosacea · Kızarıklık" },
   { img: ucRef3, label: "Cilt Yenileme · Sıkılaştırma" },
   { img: ucRef4, label: "Pigmentasyon · Leke" },
-  { img: ucRef5, label: "Gözenek ve Doku" },
+  { img: ucRef5, label: "Gözenek Ve Doku" },
   { img: ucRef6, label: "Akne İzleri" },
+];
+
+const awards = [
+  {
+    title: "NewBeauty",
+    award: "Beauty Choice Award",
+    year: "2025",
+    category: "Best Laser Resurfacing",
+  },
+  {
+    title: "Allure",
+    award: "Best of Beauty",
+    year: "2025",
+    category: "Best In-Office Treatment",
+  },
+  {
+    title: "Harper's Bazaar",
+    award: "Anti-Aging Award",
+    year: "2025",
+    category: "Best Skin Resurfacing Innovation",
+  },
 ];
 
 const modes = [
@@ -36,7 +57,8 @@ const modes = [
     title: "Non-Ablative",
     color: "rgba(56,189,248,0.1)",
     border: "rgba(56,189,248,0.2)",
-    desc: "Sıfır iyileşme süresi. Kolajen stimülasyonu, cilt tonu iyileştirme ve genel parlaklık artışı. Sosyal hayata dönüş aynı gün.",
+    desc: "Sıfır iyileşme süresi. Kolajen stimülasyonu, cilt tonu iyileştirme ve genel parlaklık artışı. Sosyal hayata aynı gün dönüş.",
+    detail: "3DIntelliPulse® teknolojisi ablasyon enerjisini kontrollü şekilde sunarken kollateral ısıl hasarı minimumda tutar.",
     downtime: "0 gün",
   },
   {
@@ -45,6 +67,7 @@ const modes = [
     color: "rgba(56,189,248,0.07)",
     border: "rgba(56,189,248,0.15)",
     desc: "Orta seviye yenileme. İnce çizgiler, doku düzensizliği ve pigmentasyon sorunlarında etkin, kısa iyileşmeli tedavi.",
+    detail: "2910 nm dalga boyu su ile maksimum etkileşim sağlar; bu Erbiyum lazerler içindeki en yüksek su absorpsiyon noktasıdır.",
     downtime: "1–3 gün",
   },
   {
@@ -53,32 +76,49 @@ const modes = [
     color: "rgba(56,189,248,0.05)",
     border: "rgba(56,189,248,0.12)",
     desc: "Kapsamlı cilt yenilemesi. Derin kırışıklıklar, belirgin akne izleri ve ciddi fotohasar vakalarında tam ablative yenileme.",
+    detail: "CO₂ lazere eşdeğer klinik sonuç, ancak belirgin şekilde daha az downtime, risk ve tedavi sonrası komplikasyon.",
     downtime: "5–7 gün",
   },
 ];
 
 const indications = [
-  "İnce Çizgiler ve Kırışıklıklar",
-  "Cilt Laksitesi ve Sarkma",
-  "Akne İzleri ve Skar",
-  "Güneş Hasarı ve Pigmentasyon",
-  "Doku ve Ton Düzensizliği",
+  "İnce Çizgiler Ve Kırışıklıklar",
+  "Cilt Laksitesi Ve Sarkma",
+  "Akne İzleri Ve Skar",
+  "Güneş Hasarı Ve Pigmentasyon",
+  "Doku Ve Ton Düzensizliği",
   "Gözenek Sıkılaştırma",
   "Melazma Tedavisi",
+  "Rosacea Ve Vasküler Lezyonlar",
   "Genel Cilt Kalitesi İyileştirme",
 ];
 
 const specs = [
-  { label: "DALGA BOYU", value: "1.94 µm" },
-  { label: "TEKNOLOJİ", value: "Erbium Fiber Laser (Soğuk Ablasyon)" },
+  { label: "DALGA BOYU", value: "2910 nm (Erbiyum Florür Cam Fiber)" },
+  { label: "TEKNOLOJİ", value: "3DMIRACL® Cold Fiber Laser Platform" },
+  { label: "NABIZ TEKNOLOJİSİ", value: "3DIntelliPulse® — ablasyon + koagülasyon optimizasyonu" },
   { label: "MOD", value: "Non-Ablative / Micro-Ablative / Ablative" },
   { label: "CİLT TİPİ", value: "Fitzpatrick I–VI Tüm Tipler" },
+  { label: "ÜRETİCİ", value: "Acclaro Medical Corporation, Smithfield RI, ABD" },
+  { label: "KURULUŞ", value: "2018" },
   { label: "İYİLEŞME", value: "0–7 gün (moda göre)" },
-  { label: "ONAY", value: "CE, FDA Clearance" },
+  { label: "ONAY", value: "CE Mark · FDA Clearance" },
 ];
 
 export default function UltraClearPage() {
   const [activePatient, setActivePatient] = useState(0);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleVideo = () => {
+    if (!videoRef.current) return;
+    if (videoPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+    setVideoPlaying(!videoPlaying);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
@@ -101,7 +141,7 @@ export default function UltraClearPage() {
             className="absolute z-20 top-[25%] left-16 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/5 border border-sky-400/20"
           >
             <p className="text-[9px] tracking-[0.25em] uppercase text-sky-400/70 mb-0.5">Teknoloji</p>
-            <p className="text-[13px] font-semibold text-foreground/90">Soğuk Ablasyon</p>
+            <p className="text-[13px] font-semibold text-foreground/90">3DMIRACL® Platform</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -124,7 +164,7 @@ export default function UltraClearPage() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-px bg-sky-400/60" />
                 <p className="text-[10px] font-semibold tracking-[0.35em] text-sky-400/70">
-                  SOĞUK ABLASYON · ERBİYUM FİBER LAZER
+                  SOĞUK ABLASYON · 2910 NM FİBER LAZER
                 </p>
               </div>
               <h1
@@ -132,17 +172,28 @@ export default function UltraClearPage() {
                 style={{ fontSize: "clamp(3rem, 5vw, 5rem)" }}
               >
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-200 via-sky-300 to-primary">
-                  UltraClear™
+                  UltraClear®
                 </span>
               </h1>
               <p className="font-display font-light text-foreground/55 leading-snug mb-8" style={{ fontSize: "clamp(1.3rem, 2.2vw, 2rem)" }}>
-                Işık Hızında<br />Cilt Yenileme.
+                Dünyanın İlk<br />2910 nm Cold Fiber Laser.
               </p>
-              <p className="text-foreground/45 text-base leading-relaxed mb-10 max-w-[400px]">
-                1.94 µm Erbium Fiber Lazer teknolojisiyle çalışan UltraClear, Fitzpatrick I'den
-                VI'ya tüm cilt tiplerine güvenle uygulanabilen, minimal iyileşme süreli
-                bir lazer yenileme sistemidir.
+              <p className="text-foreground/45 text-base leading-relaxed mb-8 max-w-[420px]">
+                3DMIRACL® platformuyla çalışan UltraClear, suyla maksimum etkileşim noktasındaki
+                2910 nm dalga boyunda çalışan, Fitzpatrick I'den VI'ya tüm cilt tiplerine
+                güvenle uygulanabilen bir fiber lazer sistemidir.
               </p>
+
+              {/* Mini award badges */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {awards.map((a, i) => (
+                  <span key={i} className="inline-flex items-center gap-1.5 text-[9px] tracking-[0.15em] font-semibold uppercase px-2.5 py-1 rounded-full border border-sky-400/20 text-sky-400/60">
+                    <Award size={9} className="flex-shrink-0" />
+                    {a.title} {a.year}
+                  </span>
+                ))}
+              </div>
+
               <div className="flex flex-wrap gap-4">
                 <Button
                   asChild
@@ -163,17 +214,98 @@ export default function UltraClearPage() {
         </div>
       </section>
 
-      {/* Modes */}
-      <section className="py-20 bg-[#04080e] relative overflow-hidden">
+      {/* Awards Section */}
+      <section className="py-14 bg-[#04080e] border-y border-white/[0.04] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(56,189,248,0.04)_0%,_transparent_70%)] pointer-events-none" />
+        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-2">Tanınma</p>
+            <h2 className="font-display font-bold text-2xl md:text-3xl">
+              Trifecta of Beauty{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-primary">
+                &amp; Innovation Awards
+              </span>
+            </h2>
+            <p className="text-foreground/35 text-sm mt-3 max-w-lg mx-auto">
+              2025 yılında üç önemli medya markasından eş zamanlı ödül — lazer estetik alanında
+              benzeri görülmemiş bir başarı.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {awards.map((a, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i}
+                className="p-7 rounded-2xl border border-sky-400/12 bg-sky-400/[0.03] text-center hover:border-sky-400/25 transition-all duration-300"
+              >
+                <Award className="w-8 h-8 text-sky-400/50 mx-auto mb-4" />
+                <p className="font-display font-bold text-xl text-foreground/90 mb-1">{a.title}</p>
+                <p className="text-sky-300/70 text-sm font-medium mb-2">{a.award}</p>
+                <p className="text-foreground/35 text-xs tracking-wider">{a.category} · {a.year}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Explainer */}
+      <section className="py-20 bg-[#070b17] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(56,189,248,0.04)_0%,_transparent_60%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16 text-center"
+            className="mb-5 text-center"
           >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-4">Teknoloji</p>
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-4">Neden 2910 nm?</p>
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
+              Suyun{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-primary">
+                Zirve Absorpsiyon Noktası
+              </span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="max-w-3xl mx-auto mb-16 p-6 rounded-2xl bg-sky-400/5 border border-sky-400/15"
+          >
+            <p className="text-foreground/60 text-sm leading-relaxed mb-4">
+              <span className="text-sky-300 font-semibold">2910 nm</span>, suyun en yüksek absorpsiyon gösterdiği
+              dalga boyudur. Cilt dokusu büyük oranda sudan oluştuğu için bu dalga boyu doku ile maksimum
+              etkileşim sağlar — hem ablasyon hem koagülasyon enerjisi optimize edilir, kollateral ısıl
+              hasar minimumda tutulur.
+            </p>
+            <p className="text-foreground/45 text-sm leading-relaxed">
+              Geleneksel CO₂ lazer (10.600 nm) ve Erbiyum:YAG lazer (2.940 nm) ile kıyaslandığında,
+              UltraClear'ın 2910 nm fiber platformu çok daha kontrollü enerji sunumu ve daha az
+              yan etki profili ortaya koyar. <span className="text-sky-400/60">3DIntelliPulse®</span> nabız
+              teknolojisi bu avantajı klinik protokollere uyarlar.
+            </p>
+          </motion.div>
+
+          {/* Modes */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10 text-center"
+          >
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-4">Protokol Esnekliği</p>
             <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
               Üç Farklı{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-primary">
@@ -181,7 +313,7 @@ export default function UltraClearPage() {
               </span>
             </h2>
             <p className="text-foreground/45 max-w-xl mx-auto text-base">
-              UltraClear, sıfır downtimeden tam ablative yenilemeye kadar geniş bir tedavi yelpazesi sunar.
+              Sıfır downtimeden tam ablative yenilemeye kadar geniş tedavi yelpazesi.
             </p>
           </motion.div>
 
@@ -199,7 +331,8 @@ export default function UltraClearPage() {
               >
                 <p className="text-[11px] font-mono text-foreground/25 mb-3">{m.n}</p>
                 <h3 className="font-display font-bold text-2xl text-sky-300 mb-4">{m.title}</h3>
-                <p className="text-foreground/55 text-sm leading-relaxed mb-6">{m.desc}</p>
+                <p className="text-foreground/55 text-sm leading-relaxed mb-3">{m.desc}</p>
+                <p className="text-foreground/30 text-xs leading-relaxed mb-6 italic">{m.detail}</p>
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-sky-400/50" />
                   <span className="text-[11px] text-foreground/40 tracking-wider">İyileşme: {m.downtime}</span>
@@ -207,6 +340,68 @@ export default function UltraClearPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Demo Video */}
+      <section className="py-20 relative overflow-hidden bg-[#04080e]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(56,189,248,0.05)_0%,_transparent_65%)] pointer-events-none" />
+        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10 text-center"
+          >
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-4">Canlı Uygulama</p>
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
+              UltraClear{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-primary">
+                Uygulamada
+              </span>
+            </h2>
+            <p className="text-foreground/45 max-w-lg mx-auto text-sm">
+              Gerçek klinik ortamında UltraClear lazer uygulamasını izleyin.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative rounded-2xl overflow-hidden border border-white/[0.07] bg-black max-w-4xl mx-auto"
+            style={{ aspectRatio: "16/9" }}
+          >
+            <video
+              ref={videoRef}
+              src="/ultraclear-demo.mp4"
+              className="w-full h-full object-cover"
+              playsInline
+              onEnded={() => setVideoPlaying(false)}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            <button
+              onClick={toggleVideo}
+              className="absolute inset-0 flex items-center justify-center group"
+            >
+              <div
+                className={`w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-sky-400/50 group-hover:bg-sky-400/10 ${videoPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
+              >
+                {videoPlaying
+                  ? <Pause size={20} className="text-white" />
+                  : <Play size={20} className="text-white ml-1" />
+                }
+              </div>
+            </button>
+            {!videoPlaying && (
+              <div className="absolute bottom-5 left-6 z-10">
+                <span className="text-[10px] font-semibold tracking-[0.25em] uppercase px-3 py-1.5 rounded-full bg-sky-400/20 backdrop-blur-md border border-sky-400/30 text-sky-300">
+                  Demo · UltraClear 2910 nm
+                </span>
+              </div>
+            )}
+          </motion.div>
         </div>
       </section>
 
@@ -251,28 +446,28 @@ export default function UltraClearPage() {
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-4">Teknik Özellikler</p>
               <h2 className="font-display font-bold text-3xl md:text-4xl mb-8">
-                Sistem<br />
-                <span className="text-sky-300">Detayları</span>
+                UltraClear®<br />
+                <span className="text-sky-300">Sistem Detayları</span>
               </h2>
               <div className="border-t border-white/[0.06]">
                 {specs.map((s, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-6 py-4 border-b border-white/[0.05] hover:border-sky-400/15 transition-colors group"
+                    className="flex items-start gap-6 py-3.5 border-b border-white/[0.05] hover:border-sky-400/15 transition-colors group"
                   >
-                    <span className="text-[9px] tracking-[0.25em] text-sky-400/50 w-24 flex-shrink-0 font-medium">{s.label}</span>
-                    <span className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors">{s.value}</span>
+                    <span className="text-[9px] tracking-[0.22em] text-sky-400/45 w-28 flex-shrink-0 font-medium pt-0.5">{s.label}</span>
+                    <span className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors leading-snug">{s.value}</span>
                   </div>
                 ))}
               </div>
-              <div className="mt-10 p-6 rounded-2xl bg-sky-400/5 border border-sky-400/15">
+              <div className="mt-8 p-6 rounded-2xl bg-sky-400/5 border border-sky-400/15">
                 <div className="flex items-start gap-4">
                   <ShieldCheck className="w-5 h-5 text-sky-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-semibold text-sm text-foreground/90 mb-2">Yetkili Distribütör</p>
+                    <p className="font-semibold text-sm text-foreground/90 mb-2">Türkiye Yetkili Distribütörü</p>
                     <p className="text-foreground/45 text-sm leading-relaxed">
-                      EMCR Medikal, UltraClear'ın Türkiye yetkili distribütörüdür.
-                      Tüm kurulum, eğitim ve teknik servis hizmetleri kapsamlıdır.
+                      EMCR Medikal Teknolojiler, UltraClear'ın Türkiye yetkili distribütörüdür.
+                      Tüm kurulum, sertifikalı eğitim ve teknik servis hizmetleri kapsamlıdır.
                     </p>
                   </div>
                 </div>
@@ -293,7 +488,7 @@ export default function UltraClearPage() {
               viewport={{ once: true }}
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-3">
-                KLİNİK KANIT · UltraClear™
+                Klinik Kanıt · UltraClear®
               </p>
               <h2 className="font-display font-bold leading-[1]" style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}>
                 Gerçek Sonuçlar.
@@ -339,7 +534,7 @@ export default function UltraClearPage() {
             <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/10 z-10 pointer-events-none" />
             <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
               <p className="text-[10px] tracking-[0.25em] uppercase text-sky-400/70">
-                UltraClear™ · {ucPatients[activePatient].label}
+                UltraClear® · {ucPatients[activePatient].label}
               </p>
               <div className="font-display font-bold text-6xl text-white/5 select-none leading-none tabular-nums">
                 {String(activePatient + 1).padStart(2, "0")}

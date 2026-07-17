@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ChevronRight, Activity, Layers, Settings, ShieldCheck } from "lucide-react";
+import { ChevronRight, ShieldCheck, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -13,6 +13,7 @@ import baRef3 from "@assets/ref3_1781870893597.jpg";
 import baRef4 from "@assets/ref4_1781870893597.jpg";
 import baRef5 from "@assets/ref5_1781870893598.jpg";
 import baRef6 from "@assets/ref6_1781870893598.jpg";
+import { useRef } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -31,55 +32,81 @@ const patients = [
   { img: baRef6, label: "Sıkılaştırma & Yenileme · 3 Seans" },
 ];
 
-const modes = [
+const mechanisms = [
   {
     n: "01",
-    title: "Epidermal",
-    color: "rgba(79,195,195,0.15)",
-    border: "rgba(79,195,195,0.25)",
-    desc: "Yüzeysel tedavi; pigmentasyon, yüzeysel lezyonlar ve cilt tonu düzeltme. Minimal iyileşme süresi ile etkin sonuç.",
+    title: "Cilt Sıkılaştırma",
+    subtitle: "Skin Tightening",
+    desc: "Plazma darbesi cilde çarptığında termal enerji ani bir ısıya dönüşür ve doku hemen kontrakte olur. Bu anlık sıkılaşma görünür kırışıklık azalmasını tetikler.",
+    detail: "Stratum corneum ve epidermal katmanlar tedavi boyunca bütünlüğünü korur, doğal bir biyolojik pansuman görevi üstlenir.",
     downtime: "1–3 gün",
+    color: "rgba(79,195,195,0.15)",
+    border: "rgba(79,195,195,0.3)",
   },
   {
     n: "02",
-    title: "Subepidermal",
-    color: "rgba(79,195,195,0.1)",
-    border: "rgba(79,195,195,0.2)",
-    desc: "Orta dermal stimülasyon; kolajen indüksiyonu, cilt sıkılaştırma ve genel doku kalitesi iyileştirmesi.",
+    title: "Yüzey Yenileme",
+    subtitle: "Skin Resurfacing",
+    desc: "İyileşme bölgesi (Zone of Thermal Damage) ile modifikasyon bölgesi (Zone of Thermal Modification) arasında yeni bir epidermis oluşur. Düşük enerjide 1–2 gün, yüksek enerjide 3–5 gün içinde tamamlanır.",
+    detail: "Derinin doğal bariyeri korunduğu için enfeksiyon riski ve komplikasyonlar klasik ablative yöntemlere kıyasla belirgin şekilde azdır.",
     downtime: "3–5 gün",
+    color: "rgba(79,195,195,0.09)",
+    border: "rgba(79,195,195,0.2)",
   },
   {
     n: "03",
-    title: "Dermal",
-    color: "rgba(79,195,195,0.06)",
-    border: "rgba(79,195,195,0.15)",
-    desc: "Derin dermal yeniden modelleme; belirgin cilt germe, derin kırışıklıklar ve kapsamlı yüz yenileme.",
+    title: "Derin Rejenerasyon",
+    subtitle: "Skin Regeneration",
+    desc: "Tüm cilt yüzeyi tedavi edilir — ablative teknolojilerdeki gibi tedavisiz adacıklar oluşmaz. Retikular dermise kadar uzanan yeniden modelleme kaskadı başlatılır.",
+    detail: "Neokollajenizasyon, neovaskülarizasyon ve fibroblast migrasyonu ile uzun dönemli çalışmalar tedaviden 12 ay sonrasına kadar süren kolajen üretimini belgeliyor.",
     downtime: "5–7 gün",
+    color: "rgba(79,195,195,0.05)",
+    border: "rgba(79,195,195,0.12)",
   },
 ];
 
 const indications = [
-  "Cilt Laksitesi ve Kırışıklıklar",
-  "Akne İzleri ve Doku Düzensizliği",
-  "Pigmentasyon ve Melazma",
-  "Rozasea ve Vasküler Lezyonlar",
-  "Periorbital ve Perioral Bölge",
-  "Vücut Cilt Yenilemesi",
-  "Skar ve Stri Tedavisi",
-  "Genel Cilt Kalitesi İyileştirmesi",
+  { label: "Yüz Kırışıklıkları (Facial Rhytides)", fda: true },
+  { label: "Yüz Dışı Kırışıklıklar (Non-facial Rhytides)", fda: true },
+  { label: "Akne İzleri (Acne Scars)", fda: true },
+  { label: "Pigmente Lezyonlar (Pigmented Lesions)", fda: true },
+  { label: "Aktinik Keratoz (Actinic Keratosis)", fda: true },
+  { label: "Seboreik Keratoz (Seborrhoeic Keratosis)", fda: true },
+  { label: "Viral Papilloma (Viral Papillomata)", fda: true },
+  { label: "Cilt Laksitesi ve Sarkma", fda: false },
+  { label: "Göz Çevresi (Periorbital) Bölge", fda: false },
+  { label: "Vücut Cilt Yenilemesi", fda: false },
 ];
 
 const specs = [
-  { label: "ENERJİ TİPİ", value: "UHF (Ultra Yüksek Frekans)" },
-  { label: "GAZ", value: "Azot (N₂)" },
-  { label: "MOD", value: "Epidermal / Subepidermal / Dermal" },
+  { label: "ENERJİ TİPİ", value: "UHF (Ultra Yüksek Frekans) RF" },
+  { label: "GAZ", value: "Medikal Kalite Azot (N₂)" },
+  { label: "ENERJİ ARALIĞI", value: "0.5 J – 4.0 J" },
+  { label: "NABIZ HIZI", value: "Çift Nabız (Double Pulse)" },
+  { label: "TEKRAR HIZI", value: "1.0 – 2.5 Hz" },
+  { label: "NOZULLAR", value: "25 mm / 5 mm" },
+  { label: "SICAKLIK (YÜZEY)", value: "70 – 165 °C / 15 ms nabız" },
+  { label: "CİHAZ SINIFI", value: "Class IIb" },
   { label: "CİLT TİPİ", value: "Fitzpatrick I–VI Tüm Tipler" },
-  { label: "İYİLEŞME", value: "1–7 gün (moda göre)" },
-  { label: "ONAY", value: "CE, FDA Clearance" },
+  { label: "ONAY", value: "CE Mark · FDA 510(k) K132754" },
+  { label: "SİSTEM AĞIRLIĞI", value: "18 kg" },
+  { label: "BOYUTLAR", value: "470 × 430 × 1060 mm" },
 ];
 
 export default function NeoGenPlasma() {
   const [activePatient, setActivePatient] = useState(0);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleVideo = () => {
+    if (!videoRef.current) return;
+    if (videoPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+    setVideoPlaying(!videoPlaying);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
@@ -114,7 +141,7 @@ export default function NeoGenPlasma() {
                 className="w-full max-w-[200px] mb-8 invert opacity-90"
               />
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-5">
-                Nitrogen Plasma Teknolojisi
+                Nitrogen Plasma Skin Regeneration
               </p>
               <h1
                 className="font-display font-bold leading-[1.05] mb-6"
@@ -123,11 +150,22 @@ export default function NeoGenPlasma() {
                 Kontrollü Enerji.<br />
                 <span className="text-primary">Görünür Sonuç.</span>
               </h1>
-              <p className="text-foreground/50 text-base leading-relaxed mb-10 max-w-[420px]">
-                NeoGen Plasma, azot gazını plazma enerjisine dönüştürerek cilt yüzeyi
-                korunurken derin dermal yenilenme sağlar. Kontrollü termal etki,
-                protokol esnekliği ve üstün klinik sonuçlar tek sistemde.
+              <p className="text-foreground/50 text-base leading-relaxed mb-8 max-w-[420px]">
+                NeoGen, azot gazını plazma enerjisine dönüştürerek cilt yüzeyini korurken
+                retikular dermise kadar derin yenilenme sağlar. Tek sistemde sıkılaştırma,
+                yenileme ve rejenerasyon.
               </p>
+              <div className="flex flex-wrap items-center gap-3 mb-8">
+                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border border-primary/25 text-primary/70">
+                  CE Mark
+                </span>
+                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border border-primary/25 text-primary/70">
+                  FDA 510(k)
+                </span>
+                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border border-primary/25 text-primary/70">
+                  7 Onaylı Endikasyon
+                </span>
+              </div>
               <div className="flex flex-wrap gap-4">
                 <Button
                   asChild
@@ -148,7 +186,7 @@ export default function NeoGenPlasma() {
         </div>
       </section>
 
-      {/* Technology / Modes */}
+      {/* How It Works */}
       <section className="py-20 bg-[#060a15] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(79,195,195,0.05)_0%,_transparent_60%)] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
@@ -156,20 +194,38 @@ export default function NeoGenPlasma() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16 text-center"
+            className="mb-5 text-center"
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-4">Teknoloji</p>
             <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
-              Üç Farklı <span className="text-primary">Tedavi Modu</span>
+              Nasıl <span className="text-primary">Çalışır?</span>
             </h2>
-            <p className="text-foreground/45 max-w-xl mx-auto text-base">
-              NeoGen Plasma, kliniğin ihtiyacına göre özelleştirilebilir üç farklı tedavi
-              derinliği sunar. Her mod farklı endikasyon ve hasta profili için optimize edilmiştir.
+            <p className="text-foreground/45 max-w-2xl mx-auto text-base leading-relaxed">
+              NeoGen, ultra yüksek radyo frekansıyla tüpten gelen medikal kalite azot gazını iyonize ederek
+              nozulda nitrojen plazma oluşturur. Bu plazma, yüzeyi açmadan cildin tüm mimarisini ısıtır
+              ve 15 milisaniyelik kontrollü darbelerle 70–165°C arasında termal etki üretir.
             </p>
           </motion.div>
 
+          {/* Key differentiator callout */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="max-w-3xl mx-auto mb-16 p-5 rounded-2xl bg-primary/5 border border-primary/15 flex items-start gap-4"
+          >
+            <div className="w-1 self-stretch rounded-full bg-primary/40 flex-shrink-0" />
+            <p className="text-foreground/60 text-sm leading-relaxed">
+              <span className="text-primary font-semibold">Kritik fark:</span> Azot plazması belirli bir
+              kromofor hedefine veya dalga boyuna bağlı değildir. Penetrasyon derinliği cildin nem
+              düzeyi ile yönetilir; bu sayede Fitzpatrick I'den VI'ya tüm cilt tonlarında güvenle kullanılır.
+            </p>
+          </motion.div>
+
+          {/* 3 Mechanisms */}
           <div className="grid md:grid-cols-3 gap-5">
-            {modes.map((m, i) => (
+            {mechanisms.map((m, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
@@ -181,8 +237,10 @@ export default function NeoGenPlasma() {
                 style={{ background: m.color, borderColor: m.border }}
               >
                 <p className="text-[11px] font-mono text-foreground/25 mb-3">{m.n}</p>
-                <h3 className="font-display font-bold text-2xl text-primary mb-4">{m.title}</h3>
-                <p className="text-foreground/55 text-sm leading-relaxed mb-6">{m.desc}</p>
+                <h3 className="font-display font-bold text-xl text-primary mb-1">{m.title}</h3>
+                <p className="text-[10px] tracking-[0.15em] uppercase text-foreground/30 mb-4">{m.subtitle}</p>
+                <p className="text-foreground/55 text-sm leading-relaxed mb-4">{m.desc}</p>
+                <p className="text-foreground/35 text-xs leading-relaxed mb-6 italic">{m.detail}</p>
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary/50" />
                   <span className="text-[11px] text-foreground/40 tracking-wider">İyileşme: {m.downtime}</span>
@@ -190,6 +248,65 @@ export default function NeoGenPlasma() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Demo Video */}
+      <section className="py-20 relative overflow-hidden bg-[#070b17]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(79,195,195,0.06)_0%,_transparent_65%)] pointer-events-none" />
+        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10 text-center"
+          >
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-4">Canlı Uygulama</p>
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
+              NeoGen Plasma <span className="text-primary">Uygulamada</span>
+            </h2>
+            <p className="text-foreground/45 max-w-lg mx-auto text-sm">
+              Gerçek klinik ortamında NeoGen Plasma uygulamasını izleyin.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative rounded-2xl overflow-hidden border border-white/[0.07] bg-black max-w-4xl mx-auto"
+            style={{ aspectRatio: "16/9" }}
+          >
+            <video
+              ref={videoRef}
+              src="/neogen-demo.mp4"
+              className="w-full h-full object-cover"
+              playsInline
+              onEnded={() => setVideoPlaying(false)}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            <button
+              onClick={toggleVideo}
+              className="absolute inset-0 flex items-center justify-center group"
+            >
+              <div
+                className={`w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:bg-primary/10 ${videoPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
+              >
+                {videoPlaying
+                  ? <Pause size={20} className="text-white" />
+                  : <Play size={20} className="text-white ml-1" />
+                }
+              </div>
+            </button>
+            {!videoPlaying && (
+              <div className="absolute bottom-5 left-6 z-10">
+                <span className="text-[10px] font-semibold tracking-[0.25em] uppercase px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary">
+                  Demo · NeoGen Plasma PSR
+                </span>
+              </div>
+            )}
+          </motion.div>
         </div>
       </section>
 
@@ -205,11 +322,18 @@ export default function NeoGenPlasma() {
               transition={{ duration: 0.8 }}
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-4">Endikasyonlar</p>
-              <h2 className="font-display font-bold text-3xl md:text-4xl mb-8">
+              <h2 className="font-display font-bold text-3xl md:text-4xl mb-3">
                 Hangi Durumlarda<br />
                 <span className="text-primary">Kullanılır?</span>
               </h2>
-              <div className="space-y-3">
+              <p className="text-foreground/40 text-sm mb-8 leading-relaxed">
+                7'si FDA 510(k) onaylı toplam 10 endikasyon.
+                <span className="inline-flex items-center gap-1.5 ml-2 text-primary/60">
+                  <span className="w-2 h-2 rounded-full bg-primary/50 inline-block" />
+                  FDA onaylı
+                </span>
+              </p>
+              <div className="space-y-0">
                 {indications.map((ind, i) => (
                   <motion.div
                     key={i}
@@ -221,7 +345,12 @@ export default function NeoGenPlasma() {
                     className="flex items-center gap-4 py-3 border-b border-white/[0.05] group hover:border-primary/20 transition-colors"
                   >
                     <ChevronRight size={14} className="text-primary/60 flex-shrink-0" />
-                    <span className="text-foreground/65 text-sm group-hover:text-foreground/85 transition-colors">{ind}</span>
+                    <span className="text-foreground/65 text-sm group-hover:text-foreground/85 transition-colors flex-1">{ind.label}</span>
+                    {ind.fda && (
+                      <span className="text-[9px] tracking-[0.15em] font-semibold text-primary/50 border border-primary/20 rounded-full px-2 py-0.5 flex-shrink-0">
+                        FDA
+                      </span>
+                    )}
                   </motion.div>
                 ))}
               </div>
@@ -238,29 +367,29 @@ export default function NeoGenPlasma() {
                 Teknik Özellikler
               </p>
               <h2 className="font-display font-bold text-3xl md:text-4xl mb-8">
-                Sistem<br />
-                <span className="text-primary">Detayları</span>
+                NeoGen PSR<br />
+                <span className="text-primary">Sistem Detayları</span>
               </h2>
               <div className="border-t border-white/[0.06]">
                 {specs.map((s, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-6 py-4 border-b border-white/[0.05] hover:border-primary/15 transition-colors group"
+                    className="flex items-center gap-6 py-3.5 border-b border-white/[0.05] hover:border-primary/15 transition-colors group"
                   >
-                    <span className="text-[9px] tracking-[0.25em] text-primary/50 w-24 flex-shrink-0 font-medium">{s.label}</span>
+                    <span className="text-[9px] tracking-[0.22em] text-primary/45 w-28 flex-shrink-0 font-medium">{s.label}</span>
                     <span className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors">{s.value}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-10 p-6 rounded-2xl bg-primary/5 border border-primary/15">
+              <div className="mt-8 p-6 rounded-2xl bg-primary/5 border border-primary/15">
                 <div className="flex items-start gap-4">
                   <ShieldCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-semibold text-sm text-foreground/90 mb-2">Yetkili Distribütör</p>
+                    <p className="font-semibold text-sm text-foreground/90 mb-2">Türkiye Yetkili Distribütörü</p>
                     <p className="text-foreground/45 text-sm leading-relaxed">
-                      EMCR Medikal, NeoGen Plasma'nın Türkiye yetkili distribütörüdür.
-                      Kurulum, eğitim ve teknik servis garantisi ile teslim edilmektedir.
+                      EMCR Medikal Teknolojiler, NeoGen Plasma'nın Türkiye yetkili distribütörüdür.
+                      Kurulum, sertifikalı eğitim ve tam teknik servis güvencesiyle teslim edilmektedir.
                     </p>
                   </div>
                 </div>
@@ -281,7 +410,7 @@ export default function NeoGenPlasma() {
               viewport={{ once: true }}
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-3">
-                KLİNİK KANIT · NeoGen Plasma
+                Klinik Kanıt · NeoGen Plasma
               </p>
               <h2 className="font-display font-bold leading-[1]" style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}>
                 Gerçek Sonuçlar.
