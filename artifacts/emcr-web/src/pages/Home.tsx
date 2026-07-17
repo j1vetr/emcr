@@ -168,9 +168,8 @@ export default function Home() {
         ref={heroRef}
         className="relative min-h-screen overflow-hidden flex items-center bg-[#070b17]"
       >
-        {/* ── Full-screen YouTube video background ───────────────── */}
+        {/* ── Full-screen YouTube video ─────────────────────────── */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          {/* Centered iframe — covers whole hero at any aspect ratio */}
           <div
             style={{
               position: "absolute",
@@ -187,39 +186,29 @@ export default function Home() {
           >
             <div ref={ytContainerRef} style={{ width: "100%", height: "100%" }} />
           </div>
-
-          {/* Base dark overlay */}
-          <div className="absolute inset-0 bg-[#070b17]/50" />
-          {/* Left gradient — text area nearly opaque */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17]/95 via-[#070b17]/55 to-transparent" />
-          {/* Top edge */}
-          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#070b17] to-transparent" />
-          {/* Bottom edge — tall + strong to bury captions */}
-          <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#070b17] via-[#070b17]/95 to-transparent" />
         </div>
 
-        {/* ── Device image — right side, wide enough to fade invisibly ── */}
+        {/* ── Left panel: solid navy — no video bleed, pure dark ── */}
+        <div className="absolute inset-y-0 left-0 w-1/2 z-[1] bg-[#070b17] pointer-events-none" />
+
+        {/* ── Right panel: device image, clean hard cut, no gradient ── */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="absolute inset-y-0 right-0 w-[85%] z-1 pointer-events-none"
+          className="absolute inset-y-0 right-0 w-1/2 z-[1] pointer-events-none overflow-hidden"
         >
           <img
             src={heroDeviceImg}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-cover object-right"
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
-          {/* Wide left fade — no hard edge, seamless blend with video */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to right, #070b17 0%, #070b17 20%, rgba(7,11,23,0.5) 42%, rgba(7,11,23,0.05) 65%, transparent 100%)",
-            }}
-          />
-          {/* Bottom fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/60 via-transparent to-transparent" />
+          {/* Subtle depth overlay — no left-edge gradient */}
+          <div className="absolute inset-0 bg-[#070b17]/20" />
         </motion.div>
+
+        {/* ── Top + bottom fades span full width above both panels ─ */}
+        <div className="absolute inset-x-0 top-0 h-32 z-[2] pointer-events-none bg-gradient-to-b from-[#070b17] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-56 z-[2] pointer-events-none bg-gradient-to-t from-[#070b17] via-[#070b17]/90 to-transparent" />
 
         {/* Teal glow accent left */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px] pointer-events-none z-2" />
