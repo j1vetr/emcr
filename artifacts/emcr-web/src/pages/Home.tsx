@@ -198,21 +198,27 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#070b17] via-[#070b17]/95 to-transparent" />
         </div>
 
-        {/* ── Device image — right side, layered above video ──────── */}
+        {/* ── Device image — right side, wide enough to fade invisibly ── */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="absolute inset-y-0 right-0 w-[55%] z-1 pointer-events-none"
+          className="absolute inset-y-0 right-0 w-[85%] z-1 pointer-events-none"
         >
           <img
             src={heroDeviceImg}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-cover object-left"
+            className="absolute inset-0 w-full h-full object-cover object-right"
           />
-          {/* Soft left fade into the video/text area */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17] via-[#070b17]/25 to-transparent" />
+          {/* Wide left fade — no hard edge, seamless blend with video */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, #070b17 0%, #070b17 20%, rgba(7,11,23,0.5) 42%, rgba(7,11,23,0.05) 65%, transparent 100%)",
+            }}
+          />
           {/* Bottom fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/65 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/60 via-transparent to-transparent" />
         </motion.div>
 
         {/* Teal glow accent left */}
