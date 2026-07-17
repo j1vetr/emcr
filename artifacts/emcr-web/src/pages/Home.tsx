@@ -50,16 +50,112 @@ const ucPatients = [
   { img: ucRef6, label: "Akne İzleri" },
 ];
 
+// Segment definitions (seconds)
+const SEG_A_START = 15;
+const SEG_A_END   = 31;
+const SEG_B_START = 36;
+const SEG_B_END   = 46;
+
 export default function Home() {
   const [activePatient, setActivePatient] = useState(0);
   const [ucActivePatient, setUcActivePatient] = useState(0);
+  const [videoReady, setVideoReady] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
+  const ytContainerRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const ytPlayerRef = useRef<any>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Load YouTube IFrame API and create player
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const win = window as any;
+
+    const initPlayer = () => {
+      if (!ytContainerRef.current) return;
+      ytPlayerRef.current = new win.YT.Player(ytContainerRef.current, {
+        videoId: "NFQNsYPq3WU",
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          loop: 0,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          playsinline: 1,
+          start: SEG_A_START,
+        },
+        events: {
+          onReady: (e: { target: any }) => {
+            e.target.mute();
+            e.target.playVideo();
+          },
+          onStateChange: (e: { data: number; target: any }) => {
+            // PLAYING (1) → video is live, show it and start segment control
+            if (e.data === 1) {
+              setVideoReady(true);
+              if (!intervalRef.current) {
+                intervalRef.current = setInterval(() => {
+                  const player = ytPlayerRef.current;
+                  if (!player?.getCurrentTime) return;
+                  const t = player.getCurrentTime() as number;
+                  const state = player.getPlayerState() as number;
+
+                  // Segment A end → jump to B
+                  if (t >= SEG_A_END && t < SEG_B_START) {
+                    player.seekTo(SEG_B_START, true);
+                  }
+                  // Segment B end → loop back to A
+                  else if (t >= SEG_B_END) {
+                    player.seekTo(SEG_A_START, true);
+                  }
+                  // Paused/ended unexpectedly → resume
+                  if (state === 2 || state === 0) {
+                    player.playVideo();
+                  }
+                }, 150);
+              }
+            }
+            // ENDED (0) → restart from A
+            if (e.data === 0) {
+              e.target.seekTo(SEG_A_START, true);
+              e.target.playVideo();
+            }
+          },
+        },
+      });
+    };
+
+    if (win.YT && win.YT.Player) {
+      initPlayer();
+    } else {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      tag.async = true;
+      document.head.appendChild(tag);
+
+      const prev = win.onYouTubeIframeAPIReady;
+      win.onYouTubeIframeAPIReady = () => {
+        if (prev) prev();
+        initPlayer();
+      };
+    }
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      ytPlayerRef.current?.destroy?.();
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
@@ -68,22 +164,51 @@ export default function Home() {
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen overflow-hidden flex items-center bg-background"
+        className="relative min-h-screen overflow-hidden flex items-center bg-[#070b17]"
       >
+        {/* YouTube background */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="absolute inset-y-0 right-0 w-[78%] z-0 pointer-events-none"
+          className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
         >
+          {/* Fallback image shown until video is ready */}
           <img
             src={heroDeviceImg}
-            alt="EMCR Medikal, NeoGen Plasma ve UltraClear"
-            className="absolute inset-0 w-full h-full object-cover object-left"
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
+            style={{ opacity: videoReady ? 0 : 1 }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+
+          {/* YouTube iframe — centered + scaled to cover */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "100%",
+              height: "100%",
+              minWidth: "177.78vh",
+              minHeight: "56.25vw",
+              opacity: videoReady ? 1 : 0,
+              transition: "opacity 1.2s ease",
+            }}
+          >
+            <div
+              ref={ytContainerRef}
+              style={{ width: "100%", height: "100%" }}
+            />
+          </div>
+
+          {/* Overlays for premium dark look */}
+          <div className="absolute inset-0 bg-[#070b17]/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17] via-[#070b17]/55 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/70 via-transparent to-[#070b17]/15" />
         </motion.div>
 
-        <div className="absolute left-0 top-1/3 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[140px] pointer-events-none z-0" />
+        {/* Glow accent */}
+        <div className="absolute left-0 top-1/3 w-[500px] h-[500px] rounded-full bg-primary/6 blur-[160px] pointer-events-none z-0" />
 
         <motion.div
           style={{ opacity: heroOpacity }}
