@@ -160,7 +160,7 @@ export default function Navbar() {
           )}
 
           <div className="max-w-[1440px] mx-auto px-6 md:px-14 flex items-center justify-between"
-            style={{ height: transparent ? "76px" : "64px", transition: "height 0.5s ease" }}
+            style={{ height: transparent ? "90px" : "68px", transition: "height 0.5s ease" }}
           >
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 relative z-10">
@@ -168,7 +168,7 @@ export default function Navbar() {
                 src={emcrLogoWhite}
                 alt="EMCR Medikal"
                 className="object-contain transition-all duration-500"
-                style={{ height: transparent ? "48px" : "36px" }}
+                style={{ height: transparent ? "64px" : "44px" }}
               />
             </Link>
 

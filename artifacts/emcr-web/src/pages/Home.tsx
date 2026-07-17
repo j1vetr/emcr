@@ -166,12 +166,14 @@ export default function Home() {
         ref={heroRef}
         className="relative min-h-screen overflow-hidden flex items-center bg-[#070b17]"
       >
-        {/* YouTube full-screen background */}
+        {/* YouTube background — clipped to right 58% only so left text area is always clean */}
         <motion.div
-          style={{ opacity: heroOpacity }}
+          style={{
+            opacity: heroOpacity,
+            clipPath: "inset(8% 0 12% 42%)",
+          }}
           className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
         >
-          {/* YouTube iframe — centered + scaled to cover */}
           <div
             style={{
               position: "absolute",
@@ -184,67 +186,83 @@ export default function Home() {
               minHeight: "56.25vw",
               opacity: videoReady ? 1 : 0,
               transition: "opacity 1.4s ease",
+              pointerEvents: "none",
             }}
           >
             <div ref={ytContainerRef} style={{ width: "100%", height: "100%" }} />
           </div>
-          {/* Dark base overlay */}
-          <div className="absolute inset-0 bg-[#070b17]/40" />
         </motion.div>
 
-        {/* Device image — right side, above YT video */}
+        {/* Device image — right side */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="absolute inset-y-0 right-0 w-[72%] z-1 pointer-events-none"
+          className="absolute inset-y-0 right-0 w-[62%] z-1 pointer-events-none"
         >
           <img
             src={heroDeviceImg}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-cover object-left"
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
-          {/* Left fade so device blends with content */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17] via-[#070b17]/40 to-transparent" />
+          {/* Left fade into dark bg */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070b17] via-[#070b17]/15 to-transparent" />
           {/* Bottom fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/50 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/70 via-transparent to-transparent" />
         </motion.div>
 
-        {/* Glow accent */}
-        <div className="absolute left-0 top-1/3 w-[500px] h-[500px] rounded-full bg-primary/6 blur-[160px] pointer-events-none z-2" />
+        {/* ── Solid left panel — hides YouTube on text side completely ── */}
+        <div
+          className="absolute inset-y-0 left-0 z-3 pointer-events-none"
+          style={{ width: "42%", background: "#070b17" }}
+        />
+        {/* Gradient bridge from solid to device image */}
+        <div
+          className="absolute inset-y-0 z-3 pointer-events-none"
+          style={{
+            left: "38%",
+            width: "22%",
+            background: "linear-gradient(to right, #070b17 0%, rgba(7,11,23,0.6) 50%, transparent 100%)",
+          }}
+        />
+        {/* Bottom cover — hides any YT UI at bottom */}
+        <div className="absolute bottom-0 inset-x-0 h-40 z-3 pointer-events-none bg-gradient-to-t from-[#070b17] to-transparent" />
+        {/* Top cover — hides any YT UI at top */}
+        <div className="absolute top-0 inset-x-0 h-32 z-3 pointer-events-none bg-gradient-to-b from-[#070b17]/80 to-transparent" />
+
+        {/* Teal glow left */}
+        <div className="absolute left-[-80px] top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[180px] pointer-events-none z-4" />
 
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16 pt-28 pb-24"
+          className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16 flex items-center min-h-screen"
         >
-          <div className="max-w-[520px]">
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={0}
-              className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-8"
+          <div className="max-w-[560px] pb-12" style={{ paddingTop: "clamp(100px, 12vh, 160px)" }}>
+
+            {/* Eyebrow badge */}
+            <motion.div
+              variants={fadeUp} initial="hidden" animate="visible" custom={0}
+              className="inline-flex items-center gap-2 mb-8"
             >
-              Türkiye Yetkili Distribütör
-            </motion.p>
+              <span className="h-px w-6 bg-primary/60" />
+              <span className="text-[10px] font-bold tracking-[0.35em] uppercase text-primary/75">
+                Türkiye Yetkili Distribütör
+              </span>
+            </motion.div>
 
             <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={1}>
-              <h1 className="font-display font-bold leading-[0.9] mb-0" style={{ fontSize: "clamp(4.5rem, 9vw, 8.5rem)" }}>
+              <h1 className="font-display font-black leading-[0.88] tracking-tight"
+                style={{ fontSize: "clamp(5rem, 10.5vw, 10rem)" }}>
                 <span className="text-foreground">Neo</span><span className="text-primary">Gen</span>
               </h1>
-              <h1 className="font-display font-bold leading-[0.9] mb-6" style={{ fontSize: "clamp(4.5rem, 9vw, 8.5rem)" }}>
+              <h1 className="font-display font-black leading-[0.88] tracking-tight mb-8"
+                style={{ fontSize: "clamp(5rem, 10.5vw, 10rem)" }}>
                 <span className="text-foreground">Plasma</span>
               </h1>
             </motion.div>
 
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={2}
-              className="w-10 h-0.5 bg-primary mb-8" />
-
             <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={3}
-              className="text-[15px] text-foreground/50 leading-relaxed mb-10 max-w-[400px]"
+              variants={fadeUp} initial="hidden" animate="visible" custom={2}
+              className="text-[15px] text-foreground/45 leading-relaxed mb-10 max-w-[420px]"
             >
               Klinikler için ileri seviye cilt yenileme, elastikiyet,
               ton ve doku kalitesi odaklı premium enerji tabanlı sistem.
