@@ -155,110 +155,12 @@ export default function NeoGenPlasma() {
                 }}
               />
 
-              {/* Image + orbiting light */}
-              <div
-                className="relative"
-                style={{ maxWidth: "540px", width: "100%" }}
-              >
-                <img
-                  src={neogenDeviceTransparent}
-                  alt="NeoGen Plasma EVO"
-                  className="w-full object-contain"
-                  style={{ maxHeight: "700px", display: "block" }}
-                />
-
-                {/* SVG: beyaz ışık cihazın silueti boyunca dolaşır */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                  viewBox="0 0 460 720"
-                  fill="none"
-                  preserveAspectRatio="xMidYMid meet"
-                >
-                  <defs>
-                    <filter id="glow">
-                      <feGaussianBlur stdDeviation="3.5" result="blur" />
-                      <feMerge>
-                        <feMergeNode in="blur" />
-                        <feMergeNode in="SourceGraphic" />
-                      </feMerge>
-                    </filter>
-                  </defs>
-                  {/* Cihazın ana gövdesini yaklaşık takip eden yol */}
-                  <motion.path
-                    d="
-                      M 160,28
-                      L 320,18
-                      Q 390,16 420,50
-                      L 440,130
-                      Q 445,160 430,185
-                      L 390,210
-                      L 390,600
-                      Q 390,630 360,645
-                      L 290,658
-                      L 290,670
-                      Q 290,685 275,688
-                      L 185,688
-                      Q 170,688 170,670
-                      L 170,658
-                      L 100,645
-                      Q 70,632 70,600
-                      L 70,210
-                      L 30,185
-                      Q 16,160 20,130
-                      L 40,50
-                      Q 70,16 140,18
-                      Z
-                    "
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeDasharray="90 9999"
-                    fill="none"
-                    filter="url(#glow)"
-                    initial={{ strokeDashoffset: 0 }}
-                    animate={{ strokeDashoffset: -2800 }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                  />
-                  {/* İkinci iz — teal renk, biraz geride */}
-                  <motion.path
-                    d="
-                      M 160,28
-                      L 320,18
-                      Q 390,16 420,50
-                      L 440,130
-                      Q 445,160 430,185
-                      L 390,210
-                      L 390,600
-                      Q 390,630 360,645
-                      L 290,658
-                      L 290,670
-                      Q 290,685 275,688
-                      L 185,688
-                      Q 170,688 170,670
-                      L 170,658
-                      L 100,645
-                      Q 70,632 70,600
-                      L 70,210
-                      L 30,185
-                      Q 16,160 20,130
-                      L 40,50
-                      Q 70,16 140,18
-                      Z
-                    "
-                    stroke="rgba(20,184,166,0.6)"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeDasharray="60 9999"
-                    fill="none"
-                    filter="url(#glow)"
-                    initial={{ strokeDashoffset: 25 }}
-                    animate={{ strokeDashoffset: -2775 }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                  />
-                </svg>
-              </div>
+              <img
+                src={neogenDeviceTransparent}
+                alt="NeoGen Plasma EVO"
+                className="relative w-full object-contain"
+                style={{ maxHeight: "700px", display: "block" }}
+              />
             </motion.div>
 
             {/* ── Sağ: metin ───────────────────────────────────── */}
