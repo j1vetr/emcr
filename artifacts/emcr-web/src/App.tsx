@@ -1,4 +1,5 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,8 +15,18 @@ import TedaviEndikasyonlari from "@/pages/TedaviEndikasyonlari";
 
 const queryClient = new QueryClient();
 
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location]);
+  return null;
+}
+
 function Router() {
   return (
+    <>
+      <ScrollToTop />
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/hakkimizda" component={Hakkimizda} />
@@ -27,6 +38,7 @@ function Router() {
       <Route path="/tedavi-endikasyonlari" component={TedaviEndikasyonlari} />
       <Route component={NotFound} />
     </Switch>
+    </>
   );
 }
 
