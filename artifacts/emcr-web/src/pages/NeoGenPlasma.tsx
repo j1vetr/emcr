@@ -160,6 +160,8 @@ export default function NeoGenPlasma() {
                 alt="NeoGen Plasma EVO"
                 className="relative w-full object-contain"
                 style={{ maxHeight: "700px", display: "block" }}
+                fetchPriority="high"
+                decoding="async"
               />
             </motion.div>
 
@@ -277,6 +279,8 @@ export default function NeoGenPlasma() {
                   src={neogenTreatment}
                   alt="NeoGen Plasma Uygulama"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060a14]/60 via-transparent to-transparent" />
                 {/* Label overlay */}
@@ -800,7 +804,7 @@ export default function NeoGenPlasma() {
                 animate={{ opacity: activePatient === i ? 1 : 0 }}
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
-                <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" />
+                <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/60 via-transparent to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#070b17]/25 via-transparent to-[#070b17]/25" />
               </motion.div>

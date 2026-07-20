@@ -196,6 +196,8 @@ export default function Navbar() {
                                         filter: p.logoInvert ? "invert(1) brightness(0.9)" : "none",
                                         opacity: 0.72,
                                       }}
+                                      loading="lazy"
+                                      decoding="async"
                                     />
                                   </div>
                                 </Link>
@@ -355,6 +357,8 @@ export default function Navbar() {
                                           filter: p.logoInvert ? "invert(1) brightness(0.85)" : "none",
                                           opacity: 0.72,
                                         }}
+                                        loading="lazy"
+                                        decoding="async"
                                       />
                                       <div>
                                         <p className={`font-semibold text-[12px] ${p.accentClass}`}>{p.label}</p>

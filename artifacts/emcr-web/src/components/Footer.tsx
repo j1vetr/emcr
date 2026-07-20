@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 space-y-5">
-            <img src={emcrLogoWhite} alt="EMCR Medikal" className="h-11 object-contain" />
+            <img src={emcrLogoWhite} alt="EMCR Medikal" className="h-11 object-contain" loading="lazy" decoding="async" />
             <p className="text-foreground/35 text-sm leading-relaxed max-w-[220px]">
               NeoGen Plasma ve UltraClear sistemlerinin Türkiye yetkili distribütörü.
             </p>

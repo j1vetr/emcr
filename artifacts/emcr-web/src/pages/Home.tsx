@@ -336,6 +336,8 @@ export default function Home() {
             alt="NeoGen Plasma Device"
             className="relative z-20 w-full h-full object-contain object-center"
             style={{ filter: "drop-shadow(0 30px 100px rgba(0,0,0,0.7))" }}
+            loading="lazy"
+            decoding="async"
           />
         </motion.div>
 
@@ -454,7 +456,7 @@ export default function Home() {
                 animate={{ opacity: activePatient === i ? 1 : 0 }}
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
-                <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" />
+                <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060a15]/70 via-transparent to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#060a15]/30 via-transparent to-[#060a15]/30" />
               </motion.div>
@@ -519,7 +521,7 @@ export default function Home() {
         >
           <div className="absolute inset-y-0 left-0 w-56 bg-gradient-to-r from-[#040810] to-transparent z-10" />
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#040810] to-transparent z-10" />
-          <img src={ultraClearStudio} alt="UltraClear Laser Device" className="w-full h-full object-cover object-center" />
+          <img src={ultraClearStudio} alt="UltraClear Laser Device" className="w-full h-full object-cover object-center" loading="lazy" decoding="async" />
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -658,7 +660,7 @@ export default function Home() {
                 animate={{ opacity: ucActivePatient === i ? 1 : 0 }}
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
-                <img src={p.img} alt={`UltraClear hasta ${i + 1}`} className="w-full h-full object-cover object-top" />
+                <img src={p.img} alt={`UltraClear hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#04080e]/70 via-transparent to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#04080e]/30 via-transparent to-[#04080e]/30" />
               </motion.div>

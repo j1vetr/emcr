@@ -120,6 +120,8 @@ export default function UltraClearPage() {
             alt="UltraClear 2910nm Cihazı"
             className="relative z-[5] w-full h-full object-contain object-center"
             style={{ filter: "drop-shadow(0 30px 80px rgba(0,0,0,0.85))" }}
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
 
@@ -359,6 +361,8 @@ export default function UltraClearPage() {
               src={ucTreatment2}
               alt="UltraClear Klinik Uygulama"
               className="w-full h-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
             />
             {/* Overlay label */}
             <div className="absolute bottom-8 right-6 z-20">
@@ -496,6 +500,8 @@ export default function UltraClearPage() {
               src={ucTreatment3}
               alt="UltraClear Sistem Uygulaması"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
               style={{ objectPosition: "center 30%" }}
             />
             <div className="absolute top-6 left-6 z-20">
@@ -747,7 +753,7 @@ export default function UltraClearPage() {
                 animate={{ opacity: activePatient === i ? 1 : 0 }}
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
-                <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" />
+                <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#04080d]/60 via-transparent to-transparent" />
               </motion.div>
             ))}
@@ -777,7 +783,7 @@ export default function UltraClearPage() {
                   activePatient === i ? "ring-2 ring-sky-400/55 ring-offset-1 ring-offset-[#04080d]" : "opacity-45 hover:opacity-70"
                 }`}
               >
-                <img src={p.img} alt={`${i + 1}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                <img src={p.img} alt={`${i + 1}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
                 <div className={`absolute inset-0 transition-all ${activePatient === i ? "bg-sky-400/10" : "bg-black/25"}`} />
                 <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-foreground/50">
                   {String(i + 1).padStart(2, "0")}
