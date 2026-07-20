@@ -218,6 +218,7 @@ export default function Home() {
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
+                  paddingBottom: "0.18em",
                 }}
               >
                 Geleceği
