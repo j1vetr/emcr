@@ -283,7 +283,7 @@ export default function Home() {
                   src={neogenLogo}
                   alt="NeoGen Plasma"
                   className="w-auto object-contain transition-all duration-300 group-hover:opacity-75"
-                  style={{ height: "30px", filter: "invert(1) brightness(0.82)", opacity: 0.5 }}
+                  style={{ height: "44px", filter: "invert(1) brightness(0.82)", opacity: 0.5 }}
                 />
                 <span className="text-[8.5px] tracking-[0.28em] uppercase text-foreground/20 group-hover:text-foreground/38 transition-colors">
                   Keşfet

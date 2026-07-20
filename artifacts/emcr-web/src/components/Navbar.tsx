@@ -177,37 +177,39 @@ export default function Navbar() {
                           >
                             <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-                            <div className="p-3 space-y-1">
+                            <div className="p-3 grid grid-cols-2 gap-2">
                               {products.map((p) => (
                                 <Link
                                   key={p.href}
                                   href={p.href}
-                                  className="group flex items-center gap-5 px-5 py-5 rounded-xl transition-all duration-200 border border-transparent hover:border-white/[0.07] hover:bg-white/[0.025]"
+                                  className="group relative flex flex-col items-center text-center gap-5 px-6 py-7 rounded-xl transition-all duration-200 border border-transparent hover:border-white/[0.07] hover:bg-white/[0.025]"
                                 >
-                                  {/* Product logo */}
-                                  <div className="flex-shrink-0 w-[128px]">
+                                  {/* Product logo — centered, large */}
+                                  <div className="flex items-center justify-center h-12">
                                     <img
                                       src={p.logo}
                                       alt={p.label}
-                                      className="h-8 w-auto object-contain transition-opacity duration-200"
+                                      className="w-auto object-contain transition-opacity duration-200 group-hover:opacity-90"
                                       style={{
+                                        maxHeight: "44px",
+                                        maxWidth: "160px",
                                         filter: p.logoInvert ? "invert(1) brightness(0.9)" : "none",
-                                        opacity: 0.7,
+                                        opacity: 0.72,
                                       }}
                                     />
                                   </div>
                                   {/* Text */}
-                                  <div className="flex-1 min-w-0">
-                                    <p className="text-[11.5px] text-foreground/38 leading-snug mb-2">
+                                  <div className="space-y-2">
+                                    <p className="text-[10.5px] text-foreground/35 leading-snug">
                                       {p.sub}
                                     </p>
-                                    <span className="text-[8.5px] tracking-[0.18em] font-medium uppercase text-foreground/28 border border-white/[0.09] rounded-full px-2 py-0.5">
+                                    <span className="inline-block text-[8px] tracking-[0.18em] font-medium uppercase text-foreground/25 border border-white/[0.09] rounded-full px-2 py-0.5">
                                       {p.tag}
                                     </span>
                                   </div>
                                   <ArrowUpRight
-                                    size={13}
-                                    className="text-foreground/18 group-hover:text-foreground/50 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0"
+                                    size={12}
+                                    className="absolute top-4 right-4 text-foreground/15 group-hover:text-foreground/45 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                                   />
                                 </Link>
                               ))}
