@@ -369,7 +369,7 @@ export default function TeknikDestek() {
               </h2>
             </div>
             <p className="text-sm text-foreground/35 max-w-xs leading-relaxed">
-              Kurulumdan yıllık bakıma, eğitimden acil servise — tüm süreç EMCR güvencesinde.
+              Kurulumdan yıllık bakıma, eğitimden acil servise, tüm süreç EMCR güvencesinde.
             </p>
           </motion.div>
 
@@ -459,7 +459,7 @@ export default function TeknikDestek() {
               </h2>
               <p className="text-[14px] text-foreground/38 leading-[1.85]">
                 Cevap bulamazsanız teknik destek hattımızı arayın veya
-                e-posta gönderin — size 24 saat içinde geri dönelim.
+                e-posta gönderin, size 24 saat içinde geri dönelim.
               </p>
             </motion.div>
 

@@ -65,7 +65,7 @@ const indications = [
 const specs = [
   { label: "Dalga Boyu", value: "2910 nm (Erbiyum Florür Cam Fiber)" },
   { label: "Platform", value: "3DMIRACL® Cold Fiber Laser" },
-  { label: "Nabız", value: "3DIntelliPulse® — Ablasyon & Koagülasyon Optimizasyonu" },
+  { label: "Nabız", value: "3DIntelliPulse® / Ablasyon ve Koagülasyon Optimizasyonu" },
   { label: "Tedavi Modu", value: "Non-Ablative / Micro-Ablative / Ablative" },
   { label: "Cilt Tipi", value: "Fitzpatrick I–VI Tüm Tipler" },
   { label: "Üretici", value: "Acclaro Medical Corporation, Smithfield RI, ABD" },
@@ -243,7 +243,7 @@ export default function UltraClearPage() {
                 <div>
                   <p className="text-[10px] tracking-[0.2em] uppercase text-sky-400/50 mb-0.5">{a.year} · {a.cat}</p>
                   <p className="text-[13.5px] font-semibold text-foreground/75">
-                    {a.pub} <span className="text-foreground/40 font-normal">— {a.award}</span>
+                    {a.pub} <span className="text-foreground/40 font-normal">· {a.award}</span>
                   </p>
                 </div>
               </motion.div>

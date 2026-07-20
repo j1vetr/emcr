@@ -63,7 +63,7 @@ const mechanisms = [
     icon: Activity,
     title: "Derin Rejenerasyon",
     subtitle: "Skin Regeneration",
-    desc: "Tüm cilt yüzeyi tedavi edilir — ablative teknolojilerdeki gibi tedavisiz adacıklar oluşmaz. Retikular dermise kadar uzanan yeniden modelleme kaskadı başlatılır.",
+    desc: "Tüm cilt yüzeyi tedavi edilir, ablative teknolojilerdeki gibi tedavisiz adacıklar oluşmaz. Retikular dermise kadar uzanan yeniden modelleme kaskadı başlatılır.",
     detail: "Neokollajenizasyon, neovaskülarizasyon ve fibroblast migrasyonu ile uzun dönemli çalışmalar tedaviden 12 ay sonrasına kadar süren kolajen üretimini belgelemektedir.",
     downtime: "5–7 gün",
     result: "12 ay kolajen üretimi",
@@ -354,7 +354,7 @@ export default function NeoGenPlasma() {
                 <p className="text-[14px] text-foreground/55 leading-[1.85] pl-2">
                   <span className="text-primary font-semibold">Kritik fark:</span>{" "}
                   Azot plazması belirli bir kromofor hedefine veya dalga boyuna bağlı değildir.
-                  Penetrasyon derinliği cildin nem düzeyi ile yönetilir — bu sayede{" "}
+                  Penetrasyon derinliği cildin nem düzeyi ile yönetilir, bu sayede{" "}
                   <span className="text-foreground/80 font-medium">Fitzpatrick I'den VI'ya tüm cilt tonlarında</span>{" "}
                   güvenle kullanılır. Hipopiğmentasyon riski yoktur.
                 </p>

@@ -32,7 +32,7 @@ const products: Product[] = [
     label: "UltraClear",
     sub: "2910 nm Cold Fiber Laser · 3DMIRACL®",
     href: "/urunler/ultraclear",
-    tag: "Trifecta 2025 — Best Laser",
+    tag: "Trifecta 2025 · Best Laser",
     logo: ultraClearLogo,
     logoInvert: false,
     accentClass: "text-sky-300",
