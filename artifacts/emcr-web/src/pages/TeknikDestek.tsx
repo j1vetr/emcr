@@ -688,10 +688,11 @@ export default function TeknikDestek() {
                           value={form.device}
                           onChange={(e) => setForm((f) => ({ ...f, device: e.target.value }))}
                           className="w-full h-11 px-4 pr-9 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[13.5px] text-foreground/80 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all appearance-none"
+                          style={{ colorScheme: "dark", backgroundColor: "#0d1422", color: "rgba(255,255,255,0.8)" }}
                         >
-                          <option value="NeoGen Plasma">NeoGen Plasma</option>
-                          <option value="UltraClear">UltraClear</option>
-                          <option value="Diğer">Diğer</option>
+                          <option value="NeoGen Plasma" style={{ backgroundColor: "#0d1422", color: "rgba(255,255,255,0.85)" }}>NeoGen Plasma</option>
+                          <option value="UltraClear" style={{ backgroundColor: "#0d1422", color: "rgba(255,255,255,0.85)" }}>UltraClear</option>
+                          <option value="Diğer" style={{ backgroundColor: "#0d1422", color: "rgba(255,255,255,0.85)" }}>Diğer</option>
                         </select>
                         <ChevronDown size={13} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-foreground/30 pointer-events-none" />
                       </div>
