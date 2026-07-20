@@ -108,7 +108,7 @@ export default function Footer() {
         {/* Legal name + copyright */}
         <div className="border-t border-white/[0.04] pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-foreground/20">
           <div className="space-y-1">
-            <p>© 2026 EMCR Medikal Teknolojiler Tic. Ltd. Şti. Tüm hakları saklıdır.</p>
+            <p>© 2026 EMCR Medikal Teknolojiler Tic. Ltd. Şti. Tüm Hakları Saklıdır.</p>
             <p className="text-foreground/15">Nispetiye Mah. Aytar Cad. Erdölen İş Merkezi No: 38 Kat 1 Beşiktaş / İstanbul</p>
           </div>
           <p className="text-foreground/15">NeoGen® ve UltraClear® tescilli markalardır.</p>
