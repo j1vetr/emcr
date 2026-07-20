@@ -16,7 +16,7 @@ import baRef4 from "@assets/ref4_1781870893597.jpg";
 import baRef5 from "@assets/ref5_1781870893598.jpg";
 import baRef6 from "@assets/ref6_1781870893598.jpg";
 
-import neogenDeviceTransparent from "@assets/neogen-device-new-transparent.png";
+import neogenDeviceTransparent from "@assets/neogen-device-yeni-transparent.png";
 import neogenEvoDevice from "@assets/neogen-evo-device.webp";
 import neogenTreatment from "@assets/neogen-treatment.webp";
 
