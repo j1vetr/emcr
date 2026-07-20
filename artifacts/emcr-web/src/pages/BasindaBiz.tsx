@@ -174,16 +174,6 @@ export default function BasindaBiz() {
             ))}
           </div>
 
-          {/* Empty state hint */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-12 text-foreground/20 text-sm"
-          >
-            Yeni haberler eklendikçe bu sayfa güncellenir.
-          </motion.p>
         </div>
       </section>
 
