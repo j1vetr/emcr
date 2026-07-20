@@ -198,31 +198,10 @@ export default function Navbar() {
                                       }}
                                     />
                                   </div>
-                                  {/* Text */}
-                                  <div className="space-y-2">
-                                    <p className="text-[10.5px] text-foreground/35 leading-snug">
-                                      {p.sub}
-                                    </p>
-                                    <span className="inline-block text-[8px] tracking-[0.18em] font-medium uppercase text-foreground/25 border border-white/[0.09] rounded-full px-2 py-0.5">
-                                      {p.tag}
-                                    </span>
-                                  </div>
-                                  <ArrowUpRight
-                                    size={12}
-                                    className="absolute top-4 right-4 text-foreground/15 group-hover:text-foreground/45 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                  />
                                 </Link>
                               ))}
                             </div>
 
-                            <div className="border-t border-white/[0.05] px-5 py-3 flex items-center justify-between">
-                              <span className="text-[10px] text-foreground/22 tracking-wide">
-                                EMCR Medikal — Türkiye Yetkili Distribütörü
-                              </span>
-                              <span className="text-[9px] tracking-[0.2em] text-foreground/14 uppercase">
-                                2 Sistem
-                              </span>
-                            </div>
                           </motion.div>
                         )}
                       </AnimatePresence>
