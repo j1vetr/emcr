@@ -147,23 +147,48 @@ export default function NeoGenPlasma() {
               <div
                 className="absolute pointer-events-none"
                 style={{
-                  width: "440px", height: "440px",
-                  background: "radial-gradient(circle, rgba(20,184,166,0.10) 0%, transparent 70%)",
-                  filter: "blur(55px)",
+                  width: "460px", height: "460px",
+                  background: "radial-gradient(circle, rgba(20,184,166,0.09) 0%, transparent 70%)",
+                  filter: "blur(60px)",
                   top: "50%", left: "50%",
                   transform: "translate(-50%, -50%)",
                 }}
               />
-              <img
-                src={neogenDeviceTransparent}
-                alt="NeoGen Plasma EVO"
-                className="relative w-full object-contain"
-                style={{
-                  maxHeight: "700px",
-                  maxWidth: "540px",
-                  filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.5)) drop-shadow(0 0 60px rgba(20,184,166,0.07))",
-                }}
-              />
+
+              {/* Spinning border wrapper */}
+              <div
+                className="relative"
+                style={{ maxHeight: "700px", maxWidth: "540px", width: "100%", padding: "1.5px", borderRadius: "18px" }}
+              >
+                {/* Rotating conic gradient — the sweeping light */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    borderRadius: "18px",
+                    background:
+                      "conic-gradient(from 0deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.0) 45%, rgba(20,184,166,0.55) 55%, rgba(255,255,255,0.85) 60%, rgba(20,184,166,0.55) 65%, rgba(255,255,255,0.0) 75%, rgba(255,255,255,0.0) 100%)",
+                  }}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                />
+                {/* Inner mask — matches page bg to create border illusion */}
+                <div
+                  className="relative"
+                  style={{ borderRadius: "16px", background: "#070b17", overflow: "hidden" }}
+                >
+                  <img
+                    src={neogenDeviceTransparent}
+                    alt="NeoGen Plasma EVO"
+                    className="w-full object-contain"
+                    style={{
+                      maxHeight: "700px",
+                      maxWidth: "540px",
+                      filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.5)) drop-shadow(0 0 50px rgba(20,184,166,0.07))",
+                      display: "block",
+                    }}
+                  />
+                </div>
+              </div>
             </motion.div>
 
             {/* ── Sağ: metin ───────────────────────────────────── */}
