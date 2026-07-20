@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import neogenLogo from "@assets/neogen-logo.webp";
+import ultraClearLogo from "@assets/ultraclear-logo.png";
 import neogenDevicePlatform from "@assets/neogen-platform.webp";
 import ultraClearStudio from "@assets/ultraclear-studio.webp";
 import baRef1 from "@assets/ref1_1781870893595.jpg";
@@ -260,6 +261,51 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
+
+          {/* Product logos — bottom left + right anchor */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute bottom-20 left-0 right-0 flex items-stretch justify-center z-10"
+          >
+            <div
+              className="flex items-stretch divide-x"
+              style={{ borderLeft: "1px solid rgba(255,255,255,0.07)", borderRight: "1px solid rgba(255,255,255,0.07)" }}
+            >
+              {/* NeoGen */}
+              <Link
+                href="/urunler/neogen-plasma"
+                className="group flex flex-col items-center justify-center gap-3 px-10 py-5 hover:bg-white/[0.03] transition-colors"
+                style={{ borderRight: "1px solid rgba(255,255,255,0.07)" }}
+              >
+                <img
+                  src={neogenLogo}
+                  alt="NeoGen Plasma"
+                  className="w-auto object-contain transition-all duration-300 group-hover:opacity-75"
+                  style={{ height: "30px", filter: "invert(1) brightness(0.82)", opacity: 0.5 }}
+                />
+                <span className="text-[8.5px] tracking-[0.28em] uppercase text-foreground/20 group-hover:text-foreground/38 transition-colors">
+                  Keşfet
+                </span>
+              </Link>
+              {/* UltraClear */}
+              <Link
+                href="/urunler/ultraclear"
+                className="group flex flex-col items-center justify-center gap-3 px-10 py-5 hover:bg-white/[0.03] transition-colors"
+              >
+                <img
+                  src={ultraClearLogo}
+                  alt="UltraClear"
+                  className="w-auto object-contain transition-all duration-300 group-hover:opacity-70"
+                  style={{ height: "30px", opacity: 0.42 }}
+                />
+                <span className="text-[8.5px] tracking-[0.28em] uppercase text-foreground/20 group-hover:text-foreground/38 transition-colors">
+                  Keşfet
+                </span>
+              </Link>
+            </div>
+          </motion.div>
 
           {/* Scroll indicator */}
           <motion.div

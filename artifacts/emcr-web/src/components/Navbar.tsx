@@ -2,19 +2,20 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Menu, X, ArrowUpRight, Zap, Layers, ChevronDown, Phone,
+  Menu, X, ChevronDown, Phone, ArrowUpRight,
 } from "lucide-react";
 import emcrLogoWhite from "@assets/emcr-logo-white.webp";
+import neogenLogo from "@assets/neogen-logo.webp";
+import ultraClearLogo from "@assets/ultraclear-logo.png";
 
 type Product = {
   label: string;
   sub: string;
   href: string;
   tag: string;
-  color: string;
-  border: string;
-  accent: string;
-  iconKey: "zap" | "layers";
+  logo: string;
+  logoInvert: boolean;
+  accentClass: string;
 };
 
 const products: Product[] = [
@@ -22,28 +23,21 @@ const products: Product[] = [
     label: "NeoGen Plasma",
     sub: "Nitrogen Plasma Skin Regeneration",
     href: "/urunler/neogen-plasma",
-    tag: "FDA 510(k) · CE",
-    color: "rgba(20,184,166,0.06)",
-    border: "rgba(20,184,166,0.15)",
-    accent: "text-primary",
-    iconKey: "zap",
+    tag: "FDA 510(k) · CE Mark",
+    logo: neogenLogo,
+    logoInvert: true,
+    accentClass: "text-primary",
   },
   {
     label: "UltraClear",
     sub: "2910 nm Cold Fiber Laser · 3DMIRACL®",
     href: "/urunler/ultraclear",
-    tag: "Trifecta 2025",
-    color: "rgba(56,189,248,0.05)",
-    border: "rgba(56,189,248,0.14)",
-    accent: "text-sky-300",
-    iconKey: "layers",
+    tag: "Trifecta 2025 — Best Laser",
+    logo: ultraClearLogo,
+    logoInvert: false,
+    accentClass: "text-sky-300",
   },
 ];
-
-function ProductIcon({ iconKey }: { iconKey: Product["iconKey"] }) {
-  if (iconKey === "zap") return <Zap size={15} className="text-primary" />;
-  return <Layers size={15} className="text-sky-400" />;
-}
 
 type NavItem = {
   label: string;
@@ -88,9 +82,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── NAVBAR ───────────────────────────────────────────────── */}
       <header className="fixed inset-x-0 top-0 z-50">
-        {/* Top accent line — always present */}
+        {/* Top accent line */}
         <div
           className="h-px transition-opacity duration-500"
           style={{
@@ -102,9 +95,7 @@ export default function Navbar() {
         <div
           className="transition-all duration-500"
           style={{
-            background: transparent
-              ? "transparent"
-              : "rgba(7,11,23,0.96)",
+            background: transparent ? "transparent" : "rgba(7,11,23,0.97)",
             backdropFilter: transparent ? "none" : "blur(24px) saturate(160%)",
             WebkitBackdropFilter: transparent ? "none" : "blur(24px) saturate(160%)",
             boxShadow: transparent ? "none" : "0 1px 0 rgba(255,255,255,0.04), 0 16px 48px rgba(0,0,0,0.55)",
@@ -114,7 +105,7 @@ export default function Navbar() {
             className="max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-between transition-all duration-500"
             style={{ height: transparent ? "88px" : "66px" }}
           >
-            {/* ── Logo ─────────────────────────────────────────── */}
+            {/* Logo */}
             <Link href="/" className="flex-shrink-0 block">
               <img
                 src={emcrLogoWhite}
@@ -124,7 +115,7 @@ export default function Navbar() {
               />
             </Link>
 
-            {/* ── Desktop nav ──────────────────────────────────── */}
+            {/* Desktop nav */}
             <nav className="hidden lg:flex items-center">
               {navItems.map((item) => {
                 const active = item.href
@@ -168,7 +159,7 @@ export default function Navbar() {
                       </button>
                     )}
 
-                    {/* Products mega dropdown */}
+                    {/* ── Products mega dropdown ────────────────── */}
                     {item.mega && (
                       <AnimatePresence>
                         {openDropdown === item.label && (
@@ -179,51 +170,54 @@ export default function Navbar() {
                             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
                             className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[480px] rounded-2xl overflow-hidden"
                             style={{
-                              background: "rgba(8,12,24,0.99)",
+                              background: "rgba(6,9,18,0.99)",
                               border: "1px solid rgba(255,255,255,0.07)",
-                              boxShadow: "0 30px 80px rgba(0,0,0,0.7), 0 0 0 0.5px rgba(255,255,255,0.04)",
+                              boxShadow: "0 30px 80px rgba(0,0,0,0.75), 0 0 0 0.5px rgba(255,255,255,0.04)",
                             }}
                           >
-                            <div className="h-px bg-gradient-to-r from-transparent via-primary/45 to-transparent" />
-                            <div className="p-4 space-y-2">
+                            <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
+                            <div className="p-3 space-y-1">
                               {products.map((p) => (
                                 <Link
                                   key={p.href}
                                   href={p.href}
-                                  className="flex items-center gap-4 p-4 rounded-xl group transition-all duration-200 hover:scale-[1.01]"
-                                  style={{ background: p.color, border: `1px solid ${p.border}` }}
+                                  className="group flex items-center gap-5 px-5 py-5 rounded-xl transition-all duration-200 border border-transparent hover:border-white/[0.07] hover:bg-white/[0.025]"
                                 >
-                                  <div
-                                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                                    style={{ background: p.color, border: `1px solid ${p.border}` }}
-                                  >
-                                    <ProductIcon iconKey={p.iconKey} />
+                                  {/* Product logo */}
+                                  <div className="flex-shrink-0 w-[128px]">
+                                    <img
+                                      src={p.logo}
+                                      alt={p.label}
+                                      className="h-8 w-auto object-contain transition-opacity duration-200"
+                                      style={{
+                                        filter: p.logoInvert ? "invert(1) brightness(0.9)" : "none",
+                                        opacity: 0.7,
+                                      }}
+                                    />
                                   </div>
+                                  {/* Text */}
                                   <div className="flex-1 min-w-0">
-                                    <div className="flex items-center gap-2 mb-0.5">
-                                      <span className={`font-semibold text-[13px] ${p.accent}`}>{p.label}</span>
-                                      <span className={`text-[8px] tracking-[0.18em] font-semibold uppercase px-1.5 py-0.5 rounded-full border border-current/25 opacity-55 ${p.accent}`}>
-                                        {p.tag}
-                                      </span>
-                                    </div>
-                                    <p className="text-foreground/35 text-[11px]">{p.sub}</p>
+                                    <p className="text-[11.5px] text-foreground/38 leading-snug mb-2">
+                                      {p.sub}
+                                    </p>
+                                    <span className="text-[8.5px] tracking-[0.18em] font-medium uppercase text-foreground/28 border border-white/[0.09] rounded-full px-2 py-0.5">
+                                      {p.tag}
+                                    </span>
                                   </div>
                                   <ArrowUpRight
                                     size={13}
-                                    className="text-foreground/20 group-hover:text-foreground/55 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0"
+                                    className="text-foreground/18 group-hover:text-foreground/50 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0"
                                   />
                                 </Link>
                               ))}
                             </div>
+
                             <div className="border-t border-white/[0.05] px-5 py-3 flex items-center justify-between">
-                              <Link
-                                href="/tedavi-endikasyonlari"
-                                className="text-[10px] text-foreground/30 hover:text-primary transition-colors tracking-wide flex items-center gap-2"
-                              >
-                                <span className="w-1 h-1 rounded-full bg-primary/50" />
-                                Tedavi Endikasyonları Rehberi
-                              </Link>
-                              <span className="text-[9px] tracking-[0.2em] text-foreground/15 uppercase">
+                              <span className="text-[10px] text-foreground/22 tracking-wide">
+                                EMCR Medikal — Türkiye Yetkili Distribütörü
+                              </span>
+                              <span className="text-[9px] tracking-[0.2em] text-foreground/14 uppercase">
                                 2 Sistem
                               </span>
                             </div>
@@ -268,7 +262,7 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* ── Right CTA ──────────────────────────────────── */}
+            {/* Right CTA */}
             <div className="hidden lg:flex items-center gap-5">
               <a
                 href="tel:+902972060272"
@@ -287,7 +281,7 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* ── Mobile hamburger ─────────────────────────── */}
+            {/* Mobile hamburger */}
             <button
               className="lg:hidden w-9 h-9 rounded-lg border border-white/[0.1] flex items-center justify-center text-foreground/55 hover:text-foreground/90 transition-all"
               onClick={() => setMobileOpen((p) => !p)}
@@ -308,7 +302,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ── Mobile drawer ──────────────────────────────────── */}
+        {/* Mobile drawer */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
@@ -318,7 +312,7 @@ export default function Navbar() {
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="lg:hidden mx-3 mt-2 rounded-2xl overflow-hidden"
               style={{
-                background: "rgba(8,12,24,0.99)",
+                background: "rgba(6,9,18,0.99)",
                 border: "1px solid rgba(255,255,255,0.07)",
                 boxShadow: "0 24px 80px rgba(0,0,0,0.7)",
                 backdropFilter: "blur(24px)",
@@ -370,13 +364,20 @@ export default function Navbar() {
                                     <Link
                                       key={p.href}
                                       href={p.href}
-                                      className="flex items-center gap-3 p-3 rounded-xl"
-                                      style={{ background: p.color, border: `1px solid ${p.border}` }}
+                                      className="flex items-center gap-4 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
                                     >
-                                      <ProductIcon iconKey={p.iconKey} />
+                                      <img
+                                        src={p.logo}
+                                        alt={p.label}
+                                        className="h-6 w-auto object-contain flex-shrink-0"
+                                        style={{
+                                          filter: p.logoInvert ? "invert(1) brightness(0.85)" : "none",
+                                          opacity: 0.72,
+                                        }}
+                                      />
                                       <div>
-                                        <p className={`font-semibold text-[12px] ${p.accent}`}>{p.label}</p>
-                                        <p className="text-foreground/30 text-[10px]">{p.tag}</p>
+                                        <p className={`font-semibold text-[12px] ${p.accentClass}`}>{p.label}</p>
+                                        <p className="text-foreground/28 text-[10px]">{p.tag}</p>
                                       </div>
                                     </Link>
                                   ))}
