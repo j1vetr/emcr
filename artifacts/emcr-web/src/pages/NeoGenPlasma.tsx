@@ -16,8 +16,8 @@ import baRef4 from "@assets/ref4_1781870893597.jpg";
 import baRef5 from "@assets/ref5_1781870893598.jpg";
 import baRef6 from "@assets/ref6_1781870893598.jpg";
 
-const DEVICE_IMG = "https://www.neogenplasma.co.uk/wp-content/uploads/2026/02/NeoGen-Evo-Right-Large-683x1024.webp";
-const TREATMENT_IMG = "https://www.neogenplasma.co.uk/wp-content/uploads/2026/02/DSC01427-Large-1200-x-1200-1024x1016.webp";
+import neogenEvoDevice from "@assets/neogen-evo-device.webp";
+import neogenTreatment from "@assets/neogen-treatment.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -155,7 +155,7 @@ export default function NeoGenPlasma() {
             }}
           />
           <img
-            src={DEVICE_IMG}
+            src={neogenEvoDevice}
             alt="NeoGen Plasma EVO Cihazı"
             className="relative z-[5] w-full h-full object-contain object-center"
             style={{ filter: "drop-shadow(0 30px 90px rgba(0,0,0,0.8))" }}
@@ -277,7 +277,7 @@ export default function NeoGenPlasma() {
                 style={{ aspectRatio: "1/1" }}
               >
                 <img
-                  src={TREATMENT_IMG}
+                  src={neogenTreatment}
                   alt="NeoGen Plasma Uygulama"
                   className="w-full h-full object-cover"
                 />
