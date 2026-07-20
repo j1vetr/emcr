@@ -37,7 +37,7 @@ export default function SosyalMedyada() {
       <Navbar />
 
       {/* ── Hero: sol başlık + sağ pinli gönderi ─────────────────────── */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-[#070b17]">
+      <section className="relative pt-24 pb-10 overflow-hidden bg-[#070b17]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -47,7 +47,7 @@ export default function SosyalMedyada() {
         />
 
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
 
             {/* Sol — başlık + metin */}
             <motion.div
@@ -103,28 +103,30 @@ export default function SosyalMedyada() {
               transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="flex justify-center lg:justify-end"
             >
-              <div className="w-full max-w-[480px]">
-                <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-full max-w-[380px]">
+                <div className="flex items-center gap-2.5 mb-4">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#E1306C]/70 animate-pulse" />
                   <p className="text-[10px] font-semibold tracking-[0.28em] uppercase text-foreground/30">
                     Öne Çıkan Gönderi
                   </p>
                 </div>
-                <blockquote
-                  className="instagram-media"
-                  data-instgrm-permalink={POSTS[0]}
-                  data-instgrm-version="14"
-                  style={{
-                    background: "#0d1422",
-                    border: "1px solid rgba(255,255,255,0.07)",
-                    borderRadius: "16px",
-                    maxWidth: "480px",
-                    width: "100%",
-                    minWidth: "280px",
-                    margin: "0",
-                    padding: "0",
-                  }}
-                />
+                <div style={{ maxHeight: "520px", overflow: "hidden", borderRadius: "16px" }}>
+                  <blockquote
+                    className="instagram-media"
+                    data-instgrm-permalink={POSTS[0]}
+                    data-instgrm-version="14"
+                    style={{
+                      background: "#0d1422",
+                      border: "1px solid rgba(255,255,255,0.07)",
+                      borderRadius: "16px",
+                      maxWidth: "380px",
+                      width: "100%",
+                      minWidth: "260px",
+                      margin: "0",
+                      padding: "0",
+                    }}
+                  />
+                </div>
               </div>
             </motion.div>
 
