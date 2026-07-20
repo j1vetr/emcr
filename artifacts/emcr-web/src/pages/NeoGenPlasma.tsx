@@ -16,7 +16,7 @@ import baRef4 from "@assets/ref4_1781870893597.jpg";
 import baRef5 from "@assets/ref5_1781870893598.jpg";
 import baRef6 from "@assets/ref6_1781870893598.jpg";
 
-import neogenDeviceTransparent from "@assets/neogen-device-yeni-transparent.png";
+import neogenDeviceTransparent from "@assets/yeni_fot_1784560619600.png";
 import neogenEvoDevice from "@assets/neogen-evo-device.webp";
 import neogenTreatment from "@assets/neogen-treatment.webp";
 
@@ -155,39 +155,38 @@ export default function NeoGenPlasma() {
                 }}
               />
 
-              {/* Spinning border wrapper */}
+              {/* Image + spinning border */}
               <div
                 className="relative"
-                style={{ maxHeight: "700px", maxWidth: "540px", width: "100%", padding: "1.5px", borderRadius: "18px" }}
+                style={{ maxWidth: "540px", width: "100%" }}
               >
-                {/* Rotating conic gradient — the sweeping light */}
-                <motion.div
-                  className="absolute inset-0 pointer-events-none"
+                <img
+                  src={neogenDeviceTransparent}
+                  alt="NeoGen Plasma EVO"
+                  className="relative w-full object-contain"
                   style={{
-                    borderRadius: "18px",
+                    maxHeight: "700px",
+                    display: "block",
+                    filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.35))",
+                  }}
+                />
+                {/* Rotating border — CSS mask so interior stays transparent */}
+                <motion.div
+                  className="absolute pointer-events-none"
+                  style={{
+                    inset: "-2px",
+                    borderRadius: "20px",
+                    padding: "1.5px",
                     background:
-                      "conic-gradient(from 0deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.0) 45%, rgba(20,184,166,0.55) 55%, rgba(255,255,255,0.85) 60%, rgba(20,184,166,0.55) 65%, rgba(255,255,255,0.0) 75%, rgba(255,255,255,0.0) 100%)",
+                      "conic-gradient(from 0deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.0) 45%, rgba(20,184,166,0.6) 55%, rgba(255,255,255,0.9) 60%, rgba(20,184,166,0.6) 65%, rgba(255,255,255,0.0) 75%, rgba(255,255,255,0.0) 100%)",
+                    WebkitMask:
+                      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                    WebkitMaskComposite: "xor",
+                    maskComposite: "exclude",
                   }}
                   animate={{ rotate: 360 }}
                   transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                 />
-                {/* Inner mask — matches page bg to create border illusion */}
-                <div
-                  className="relative"
-                  style={{ borderRadius: "16px", background: "#070b17", overflow: "hidden" }}
-                >
-                  <img
-                    src={neogenDeviceTransparent}
-                    alt="NeoGen Plasma EVO"
-                    className="w-full object-contain"
-                    style={{
-                      maxHeight: "700px",
-                      maxWidth: "540px",
-                      filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.5)) drop-shadow(0 0 50px rgba(20,184,166,0.07))",
-                      display: "block",
-                    }}
-                  />
-                </div>
               </div>
             </motion.div>
 
