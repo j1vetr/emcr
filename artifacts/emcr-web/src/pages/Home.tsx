@@ -285,9 +285,6 @@ export default function Home() {
                   className="w-auto object-contain transition-all duration-300 group-hover:opacity-75"
                   style={{ height: "44px", filter: "invert(1) brightness(0.82)", opacity: 0.5 }}
                 />
-                <span className="text-[8.5px] tracking-[0.28em] uppercase text-foreground/20 group-hover:text-foreground/38 transition-colors">
-                  Keşfet
-                </span>
               </Link>
               {/* UltraClear */}
               <Link
@@ -300,9 +297,6 @@ export default function Home() {
                   className="w-auto object-contain transition-all duration-300 group-hover:opacity-70"
                   style={{ height: "30px", opacity: 0.42 }}
                 />
-                <span className="text-[8.5px] tracking-[0.28em] uppercase text-foreground/20 group-hover:text-foreground/38 transition-colors">
-                  Keşfet
-                </span>
               </Link>
             </div>
           </motion.div>
@@ -314,7 +308,6 @@ export default function Home() {
             transition={{ delay: 1.5 }}
             className="absolute bottom-9 flex flex-col items-center gap-2.5"
           >
-            <span className="text-[9px] tracking-[0.38em] uppercase text-foreground/22">Keşfet</span>
             <motion.div
               animate={{ scaleY: [1, 1.5, 1], opacity: [0.22, 0.55, 0.22] }}
               transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
