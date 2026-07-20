@@ -16,7 +16,7 @@ import baRef4 from "@assets/ref4_1781870893597.jpg";
 import baRef5 from "@assets/ref5_1781870893598.jpg";
 import baRef6 from "@assets/ref6_1781870893598.jpg";
 
-import neogenDeviceTransparent from "@assets/neogen-device-transparent.png";
+import neogenDeviceTransparent from "@assets/neogen-device-new-transparent.png";
 import neogenEvoDevice from "@assets/neogen-evo-device.webp";
 import neogenTreatment from "@assets/neogen-treatment.webp";
 
@@ -136,11 +136,41 @@ export default function NeoGenPlasma() {
             className="grid lg:grid-cols-2 gap-8 items-center"
             style={{ minHeight: "92vh", paddingTop: "clamp(90px, 11vh, 140px)", paddingBottom: "clamp(60px, 8vh, 100px)" }}
           >
-            {/* ── Sol: metin ───────────────────────────────────── */}
+            {/* ── Sol: cihaz görseli ───────────────────────────── */}
             <motion.div
               initial={{ opacity: 0, x: -28 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center justify-center lg:justify-start relative"
+            >
+              {/* Teal orb */}
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  width: "440px", height: "440px",
+                  background: "radial-gradient(circle, rgba(20,184,166,0.10) 0%, transparent 70%)",
+                  filter: "blur(55px)",
+                  top: "50%", left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+              <img
+                src={neogenDeviceTransparent}
+                alt="NeoGen Plasma EVO"
+                className="relative w-full object-contain"
+                style={{
+                  maxHeight: "700px",
+                  maxWidth: "540px",
+                  filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.5)) drop-shadow(0 0 60px rgba(20,184,166,0.07))",
+                }}
+              />
+            </motion.div>
+
+            {/* ── Sağ: metin ───────────────────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, x: 28 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
               className="relative z-10"
             >
               {/* Logo */}
@@ -158,7 +188,7 @@ export default function NeoGenPlasma() {
                 </span>
               </div>
 
-              {/* Headline — kısa */}
+              {/* Headline */}
               <h1
                 className="font-display font-black leading-[0.92] tracking-[-0.025em] mb-7"
                 style={{ fontSize: "clamp(3rem, 5.5vw, 6rem)" }}
@@ -214,36 +244,6 @@ export default function NeoGenPlasma() {
                   <ChevronRight size={14} />
                 </Link>
               </div>
-            </motion.div>
-
-            {/* ── Sağ: cihaz görseli ───────────────────────────── */}
-            <motion.div
-              initial={{ opacity: 0, x: 28 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center justify-center lg:justify-end relative"
-            >
-              {/* Teal orb */}
-              <div
-                className="absolute pointer-events-none"
-                style={{
-                  width: "420px", height: "420px",
-                  background: "radial-gradient(circle, rgba(20,184,166,0.11) 0%, transparent 70%)",
-                  filter: "blur(50px)",
-                  top: "50%", left: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              />
-              <img
-                src={neogenDeviceTransparent}
-                alt="NeoGen Plasma EVO"
-                className="relative w-full object-contain"
-                style={{
-                  maxHeight: "680px",
-                  maxWidth: "520px",
-                  filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.55)) drop-shadow(0 0 60px rgba(20,184,166,0.08))",
-                }}
-              />
             </motion.div>
           </div>
         </div>
