@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ChevronRight, ShieldCheck, Award, Play, Pause, ArrowRight } from "lucide-react";
+import { ChevronRight, ShieldCheck, Award, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ucDeviceImg from "@assets/ultraclear-device.webp";
@@ -84,15 +84,7 @@ const fadeUp = {
 
 export default function UltraClearPage() {
   const [activePatient, setActivePatient] = useState(0);
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [openMode, setOpenMode] = useState<number | null>(0);
-
-  const toggleVideo = () => {
-    if (!videoRef.current) return;
-    if (videoPlaying) { videoRef.current.pause(); } else { videoRef.current.play(); }
-    setVideoPlaying(!videoPlaying);
-  };
 
   return (
     <div className="min-h-screen bg-[#04080d] text-foreground font-sans">
@@ -700,77 +692,6 @@ export default function UltraClearPage() {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* ── DEMO VIDEO ───────────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "#070b17" }}>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 55% 50% at 50% 50%, rgba(56,189,248,0.045) 0%, transparent 65%)" }}
-        />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-sky-400/65 mb-4">Canlı Uygulama</p>
-            <h2
-              className="font-display font-black leading-[0.93] tracking-[-0.025em]"
-              style={{ fontSize: "clamp(2rem, 3.5vw, 3.5rem)" }}
-            >
-              UltraClear{" "}
-              <span
-                style={{
-                  background: "linear-gradient(110deg, #7dd3fc 0%, #38bdf8 55%, #818cf8 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  paddingBottom: "0.1em",
-                  display: "inline-block",
-                }}
-              >
-                Uygulamada
-              </span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative rounded-3xl overflow-hidden border border-white/[0.07] bg-black max-w-4xl mx-auto"
-            style={{ aspectRatio: "16/9" }}
-          >
-            <video
-              ref={videoRef}
-              src="/ultraclear-demo.mp4"
-              className="w-full h-full object-cover"
-              playsInline
-              onEnded={() => setVideoPlaying(false)}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-            <button
-              onClick={toggleVideo}
-              className="absolute inset-0 flex items-center justify-center group"
-            >
-              <div
-                className={`w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-sky-400/50 group-hover:bg-sky-400/10 ${videoPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
-              >
-                {videoPlaying ? <Pause size={20} className="text-white" /> : <Play size={20} className="text-white ml-1" />}
-              </div>
-            </button>
-            {!videoPlaying && (
-              <div className="absolute bottom-5 left-6 z-10">
-                <span className="text-[10px] font-semibold tracking-[0.25em] uppercase px-3 py-1.5 rounded-full bg-sky-400/20 backdrop-blur-md border border-sky-400/30 text-sky-300">
-                  Demo · UltraClear 2910 nm
-                </span>
-              </div>
-            )}
-          </motion.div>
         </div>
       </section>
 
