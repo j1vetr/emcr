@@ -12,6 +12,7 @@ import Etkinliklerimiz from "@/pages/Etkinliklerimiz";
 import SosyalMedyada from "@/pages/SosyalMedyada";
 import TeknikDestek from "@/pages/TeknikDestek";
 import TedaviEndikasyonlari from "@/pages/TedaviEndikasyonlari";
+import BasindaBiz from "@/pages/BasindaBiz";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ function Router() {
       <Route path="/urunler/neogen-plasma" component={NeoGenPlasma} />
       <Route path="/urunler/ultraclear" component={UltraClearPage} />
       <Route path="/etkinliklerimiz" component={Etkinliklerimiz} />
+      <Route path="/basinda-biz" component={BasindaBiz} />
       <Route path="/basinda-biz/sosyal-medyada-biz" component={SosyalMedyada} />
       <Route path="/teknik-destek" component={TeknikDestek} />
       <Route path="/tedavi-endikasyonlari" component={TedaviEndikasyonlari} />

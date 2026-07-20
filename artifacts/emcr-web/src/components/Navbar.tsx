@@ -50,7 +50,7 @@ const navItems: NavItem[] = [
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "Ürünler", mega: true },
   { label: "Etkinliklerimiz", href: "/etkinliklerimiz" },
-  { label: "Basında Biz", sub: [{ label: "Sosyal Medyada Biz", href: "/basinda-biz/sosyal-medyada-biz" }] },
+  { label: "Basında Biz", sub: [{ label: "Basın Haberleri", href: "/basinda-biz" }, { label: "Sosyal Medyada Biz", href: "/basinda-biz/sosyal-medyada-biz" }] },
   { label: "Teknik Destek", href: "/teknik-destek" },
 ];
 
