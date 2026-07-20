@@ -16,6 +16,7 @@ import baRef4 from "@assets/ref4_1781870893597.jpg";
 import baRef5 from "@assets/ref5_1781870893598.jpg";
 import baRef6 from "@assets/ref6_1781870893598.jpg";
 
+import neogenDeviceTransparent from "@assets/neogen-device-transparent.png";
 import neogenEvoDevice from "@assets/neogen-evo-device.webp";
 import neogenTreatment from "@assets/neogen-treatment.webp";
 
@@ -121,105 +122,74 @@ export default function NeoGenPlasma() {
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen overflow-hidden bg-[#070b17] flex items-center">
-        {/* Atmospheric glow */}
+      <section className="relative overflow-hidden bg-[#070b17]" style={{ minHeight: "92vh" }}>
+        {/* Subtle teal glow */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:
-              "radial-gradient(ellipse 55% 65% at 72% 45%, rgba(20,184,166,0.10) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 75% 70%, rgba(56,189,248,0.05) 0%, transparent 55%)",
-          }}
-        />
-        {/* Fine grid */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.022]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
+            background: "radial-gradient(ellipse 50% 60% at 68% 50%, rgba(20,184,166,0.08) 0%, transparent 65%)",
           }}
         />
 
-        {/* Device image — right side */}
-        <div className="absolute right-0 top-0 bottom-0 w-[48%] pointer-events-none overflow-hidden">
-          <div className="absolute inset-y-0 left-0 w-64 z-10 bg-gradient-to-r from-[#070b17] to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-48 z-10 bg-gradient-to-t from-[#070b17] to-transparent" />
-          <div className="absolute inset-x-0 top-0 h-32 z-10 bg-gradient-to-b from-[#070b17] to-transparent" />
-          {/* Teal orb behind device */}
+        <div className="max-w-[1440px] mx-auto px-6 md:px-14 h-full">
           <div
-            className="absolute z-0 pointer-events-none"
-            style={{
-              right: "10%", top: "20%", width: "340px", height: "340px",
-              background: "radial-gradient(circle, rgba(20,184,166,0.12) 0%, transparent 70%)",
-              filter: "blur(40px)",
-            }}
-          />
-          <img
-            src={neogenEvoDevice}
-            alt="NeoGen Plasma EVO Cihazı"
-            className="relative z-[5] w-full h-full object-contain object-center"
-            style={{ filter: "drop-shadow(0 30px 90px rgba(0,0,0,0.8))" }}
-          />
-        </div>
-
-        {/* Left content */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-14"
-          style={{ paddingTop: "clamp(100px, 13vh, 160px)", paddingBottom: "clamp(80px, 10vh, 130px)" }}
-        >
-          <div className="max-w-[560px]">
+            className="grid lg:grid-cols-2 gap-8 items-center"
+            style={{ minHeight: "92vh", paddingTop: "clamp(90px, 11vh, 140px)", paddingBottom: "clamp(60px, 8vh, 100px)" }}
+          >
+            {/* ── Sol: metin ───────────────────────────────────── */}
             <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, x: -28 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10"
             >
               {/* Logo */}
               <img
                 src={neogenLogo}
                 alt="NeoGen"
-                className="w-auto h-8 mb-10 invert opacity-85"
+                className="w-auto h-8 mb-10 invert opacity-80"
               />
 
               {/* Eyebrow */}
-              <div className="flex items-center gap-3 mb-7">
-                <div className="h-px w-6 bg-primary/60" />
-                <span className="text-[10.5px] font-medium tracking-[0.28em] uppercase text-primary/70">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-5 bg-primary/55" />
+                <span className="text-[10px] font-medium tracking-[0.28em] uppercase text-primary/65">
                   Nitrogen Plasma Skin Regeneration
                 </span>
               </div>
 
-              {/* Headline */}
+              {/* Headline — kısa */}
               <h1
-                className="font-display font-black leading-[0.93] tracking-[-0.025em] mb-8"
-                style={{ fontSize: "clamp(2.8rem, 5vw, 5.5rem)" }}
+                className="font-display font-black leading-[0.92] tracking-[-0.025em] mb-7"
+                style={{ fontSize: "clamp(3rem, 5.5vw, 6rem)" }}
               >
-                Kontrollü Enerji.
+                Plazma ile
                 <br />
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #5eead4 50%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #14b8a6 0%, #5eead4 55%, #38bdf8 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
-                    paddingBottom: "0.1em",
+                    paddingBottom: "0.12em",
                     display: "inline-block",
                   }}
                 >
-                  Görünür Sonuç.
+                  Derin Yenilenme
                 </span>
               </h1>
 
-              <p className="text-[15px] text-foreground/45 leading-[1.85] mb-9 max-w-[440px]">
-                NeoGen, azot gazını plazma enerjisine dönüştürerek cilt yüzeyini korurken
-                retikular dermise kadar derin yenilenme sağlar. Tek sistemde sıkılaştırma,
-                yenileme ve 12 aya uzanan kolajen rejenerasyonu.
+              <p className="text-[14.5px] text-foreground/42 leading-[1.85] mb-8 max-w-[420px]">
+                Azot gazını plazma enerjisine dönüştüren tek sistem. Cilt yüzeyini
+                korurken dermal katta 12 aya uzanan kolajen rejenerasyonu.
               </p>
 
               {/* Badges */}
               <div className="flex flex-wrap items-center gap-2 mb-9">
-                {["CE Mark", "FDA 510(k) K132754", "7 Onaylı Endikasyon", "Class IIb"].map((b) => (
+                {["CE Mark", "FDA 510(k)", "7 Endikasyon", "Fitzpatrick I–VI"].map((b) => (
                   <span
                     key={b}
-                    className="text-[10px] font-medium tracking-[0.18em] uppercase px-3 py-1.5 rounded-full border border-primary/22 text-primary/65 bg-primary/[0.04]"
+                    className="text-[9.5px] font-medium tracking-[0.16em] uppercase px-3 py-1.5 rounded-full border border-primary/20 text-primary/60 bg-primary/[0.04]"
                   >
                     {b}
                   </span>
@@ -227,29 +197,59 @@ export default function NeoGenPlasma() {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3">
                 <a
                   href="mailto:info@emcr.com.tr"
-                  className="h-12 px-7 inline-flex items-center gap-2.5 text-[13.5px] font-semibold bg-primary text-[#07090f] rounded-xl hover:bg-primary/90 transition-all"
-                  style={{ boxShadow: "0 0 32px rgba(20,184,166,0.28), 0 4px 16px rgba(0,0,0,0.3)" }}
+                  className="h-11 px-7 inline-flex items-center gap-2.5 text-[13px] font-semibold bg-primary text-[#07090f] rounded-xl hover:bg-primary/90 transition-all"
+                  style={{ boxShadow: "0 0 28px rgba(20,184,166,0.25), 0 4px 14px rgba(0,0,0,0.3)" }}
                 >
                   Demo Talep Et
-                  <ArrowRight size={15} />
+                  <ArrowRight size={14} />
                 </a>
                 <Link
                   href="/teknik-destek"
-                  className="h-12 px-7 inline-flex items-center gap-2 text-[13.5px] font-medium text-foreground/60 hover:text-foreground border border-white/[0.12] hover:border-white/20 rounded-xl hover:bg-white/[0.04] transition-all"
+                  className="h-11 px-7 inline-flex items-center gap-2 text-[13px] font-medium text-foreground/55 hover:text-foreground border border-white/[0.11] hover:border-white/20 rounded-xl hover:bg-white/[0.04] transition-all"
                 >
                   Teknik Destek
-                  <ChevronRight size={15} />
+                  <ChevronRight size={14} />
                 </Link>
               </div>
+            </motion.div>
+
+            {/* ── Sağ: cihaz görseli ───────────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, x: 28 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center justify-center lg:justify-end relative"
+            >
+              {/* Teal orb */}
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  width: "420px", height: "420px",
+                  background: "radial-gradient(circle, rgba(20,184,166,0.11) 0%, transparent 70%)",
+                  filter: "blur(50px)",
+                  top: "50%", left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+              <img
+                src={neogenDeviceTransparent}
+                alt="NeoGen Plasma EVO"
+                className="relative w-full object-contain"
+                style={{
+                  maxHeight: "680px",
+                  maxWidth: "520px",
+                  filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.55)) drop-shadow(0 0 60px rgba(20,184,166,0.08))",
+                }}
+              />
             </motion.div>
           </div>
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#070b17] to-transparent pointer-events-none z-20" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#070b17] to-transparent pointer-events-none" />
       </section>
 
       {/* ── PSR TECHNOLOGY ───────────────────────────────────────── */}
