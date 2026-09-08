@@ -28,7 +28,7 @@ const events: EventItem[] = [
     location: "İstanbul, Türkiye",
     year: "2026",
     type: "Workshop",
-    photoCount: 4,
+    photoCount: 3,
   },
   {
     slug: "almanya-2026",
@@ -36,7 +36,7 @@ const events: EventItem[] = [
     location: "Almanya",
     year: "2026",
     type: "Eğitim",
-    photoCount: 4,
+    photoCount: 3,
   },
   {
     slug: "ingiltere-2026",
@@ -44,7 +44,7 @@ const events: EventItem[] = [
     location: "İngiltere",
     year: "2026",
     type: "Eğitim",
-    photoCount: 4,
+    photoCount: 2,
   },
   {
     slug: "paris-2026",
