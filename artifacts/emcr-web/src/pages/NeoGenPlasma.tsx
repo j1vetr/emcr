@@ -1,804 +1,234 @@
-import { useState } from "react";
-import { useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { Link } from "wouter";
-import {
-  ChevronRight, ShieldCheck, Play, Pause, ArrowRight,
-  Zap, Layers, Activity,
-} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import neogenLogo from "@assets/neogen-logo.webp";
-import baRef1 from "@assets/ref1_1781870893595.jpg";
-import baRef2 from "@assets/ref2_1781870893596.jpg";
-import baRef3 from "@assets/ref3_1781870893597.jpg";
-import baRef4 from "@assets/ref4_1781870893597.jpg";
-import baRef5 from "@assets/ref5_1781870893598.jpg";
-import baRef6 from "@assets/ref6_1781870893598.jpg";
 
-import neogenDeviceTransparent from "@assets/yeni_fot_1784560619600.png";
-import neogenEvoDevice from "@assets/neogen-evo-device.webp";
+// Assets
+import neogenLogo from "@assets/neogen-logo.webp";
+import neogenDevice from "@assets/yeni_fot_1784560619600.png";
 import neogenTreatment from "@assets/neogen-treatment.webp";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.75, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-  }),
+const getAssetUrl = (path: string) => {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  return `${base}${path}`;
 };
 
-const patients = [
-  { img: baRef1, label: "Yüz Yenileme · 1 Seans" },
-  { img: baRef2, label: "Cilt Tonu Eşitleme · 2 Seans" },
-  { img: baRef3, label: "Derin Dermal Yenilenme · 1 Seans" },
-  { img: baRef4, label: "Leke & Ton Düzeltme · 2 Seans" },
-  { img: baRef5, label: "Göz Çevresi & Cilt Tonu · 1 Seans" },
-  { img: baRef6, label: "Sıkılaştırma & Yenileme · 3 Seans" },
-];
-
-const mechanisms = [
-  {
-    n: "01",
-    icon: Zap,
-    title: "Cilt Sıkılaştırma",
-    subtitle: "Skin Tightening",
-    desc: "Plazma darbesi cilde çarptığında termal enerji ani bir ısıya dönüşür ve doku kontrakte olur. Bu anlık sıkılaşma kırışıklık görünümünü azaltır.",
-    detail: "Stratum corneum ve epidermal katmanlar bütünlüğünü korur, doğal bir biyolojik pansuman görevi üstlenir. Protokole göre 1–3 gün iyileşme beklenir.",
-  },
-  {
-    n: "02",
-    icon: Layers,
-    title: "Yüzey Yenileme",
-    subtitle: "Skin Resurfacing",
-    desc: "İyileşme bölgesi (Zone of Thermal Damage) ile modifikasyon bölgesi (Zone of Thermal Modification) arasında yeni bir epidermis oluşur.",
-    detail: "Derinin doğal bariyeri korunur. Düşük enerjide 1–2 gün, yüksek enerjide 3–5 gün iyileşme süreci beklenir.",
-  },
-  {
-    n: "03",
-    icon: Activity,
-    title: "Derin Rejenerasyon",
-    subtitle: "Skin Regeneration",
-    desc: "Tüm cilt yüzeyi kapsanır. Retikular dermise kadar uzanan yeniden modelleme kaskadı başlatılır.",
-    detail: "Neokollajenizasyon, neovaskülarizasyon ve fibroblast migrasyonunu kapsayan derin bir dermal yenilenme süreci tetiklenir.",
-  },
-];
-
-const indications = [
-  { label: "Yüz Kırışıklıkları (Facial Rhytides)" },
-  { label: "Yüz Dışı Kırışıklıklar (Non-facial Rhytides)" },
-  { label: "Akne İzleri (Acne Scars)" },
-  { label: "Pigmente Lezyonlar (Pigmented Lesions)" },
-  { label: "Aktinik Keratoz (Actinic Keratosis)" },
-  { label: "Seboreik Keratoz (Seborrhoeic Keratosis)" },
-  { label: "Viral Papilloma (Viral Papillomata)" },
-  { label: "Cilt Laksitesi ve Sarkma" },
-  { label: "Göz Çevresi (Periorbital) Bölge" },
-  { label: "Vücut Cilt Yenilemesi" },
-];
-
-const specs = [
-  { label: "Enerji Tipi", value: "UHF (Ultra Yüksek Frekans) RF" },
-  { label: "Gaz", value: "Medikal Kalite Azot (N₂)" },
-  { label: "Enerji Aralığı", value: "0.5 J – 4.0 J" },
-  { label: "Nabız Hızı", value: "Çift Nabız (Double Pulse)" },
-  { label: "Tekrar Hızı", value: "1.0 – 2.5 Hz" },
-  { label: "Nozullar", value: "25 mm / 5 mm" },
-  { label: "Yüzey Sıcaklığı", value: "70 – 165 °C / 15 ms nabız" },
-  { label: "Cihaz Sınıfı", value: "Class IIb" },
-  { label: "Cilt Tipi", value: "Fitzpatrick I–VI Tüm Tipler" },
-  { label: "Sistem Ağırlığı", value: "18 kg" },
-  { label: "Boyutlar", value: "470 × 430 × 1060 mm" },
-];
-
 export default function NeoGenPlasma() {
-  const [activePatient, setActivePatient] = useState(0);
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const [videoError, setVideoError] = useState(false);
 
-  const toggleVideo = () => {
-    if (!videoRef.current) return;
-    if (videoPlaying) { videoRef.current.pause(); } else { videoRef.current.play(); }
-    setVideoPlaying(!videoPlaying);
+  useEffect(() => {
+    const origTitle = document.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const origDesc = metaDesc ? metaDesc.getAttribute("content") : "";
+
+    document.title = "NeoGen Plasma | EMCR Medikal";
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        "content", 
+        "EMCR Medikal, NeoGen Plasma sisteminin Türkiye distribütörüdür. Cihaz bilgileri ve destek için iletişime geçin."
+      );
+    }
+
+    return () => {
+      document.title = origTitle;
+      if (metaDesc && origDesc !== null) {
+        metaDesc.setAttribute("content", origDesc);
+      }
+    };
+  }, []);
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: prefersReducedMotion ? 0 : 0.08 }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 8 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: "easeOut" } 
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#070b17] text-foreground font-sans">
+    <div className="min-h-screen bg-[#080C16] text-[#F2EFE9] font-sans selection:bg-[#0D9488]/30">
       <Navbar />
 
-      {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#070b17]" style={{ minHeight: "92vh" }}>
-        {/* Subtle teal glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse 50% 60% at 68% 50%, rgba(20,184,166,0.08) 0%, transparent 65%)",
-          }}
-        />
-
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 h-full">
-          <div
-            className="grid lg:grid-cols-2 gap-8 items-center"
-            style={{ minHeight: "92vh", paddingTop: "clamp(90px, 11vh, 140px)", paddingBottom: "clamp(60px, 8vh, 100px)" }}
+      <main className="pt-[100px] md:pt-[140px] pb-24">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-12 gap-px bg-[#182336] border border-[#182336]"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            {/* ── Sol: cihaz görseli ───────────────────────────── */}
-            <motion.div
-              initial={{ opacity: 0, x: -28 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center justify-center lg:justify-start relative"
-            >
-              {/* Teal orb */}
-              <div
-                className="absolute pointer-events-none"
-                style={{
-                  width: "460px", height: "460px",
-                  background: "radial-gradient(circle, rgba(20,184,166,0.09) 0%, transparent 70%)",
-                  filter: "blur(60px)",
-                  top: "50%", left: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              />
-
-              <img
-                src={neogenDeviceTransparent}
-                alt="NeoGen Plasma EVO"
-                className="relative w-full object-contain"
-                style={{ maxHeight: "700px", display: "block" }}
-                fetchPriority="high"
-                decoding="async"
-              />
-            </motion.div>
-
-            {/* ── Sağ: metin ───────────────────────────────────── */}
-            <motion.div
-              initial={{ opacity: 0, x: 28 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10"
-            >
-              {/* Logo */}
-              <img
-                src={neogenLogo}
-                alt="NeoGen"
-                className="w-auto h-8 mb-10 invert opacity-80"
-              />
-
-              {/* Eyebrow */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-px w-5 bg-primary/55" />
-                <span className="text-[10px] font-medium tracking-[0.28em] uppercase text-primary/65" lang="en">
-                  Nitrogen Plasma Skin Regeneration
-                </span>
-              </div>
-
-              {/* Headline */}
-              <h1
-                className="font-display font-black leading-[0.92] tracking-[-0.025em] mb-7"
-                style={{ fontSize: "clamp(3rem, 5.5vw, 6rem)" }}
-              >
-                Plazma ile
-                <br />
-                <span
-                  style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #5eead4 55%, #38bdf8 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    paddingBottom: "0.12em",
-                    display: "inline-block",
-                  }}
-                >
-                  Derin Yenilenme
-                </span>
+            
+            {/* Hero Text Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-7 bg-[#0B101A] p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center min-h-[50vh]">
+              <img src={neogenLogo} alt="NeoGen" className="w-auto h-8 md:h-10 mb-8 object-contain self-start opacity-90 invert" />
+              
+              <span className="block text-xs font-bold tracking-[0.15em] uppercase text-[#0D9488] mb-5" lang="en">
+                Nitrogen Plasma Skin Regeneration
+              </span>
+              
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#F2EFE9] mb-6 leading-[1.05]">
+                Nitrojen Plazma Sistemi
               </h1>
-
-              <p className="text-[14.5px] text-foreground/42 leading-[1.85] mb-8 max-w-[420px]">
-                Azot gazını plazma enerjisine dönüştüren sistem. Cilt yüzeyini
-                korurken derin dermal yenilenme süreci başlatır.
+              
+              <p className="text-lg md:text-xl text-[#9AA6B8] max-w-xl leading-relaxed mb-8">
+                Klinikler için tasarlanmış, azot gazı ve RF enerjisi ile çalışan plazma teknolojisi.
               </p>
-
-              {/* CTAs */}
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="mailto:info@emcr.com.tr"
-                  className="h-11 px-7 inline-flex items-center gap-2.5 text-[13px] font-semibold bg-primary text-[#07090f] rounded-xl hover:bg-primary/90 transition-all"
-                  style={{ boxShadow: "0 0 28px rgba(20,184,166,0.25), 0 4px 14px rgba(0,0,0,0.3)" }}
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a 
+                  href="mailto:info@emcr.com.tr" 
+                  className="inline-flex items-center justify-center bg-[#0D9488] text-[#080C16] px-8 py-4 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#14B8A6] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2EFE9]"
                 >
-                  Demo Talep Et
-                  <ArrowRight size={14} />
+                  İletişime Geç
                 </a>
-                <Link
-                  href="/teknik-destek"
-                  className="h-11 px-7 inline-flex items-center gap-2 text-[13px] font-medium text-foreground/55 hover:text-foreground border border-white/[0.11] hover:border-white/20 rounded-xl hover:bg-white/[0.04] transition-all"
-                >
-                  Teknik Destek
-                  <ChevronRight size={14} />
-                </Link>
               </div>
             </motion.div>
-          </div>
-        </div>
 
-        {/* Bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#070b17] to-transparent pointer-events-none" />
-      </section>
+            {/* Hero Device Image Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-5 bg-[#0B101A] p-6 sm:p-8 lg:p-12 flex flex-col items-center justify-center relative min-h-[400px]">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] aspect-square bg-[#080C16] rounded-full" />
+              <img 
+                src={neogenDevice} 
+                alt="NeoGen Cihazı" 
+                className="w-full max-w-[280px] object-contain relative z-10 drop-shadow-2xl"
+                fetchPriority="high"
+              />
+            </motion.div>
 
-      {/* ── PSR TECHNOLOGY ───────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#060a14]">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 55% 50% at 5% 50%, rgba(20,184,166,0.055) 0%, transparent 65%)",
-          }}
-        />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-          <div className="grid md:grid-cols-[1fr_1.1fr] gap-16 lg:gap-24 items-center">
+            {/* Sistem Bileşenleri Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-12 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
+              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-8">Sistem Bileşenleri</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+                <div>
+                  <h3 className="text-[#F2EFE9] font-bold mb-3">Nitrojen gazı</h3>
+                  <p className="text-sm text-[#9AA6B8] leading-relaxed">
+                    Medikal kalite azot gazı, sistem içerisinde iyonize edilerek nitrojen plazmaya dönüştürülür.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-[#F2EFE9] font-bold mb-3">RF kaynağı</h3>
+                  <p className="text-sm text-[#9AA6B8] leading-relaxed">
+                    Gazın plazma haline geçişi, cihaza entegre radyo frekans enerji kaynağı kullanılarak sağlanır.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-[#F2EFE9] font-bold mb-3">Uygulama nozulu</h3>
+                  <p className="text-sm text-[#9AA6B8] leading-relaxed">
+                    Üretilen plazma enerjisi, ergonomik tasarımlı el probu ve nozul aracılığıyla yüzeye iletilir.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-[#F2EFE9] font-bold mb-3">Kontrol ekranı</h3>
+                  <p className="text-sm text-[#9AA6B8] leading-relaxed">
+                    Cihazın üzerindeki entegre dokunmatik ekran sayesinde tüm sistem parametreleri yönetilir.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
-            {/* Left: Treatment image */}
-            <motion.div
-              initial={{ opacity: 0, x: -28 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
-            >
-              <div
-                className="relative rounded-3xl overflow-hidden border border-white/[0.07]"
-                style={{ aspectRatio: "1/1" }}
-              >
-                <img
-                  src={neogenTreatment}
-                  alt="NeoGen Plasma Uygulama"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
+            {/* Video Title Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
+              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">Sistem Tanıtımı</h2>
+              <div className="h-0.5 w-6 bg-[#0D9488]"></div>
+            </motion.div>
+
+            {/* Video Player Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-6 sm:p-8 lg:p-12 flex flex-col">
+              <div className="relative aspect-video w-full bg-[#080C16]">
+                <video
+                  src={getAssetUrl("/neogen-demo.mp4")}
+                  poster={neogenTreatment}
+                  className="w-full h-full object-contain"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  onError={() => setVideoError(true)}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060a14]/60 via-transparent to-transparent" />
-                {/* Label overlay */}
-                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-                  <span
-                    className="text-[10px] font-semibold tracking-[0.25em] uppercase px-3 py-1.5 rounded-full border border-primary/30 bg-black/40 backdrop-blur-md text-primary"
-                  >
-                    Klinik Uygulama · NeoGen PSR
-                  </span>
+              </div>
+              {videoError && (
+                <div className="mt-4 p-4 border border-[#182336] bg-[#0B101A] text-sm text-[#9AA6B8]">
+                  Medya yüklenemedi. <a href={getAssetUrl("/neogen-demo.mp4")} target="_blank" rel="noopener noreferrer" className="text-[#0D9488] hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0D9488]">Dosyayı doğrudan görüntülemek için tıklayın.</a>
                 </div>
-              </div>
+              )}
             </motion.div>
 
-            {/* Right: Technology text */}
-            <motion.div
-              initial={{ opacity: 0, x: 28 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
-                Teknoloji
-              </p>
-              <h2
-                className="font-display font-black leading-[0.94] tracking-[-0.02em] mb-7"
-                style={{ fontSize: "clamp(2rem, 3.5vw, 3.6rem)" }}
-              >
-                Nitrojen Plazma{" "}
-                <span
-                  style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    paddingBottom: "0.08em",
-                    display: "inline-block",
-                  }}
-                >
-                  Nasıl Çalışır?
-                </span>
-              </h2>
-
-              <p className="text-[15px] text-foreground/45 leading-[1.85] mb-8">
-                NeoGen, ultra yüksek radyo frekansıyla tüpten gelen medikal kalite azot gazını
-                iyonize ederek nozulda nitrojen plazma oluşturur. Bu plazma, yüzeyi açmadan
-                cildin tüm mimarisini ısıtır ve <strong className="text-foreground/70 font-semibold">15 milisaniyelik kontrollü darbelerle</strong>{" "}
-                70–165°C arasında termal etki üretir.
-              </p>
-
-              {/* Key differentiator */}
-              <div className="relative p-6 rounded-2xl border border-primary/18 bg-primary/[0.04] mb-8 overflow-hidden">
-                <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b from-primary/60 to-primary/20" />
-                <p className="text-[14px] text-foreground/55 leading-[1.85] pl-2">
-                  <span className="text-primary font-semibold">Kritik fark:</span>{" "}
-                  Azot plazması belirli bir kromofor hedefine veya dalga boyuna bağlı değildir.
-                  Penetrasyon derinliği cildin nem düzeyi ile yönetilir, bu sayede{" "}
-                  <span className="text-foreground/80 font-medium">Fitzpatrick I'den VI'ya tüm cilt tonlarında</span>{" "}
-                  güvenle kullanılır.
-                </p>
-              </div>
-
-              {/* Mini feature pills */}
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { label: "Non-ablative yüzey koruma", detail: "Stratum corneum sağlam kalır" },
-                  { label: "Tüm cilt tipleri", detail: "Fitzpatrick I–VI" },
-                  { label: "Çift nabız teknolojisi", detail: "1.0–2.5 Hz tekrar hızı" },
-                  { label: "Hızlı iyileşme", detail: "1–7 gün protokole göre" },
-                ].map((f, i) => (
-                  <div
-                    key={i}
-                    className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.035] transition-colors"
-                  >
-                    <p className="text-[13px] font-semibold text-foreground/75 mb-1">{f.label}</p>
-                    <p className="text-[11.5px] text-foreground/35">{f.detail}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3 MECHANISMS ─────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#070b17]">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 45% at 50% 100%, rgba(20,184,166,0.05) 0%, transparent 65%)",
-          }}
-        />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-18 flex items-end justify-between flex-wrap gap-6"
-          >
-            <div>
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-5">
-                3 Temel Etki Mekanizması
-              </p>
-              <h2
-                className="font-display font-black leading-[0.94] tracking-[-0.022em]"
-                style={{ fontSize: "clamp(2rem, 3.8vw, 4rem)" }}
-              >
-                Tek Sistemde{" "}
-                <span
-                  style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    paddingBottom: "0.08em",
-                    display: "inline-block",
-                  }}
-                >
-                  Üç Sonuç
-                </span>
-              </h2>
-            </div>
-            <p className="text-[14px] text-foreground/35 max-w-xs leading-relaxed">
-              NeoGen tek seansta sıkılaştırma, yüzey yenileme ve derin kolajen
-              rejenerasyonunu eş zamanlı olarak gerçekleştirir.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-5">
-            {mechanisms.map((m, i) => {
-              const Icon = m.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  className="group relative p-8 rounded-3xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.035] hover:border-primary/25 transition-all duration-400 overflow-hidden"
-                >
-                  {/* Teal top accent */}
-                  <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                  {/* Number + icon row */}
-                  <div className="flex items-center justify-between mb-7">
-                    <span className="text-[12px] font-mono text-foreground/18 group-hover:text-primary/35 transition-colors">
-                      {m.n}
-                    </span>
-                    <div className="w-11 h-11 rounded-xl bg-primary/[0.07] border border-primary/[0.12] flex items-center justify-center text-primary/65 group-hover:bg-primary/[0.12] group-hover:text-primary group-hover:border-primary/25 transition-all">
-                      <Icon size={18} />
-                    </div>
-                  </div>
-
-                  <h3 className="font-display font-black text-[1.25rem] text-foreground/90 mb-1 group-hover:text-foreground transition-colors">
-                    {m.title}
-                  </h3>
-                  <p className="text-[9.5px] tracking-[0.2em] uppercase text-primary/40 mb-5 font-medium" lang="en">
-                    {m.subtitle}
-                  </p>
-                  <p className="text-[14px] text-foreground/50 leading-[1.85] mb-5">
-                    {m.desc}
-                  </p>
-                  <p className="text-[13px] text-foreground/32 leading-[1.8] mb-7 italic">
-                    {m.detail}
-                  </p>
-
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── INDICATIONS + SPECS ──────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#070b17]">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 50% 50% at 90% 20%, rgba(20,184,166,0.05) 0%, transparent 65%)",
-          }}
-        />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-          <div className="grid md:grid-cols-2 gap-16 lg:gap-20">
-
-            {/* Indications */}
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
-                Endikasyonlar
-              </p>
-              <h2
-                className="font-display font-black leading-[0.94] tracking-[-0.022em] mb-4"
-                style={{ fontSize: "clamp(2rem, 3.2vw, 3.2rem)" }}
-              >
-                Hangi Durumlarda{" "}
-                <span
-                  style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    paddingBottom: "0.08em",
-                    display: "inline-block",
-                  }}
-                >
-                  Kullanılır?
-                </span>
-              </h2>
-              <div className="space-y-0">
-                {indications.map((ind, i) => (
-                  <motion.div
-                    key={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={i * 0.4}
-                    className="flex items-center gap-4 py-3.5 border-b border-white/[0.05] group hover:border-primary/18 transition-colors"
-                  >
-                    <ChevronRight size={13} className="text-primary/50 flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
-                    <span className="text-[14px] text-foreground/60 group-hover:text-foreground/82 transition-colors flex-1 leading-snug">
-                      {ind.label}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+            {/* Context Title Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
+              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">Etkinlikler</h2>
+              <div className="h-0.5 w-6 bg-[#0D9488]"></div>
             </motion.div>
 
-            {/* Specs */}
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
-                Teknik Özellikler
-              </p>
-              <h2
-                className="font-display font-black leading-[0.94] tracking-[-0.022em] mb-10"
-                style={{ fontSize: "clamp(2rem, 3.2vw, 3.2rem)" }}
-              >
-                NeoGen{" "}
-                <span
-                  style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    paddingBottom: "0.08em",
-                    display: "inline-block",
-                  }}
-                >
-                  Sistem Detayları
-                </span>
-              </h2>
-
-              <div className="rounded-2xl border border-white/[0.07] overflow-hidden bg-white/[0.015]">
-                {specs.map((s, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-5 px-6 py-3.5 border-b border-white/[0.04] last:border-0 hover:bg-white/[0.025] transition-colors group"
-                  >
-                    <span className="text-[10px] tracking-[0.18em] uppercase text-primary/40 w-32 flex-shrink-0 font-medium">
-                      {s.label}
-                    </span>
-                    <span className="text-[13.5px] text-foreground/58 group-hover:text-foreground/78 transition-colors">
-                      {s.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Distributor badge */}
-              <div className="mt-6 p-6 rounded-2xl border border-primary/18 bg-primary/[0.04] relative overflow-hidden">
-                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-                <div className="flex items-start gap-4">
-                  <ShieldCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold text-[13.5px] text-foreground/90 mb-2">
-                      Türkiye Yetkili Distribütörü
-                    </p>
-                    <p className="text-[13px] text-foreground/42 leading-[1.8]">
-                      EMCR Medikal Teknolojiler, NeoGen Plasma'nın Türkiye yetkili distribütörüdür.
-                      Kurulum, eğitim ve teknik servis hizmetleri kapsamlıdır.
-                    </p>
+            {/* Context Content Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-0 flex flex-col md:flex-row">
+              <Link href="/etkinliklerimiz" className="flex-1 p-2 sm:p-3 md:p-4 border-b md:border-b-0 md:border-r border-[#182336] group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0D9488]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#080C16]">
+                  <img 
+                    src={getAssetUrl("/events/paris-2026/1.jpg")} 
+                    alt="Paris IMCAS 2026 Kongresi" 
+                    className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-[filter,opacity] duration-500" 
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-[#0B101A] text-[#F2EFE9] px-3 py-1.5 text-[10px] font-bold tracking-[0.2em] uppercase">
+                    Paris IMCAS 2026
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── DEMO VIDEO ───────────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden bg-[#060a14]">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 55% 50% at 50% 50%, rgba(20,184,166,0.05) 0%, transparent 65%)",
-          }}
-        />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-4">Canlı Uygulama</p>
-            <h2
-              className="font-display font-black leading-[0.94] tracking-[-0.022em]"
-              style={{ fontSize: "clamp(2rem, 3.5vw, 3.5rem)" }}
-            >
-              NeoGen Plasma{" "}
-              <span
-                style={{
-                  background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  paddingBottom: "0.08em",
-                  display: "inline-block",
-                }}
-              >
-                Uygulamada
-              </span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative rounded-3xl overflow-hidden border border-white/[0.07] bg-black max-w-4xl mx-auto"
-            style={{ aspectRatio: "16/9" }}
-          >
-            <video
-              ref={videoRef}
-              src="/neogen-demo.mp4"
-              className="w-full h-full object-cover"
-              playsInline
-              onEnded={() => setVideoPlaying(false)}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-            <button
-              onClick={toggleVideo}
-              className="absolute inset-0 flex items-center justify-center group"
-            >
-              <div
-                className={`w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:bg-primary/10 ${videoPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
-              >
-                {videoPlaying
-                  ? <Pause size={20} className="text-white" />
-                  : <Play size={20} className="text-white ml-1" />
-                }
-              </div>
-            </button>
-            {!videoPlaying && (
-              <div className="absolute bottom-5 left-6 z-10">
-                <span className="text-[10px] font-semibold tracking-[0.25em] uppercase px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary">
-                  Demo · NeoGen Plasma PSR
-                </span>
-              </div>
-            )}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── BEFORE / AFTER ───────────────────────────────────────── */}
-      <section className="py-24 bg-[#070b17] relative overflow-hidden">
-        <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse, rgba(20,184,166,0.04) 0%, transparent 65%)" }}
-        />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-          <div className="flex items-end justify-between mb-12 flex-wrap gap-5">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-4">
-                Uygulama Sonuçları
-              </p>
-              <h2
-                className="font-display font-black leading-[0.94] tracking-[-0.022em]"
-                style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}
-              >
-                Gerçek{" "}
-                <span
-                  style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    paddingBottom: "0.08em",
-                    display: "inline-block",
-                  }}
-                >
-                  Sonuçlar.
-                </span>
-              </h2>
-            </motion.div>
-
-            <div className="hidden md:flex items-center gap-5">
-              <span className="font-display text-5xl font-black tabular-nums text-foreground/12">
-                {String(activePatient + 1).padStart(2, "0")}
-                <span className="text-2xl text-foreground/8 mx-1">/</span>06
-              </span>
-              <div className="flex gap-2">
-                {([-1, 1] as const).map((dir, di) => (
-                  <button
-                    key={di}
-                    onClick={() => setActivePatient((p) => (p + dir + patients.length) % patients.length)}
-                    className="w-10 h-10 rounded-full border border-white/10 hover:border-primary/40 hover:bg-white/[0.04] flex items-center justify-center transition-all"
-                  >
-                    <ChevronRight size={16} className={`text-foreground/45 ${dir === -1 ? "rotate-180" : ""}`} />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="relative rounded-3xl overflow-hidden mb-4 border border-white/[0.05]" style={{ aspectRatio: "21/9" }}>
-            {patients.map((p, i) => (
-              <motion.div
-                key={i}
-                className="absolute inset-0"
-                animate={{ opacity: activePatient === i ? 1 : 0 }}
-                transition={{ duration: 0.7, ease: "easeInOut" }}
-              >
-                <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/60 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#070b17]/25 via-transparent to-[#070b17]/25" />
-              </motion.div>
-            ))}
-            <div className="absolute top-5 left-6 z-20">
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-foreground/65">ÖNCE</span>
-            </div>
-            <div className="absolute top-5 right-6 z-20">
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary">SONRA</span>
-            </div>
-            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/10 z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
-              <p className="text-[10px] tracking-[0.25em] uppercase text-primary/70">
-                NeoGen Plasma · {patients[activePatient].label}
-              </p>
-              <div className="font-display font-black text-6xl text-white/[0.04] select-none leading-none tabular-nums">
-                {String(activePatient + 1).padStart(2, "0")}
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-6 gap-2">
-            {patients.map((p, i) => (
-              <button
-                key={i}
-                onClick={() => setActivePatient(i)}
-                className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-300 group ${
-                  activePatient === i
-                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#070b17]"
-                    : "opacity-45 hover:opacity-70"
-                }`}
-              >
-                <img src={p.img} alt={`${i + 1}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-                <div className={`absolute inset-0 transition-all ${activePatient === i ? "bg-primary/10" : "bg-black/25"}`} />
-                <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-foreground/55">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ──────────────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#060a14]">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(20,184,166,0.07) 0%, transparent 65%)",
-          }}
-        />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
-              Sıradaki Adım
-            </p>
-            <h2
-              className="font-display font-black leading-[0.94] tracking-[-0.022em] mb-6"
-              style={{ fontSize: "clamp(2.2rem, 4vw, 4.5rem)" }}
-            >
-              Kliniğiniz İçin{" "}
-              <span
-                style={{
-                  background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  paddingBottom: "0.1em",
-                  display: "inline-block",
-                }}
-              >
-                Demo Talep Edin
-              </span>
-            </h2>
-            <p className="text-[15px] text-foreground/40 max-w-lg mx-auto mb-11 leading-[1.85]">
-              NeoGen Plasma'yı kliniğinizde deneyimlemek için bizimle iletişime geçin.
-              Yetkili uzmanlarımız size özel sunum ve teklif hazırlasın.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <a
-                href="mailto:info@emcr.com.tr"
-                className="h-13 px-9 inline-flex items-center gap-2.5 text-[14px] font-semibold bg-primary text-[#07090f] rounded-xl hover:bg-primary/90 transition-all"
-                style={{ boxShadow: "0 0 40px rgba(20,184,166,0.28), 0 4px 20px rgba(0,0,0,0.35)" }}
-              >
-                Demo Talep Et
-                <ArrowRight size={15} />
-              </a>
-              <Link
-                href="/teknik-destek"
-                className="h-13 px-9 inline-flex items-center gap-2 text-[14px] font-medium text-foreground/60 hover:text-foreground border border-white/[0.13] hover:border-white/22 rounded-xl hover:bg-white/[0.04] transition-all"
-              >
-                Teknik Destek
-                <ChevronRight size={15} />
               </Link>
-            </div>
+              <div className="flex-1 p-6 sm:p-8 flex flex-col justify-center">
+                <p className="text-[#9AA6B8] text-base leading-relaxed">
+                  Uluslararası kongreler ve medikal etkinliklerdeki güncel ürün sunumlarımızı inceleyin.
+                </p>
+                <div>
+                  <Link 
+                    href="/etkinliklerimiz" 
+                    className="inline-flex items-center text-[11px] md:text-xs font-bold tracking-wider uppercase text-[#0D9488] hover:text-[#14B8A6] transition-colors mt-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2EFE9]"
+                  >
+                    Tüm Etkinlikler &rarr;
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Distributor Title Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
+              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">Türkiye Distribütörü</h2>
+              <div className="h-0.5 w-6 bg-[#0D9488]"></div>
+            </motion.div>
+
+            {/* Distributor Content Cell */}
+            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
+              <div className="flex flex-col space-y-6 text-[#F2EFE9] text-base md:text-lg leading-relaxed max-w-3xl">
+                <p>
+                  EMCR Medikal, NeoGen Plasma sisteminin Türkiye distribütörüdür.
+                </p>
+                <p>
+                  Ürün bilgisi, eğitim ve destek talepleriniz için ekibimizle iletişime geçebilirsiniz.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                  <Link 
+                    href="/teknik-destek" 
+                    className="inline-flex items-center justify-center bg-transparent border border-[#182336] text-[#F2EFE9] px-8 py-4 text-xs font-bold tracking-[0.15em] uppercase hover:border-[#9AA6B8] hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2EFE9]"
+                  >
+                    Teknik Destek
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
           </motion.div>
         </div>
-      </section>
+      </main>
 
       <Footer />
     </div>
