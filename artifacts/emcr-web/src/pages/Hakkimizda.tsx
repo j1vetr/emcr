@@ -11,172 +11,203 @@ const getAssetUrl = (path: string) => {
 export default function Hakkimizda() {
   const prefersReducedMotion = useReducedMotion();
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
+  const fadeUp: Variants = {
+    hidden: { opacity: 1, y: prefersReducedMotion ? 0 : 12 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: prefersReducedMotion ? 0 : 0.4, ease: "easeOut" } 
+    }
+  };
+
+  const stagger: Variants = {
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.08
+        staggerChildren: prefersReducedMotion ? 0 : 0.05
       }
     }
   };
 
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 8 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: "easeOut" } 
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#080C16] text-[#F2EFE9] font-sans selection:bg-[#B89461]/30">
+    <div className="min-h-screen bg-[#0B1017] text-[#F4F1EB] font-sans selection:bg-[#AD7F4D]/30">
       <Navbar />
 
-      <main className="pt-[100px] md:pt-[140px] pb-24">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+      <main className="pt-[100px] md:pt-[140px] pb-0">
+        
+        {/* Hero Section - Deep Ink */}
+        <motion.div 
+          className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 mb-16 md:mb-24 relative"
+          initial="hidden"
+          animate="visible"
+          variants={stagger}
+        >
+          <div className="pt-4 md:pt-8 mb-10 md:mb-16">
+             <motion.span variants={fadeUp} className="block text-sm font-bold tracking-[0.25em] uppercase text-[#AD7F4D] mb-10">
+                Hakkımızda
+             </motion.span>
+             <motion.h1 variants={fadeUp} className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight text-[#F4F1EB] mb-12 max-w-5xl leading-[1.05]">
+                Medikal Teknoloji Distribütörü
+             </motion.h1>
+             <motion.p variants={fadeUp} className="text-xl md:text-3xl text-[#8E9BAE] max-w-4xl leading-[1.4] font-light">
+                EMCR Medikal, NeoGen Plasma ve UltraClear sistemlerinin Türkiye distribütörü olarak kliniklere donanım tedariki ve teknik destek hizmetleri sunmaktadır.
+             </motion.p>
+          </div>
+
+          <motion.div variants={fadeUp} className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm group bg-[#0C121A]">
+             <img 
+               src={getAssetUrl("/events/paris-2026/1.jpg")} 
+               alt="Paris Etkinliği" 
+               className="w-full h-full object-cover object-[center_20%] transition-transform duration-1000 group-hover:scale-105 motion-reduce:transition-none" 
+               loading="lazy"
+             />
+             <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 flex items-center gap-4 bg-[#0B1017] px-4 py-3">
+                <div className="w-2 h-2 rounded-full bg-[#AD7F4D]"></div>
+                <span className="text-sm font-bold tracking-[0.2em] uppercase text-[#F4F1EB]">
+                  Paris 2026
+                </span>
+             </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Warm Light Matte Surface - Edge to Edge */}
+        <div className="bg-[#F4F1EB] text-[#0C121A] py-16 md:py-24">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
+             <div className="flex flex-col md:flex-row gap-16 md:gap-32 items-center">
+                
+                <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-100px" }}
+                  variants={fadeUp}
+                  className="w-full md:w-[40%] aspect-[3/4] md:aspect-[4/5] relative overflow-hidden order-2 md:order-1 rounded-sm group bg-[#D1CCC0]"
+                >
+                   <img 
+                     src={getAssetUrl("/events/istanbul-ultraclear-2026/2.jpg")} 
+                     alt="İstanbul Etkinliği" 
+                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 motion-reduce:transition-none" 
+                     loading="lazy"
+                   />
+                   <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 flex items-center gap-4">
+                      <div className="w-2 h-2 rounded-full bg-[#AD7F4D]"></div>
+                      <span className="text-sm font-bold tracking-[0.2em] uppercase text-[#F4F1EB] drop-shadow-md">
+                        İstanbul 2026
+                      </span>
+                   </div>
+                </motion.div>
+                
+                <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-100px" }}
+                  variants={stagger}
+                  className="flex-1 order-1 md:order-2"
+                >
+                   <motion.h2 variants={fadeUp} className="text-sm font-bold tracking-[0.25em] uppercase text-[#AD7F4D] mb-12">
+                     Kurumsal Profil
+                   </motion.h2>
+                   <motion.div variants={fadeUp} className="space-y-12 text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.3] text-[#0C121A] font-display font-medium tracking-tight">
+                     <p>
+                       Ayrıca düzenlediğimiz eğitimler ve uygulamalı atölye çalışmaları ile medikal profesyonelleri bir araya getiriyoruz.
+                     </p>
+                     <p className="text-[#6B7A90]">
+                       Ürün bilgisi, eğitim ve teknik destek talepleriniz için ekibimizle doğrudan iletişime geçebilirsiniz.
+                     </p>
+                   </motion.div>
+                   <motion.div variants={fadeUp} className="mt-20">
+                     <Link 
+                       href="/teknik-destek" 
+                       className="group/link inline-flex items-center text-sm font-bold tracking-[0.2em] uppercase text-[#0C121A] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AD7F4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F4F1EB]"
+                     >
+                       <span className="border-b-2 border-[#0C121A] pb-1 group-hover/link:border-[#AD7F4D] group-hover/link:text-[#AD7F4D] transition-colors motion-reduce:transition-none">
+                         Teknik Destek Talebi
+                       </span>
+                       <span className="ml-4 text-2xl font-normal group-hover/link:text-[#AD7F4D] group-hover/link:translate-x-2 transition-all motion-reduce:transition-none">&rarr;</span>
+                     </Link>
+                   </motion.div>
+                </motion.div>
+
+             </div>
+          </div>
+        </div>
+
+        {/* Portfolio & Contact Section - Deep Ink */}
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 mt-16 md:mt-24">
           
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-12 gap-px bg-[#182336] border border-[#182336]"
-            variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="mb-16 md:mb-24"
           >
-            
-            {/* Header Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-12 bg-[#0B101A] p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-end min-h-[35vh]">
-              <span className="block text-xs font-bold tracking-[0.15em] uppercase text-[#B89461] mb-6">Hakkımızda</span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#F2EFE9] mb-6 max-w-4xl leading-[1.05]">
-                Medikal Teknoloji Distribütörü
-              </h1>
-              <p className="text-lg md:text-xl text-[#9AA6B8] max-w-2xl leading-relaxed">
-                EMCR Medikal, NeoGen Plasma ve UltraClear sistemlerinin Türkiye distribütörü olarak kliniklere donanım tedariki ve teknik destek hizmetleri sunmaktadır.
-              </p>
-            </motion.div>
-
-            {/* Photo 1 Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-6 bg-[#0B101A] p-2 sm:p-3 md:p-4">
-              <div className="relative aspect-[4/3] w-full overflow-hidden group bg-[#080C16]">
-                <img 
-                  src={getAssetUrl("/events/paris-2026/1.jpg")} 
-                  alt="Paris Etkinliği" 
-                  className="w-full h-full object-cover grayscale transition-[filter,transform] duration-700 ease-in-out motion-safe:group-hover:scale-[1.03] group-hover:grayscale-0 motion-reduce:transition-none" 
-                  loading="lazy"
-                />
-                <div className="absolute bottom-4 left-4 bg-[#0B101A] text-[#F2EFE9] px-3 py-1.5 text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
-                  Paris 2026
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Photo 2 Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-6 bg-[#0B101A] p-2 sm:p-3 md:p-4">
-              <div className="relative aspect-[4/3] w-full overflow-hidden group bg-[#080C16]">
-                <img 
-                  src={getAssetUrl("/events/istanbul-ultraclear-2026/2.jpg")} 
-                  alt="İstanbul Etkinliği" 
-                  className="w-full h-full object-cover grayscale transition-[filter,transform] duration-700 ease-in-out motion-safe:group-hover:scale-[1.03] group-hover:grayscale-0 motion-reduce:transition-none" 
-                  loading="lazy"
-                />
-                <div className="absolute bottom-4 left-4 bg-[#0B101A] text-[#F2EFE9] px-3 py-1.5 text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
-                  İstanbul 2026
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Kurumsal Profil Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">Kurumsal Profil</h2>
-              <div className="h-0.5 w-6 bg-[#182336]"></div>
-            </motion.div>
-
-            {/* Kurumsal Profil Content Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <div className="flex flex-col space-y-6 text-[#F2EFE9] text-base md:text-lg leading-relaxed max-w-3xl">
-                <p>
-                  EMCR Medikal, NeoGen Plasma ve UltraClear sistemlerinin Türkiye distribütörü olarak kliniklere donanım tedariki ve teknik destek hizmetleri sunmaktadır.
-                </p>
-                <p>
-                  Ayrıca düzenlediğimiz{" "}
-                  <Link href="/etkinliklerimiz" className="text-[#B89461] hover:text-[#D1AD77] transition-colors motion-reduce:transition-none">
-                    eğitimler ve uygulamalı atölye çalışmaları
-                  </Link>{" "}
-                  ile medikal profesyonelleri bir araya getiriyoruz.
-                </p>
-                <p>
-                  Ürün bilgisi, eğitim ve teknik destek talepleriniz için ekibimizle iletişime geçebilirsiniz.
-                </p>
-                <div>
+             <motion.h2 variants={fadeUp} className="text-sm font-bold tracking-[0.25em] uppercase text-[#AD7F4D] mb-20 text-center">
+               Portföyümüz
+             </motion.h2>
+             
+             <div className="flex flex-col md:flex-row items-center justify-center gap-24 md:gap-40">
+                <motion.div variants={fadeUp} className="group relative flex flex-col items-center text-center">
+                  <h3 className="font-display text-5xl md:text-6xl font-bold text-[#F4F1EB] mb-6">NeoGen Plasma</h3>
+                  <p className="text-[#8E9BAE] text-xl mb-12 font-light">Nitrojen Plazma Teknolojisi</p>
                   <Link 
-                    href="/teknik-destek" 
-                    className="inline-flex items-center text-[11px] md:text-xs font-bold tracking-wider uppercase text-[#B89461] hover:text-[#D1AD77] transition-colors motion-reduce:transition-none mt-2"
+                    href="/urunler/neogen-plasma" 
+                    className="inline-flex items-center justify-center w-20 h-20 rounded-full border border-[#2C3A4F] text-[#AD7F4D] group-hover:bg-[#F4F1EB] group-hover:border-[#F4F1EB] group-hover:text-[#0C121A] transition-all duration-300 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AD7F4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0B1017]"
+                    aria-label="NeoGen Plasma ürününü incele"
                   >
-                    Teknik Destek Talebi &rarr;
+                    <span className="text-2xl leading-none">&rarr;</span>
                   </Link>
-                </div>
-              </div>
-            </motion.div>
+                </motion.div>
 
-            {/* Portföy Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">Portföyümüz</h2>
-              <div className="h-0.5 w-6 bg-[#182336]"></div>
-            </motion.div>
+                <motion.div variants={fadeUp} className="hidden md:block w-px bg-[#2C3A4F] h-32"></motion.div>
+                <motion.div variants={fadeUp} className="block md:hidden h-px bg-[#2C3A4F] w-32"></motion.div>
 
-            {/* Portföy Content Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-0 flex flex-col md:flex-row">
-              <Link href="/urunler/neogen-plasma" className="flex-1 p-6 sm:p-8 lg:p-12 border-b md:border-b-0 md:border-r border-[#182336] group hover:bg-[#111826] transition-colors motion-reduce:transition-none cursor-pointer flex flex-col justify-between">
-                <div>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-[#F2EFE9] mb-2 group-hover:text-[#B89461] transition-colors motion-reduce:transition-none">NeoGen Plasma</h3>
-                  <p className="text-[#9AA6B8] text-sm md:text-base leading-relaxed">Nitrojen Plazma Teknolojisi</p>
-                </div>
-                <div className="mt-8 md:mt-12">
-                  <span className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-[#9AA6B8] group-hover:text-[#F2EFE9] transition-colors motion-reduce:transition-none">İncele &rarr;</span>
-                </div>
-              </Link>
-              <Link href="/urunler/ultraclear" className="flex-1 p-6 sm:p-8 lg:p-12 group hover:bg-[#111826] transition-colors motion-reduce:transition-none cursor-pointer flex flex-col justify-between">
-                <div>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-[#F2EFE9] mb-2 group-hover:text-[#B89461] transition-colors motion-reduce:transition-none">UltraClear</h3>
-                  <p className="text-[#9AA6B8] text-sm md:text-base leading-relaxed"><span lang="en">Cold Fiber Laser</span></p>
-                </div>
-                <div className="mt-8 md:mt-12">
-                  <span className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-[#9AA6B8] group-hover:text-[#F2EFE9] transition-colors motion-reduce:transition-none">İncele &rarr;</span>
-                </div>
-              </Link>
-            </motion.div>
-
-            {/* İletişim Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">İletişim Bilgileri</h2>
-              <div className="h-0.5 w-6 bg-[#182336]"></div>
-            </motion.div>
-
-            {/* İletişim Content Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12 text-[#F2EFE9]">
-                <div>
-                  <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#9AA6B8] mb-3">Merkez Ofis</p>
-                  <p className="leading-relaxed text-sm md:text-base text-[#F2EFE9]">
-                    Nispetiye Mah. Aytar Cad.<br />
-                    Erdölen İş Merkezi No: 38 Kat 1<br />
-                    Beşiktaş / İstanbul
-                  </p>
-                </div>
-                <div className="space-y-8">
-                  <div>
-                    <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#9AA6B8] mb-3">E-posta</p>
-                    <a href="mailto:info@emcr.com.tr" className="text-[#F2EFE9] hover:text-[#B89461] text-sm md:text-base transition-colors motion-reduce:transition-none">info@emcr.com.tr</a>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#9AA6B8] mb-3">Telefon</p>
-                    <a href="tel:+902972060272" className="text-[#F2EFE9] hover:text-[#B89461] text-sm md:text-base transition-colors motion-reduce:transition-none">+90 297 206 02 72</a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
+                <motion.div variants={fadeUp} className="group relative flex flex-col items-center text-center">
+                  <h3 className="font-display text-5xl md:text-6xl font-bold text-[#F4F1EB] mb-6">UltraClear</h3>
+                  <p className="text-[#8E9BAE] text-xl mb-12 font-light"><span lang="en">Cold Fiber Laser</span></p>
+                  <Link 
+                    href="/urunler/ultraclear" 
+                    className="inline-flex items-center justify-center w-20 h-20 rounded-full border border-[#2C3A4F] text-[#AD7F4D] group-hover:bg-[#F4F1EB] group-hover:border-[#F4F1EB] group-hover:text-[#0C121A] transition-all duration-300 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AD7F4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0B1017]"
+                    aria-label="UltraClear ürününü incele"
+                  >
+                    <span className="text-2xl leading-none">&rarr;</span>
+                  </Link>
+                </motion.div>
+             </div>
           </motion.div>
+
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="border-t border-[#2C3A4F] pt-24 pb-16"
+          >
+            <motion.h2 variants={fadeUp} className="text-sm font-bold tracking-[0.25em] uppercase text-[#AD7F4D] mb-16">
+              İletişim Bilgileri
+            </motion.h2>
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-40">
+              <motion.div variants={fadeUp} className="flex-1">
+                <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#6B7A90] mb-8">Merkez Ofis</p>
+                <p className="leading-[1.8] text-2xl text-[#F4F1EB] font-light">
+                  Nispetiye Mah. Aytar Cad.<br />
+                  Erdölen İş Merkezi No: 38 Kat 1<br />
+                  Beşiktaş / İstanbul
+                </p>
+              </motion.div>
+              <motion.div variants={fadeUp} className="flex-1 flex flex-col md:flex-row gap-16 lg:gap-32">
+                <div>
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#6B7A90] mb-8">E-posta</p>
+                  <a href="mailto:info@emcr.com.tr" className="text-2xl text-[#F4F1EB] hover:text-[#AD7F4D] transition-colors font-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AD7F4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0B1017]">info@emcr.com.tr</a>
+                </div>
+                <div>
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#6B7A90] mb-8">Telefon</p>
+                  <a href="tel:+902972060272" className="text-2xl text-[#F4F1EB] hover:text-[#AD7F4D] transition-colors font-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AD7F4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0B1017]">+90 297 206 02 72</a>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
         </div>
       </main>
 

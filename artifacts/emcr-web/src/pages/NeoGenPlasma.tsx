@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import neogenLogo from "@assets/neogen-logo.webp";
 import neogenDevice from "@assets/yeni_fot_1784560619600.png";
 import neogenTreatment from "@assets/neogen-treatment.webp";
+import neogenPlatform from "@assets/neogen-platform.webp";
 
 const getAssetUrl = (path: string) => {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -39,114 +40,181 @@ export default function NeoGenPlasma() {
     };
   }, []);
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: prefersReducedMotion ? 0 : 0.08 }
-    }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 8 },
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 40 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: "easeOut" } 
+      transition: { duration: prefersReducedMotion ? 0 : 1, ease: [0.16, 1, 0.3, 1] } 
+    }
+  };
+
+  const stagger: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: prefersReducedMotion ? 0 : 0.1 }
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#080C16] text-[#F2EFE9] font-sans selection:bg-[#0D9488]/30">
+    <div className="min-h-[100dvh] bg-[#04161C] text-[#F4F1EA] font-sans selection:bg-[#B69A72]/30 selection:text-white">
       <Navbar />
 
-      <main className="pt-[100px] md:pt-[140px] pb-24">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+      <main>
+        {/* HERO SECTION */}
+        <section className="relative min-h-[100dvh] w-full flex items-center pt-24 md:pt-0 overflow-hidden bg-[#04161C]">
           
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-12 gap-px bg-[#182336] border border-[#182336]"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <div className="container mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center h-full mt-4 lg:mt-0">
             
-            {/* Hero Text Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-7 bg-[#0B101A] p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center min-h-[50vh]">
-              <img src={neogenLogo} alt="NeoGen" className="w-auto h-8 md:h-10 mb-8 object-contain self-start opacity-90 invert" />
+            {/* Text Content */}
+            <motion.div 
+              className="lg:col-span-7 flex flex-col items-start justify-center pt-6 pb-4 lg:py-0"
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
+            >
+              <motion.img 
+                variants={fadeUp}
+                src={neogenLogo} 
+                alt="NeoGen Logo" 
+                className="h-10 md:h-14 lg:h-16 mb-12 opacity-90 invert object-contain" 
+              />
               
-              <span className="block text-xs font-bold tracking-[0.15em] uppercase text-[#0D9488] mb-5" lang="en">
+              <motion.span 
+                variants={fadeUp}
+                className="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#B69A72] mb-6" 
+                lang="en"
+              >
                 Nitrogen Plasma Skin Regeneration
-              </span>
+              </motion.span>
               
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#F2EFE9] mb-6 leading-[1.05]">
-                Nitrojen Plazma Sistemi
-              </h1>
+              <motion.h1 
+                variants={fadeUp}
+                className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-medium tracking-tighter text-[#F4F1EA] mb-8 leading-[0.95]"
+              >
+                Nitrojen<br/>
+                <span className="text-[#8FA5AE]">Plazma</span><br/>
+                Sistemi
+              </motion.h1>
               
-              <p className="text-lg md:text-xl text-[#9AA6B8] max-w-xl leading-relaxed mb-8">
-                Klinikler için tasarlanmış, azot gazı ve RF enerjisi ile çalışan plazma teknolojisi.
-              </p>
+              <motion.p 
+                variants={fadeUp}
+                className="text-lg md:text-2xl text-[#8FA5AE] max-w-xl font-light leading-relaxed mb-12"
+              >
+                Klinikler için tasarlanmış, azot gazı ve RF enerjisi ile çalışan ileri düzey plazma teknolojisi.
+              </motion.p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-6">
                 <a 
                   href="mailto:info@emcr.com.tr" 
-                  className="inline-flex items-center justify-center bg-[#0D9488] text-[#080C16] px-8 py-4 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#14B8A6] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2EFE9]"
+                  className="group relative inline-flex items-center justify-center bg-[#B69A72] text-[#04161C] px-10 py-5 text-xs font-bold tracking-[0.2em] uppercase overflow-hidden transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#04161C] focus-visible:ring-[#B69A72]"
                 >
-                  İletişime Geç
+                  <span className="relative z-10 transition-colors group-hover:text-white">İletişime Geç</span>
+                  <div className="absolute inset-0 bg-[#967C5A] transform scale-x-0 origin-left transition-transform duration-500 ease-[0.16,1,0.3,1] group-hover:scale-x-100" />
                 </a>
-              </div>
+              </motion.div>
             </motion.div>
-
-            {/* Hero Device Image Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-5 bg-[#0B101A] p-6 sm:p-8 lg:p-12 flex flex-col items-center justify-center relative min-h-[400px]">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] aspect-square bg-[#080C16] rounded-full" />
+            
+            {/* Hero Image */}
+            <motion.div 
+              className="lg:col-span-5 relative w-full h-[440px] lg:h-screen flex items-center justify-center lg:justify-end"
+              initial={{ opacity: 1, scale: prefersReducedMotion ? 1 : 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
               <img 
                 src={neogenDevice} 
                 alt="NeoGen Cihazı" 
-                className="w-full max-w-[280px] object-contain relative z-10 drop-shadow-2xl"
+                className="max-w-none w-auto h-full lg:absolute lg:w-[160%] xl:w-[180%] lg:h-auto object-contain object-center z-10 transform lg:translate-x-1/4"
                 fetchPriority="high"
               />
             </motion.div>
+          </div>
+        </section>
 
-            {/* Sistem Bileşenleri Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-12 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-8">Sistem Bileşenleri</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-                <div>
-                  <h3 className="text-[#F2EFE9] font-bold mb-3">Nitrojen gazı</h3>
-                  <p className="text-sm text-[#9AA6B8] leading-relaxed">
-                    Medikal kalite azot gazı, sistem içerisinde iyonize edilerek nitrojen plazmaya dönüştürülür.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-[#F2EFE9] font-bold mb-3">RF kaynağı</h3>
-                  <p className="text-sm text-[#9AA6B8] leading-relaxed">
-                    Gazın plazma haline geçişi, cihaza entegre radyo frekans enerji kaynağı kullanılarak sağlanır.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-[#F2EFE9] font-bold mb-3">Uygulama nozulu</h3>
-                  <p className="text-sm text-[#9AA6B8] leading-relaxed">
-                    Üretilen plazma enerjisi, ergonomik tasarımlı el probu ve nozul aracılığıyla yüzeye iletilir.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-[#F2EFE9] font-bold mb-3">Kontrol ekranı</h3>
-                  <p className="text-sm text-[#9AA6B8] leading-relaxed">
-                    Cihazın üzerindeki entegre dokunmatik ekran sayesinde tüm sistem parametreleri yönetilir.
-                  </p>
+        {/* PLATFORM / FEATURES (Matte Light Surface) */}
+        <section className="bg-[#EBE7DF] text-[#061F28] py-24 md:py-40">
+          <div className="container mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
+              
+              {/* Image side */}
+              <div className="order-2 lg:order-1 relative group">
+                <div className="overflow-hidden bg-[#D9D3C8] aspect-[4/5] md:aspect-square w-full relative">
+                  <img 
+                    src={neogenPlatform} 
+                    alt="NeoGen Platformu" 
+                    className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
+                    loading="lazy" 
+                  />
+                  <div className="absolute inset-0 bg-[#04161C]/5 mix-blend-multiply pointer-events-none" />
                 </div>
               </div>
-            </motion.div>
 
-            {/* Video Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">Sistem Tanıtımı</h2>
-              <div className="h-0.5 w-6 bg-[#0D9488]"></div>
-            </motion.div>
+              {/* Text side */}
+              <div className="order-1 lg:order-2 flex flex-col justify-center pt-8">
+                <div className="mb-16">
+                  <span className="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#B69A72] mb-6">
+                    Teknoloji
+                  </span>
+                  <h2 className="font-display text-4xl md:text-6xl font-medium tracking-tight leading-[1.05]">
+                    Sistem Bileşenleri
+                  </h2>
+                </div>
 
-            {/* Video Player Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-6 sm:p-8 lg:p-12 flex flex-col">
-              <div className="relative aspect-video w-full bg-[#080C16]">
+                <div className="flex flex-col gap-10 md:gap-14">
+                  {/* Feature 1 */}
+                  <div className="flex flex-col gap-3 relative before:absolute before:-left-6 before:top-2 before:bottom-0 before:w-px before:bg-[#061F28]/10">
+                    <h3 className="text-xl md:text-2xl font-display font-medium text-[#04161C]">Nitrojen gazı</h3>
+                    <p className="text-[#061F28]/70 text-base md:text-lg font-light leading-relaxed max-w-md">
+                      Medikal kalite azot gazı, sistem içerisinde iyonize edilerek nitrojen plazmaya dönüştürülür.
+                    </p>
+                  </div>
+                  
+                  {/* Feature 2 */}
+                  <div className="flex flex-col gap-3 relative before:absolute before:-left-6 before:top-2 before:bottom-0 before:w-px before:bg-[#061F28]/10">
+                    <h3 className="text-xl md:text-2xl font-display font-medium text-[#04161C]">RF kaynağı</h3>
+                    <p className="text-[#061F28]/70 text-base md:text-lg font-light leading-relaxed max-w-md">
+                      Gazın plazma haline geçişi, cihaza entegre radyo frekans enerji kaynağı kullanılarak sağlanır.
+                    </p>
+                  </div>
+                  
+                  {/* Feature 3 */}
+                  <div className="flex flex-col gap-3 relative before:absolute before:-left-6 before:top-2 before:bottom-0 before:w-px before:bg-[#061F28]/10">
+                    <h3 className="text-xl md:text-2xl font-display font-medium text-[#04161C]">Uygulama nozulu</h3>
+                    <p className="text-[#061F28]/70 text-base md:text-lg font-light leading-relaxed max-w-md">
+                      Üretilen plazma enerjisi, ergonomik tasarımlı el probu ve nozul aracılığıyla yüzeye iletilir.
+                    </p>
+                  </div>
+                  
+                  {/* Feature 4 */}
+                  <div className="flex flex-col gap-3 relative before:absolute before:-left-6 before:top-2 before:bottom-0 before:w-px before:bg-[#061F28]/10">
+                    <h3 className="text-xl md:text-2xl font-display font-medium text-[#04161C]">Kontrol ekranı</h3>
+                    <p className="text-[#061F28]/70 text-base md:text-lg font-light leading-relaxed max-w-md">
+                      Cihazın üzerindeki entegre dokunmatik ekran sayesinde tüm sistem parametreleri yönetilir.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* VIDEO EXPERIENCE */}
+        <section className="bg-[#04161C] text-[#F4F1EA] py-24 md:py-40">
+          <div className="container mx-auto px-6 md:px-12">
+            <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+               <span className="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#B69A72] mb-6">
+                İşleyiş
+              </span>
+              <h2 className="font-display text-4xl md:text-6xl font-medium tracking-tight mb-8">
+                Sistem Tanıtımı
+              </h2>
+            </div>
+            
+            <div className="max-w-6xl mx-auto relative group">
+              <div className="relative aspect-video w-full bg-[#020A0D] overflow-hidden shadow-2xl ring-1 ring-white/10">
                 <video
                   src={getAssetUrl("/neogen-demo.mp4")}
                   poster={neogenTreatment}
@@ -158,76 +226,71 @@ export default function NeoGenPlasma() {
                 />
               </div>
               {videoError && (
-                <div className="mt-4 p-4 border border-[#182336] bg-[#0B101A] text-sm text-[#9AA6B8]">
-                  Medya yüklenemedi. <a href={getAssetUrl("/neogen-demo.mp4")} target="_blank" rel="noopener noreferrer" className="text-[#0D9488] hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0D9488]">Dosyayı doğrudan görüntülemek için tıklayın.</a>
+                <div className="mt-8 text-center text-[#8FA5AE] font-light">
+                  Medya yüklenemedi. <a href={getAssetUrl("/neogen-demo.mp4")} target="_blank" rel="noopener noreferrer" className="text-[#B69A72] hover:text-[#D9C8AF] transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B69A72] focus-visible:ring-offset-2 focus-visible:ring-offset-[#04161C]">Dosyayı doğrudan görüntülemek için tıklayın.</a>
                 </div>
               )}
-            </motion.div>
+            </div>
+          </div>
+        </section>
 
-            {/* Context Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">Etkinlikler</h2>
-              <div className="h-0.5 w-6 bg-[#0D9488]"></div>
-            </motion.div>
-
-            {/* Context Content Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-0 flex flex-col md:flex-row">
-              <Link href="/etkinliklerimiz" className="flex-1 p-2 sm:p-3 md:p-4 border-b md:border-b-0 md:border-r border-[#182336] group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0D9488]">
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#080C16]">
-                  <img 
-                    src={getAssetUrl("/events/paris-2026/1.jpg")} 
-                    alt="Paris IMCAS 2026 Kongresi" 
-                    className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-[filter,opacity] duration-500" 
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-4 left-4 bg-[#0B101A] text-[#F2EFE9] px-3 py-1.5 text-[10px] font-bold tracking-[0.2em] uppercase">
-                    Paris IMCAS 2026
-                  </div>
+        {/* CONTEXT / DISTRIBUTION (Warm mid-tone) */}
+        <section className="bg-[#1C2C32] text-[#F4F1EA] py-24 md:py-32 border-t border-white/5">
+          <div className="container mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+              
+              <div className="flex flex-col justify-between">
+                <div>
+                  <span className="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#B69A72] mb-6">
+                    Türkiye Distribütörü
+                  </span>
+                  <h2 className="font-display text-3xl md:text-5xl font-medium tracking-tight mb-8">
+                    EMCR Medikal
+                  </h2>
+                  <p className="text-[#8FA5AE] text-lg md:text-xl font-light leading-relaxed max-w-md mb-12">
+                    NeoGen Plasma sisteminin Türkiye distribütörü olarak ürün bilgisi, eğitim ve destek hizmetleri sunuyoruz.
+                  </p>
                 </div>
-              </Link>
-              <div className="flex-1 p-6 sm:p-8 flex flex-col justify-center">
-                <p className="text-[#9AA6B8] text-base leading-relaxed">
-                  Uluslararası kongreler ve medikal etkinliklerdeki güncel ürün sunumlarımızı inceleyin.
-                </p>
+                
+                <div>
+                  <Link 
+                    href="/teknik-destek" 
+                    className="inline-flex items-center text-sm md:text-base font-medium tracking-wider text-[#F4F1EA] hover:text-[#B69A72] transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B69A72] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C2C32]"
+                  >
+                    Teknik Destek Talebi
+                    <span className="ml-4 w-8 h-px bg-[#B69A72] group-hover:w-12 transition-all duration-300" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/10 pt-16 lg:pt-0 lg:pl-24">
+                <div>
+                  <span className="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#B69A72] mb-6">
+                    Kongre & Sunumlar
+                  </span>
+                  <h2 className="font-display text-3xl md:text-5xl font-medium tracking-tight mb-8">
+                    Etkinlikler
+                  </h2>
+                  <p className="text-[#8FA5AE] text-lg md:text-xl font-light leading-relaxed max-w-md mb-12">
+                    Uluslararası kongreler ve medikal etkinliklerdeki güncel ürün sunumlarımızı inceleyin.
+                  </p>
+                </div>
+                
                 <div>
                   <Link 
                     href="/etkinliklerimiz" 
-                    className="inline-flex items-center text-[11px] md:text-xs font-bold tracking-wider uppercase text-[#0D9488] hover:text-[#14B8A6] transition-colors mt-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2EFE9]"
+                    className="inline-flex items-center text-sm md:text-base font-medium tracking-wider text-[#F4F1EA] hover:text-[#B69A72] transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B69A72] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C2C32]"
                   >
-                    Tüm Etkinlikler &rarr;
+                    Tüm Etkinlikleri Görüntüle
+                    <span className="ml-4 w-8 h-px bg-[#B69A72] group-hover:w-12 transition-all duration-300" />
                   </Link>
                 </div>
               </div>
-            </motion.div>
 
-            {/* Distributor Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#9AA6B8] mb-4">Türkiye Distribütörü</h2>
-              <div className="h-0.5 w-6 bg-[#0D9488]"></div>
-            </motion.div>
+            </div>
+          </div>
+        </section>
 
-            {/* Distributor Content Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
-              <div className="flex flex-col space-y-6 text-[#F2EFE9] text-base md:text-lg leading-relaxed max-w-3xl">
-                <p>
-                  EMCR Medikal, NeoGen Plasma sisteminin Türkiye distribütörüdür.
-                </p>
-                <p>
-                  Ürün bilgisi, eğitim ve destek talepleriniz için ekibimizle iletişime geçebilirsiniz.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                  <Link 
-                    href="/teknik-destek" 
-                    className="inline-flex items-center justify-center bg-transparent border border-[#182336] text-[#F2EFE9] px-8 py-4 text-xs font-bold tracking-[0.15em] uppercase hover:border-[#9AA6B8] hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2EFE9]"
-                  >
-                    Teknik Destek
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-
-          </motion.div>
-        </div>
       </main>
 
       <Footer />
