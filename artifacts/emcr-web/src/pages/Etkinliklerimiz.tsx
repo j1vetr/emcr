@@ -1,16 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, X } from "lucide-react";
+import { X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.7, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
-  })
-};
 
 type EventItem = {
   slug: string;
@@ -72,10 +64,10 @@ const events: EventItem[] = [
   },
 ];
 
-const typeStyle: Record<string, { bg: string; text: string; border: string }> = {
-  Kongre:   { bg: "rgba(79,195,195,0.08)",  text: "rgba(79,195,195,0.85)",  border: "rgba(79,195,195,0.22)"  },
-  Eğitim:   { bg: "rgba(56,189,248,0.08)",  text: "rgba(56,189,248,0.85)",  border: "rgba(56,189,248,0.22)"  },
-  Workshop: { bg: "rgba(168,85,247,0.08)",  text: "rgba(168,85,247,0.85)",  border: "rgba(168,85,247,0.22)"  },
+const typeStyle: Record<string, { color: string; border: string }> = {
+  Kongre:   { color: "rgba(79,195,195,0.75)",  border: "rgba(79,195,195,0.25)"  },
+  Eğitim:   { color: "rgba(56,189,248,0.75)",  border: "rgba(56,189,248,0.25)"  },
+  Workshop: { color: "rgba(168,85,247,0.75)",  border: "rgba(168,85,247,0.25)"  },
 };
 
 function photoUrl(slug: string, n: number) {
@@ -86,129 +78,196 @@ export default function Etkinliklerimiz() {
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
+    <div className="min-h-screen bg-[#04080d] text-foreground font-sans">
       <Navbar />
 
-      {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative pt-36 pb-16 overflow-hidden">
+      {/* ── HERO ──────────────────────────────────────────────────── */}
+      <section className="relative pt-0 pb-0 overflow-hidden" style={{ minHeight: "520px" }}>
+        {/* Background: horizontal filmstrip of all cover photos */}
+        <div className="absolute inset-0 flex">
+          {events.map((ev, i) => (
+            <div key={ev.slug} className="flex-1 relative overflow-hidden">
+              <img
+                src={photoUrl(ev.slug, 1)}
+                alt=""
+                aria-hidden
+                className="w-full h-full object-cover"
+                style={{ filter: "brightness(0.28) saturate(0.6)" }}
+              />
+              {/* vertical seam */}
+              {i < events.length - 1 && (
+                <div className="absolute right-0 top-0 bottom-0 w-px bg-white/[0.06]" />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Dark gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#04080d]/70 via-transparent to-[#04080d]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#04080d]/60 via-transparent to-[#04080d]/60" />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 45% at 20% 0%, rgba(20,184,166,0.06) 0%, transparent 60%)" }}
+          style={{ background: "radial-gradient(ellipse 60% 55% at 50% 60%, rgba(20,184,166,0.08) 0%, transparent 70%)" }}
         />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
+
+        {/* Hero text — centered */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-6"
+          style={{ minHeight: "520px" }}>
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-5"
+            transition={{ duration: 0.7 }}
+            className="text-[11px] font-semibold tracking-[0.36em] uppercase text-primary/65 mb-6"
           >
-            Etkinliklerimiz
+            EMCR Medikal
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display font-bold leading-[1.05] max-w-2xl mb-5"
-            style={{ fontSize: "clamp(2.4rem, 4.5vw, 4.8rem)" }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display font-black leading-[0.95] tracking-[-0.02em] mb-6"
+            style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}
           >
-            Kongre, Eğitim{" "}
-            <span className="text-primary">ve Workshop</span>
+            Etkinliklerimiz
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.22 }}
-            className="text-foreground/48 text-lg leading-relaxed max-w-xl"
+            transition={{ duration: 0.7, delay: 0.22 }}
+            className="text-foreground/48 text-[15px] leading-relaxed max-w-md"
           >
-            EMCR Medikal olarak ulusal ve uluslararası etkinliklerde yer alıyor, doktor eğitimleri ve
-            workshop'lar düzenliyoruz.
+            Ulusal ve uluslararası kongre, eğitim ve workshop etkinliklerinden kareler.
           </motion.p>
+
+          {/* Scroll cue */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          >
+            <div className="w-px h-12 bg-gradient-to-b from-white/30 to-transparent" />
+          </motion.div>
         </div>
       </section>
 
-      {/* ── EVENT CARDS ─────────────────────────────────────── */}
-      <section className="pb-28">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 space-y-20">
+      {/* ── EVENTS ────────────────────────────────────────────────── */}
+      <section className="pt-10 pb-28">
+        <div className="max-w-[1440px] mx-auto">
           {events.map((ev, i) => {
             const col = typeStyle[ev.type];
+            const isEven = i % 2 === 0;
             const photos = Array.from({ length: ev.photoCount }, (_, k) => photoUrl(ev.slug, k + 1));
+            const [cover, ...rest] = photos;
 
             return (
-              <motion.div
+              <motion.article
                 key={ev.slug}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
-                variants={fadeUp}
+                initial={{ opacity: 0, y: 36 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                className="relative"
               >
-                {/* Event header */}
-                <div className="flex flex-wrap items-center gap-4 mb-6">
-                  <span
-                    className="text-[10.5px] font-semibold tracking-[0.18em] uppercase px-3 py-1 rounded-full border"
-                    style={{ background: col.bg, color: col.text, borderColor: col.border }}
-                  >
-                    {ev.type}
-                  </span>
-                  <span className="text-[11px] font-medium text-foreground/30 tracking-wide">
-                    {ev.year}
-                  </span>
-                  <span className="flex items-center gap-1.5 text-[11px] text-foreground/30">
-                    <MapPin size={11} className="opacity-60" />
-                    {ev.location}
-                  </span>
+                {/* Large index number watermark */}
+                <div
+                  className="absolute top-6 pointer-events-none select-none z-0 font-display font-black leading-none"
+                  style={{
+                    fontSize: "clamp(120px, 16vw, 200px)",
+                    color: "rgba(255,255,255,0.025)",
+                    letterSpacing: "-0.05em",
+                    [isEven ? "right" : "left"]: "1.5rem",
+                  }}
+                  aria-hidden
+                >
+                  {String(i + 1).padStart(2, "0")}
                 </div>
 
-                <h2
-                  className="font-display font-bold leading-tight mb-7"
-                  style={{ fontSize: "clamp(1.5rem, 2.4vw, 2rem)", color: "rgba(255,255,255,0.88)" }}
-                >
-                  {ev.title}
-                </h2>
+                <div className={`relative z-10 grid lg:grid-cols-2 gap-0 ${isEven ? "" : "lg:[direction:rtl]"}`}>
 
-                {/* Photo grid */}
-                <div
-                  className={`grid gap-2 ${
-                    photos.length >= 4
-                      ? "grid-cols-2 md:grid-cols-4"
-                      : photos.length === 3
-                      ? "grid-cols-1 md:grid-cols-3"
-                      : "grid-cols-1 md:grid-cols-2"
-                  }`}
-                >
-                  {photos.map((src, pi) => (
+                  {/* Featured photo */}
+                  <div className={`relative overflow-hidden ${isEven ? "lg:rounded-r-none" : "lg:rounded-l-none"}`}
+                    style={{ minHeight: "420px" }}>
                     <motion.button
-                      key={pi}
-                      whileHover={{ scale: 1.015 }}
-                      transition={{ duration: 0.25 }}
-                      className="relative overflow-hidden rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                      style={{ aspectRatio: "4/3" }}
-                      onClick={() => setLightbox({ src, title: ev.title })}
-                      aria-label={`${ev.title} fotoğraf ${pi + 1}`}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.4 }}
+                      className="w-full h-full block focus:outline-none"
+                      style={{ minHeight: "420px" }}
+                      onClick={() => setLightbox({ src: cover, title: ev.title })}
+                      aria-label={`${ev.title} — büyük fotoğraf`}
                     >
                       <img
-                        src={src}
-                        alt={`${ev.title} ${pi + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        src={cover}
+                        alt={ev.title}
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         decoding="async"
                       />
-                      <div className="absolute inset-0 bg-black/0 hover:bg-black/15 transition-colors duration-300" />
+                      <div className="absolute inset-0 bg-black/0 hover:bg-black/12 transition-colors duration-300" />
                     </motion.button>
-                  ))}
+                  </div>
+
+                  {/* Info + thumbnails */}
+                  <div
+                    className={`flex flex-col justify-center px-10 md:px-16 lg:px-20 py-16 lg:py-20 bg-[#060a14] ${isEven ? "" : "lg:[direction:ltr]"}`}
+                  >
+                    {/* Meta row */}
+                    <div className="flex items-center gap-3 mb-8">
+                      <span
+                        className="text-[10px] font-bold tracking-[0.22em] uppercase px-3 py-1 rounded-full border"
+                        style={{ color: col.color, borderColor: col.border, background: `${col.color.replace("0.75", "0.07")}` }}
+                      >
+                        {ev.type}
+                      </span>
+                      <span className="text-[11px] text-foreground/28 font-medium">{ev.location}</span>
+                      <span className="text-[11px] text-foreground/22">·</span>
+                      <span className="text-[11px] text-foreground/28 font-medium">{ev.year}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h2
+                      className="font-display font-black leading-[0.95] tracking-[-0.02em] mb-10 text-foreground/90"
+                      style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)" }}
+                    >
+                      {ev.title}
+                    </h2>
+
+                    {/* Thumbnail strip */}
+                    {rest.length > 0 && (
+                      <div className="grid grid-cols-3 gap-2">
+                        {rest.slice(0, 3).map((src, pi) => (
+                          <button
+                            key={pi}
+                            onClick={() => setLightbox({ src, title: ev.title })}
+                            aria-label={`${ev.title} fotoğraf ${pi + 2}`}
+                            className="relative overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary group"
+                            style={{ aspectRatio: "4/3" }}
+                          >
+                            <img
+                              src={src}
+                              alt=""
+                              className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-105"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-lg" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Divider */}
-                {i < events.length - 1 && (
-                  <div className="mt-20 h-px bg-white/[0.06]" />
-                )}
-              </motion.div>
+                <div className="h-px bg-white/[0.05] mx-10 md:mx-14" />
+              </motion.article>
             );
           })}
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="py-20 bg-[#070b17] relative overflow-hidden">
+      {/* ── CTA ───────────────────────────────────────────────────── */}
+      <section className="py-24 relative overflow-hidden" style={{ background: "#060a14" }}>
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(20,184,166,0.055) 0%, transparent 65%)" }}
@@ -218,8 +277,12 @@ export default function Etkinliklerimiz() {
             initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.75 }}
           >
-            <h2 className="font-display font-bold text-3xl md:text-4xl mb-5">
+            <h2
+              className="font-display font-bold leading-tight mb-5"
+              style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)" }}
+            >
               Etkinlik ve Eğitim Bilgileri{" "}
               <span className="text-primary">için Bize Ulaşın</span>
             </h2>
@@ -238,29 +301,29 @@ export default function Etkinliklerimiz() {
 
       <Footer />
 
-      {/* ── LIGHTBOX ─────────────────────────────────────────── */}
+      {/* ── LIGHTBOX ──────────────────────────────────────────────── */}
       <AnimatePresence>
         {lightbox && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/88 backdrop-blur-sm p-4"
             onClick={() => setLightbox(null)}
           >
             <motion.div
-              initial={{ scale: 0.94, opacity: 0 }}
+              initial={{ scale: 0.93, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.94, opacity: 0 }}
+              exit={{ scale: 0.93, opacity: 0 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="relative max-w-4xl w-full"
+              className="relative max-w-5xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={lightbox.src}
                 alt={lightbox.title}
-                className="w-full rounded-2xl object-contain max-h-[80vh]"
+                className="w-full rounded-2xl object-contain max-h-[82vh]"
               />
               <button
                 onClick={() => setLightbox(null)}
