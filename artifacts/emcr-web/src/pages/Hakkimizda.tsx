@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Award, Users, Zap } from "lucide-react";
+import { ShieldCheck, Users, Zap, Award } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -10,15 +10,6 @@ const fadeUp = {
     transition: { duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
   })
 };
-
-const certs = [
-  { title: "CE Sertifikası", sub: "NeoGen Plasma, Avrupa Uyum Belgesi" },
-  { title: "ISO 13485", sub: "Medikal Cihaz Kalite Yönetim Sistemi" },
-  { title: "FDA Clearance", sub: "UltraClear, ABD Onayı" },
-  { title: "TÜRKAK Akreditasyon", sub: "Teknik Servis Yetkilendirmesi" },
-  { title: "Distribütörlük Sözleşmesi", sub: "Energist UK, Türkiye Yetkili Distribütör" },
-  { title: "Distribütörlük Sözleşmesi", sub: "Actech, UltraClear Türkiye Yetkili Distribütör" },
-];
 
 const values = [
   {
@@ -67,8 +58,8 @@ export default function Hakkimizda() {
             className="font-display font-bold leading-[1.05] max-w-3xl"
             style={{ fontSize: "clamp(2.4rem, 4.5vw, 4.8rem)" }}
           >
-            Türkiye'nin Lider Medikal Estetik{" "}
-            <span className="text-primary">Distribütörü</span>
+            Türkiye'nin Medikal{" "}
+            <span className="text-primary">Teknolojiler Distribütörü</span>
           </motion.h1>
           <motion.div
             initial={{ opacity: 0 }}
@@ -104,44 +95,49 @@ export default function Hakkimizda() {
                 Hikayemiz
               </p>
               <h2 className="font-display font-bold text-3xl md:text-4xl mb-6 leading-tight">
-                Premium Teknolojiyi<br />
+                Seçkin Teknolojiyi<br />
                 <span className="text-primary">Kliniğinize Taşıyoruz</span>
               </h2>
               <p className="text-foreground/50 leading-relaxed mb-5">
-                EMCR Medikal, Türkiye medikal estetik pazarına dünya çapında tanınmış enerji
-                bazlı cihazları kazandırmak amacıyla kurulmuştur. Temel odak noktamız;
-                kliniklerin gerçek ihtiyaçlarına yanıt veren, klinik verilerle desteklenmiş
-                ve satış sonrası sağlam servis altyapısına sahip sistemleri seçip sunmaktır.
+                EMCR Medikal, Türkiye medikal estetik pazarına enerji bazlı cihazlar alanında
+                seçkin teknolojileri kazandırmak amacıyla kurulmuştur. Temel odak noktamız;
+                kliniklerin gerçek ihtiyaçlarına yanıt veren, satış sonrası sağlam servis
+                altyapısına sahip sistemleri titizlikle seçmek ve sunmaktır.
               </p>
               <p className="text-foreground/50 leading-relaxed">
-                Portföyümüzde yer alan her ürün, titiz bir seçim sürecinden geçerek
-                belirlenmektedir. NeoGen Plasma ile UltraClear, etkinlikleri, güvenliliği ve
-                klinik kanıtları ile Türk doktorlarının güvenilir tercihi olmayı
-                hak etmiştir.
+                Portföyümüzdeki her ürün, uzun soluklu teknik değerlendirme süreçlerinden
+                geçmektedir. NeoGen Plasma ve UltraClear, farklı cilt tiplerinde geniş
+                uygulama alanı sunan medikal teknoloji platformlarıdır.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { n: "2+", label: "Yıllık Garanti" },
-                { n: "I–VI", label: "Fitzpatrick Tüm Cilt Tipleri" },
-                { n: "2", label: "Premium Cihaz Markası" },
-                { n: "7/24", label: "Teknik Destek Hattı" },
-              ].map((s, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-primary/20 transition-all"
-                >
-                  <p className="font-display font-bold text-4xl text-primary mb-2">{s.n}</p>
-                  <p className="text-foreground/50 text-sm leading-snug">{s.label}</p>
-                </motion.div>
-              ))}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="relative rounded-3xl overflow-hidden border border-white/[0.06]"
+              style={{ minHeight: "340px" }}
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(20,184,166,0.08)_0%,_transparent_70%)]" />
+              <div className="relative z-10 p-10 flex flex-col justify-center h-full">
+                <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-primary/60 mb-4">Portföyümüz</p>
+                <div className="space-y-5">
+                  {[
+                    { label: "NeoGen Plasma", sub: "Nitrojen Plazma Teknolojisi" },
+                    { label: "UltraClear", sub: "2910 nm Cold Fiber Laser" },
+                  ].map((p, i) => (
+                    <div key={i} className="flex items-center gap-4 p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+                      <div className="w-2 h-2 rounded-full bg-primary/60 flex-shrink-0" />
+                      <div>
+                        <p className="font-semibold text-foreground/85">{p.label}</p>
+                        <p className="text-[12px] text-foreground/38 mt-0.5">{p.sub}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -182,53 +178,6 @@ export default function Hakkimizda() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Certificates */}
-      <section className="py-20 bg-[#070b17] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(79,195,195,0.05)_0%,_transparent_55%)] pointer-events-none" />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-14"
-          >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-4">
-              Belgeler & Sertifikalar
-            </p>
-            <h2 className="font-display font-bold text-3xl md:text-4xl max-w-xl leading-tight">
-              Uluslararası Onaylı{" "}
-              <span className="text-primary">Sertifikalar</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {certs.map((c, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                className="group flex items-start gap-5 p-6 rounded-2xl bg-white/[0.025] border border-white/[0.06] hover:border-primary/25 transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/8 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/12 transition-colors">
-                  <ShieldCheck className="w-5 h-5 text-primary/70" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-sm text-foreground/85 mb-1">{c.title}</h4>
-                  <p className="text-foreground/40 text-xs leading-relaxed">{c.sub}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="mt-8 text-foreground/25 text-sm text-center">
-            Sertifika belgeleri talep üzerine paylaşılmaktadır.
-          </p>
         </div>
       </section>
 

@@ -38,11 +38,6 @@ export default function Footer() {
                   UltraClear
                 </Link>
               </li>
-              <li>
-                <Link href="/tedavi-endikasyonlari" className="hover:text-primary transition-colors">
-                  Tedavi Endikasyonları
-                </Link>
-              </li>
             </ul>
           </div>
 

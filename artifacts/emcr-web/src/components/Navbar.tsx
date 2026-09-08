@@ -10,9 +10,7 @@ import ultraClearLogo from "@assets/ultraclear-logo.png";
 
 type Product = {
   label: string;
-  sub: string;
   href: string;
-  tag: string;
   logo: string;
   logoInvert: boolean;
   accentClass: string;
@@ -21,18 +19,14 @@ type Product = {
 const products: Product[] = [
   {
     label: "NeoGen Plasma",
-    sub: "Nitrogen Plasma Skin Regeneration",
     href: "/urunler/neogen-plasma",
-    tag: "FDA 510(k) · CE Mark",
     logo: neogenLogo,
     logoInvert: true,
     accentClass: "text-primary",
   },
   {
     label: "UltraClear",
-    sub: "2910 nm Cold Fiber Laser · 3DMIRACL®",
     href: "/urunler/ultraclear",
-    tag: "Trifecta 2025 · Best Laser",
     logo: ultraClearLogo,
     logoInvert: false,
     accentClass: "text-sky-300",
@@ -362,7 +356,6 @@ export default function Navbar() {
                                       />
                                       <div>
                                         <p className={`font-semibold text-[12px] ${p.accentClass}`}>{p.label}</p>
-                                        <p className="text-foreground/28 text-[10px]">{p.tag}</p>
                                       </div>
                                     </Link>
                                   ))}

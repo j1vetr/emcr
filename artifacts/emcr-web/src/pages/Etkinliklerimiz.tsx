@@ -1,262 +1,234 @@
-import { motion } from "framer-motion";
-import { Calendar, MapPin, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
+    transition: { duration: 0.7, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
   })
 };
 
-type Event = {
-  date: string;
+type EventItem = {
+  slug: string;
   title: string;
   location: string;
-  type: string;
-  desc: string;
-  upcoming?: boolean;
-  link?: string;
+  year: string;
+  type: "Kongre" | "Eğitim" | "Workshop";
+  photoCount: number;
 };
 
-const events: Event[] = [
+const events: EventItem[] = [
   {
-    date: "Eylül 2025",
-    title: "EADV Kongresi 2025",
-    location: "Amsterdam, Hollanda",
-    type: "Kongre",
-    desc: "Avrupa Dermatoloji ve Venereoloji Akademisi'nin yıllık kongresi. NeoGen Plasma ve UltraClear sistemleri ile klinik vaka sunumları.",
-    upcoming: true,
+    slug: "istanbul-ultraclear-2026",
+    title: "İstanbul UltraClear Workshop",
+    location: "İstanbul, Türkiye",
+    year: "2026",
+    type: "Workshop",
+    photoCount: 4,
   },
   {
-    date: "Kasım 2025",
-    title: "Türk Dermatoloji Kongresi 2025",
+    slug: "istanbul-neogen-2026",
+    title: "İstanbul NeoGen Workshop",
     location: "İstanbul, Türkiye",
-    type: "Kongre",
-    desc: "Türk Dermatoloji Derneği'nin yıllık kongresinde EMCR Medikal standı ve canlı demonstrasyonlar.",
-    upcoming: true,
+    year: "2026",
+    type: "Workshop",
+    photoCount: 4,
   },
   {
-    date: "Haziran 2025",
-    title: "EMCR Klinik Eğitim Günü",
-    location: "İstanbul, Türkiye",
+    slug: "almanya-2026",
+    title: "Almanya UltraClear Eğitimi",
+    location: "Almanya",
+    year: "2026",
     type: "Eğitim",
-    desc: "NeoGen Plasma ve UltraClear kullanıcıları için protokol güncellemeleri, vaka paylaşımları ve uygulamalı eğitim.",
-    upcoming: true,
+    photoCount: 4,
   },
   {
-    date: "Nisan 2025",
-    title: "IMCAS World Congress 2025",
+    slug: "ingiltere-2026",
+    title: "İngiltere NeoGen Eğitimi",
+    location: "İngiltere",
+    year: "2026",
+    type: "Eğitim",
+    photoCount: 4,
+  },
+  {
+    slug: "paris-2026",
+    title: "Paris İMCAS 2026",
     location: "Paris, Fransa",
+    year: "2026",
     type: "Kongre",
-    desc: "Dünya çapında medikal estetik profesyonellerini bir araya getiren prestijli kongre. Soğuk ablasyon teknolojisi oturumu.",
+    photoCount: 4,
   },
   {
-    date: "Mart 2025",
-    title: "UltraClear Lansman Eğitimi",
-    location: "İstanbul, Türkiye",
-    type: "Eğitim",
-    desc: "UltraClear lazer sisteminin Türkiye lansmanı kapsamında gerçekleştirilen ilk kullanıcı eğitim günü.",
-  },
-  {
-    date: "Kasım 2024",
-    title: "Türk Dermatoloji Kongresi 2024",
-    location: "Antalya, Türkiye",
+    slug: "paris-2025",
+    title: "Paris İMCAS 2025",
+    location: "Paris, Fransa",
+    year: "2025",
     type: "Kongre",
-    desc: "EMCR Medikal, NeoGen Plasma ile Türk Dermatoloji Kongresi'nde en çok ilgi gören standlar arasında yer aldı.",
-  },
-  {
-    date: "Eylül 2024",
-    title: "EADV Kongresi 2024",
-    location: "Viyana, Avusturya",
-    type: "Kongre",
-    desc: "Avrupa'nın en büyük dermatoloji kongresinde NeoGen Plasma klinik verileri sunuldu, EMCR ekibi temsil etti.",
-  },
-  {
-    date: "Temmuz 2024",
-    title: "NeoGen Plasma Doktor Eğitimi",
-    location: "Ankara, Türkiye",
-    type: "Eğitim",
-    desc: "Merkezi Anadolu bölgesi klinikleri için NeoGen Plasma protokol eğitimi ve uygulamalı sertifikasyon günü.",
-  },
-  {
-    date: "Mayıs 2024",
-    title: "AMWC Medikal Estetik Kongresi",
-    location: "Monaco",
-    type: "Kongre",
-    desc: "Dünya Medikal Estetik Kongresi'nde NeoGen ve UltraClear teknolojileri uluslararası meslektaşlarla paylaşıldı.",
+    photoCount: 5,
   },
 ];
 
-const typeColors: Record<string, { bg: string; text: string; border: string }> = {
-  Kongre: { bg: "rgba(79,195,195,0.08)", text: "rgba(79,195,195,0.8)", border: "rgba(79,195,195,0.2)" },
-  Eğitim: { bg: "rgba(56,189,248,0.08)", text: "rgba(56,189,248,0.8)", border: "rgba(56,189,248,0.2)" },
-  Demo: { bg: "rgba(168,85,247,0.08)", text: "rgba(168,85,247,0.8)", border: "rgba(168,85,247,0.2)" },
+const typeStyle: Record<string, { bg: string; text: string; border: string }> = {
+  Kongre:   { bg: "rgba(79,195,195,0.08)",  text: "rgba(79,195,195,0.85)",  border: "rgba(79,195,195,0.22)"  },
+  Eğitim:   { bg: "rgba(56,189,248,0.08)",  text: "rgba(56,189,248,0.85)",  border: "rgba(56,189,248,0.22)"  },
+  Workshop: { bg: "rgba(168,85,247,0.08)",  text: "rgba(168,85,247,0.85)",  border: "rgba(168,85,247,0.22)"  },
 };
 
+function photoUrl(slug: string, n: number) {
+  return `/events/${slug}/${n}.jpg`;
+}
+
 export default function Etkinliklerimiz() {
-  const upcoming = events.filter((e) => e.upcoming);
-  const past = events.filter((e) => !e.upcoming);
+  const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(79,195,195,0.06)_0%,_transparent_55%)] pointer-events-none" />
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative pt-36 pb-16 overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 45% at 20% 0%, rgba(20,184,166,0.06) 0%, transparent 60%)" }}
+        />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-6"
+            className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-5"
           >
             Etkinliklerimiz
           </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-display font-bold leading-[1.05] max-w-2xl mb-6"
+            className="font-display font-bold leading-[1.05] max-w-2xl mb-5"
             style={{ fontSize: "clamp(2.4rem, 4.5vw, 4.8rem)" }}
           >
-            Kongre, Eğitim &{" "}
-            <span className="text-primary">Demo Günleri</span>
+            Kongre, Eğitim{" "}
+            <span className="text-primary">ve Workshop</span>
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25 }}
-            className="text-foreground/50 text-lg leading-relaxed max-w-xl"
+            transition={{ delay: 0.22 }}
+            className="text-foreground/48 text-lg leading-relaxed max-w-xl"
           >
-            EMCR Medikal olarak ulusal ve uluslararası medikal estetik etkinliklerinde aktif
-            rol alıyor, klinik eğitimler ve demonstrasyon günleri düzenliyoruz.
+            EMCR Medikal olarak ulusal ve uluslararası etkinliklerde yer alıyor, doktor eğitimleri ve
+            workshop'lar düzenliyoruz.
           </motion.p>
         </div>
       </section>
 
-      {/* Upcoming */}
-      {upcoming.length > 0 && (
-        <section className="py-16 bg-[#080c18] relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(79,195,195,0.04)_0%,_transparent_60%)] pointer-events-none" />
-          <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-            <div className="flex items-center gap-4 mb-10">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/70">
-                Yaklaşan Etkinlikler
-              </p>
-            </div>
+      {/* ── EVENT CARDS ─────────────────────────────────────── */}
+      <section className="pb-28">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-14 space-y-20">
+          {events.map((ev, i) => {
+            const col = typeStyle[ev.type];
+            const photos = Array.from({ length: ev.photoCount }, (_, k) => photoUrl(ev.slug, k + 1));
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {upcoming.map((ev, i) => {
-                const col = typeColors[ev.type] ?? typeColors["Kongre"];
-                return (
-                  <motion.div
-                    key={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={i}
-                    className="p-7 rounded-2xl bg-white/[0.03] border border-primary/20 hover:border-primary/35 transition-all duration-300 group relative overflow-hidden"
-                  >
-                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-                    <div
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider mb-5 border"
-                      style={{ background: col.bg, color: col.text, borderColor: col.border }}
-                    >
-                      {ev.type}
-                    </div>
-                    <h3 className="font-display font-bold text-xl mb-3 group-hover:text-primary transition-colors">{ev.title}</h3>
-                    <p className="text-foreground/45 text-sm leading-relaxed mb-6">{ev.desc}</p>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-xs text-foreground/35">
-                        <Calendar size={12} className="text-primary/50" />
-                        {ev.date}
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-foreground/35">
-                        <MapPin size={12} className="text-primary/50" />
-                        {ev.location}
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Past Events */}
-      <section className="py-20 relative">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14">
-          <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-foreground/30 mb-10">
-            Geçmiş Etkinlikler
-          </p>
-
-          <div className="space-y-3">
-            {past.map((ev, i) => {
-              const col = typeColors[ev.type] ?? typeColors["Kongre"];
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  className="flex flex-col md:flex-row md:items-center gap-5 p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.03] transition-all duration-300 group"
-                >
-                  <div className="md:w-28 flex-shrink-0">
-                    <p className="text-sm text-foreground/30 font-medium">{ev.date}</p>
-                  </div>
-                  <div
-                    className="hidden md:flex items-center justify-center w-20 flex-shrink-0 px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider border"
+            return (
+              <motion.div
+                key={ev.slug}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                variants={fadeUp}
+              >
+                {/* Event header */}
+                <div className="flex flex-wrap items-center gap-4 mb-6">
+                  <span
+                    className="text-[10.5px] font-semibold tracking-[0.18em] uppercase px-3 py-1 rounded-full border"
                     style={{ background: col.bg, color: col.text, borderColor: col.border }}
                   >
                     {ev.type}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-base text-foreground/80 group-hover:text-foreground/95 transition-colors mb-1">{ev.title}</h3>
-                    <p className="text-foreground/40 text-sm leading-relaxed line-clamp-1">{ev.desc}</p>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-foreground/30 flex-shrink-0">
-                    <MapPin size={12} />
+                  </span>
+                  <span className="text-[11px] font-medium text-foreground/30 tracking-wide">
+                    {ev.year}
+                  </span>
+                  <span className="flex items-center gap-1.5 text-[11px] text-foreground/30">
+                    <MapPin size={11} className="opacity-60" />
                     {ev.location}
-                  </div>
-                  {ev.link && (
-                    <a href={ev.link} target="_blank" rel="noopener noreferrer" className="text-foreground/25 hover:text-primary transition-colors flex-shrink-0">
-                      <ExternalLink size={15} />
-                    </a>
-                  )}
-                </motion.div>
-              );
-            })}
-          </div>
+                  </span>
+                </div>
+
+                <h2
+                  className="font-display font-bold leading-tight mb-7"
+                  style={{ fontSize: "clamp(1.5rem, 2.4vw, 2rem)", color: "rgba(255,255,255,0.88)" }}
+                >
+                  {ev.title}
+                </h2>
+
+                {/* Photo grid */}
+                <div
+                  className={`grid gap-2 ${
+                    photos.length >= 4
+                      ? "grid-cols-2 md:grid-cols-4"
+                      : photos.length === 3
+                      ? "grid-cols-1 md:grid-cols-3"
+                      : "grid-cols-1 md:grid-cols-2"
+                  }`}
+                >
+                  {photos.map((src, pi) => (
+                    <motion.button
+                      key={pi}
+                      whileHover={{ scale: 1.015 }}
+                      transition={{ duration: 0.25 }}
+                      className="relative overflow-hidden rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                      style={{ aspectRatio: "4/3" }}
+                      onClick={() => setLightbox({ src, title: ev.title })}
+                      aria-label={`${ev.title} fotoğraf ${pi + 1}`}
+                    >
+                      <img
+                        src={src}
+                        alt={`${ev.title} ${pi + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="absolute inset-0 bg-black/0 hover:bg-black/15 transition-colors duration-300" />
+                    </motion.button>
+                  ))}
+                </div>
+
+                {/* Divider */}
+                {i < events.length - 1 && (
+                  <div className="mt-20 h-px bg-white/[0.06]" />
+                )}
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── CTA ──────────────────────────────────────────────── */}
       <section className="py-20 bg-[#070b17] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(79,195,195,0.06)_0%,_transparent_60%)] pointer-events-none" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(20,184,166,0.055) 0%, transparent 65%)" }}
+        />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <h2 className="font-display font-bold text-3xl md:text-4xl mb-5">
-              Etkinlik Ve Eğitim Bilgileri İçin{" "}
-              <span className="text-primary">Bize Ulaşın</span>
+              Etkinlik ve Eğitim Bilgileri{" "}
+              <span className="text-primary">için Bize Ulaşın</span>
             </h2>
-            <p className="text-foreground/45 max-w-lg mx-auto mb-8">
-              Yaklaşan etkinliklerimiz, özel eğitim günleri veya demo talepleri için iletişime geçebilirsiniz.
+            <p className="text-foreground/42 max-w-lg mx-auto mb-8 text-[15px] leading-relaxed">
+              Yaklaşan etkinliklerimiz veya özel demo talepleri için iletişime geçebilirsiniz.
             </p>
             <a
               href="mailto:info@emcr.com.tr"
-              className="inline-flex items-center gap-2 h-12 px-8 text-[14px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-sm transition-all"
+              className="inline-flex items-center gap-2 h-12 px-8 text-[14px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-xl transition-all"
             >
               İletişime Geç
             </a>
@@ -265,6 +237,42 @@ export default function Etkinliklerimiz() {
       </section>
 
       <Footer />
+
+      {/* ── LIGHTBOX ─────────────────────────────────────────── */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
+            onClick={() => setLightbox(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="relative max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={lightbox.src}
+                alt={lightbox.title}
+                className="w-full rounded-2xl object-contain max-h-[80vh]"
+              />
+              <button
+                onClick={() => setLightbox(null)}
+                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all"
+                aria-label="Kapat"
+              >
+                <X size={16} />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

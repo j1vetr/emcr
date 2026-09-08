@@ -34,12 +34,12 @@ const fadeUp = {
 };
 
 const baPatients = [
-  { img: baRef1, label: "Yüz Yenileme · 1 Seans" },
-  { img: baRef2, label: "Cilt Tonu Eşitleme · 2 Seans" },
-  { img: baRef3, label: "Derin Dermal Yenilenme · 1 Seans" },
-  { img: baRef4, label: "Leke & Ton Düzeltme · 2 Seans" },
-  { img: baRef5, label: "Göz Çevresi & Cilt Tonu · 1 Seans" },
-  { img: baRef6, label: "Sıkılaştırma & Yenileme · 3 Seans" },
+  { img: baRef1, label: "Yüz Yenileme" },
+  { img: baRef2, label: "Cilt Tonu Eşitleme" },
+  { img: baRef3, label: "Derin Dermal Yenilenme" },
+  { img: baRef4, label: "Leke ve Ton Düzeltme" },
+  { img: baRef5, label: "Göz Çevresi ve Cilt Tonu" },
+  { img: baRef6, label: "Sıkılaştırma ve Yenileme" },
 ];
 
 const ucPatients = [
@@ -234,7 +234,7 @@ export default function Home() {
               className="mt-8 text-[15px] text-foreground/45 leading-[1.85] max-w-[480px] mx-auto"
             >
               NeoGen Plasma ve UltraClear sistemlerinin Türkiye yetkili distribütörü.
-              Kliniğiniz için FDA onaylı, klinik kanıtlı premium teknoloji.
+              Klinikler için medikal teknoloji, eğitim ve teknik destek.
             </motion.p>
 
             {/* CTAs */}
@@ -351,7 +351,7 @@ export default function Home() {
               className="max-w-[520px]"
             >
               <img src={neogenLogo} alt="NeoGen" className="w-full max-w-[240px] mb-10 invert opacity-95" />
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-5">
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-5" lang="en">
                 Nitrogen Plasma
               </p>
               <h2 className="font-display font-bold leading-[1.05] mb-6" style={{ fontSize: "clamp(2.4rem, 3.6vw, 4rem)" }}>
@@ -360,8 +360,8 @@ export default function Home() {
               </h2>
               <p className="text-foreground/50 text-base leading-relaxed mb-10">
                 NeoGen Plasma, nitrogen gazını plazma enerjisine dönüştürerek cilt yüzeyi
-                korunurken derin dermal yenilenme sağlar. Kontrollü termal etki,
-                protokol esnekliği ve üstün klinik sonuçlar tek sistemde.
+                korunurken derin dermal yenilenme sağlar. Kontrollü termal etki ve
+                protokol esnekliğiyle geniş bir uygulama yelpazesi sunar.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-10">
@@ -409,7 +409,7 @@ export default function Home() {
           <div className="flex items-end justify-between mb-10">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-3">
-                KLİNİK KANIT · NeoGen Plasma
+                NeoGen Plasma
               </p>
               <h2 className="font-display font-bold leading-[1]" style={{ fontSize: "clamp(2.2rem, 4.5vw, 4.5rem)" }}>
                 Gerçek Sonuçlar.
@@ -530,8 +530,8 @@ export default function Home() {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="absolute z-20 top-[22%] left-20 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/5 border border-sky-400/20"
           >
-            <p className="text-[9px] tracking-[0.25em] uppercase text-sky-400/70 mb-0.5">Teknoloji</p>
-            <p className="text-[13px] font-semibold text-foreground/90">Soğuk Ablasyon</p>
+            <p className="text-[9px] tracking-[0.25em] uppercase text-sky-400/70 mb-0.5">Dalga Boyu</p>
+            <p className="text-[13px] font-semibold text-foreground/90">2910 nm</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -557,7 +557,7 @@ export default function Home() {
               <div className="flex items-center gap-3 mb-7">
                 <div className="w-8 h-px bg-sky-400/60" />
                 <p className="text-[10px] font-semibold tracking-[0.35em] text-sky-400/70">
-                  SOĞUK ABLASYON · CO₂ LAZER
+                  2910 NM · COLD FIBER LASER
                 </p>
               </div>
 
@@ -614,7 +614,7 @@ export default function Home() {
           <div className="flex items-end justify-between mb-10">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-3">
-                KLİNİK KANIT · UltraClear™
+                UltraClear™
               </p>
               <h2 className="font-display font-bold leading-[1]" style={{ fontSize: "clamp(2.2rem, 4.5vw, 4.5rem)" }}>
                 Gerçek Sonuçlar.

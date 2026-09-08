@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import {
   ChevronRight, ShieldCheck, Play, Pause, ArrowRight,
-  Zap, Layers, Activity, Star, Clock,
+  Zap, Layers, Activity,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -43,10 +43,8 @@ const mechanisms = [
     icon: Zap,
     title: "Cilt Sıkılaştırma",
     subtitle: "Skin Tightening",
-    desc: "Plazma darbesi cilde çarptığında termal enerji ani bir ısıya dönüşür ve doku hemen kontrakte olur. Bu anlık sıkılaşma görünür kırışıklık azalmasını tetikler.",
-    detail: "Stratum corneum ve epidermal katmanlar tedavi boyunca bütünlüğünü korur, doğal bir biyolojik pansuman görevi üstlenir. Ablative teknolojilerdeki komplikasyon riskleri en aza indirilir.",
-    downtime: "1–3 gün",
-    result: "Anlık doku kontraksiyonu",
+    desc: "Plazma darbesi cilde çarptığında termal enerji ani bir ısıya dönüşür ve doku kontrakte olur. Bu anlık sıkılaşma kırışıklık görünümünü azaltır.",
+    detail: "Stratum corneum ve epidermal katmanlar bütünlüğünü korur, doğal bir biyolojik pansuman görevi üstlenir. Protokole göre 1–3 gün iyileşme beklenir.",
   },
   {
     n: "02",
@@ -54,41 +52,29 @@ const mechanisms = [
     title: "Yüzey Yenileme",
     subtitle: "Skin Resurfacing",
     desc: "İyileşme bölgesi (Zone of Thermal Damage) ile modifikasyon bölgesi (Zone of Thermal Modification) arasında yeni bir epidermis oluşur.",
-    detail: "Derinin doğal bariyeri korunduğu için enfeksiyon riski ve komplikasyonlar klasik ablative yöntemlere kıyasla belirgin şekilde azdır. Düşük enerjide 1–2 gün, yüksek enerjide 3–5 gün iyileşme.",
-    downtime: "3–5 gün",
-    result: "Tam yüzey tedavisi",
+    detail: "Derinin doğal bariyeri korunur. Düşük enerjide 1–2 gün, yüksek enerjide 3–5 gün iyileşme süreci beklenir.",
   },
   {
     n: "03",
     icon: Activity,
     title: "Derin Rejenerasyon",
     subtitle: "Skin Regeneration",
-    desc: "Tüm cilt yüzeyi tedavi edilir, ablative teknolojilerdeki gibi tedavisiz adacıklar oluşmaz. Retikular dermise kadar uzanan yeniden modelleme kaskadı başlatılır.",
-    detail: "Neokollajenizasyon, neovaskülarizasyon ve fibroblast migrasyonu ile uzun dönemli çalışmalar tedaviden 12 ay sonrasına kadar süren kolajen üretimini belgelemektedir.",
-    downtime: "5–7 gün",
-    result: "12 ay kolajen üretimi",
+    desc: "Tüm cilt yüzeyi kapsanır. Retikular dermise kadar uzanan yeniden modelleme kaskadı başlatılır.",
+    detail: "Neokollajenizasyon, neovaskülarizasyon ve fibroblast migrasyonunu kapsayan derin bir dermal yenilenme süreci tetiklenir.",
   },
 ];
 
-const clinicalStats = [
-  { value: "12", unit: "Ay", label: "Belgelenmiş Kolajen Üretimi", icon: Clock },
-  { value: "7", unit: "", label: "FDA 510(k) Onaylı Endikasyon", icon: ShieldCheck },
-  { value: "I–VI", unit: "", label: "Tüm Fitzpatrick Cilt Tipleri", icon: Star },
-  { value: "15", unit: "ms", label: "Kontrollü Nabız Süresi", icon: Zap },
-  { value: "0.5–4", unit: "J", label: "Ayarlanabilir Enerji Aralığı", icon: Activity },
-];
-
 const indications = [
-  { label: "Yüz Kırışıklıkları (Facial Rhytides)", fda: true },
-  { label: "Yüz Dışı Kırışıklıklar (Non-facial Rhytides)", fda: true },
-  { label: "Akne İzleri (Acne Scars)", fda: true },
-  { label: "Pigmente Lezyonlar (Pigmented Lesions)", fda: true },
-  { label: "Aktinik Keratoz (Actinic Keratosis)", fda: true },
-  { label: "Seboreik Keratoz (Seborrhoeic Keratosis)", fda: true },
-  { label: "Viral Papilloma (Viral Papillomata)", fda: true },
-  { label: "Cilt Laksitesi ve Sarkma", fda: false },
-  { label: "Göz Çevresi (Periorbital) Bölge", fda: false },
-  { label: "Vücut Cilt Yenilemesi", fda: false },
+  { label: "Yüz Kırışıklıkları (Facial Rhytides)" },
+  { label: "Yüz Dışı Kırışıklıklar (Non-facial Rhytides)" },
+  { label: "Akne İzleri (Acne Scars)" },
+  { label: "Pigmente Lezyonlar (Pigmented Lesions)" },
+  { label: "Aktinik Keratoz (Actinic Keratosis)" },
+  { label: "Seboreik Keratoz (Seborrhoeic Keratosis)" },
+  { label: "Viral Papilloma (Viral Papillomata)" },
+  { label: "Cilt Laksitesi ve Sarkma" },
+  { label: "Göz Çevresi (Periorbital) Bölge" },
+  { label: "Vücut Cilt Yenilemesi" },
 ];
 
 const specs = [
@@ -101,7 +87,6 @@ const specs = [
   { label: "Yüzey Sıcaklığı", value: "70 – 165 °C / 15 ms nabız" },
   { label: "Cihaz Sınıfı", value: "Class IIb" },
   { label: "Cilt Tipi", value: "Fitzpatrick I–VI Tüm Tipler" },
-  { label: "Onay", value: "CE Mark · FDA 510(k) K132754" },
   { label: "Sistem Ağırlığı", value: "18 kg" },
   { label: "Boyutlar", value: "470 × 430 × 1060 mm" },
 ];
@@ -182,7 +167,7 @@ export default function NeoGenPlasma() {
               {/* Eyebrow */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px w-5 bg-primary/55" />
-                <span className="text-[10px] font-medium tracking-[0.28em] uppercase text-primary/65">
+                <span className="text-[10px] font-medium tracking-[0.28em] uppercase text-primary/65" lang="en">
                   Nitrogen Plasma Skin Regeneration
                 </span>
               </div>
@@ -209,21 +194,9 @@ export default function NeoGenPlasma() {
               </h1>
 
               <p className="text-[14.5px] text-foreground/42 leading-[1.85] mb-8 max-w-[420px]">
-                Azot gazını plazma enerjisine dönüştüren tek sistem. Cilt yüzeyini
-                korurken dermal katta 12 aya uzanan kolajen rejenerasyonu.
+                Azot gazını plazma enerjisine dönüştüren sistem. Cilt yüzeyini
+                korurken derin dermal yenilenme süreci başlatır.
               </p>
-
-              {/* Badges */}
-              <div className="flex flex-wrap items-center gap-2 mb-9">
-                {["CE Mark", "FDA 510(k)", "7 Endikasyon", "Fitzpatrick I–VI"].map((b) => (
-                  <span
-                    key={b}
-                    className="text-[9.5px] font-medium tracking-[0.16em] uppercase px-3 py-1.5 rounded-full border border-primary/20 text-primary/60 bg-primary/[0.04]"
-                  >
-                    {b}
-                  </span>
-                ))}
-              </div>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3">
@@ -292,25 +265,6 @@ export default function NeoGenPlasma() {
                   </span>
                 </div>
               </div>
-              {/* Floating stat card */}
-              <div
-                className="absolute -bottom-5 -right-5 p-5 rounded-2xl border border-white/[0.09] bg-[#060a14]/90 backdrop-blur-md"
-                style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.5)" }}
-              >
-                <p
-                  className="font-display font-black leading-none mb-1"
-                  style={{
-                    fontSize: "2.4rem",
-                    background: "linear-gradient(135deg, #14b8a6, #38bdf8)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  12<span className="text-[55%] ml-1">Ay</span>
-                </p>
-                <p className="text-[11px] text-foreground/40 tracking-wide">Kolajen Üretimi</p>
-              </div>
             </motion.div>
 
             {/* Right: Technology text */}
@@ -357,7 +311,7 @@ export default function NeoGenPlasma() {
                   Azot plazması belirli bir kromofor hedefine veya dalga boyuna bağlı değildir.
                   Penetrasyon derinliği cildin nem düzeyi ile yönetilir, bu sayede{" "}
                   <span className="text-foreground/80 font-medium">Fitzpatrick I'den VI'ya tüm cilt tonlarında</span>{" "}
-                  güvenle kullanılır. Hipopiğmentasyon riski yoktur.
+                  güvenle kullanılır.
                 </p>
               </div>
 
@@ -458,7 +412,7 @@ export default function NeoGenPlasma() {
                   <h3 className="font-display font-black text-[1.25rem] text-foreground/90 mb-1 group-hover:text-foreground transition-colors">
                     {m.title}
                   </h3>
-                  <p className="text-[9.5px] tracking-[0.2em] uppercase text-primary/40 mb-5 font-medium">
+                  <p className="text-[9.5px] tracking-[0.2em] uppercase text-primary/40 mb-5 font-medium" lang="en">
                     {m.subtitle}
                   </p>
                   <p className="text-[14px] text-foreground/50 leading-[1.85] mb-5">
@@ -468,58 +422,11 @@ export default function NeoGenPlasma() {
                     {m.detail}
                   </p>
 
-                  {/* Footer */}
-                  <div className="border-t border-white/[0.06] pt-5 flex items-center justify-between">
-                    <div>
-                      <p className="text-[9px] tracking-widest uppercase text-foreground/25 mb-1">İyileşme</p>
-                      <p className="text-[13px] font-semibold text-primary/80">{m.downtime}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-[9px] tracking-widest uppercase text-foreground/25 mb-1">Sonuç</p>
-                      <p className="text-[12px] text-foreground/45">{m.result}</p>
-                    </div>
-                  </div>
                 </motion.div>
               );
             })}
           </div>
         </div>
-      </section>
-
-      {/* ── CLINICAL STATS ───────────────────────────────────────── */}
-      <section className="py-0 relative overflow-hidden bg-[#060a14]">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14">
-          <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-y md:divide-y-0 divide-white/[0.05]">
-            {clinicalStats.map((s, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i * 0.5}
-                className="px-6 py-10 md:py-12 hover:bg-white/[0.015] transition-colors group"
-              >
-                <p
-                  className="font-display font-black leading-none mb-2"
-                  style={{
-                    fontSize: "clamp(2rem, 3.2vw, 3rem)",
-                    background: "linear-gradient(135deg, #14b8a6, #38bdf8)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  {s.value}
-                  {s.unit && <span className="text-[55%] ml-1 opacity-80">{s.unit}</span>}
-                </p>
-                <p className="text-[12px] text-foreground/38 leading-snug mt-1">{s.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       </section>
 
       {/* ── INDICATIONS + SPECS ──────────────────────────────────── */}
@@ -562,15 +469,6 @@ export default function NeoGenPlasma() {
                   Kullanılır?
                 </span>
               </h2>
-              <div className="flex items-center gap-3 mb-8">
-                <span className="inline-flex items-center gap-1.5 text-[12px] text-foreground/40">
-                  <span className="w-2 h-2 rounded-full bg-primary/60 inline-block" />
-                  FDA 510(k) onaylı
-                </span>
-                <span className="text-foreground/15">·</span>
-                <span className="text-[12px] text-foreground/30">7 / 10 endikasyon FDA onaylı</span>
-              </div>
-
               <div className="space-y-0">
                 {indications.map((ind, i) => (
                   <motion.div
@@ -586,13 +484,6 @@ export default function NeoGenPlasma() {
                     <span className="text-[14px] text-foreground/60 group-hover:text-foreground/82 transition-colors flex-1 leading-snug">
                       {ind.label}
                     </span>
-                    {ind.fda ? (
-                      <span className="text-[9px] tracking-[0.15em] font-semibold text-primary/65 border border-primary/25 rounded-full px-2.5 py-1 flex-shrink-0 bg-primary/[0.06]">
-                        FDA
-                      </span>
-                    ) : (
-                      <span className="text-[9px] tracking-[0.12em] text-foreground/22 flex-shrink-0 w-10" />
-                    )}
                   </motion.div>
                 ))}
               </div>
@@ -654,7 +545,7 @@ export default function NeoGenPlasma() {
                     </p>
                     <p className="text-[13px] text-foreground/42 leading-[1.8]">
                       EMCR Medikal Teknolojiler, NeoGen Plasma'nın Türkiye yetkili distribütörüdür.
-                      Kurulum, sertifikalı eğitim ve tam teknik servis güvencesiyle teslim edilmektedir.
+                      Kurulum, eğitim ve teknik servis hizmetleri kapsamlıdır.
                     </p>
                   </div>
                 </div>
@@ -755,7 +646,7 @@ export default function NeoGenPlasma() {
               viewport={{ once: true }}
             >
               <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-4">
-                Klinik Kanıt
+                Uygulama Sonuçları
               </p>
               <h2
                 className="font-display font-black leading-[0.94] tracking-[-0.022em]"

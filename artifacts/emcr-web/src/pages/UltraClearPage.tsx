@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ChevronRight, ShieldCheck, Award, ArrowRight } from "lucide-react";
+import { ChevronRight, ShieldCheck, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ucDeviceImg from "@assets/ultraclear-device.webp";
@@ -23,33 +23,6 @@ const ucPatients = [
   { img: ucRef6, label: "Akne İzleri" },
 ];
 
-const awards = [
-  { pub: "NewBeauty", award: "Beauty Choice Award", cat: "Best Laser Resurfacing", year: "2025" },
-  { pub: "Allure", award: "Best of Beauty", cat: "Best In-Office Treatment", year: "2025" },
-  { pub: "Harper's Bazaar", award: "Anti-Aging Award", cat: "Best Skin Resurfacing Innovation", year: "2025" },
-];
-
-const modes = [
-  {
-    n: "01", title: "Non-Ablative", downtime: "0 gün",
-    desc: "Sıfır iyileşme süresi. Kolajen stimülasyonu, cilt tonu iyileştirme ve genel parlaklık artışı. Sosyal hayata aynı gün dönüş.",
-    detail: "3DIntelliPulse® teknolojisi ablasyon enerjisini kontrollü şekilde sunarken kollateral ısıl hasarı minimumda tutar.",
-    tag: "Sıfır Downtime",
-  },
-  {
-    n: "02", title: "Micro-Ablative", downtime: "1–3 gün",
-    desc: "Orta seviye yenileme. İnce çizgiler, doku düzensizliği ve pigmentasyon sorunlarında etkin, kısa iyileşmeli tedavi.",
-    detail: "2910 nm dalga boyu su ile maksimum etkileşim sağlar. Bu Erbiyum lazerler içindeki en yüksek su absorpsiyon noktasıdır.",
-    tag: "Dengeli Protokol",
-  },
-  {
-    n: "03", title: "Ablative", downtime: "5–7 gün",
-    desc: "Kapsamlı cilt yenilemesi. Derin kırışıklıklar, belirgin akne izleri ve ciddi fotohasar vakalarında tam ablative yenileme.",
-    detail: "CO₂ lazere eşdeğer klinik sonuç, ancak belirgin şekilde daha az downtime, risk ve tedavi sonrası komplikasyon.",
-    tag: "Maksimum Etki",
-  },
-];
-
 const indications = [
   "İnce Çizgiler Ve Kırışıklıklar",
   "Cilt Laksitesi Ve Sarkma",
@@ -57,7 +30,7 @@ const indications = [
   "Güneş Hasarı Ve Pigmentasyon",
   "Doku Ve Ton Düzensizliği",
   "Gözenek Sıkılaştırma",
-  "Melazma Tedavisi",
+  "Melazma",
   "Rosacea Ve Vasküler Lezyonlar",
   "Genel Cilt Kalitesi İyileştirme",
 ];
@@ -71,7 +44,57 @@ const specs = [
   { label: "Üretici", value: "Acclaro Medical Corporation, Smithfield RI, ABD" },
   { label: "Kuruluş", value: "2018" },
   { label: "İyileşme", value: "0–7 gün (moda göre)" },
-  { label: "Onay", value: "CE Mark · FDA Clearance" },
+];
+
+const modes = [
+  {
+    id: "clear",
+    name: "Clear",
+    group: "ablative",
+    depth: "Stratum Corneum",
+    desc: "Yüzeysel pigmentasyon ve vasküler diskromi için hafif ablasyon.",
+    tags: ["Pigmentasyon", "Vasküler diskromi", "Güneş lekeleri", "Cilt tonu"],
+  },
+  {
+    id: "clearplus",
+    name: "Clear+",
+    group: "ablative",
+    depth: "Epidermis",
+    desc: "Epidermal lezyonlar ve cilt yüzeyi dokusu için optimize yenileme.",
+    tags: ["Yaşlılık lekeleri", "İnce çizgiler", "Cilt dokusu"],
+  },
+  {
+    id: "ultra",
+    name: "Ultra",
+    group: "ablative",
+    depth: "Deri + Dermis",
+    desc: "Derin kolajen yenilemesi için dermise ulaşan güçlü ablasyon.",
+    tags: ["Kolajen yenilemesi", "Kırışıklık ve çizgiler", "Akne izleri"],
+  },
+  {
+    id: "ultraclear",
+    name: "UltraClear",
+    group: "ablative",
+    depth: "Yüzeysel + Derin",
+    desc: "Tek geçişte hem yüzeysel hem derin doku yenilemeyi birleştirir.",
+    tags: ["Kolajen yenilemesi", "Kırışıklık ve çizgiler", "Yara ve akne izleri"],
+  },
+  {
+    id: "lasercoring",
+    name: "Laser-Coring™",
+    group: "coring",
+    depth: "Dermis",
+    desc: "Mikro kanallar açarak derin doku karotlaması ve kolajen stimülasyonu.",
+    tags: ["Kolajen yenilemesi", "Derin kırışıklıklar"],
+  },
+  {
+    id: "surgical",
+    name: "Surgical",
+    group: "surgical",
+    depth: "Hassas Kesim",
+    desc: "Lazer yoluyla göz kapağı dahil çok şekilli hassas cerrahi kesim.",
+    tags: ["Blefaroplasti", "Göz kapağı"],
+  },
 ];
 
 const fadeUp = {
@@ -84,7 +107,6 @@ const fadeUp = {
 
 export default function UltraClearPage() {
   const [activePatient, setActivePatient] = useState(0);
-  const [openMode, setOpenMode] = useState<number | null>(0);
 
   return (
     <div className="min-h-screen bg-[#04080d] text-foreground font-sans">
@@ -139,7 +161,7 @@ export default function UltraClearPage() {
               {/* Eyebrow */}
               <div className="flex items-center gap-3 mb-8">
                 <div className="h-px w-6 bg-sky-400/60" />
-                <span className="text-[10.5px] font-medium tracking-[0.28em] uppercase text-sky-400/70">
+                <span className="text-[10.5px] font-medium tracking-[0.28em] uppercase text-sky-400/70" lang="en">
                   2910 nm · Cold Fiber Laser · 3DMIRACL®
                 </span>
               </div>
@@ -180,19 +202,6 @@ export default function UltraClearPage() {
                 devrimsel fiber lazer sistemidir.
               </p>
 
-              {/* Award mini-badges */}
-              <div className="flex flex-wrap gap-2 mb-9">
-                {awards.map((a) => (
-                  <span
-                    key={a.pub}
-                    className="inline-flex items-center gap-1.5 text-[9.5px] tracking-[0.14em] font-medium uppercase px-3 py-1.5 rounded-full border border-sky-400/20 text-sky-400/60 bg-sky-400/[0.04]"
-                  >
-                    <Award size={8} className="flex-shrink-0" />
-                    {a.pub} {a.year}
-                  </span>
-                ))}
-              </div>
-
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">
                 <a
@@ -219,39 +228,6 @@ export default function UltraClearPage() {
         </div>
 
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#04080d] to-transparent pointer-events-none z-20" />
-      </section>
-
-      {/* ── AWARDS STRIP ─────────────────────────────────────────── */}
-      <section className="relative py-0 border-y border-white/[0.04] overflow-hidden" style={{ background: "#040810" }}>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 50% 80% at 50% 50%, rgba(56,189,248,0.03) 0%, transparent 70%)" }}
-        />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14">
-          <div className="grid md:grid-cols-3 divide-x divide-white/[0.05]">
-            {awards.map((a, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i * 0.5}
-                className="flex items-center gap-5 px-8 py-9 group hover:bg-sky-400/[0.02] transition-colors"
-              >
-                <div className="w-10 h-10 rounded-xl border border-sky-400/20 bg-sky-400/[0.05] flex items-center justify-center flex-shrink-0 group-hover:border-sky-400/35 transition-colors">
-                  <Award size={16} className="text-sky-400/60" />
-                </div>
-                <div>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-sky-400/50 mb-0.5">{a.year} · {a.cat}</p>
-                  <p className="text-[13.5px] font-semibold text-foreground/75">
-                    {a.pub} <span className="text-foreground/40 font-normal">· {a.award}</span>
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ── 2910 nm — THE TECHNOLOGY MOMENT ─────────────────────── */}
@@ -317,17 +293,16 @@ export default function UltraClearPage() {
                 Hem ablasyon hem koagülasyon enerjisi optimize edilir, kollateral ısıl hasar minimumda tutulur.
               </p>
 
-              {/* Comparison callout */}
+              {/* Technology note */}
               <div className="relative p-6 rounded-2xl border border-sky-400/16 bg-sky-400/[0.04] overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
                   style={{ background: "linear-gradient(to bottom, #38bdf8, #818cf8)" }}
                 />
                 <p className="text-[13.5px] text-foreground/50 leading-[1.85] pl-2">
-                  <span className="text-sky-300 font-semibold">CO₂ 10.600 nm</span> ve{" "}
-                  <span className="text-sky-300 font-semibold">Er:YAG 2.940 nm</span> ile kıyaslandığında,
-                  UltraClear'ın 2910 nm fiber platformu çok daha kontrollü enerji sunumu ve daha az
-                  yan etki profiliyle{" "}
-                  <span className="text-foreground/75 font-medium">klinik açıdan üstün</span> sonuçlar ortaya koyar.
+                  2910 nm dalga boyu, Erbiyum florür cam fiber teknolojisiyle üretilir. Bu dalga boyunda
+                  hem ablasyon hem koagülasyon enerjisi{" "}
+                  <span className="text-foreground/75 font-medium">bağımsız olarak optimize</span> edilebilir.
+                  3DIntelliPulse® nabız yönetimi kollateral ısıl etkiyi sınırlı tutar.
                 </p>
               </div>
 
@@ -374,109 +349,162 @@ export default function UltraClearPage() {
         </div>
       </section>
 
-      {/* ── 3 TREATMENT MODES (editorial stacked) ────────────────── */}
-      <section className="py-28 relative overflow-hidden" style={{ background: "#04080d" }}>
+      {/* ── 6 MOD ────────────────────────────────────────────────── */}
+      <section className="relative py-28 overflow-hidden" style={{ background: "#050a14" }}>
+        {/* Subtle atmospheric glow */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 55% 40% at 90% 80%, rgba(56,189,248,0.045) 0%, transparent 65%)" }}
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(56,189,248,0.055) 0%, transparent 65%)",
+          }}
         />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
 
-          <div className="grid md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-16 items-start">
-
-            {/* Left sticky */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="md:sticky md:top-24"
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-16"
+          >
+            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-sky-400/60 mb-4">
+              3DMIRACL® Platform
+            </p>
+            <h2
+              className="font-display font-black leading-[0.95] tracking-[-0.025em] mb-5"
+              style={{ fontSize: "clamp(2.2rem, 3.5vw, 3.8rem)" }}
             >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-sky-400/65 mb-6">
-                Protokol Esnekliği
-              </p>
-              <h2
-                className="font-display font-black leading-[0.93] tracking-[-0.025em] mb-6"
-                style={{ fontSize: "clamp(2rem, 3vw, 3.2rem)" }}
+              6 Mod.{" "}
+              <span
+                style={{
+                  background: "linear-gradient(110deg, #7dd3fc 0%, #38bdf8 55%, #818cf8 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
               >
-                Üç Farklı{" "}
-                <span
-                  style={{
-                    background: "linear-gradient(110deg, #7dd3fc 0%, #38bdf8 55%, #818cf8 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    paddingBottom: "0.1em",
-                    display: "inline-block",
-                  }}
-                >
-                  Tedavi Modu
-                </span>
-              </h2>
-              <p className="text-[14px] text-foreground/38 leading-[1.85]">
-                Sıfır downtimeden tam ablative yenilemeye kadar geniş tedavi yelpazesi.
-                Her hastanın ihtiyacına özel protokol seçimi.
-              </p>
-            </motion.div>
+                Tek Başlık.
+              </span>
+            </h2>
+            <p className="text-[15px] text-foreground/42 max-w-lg mx-auto leading-relaxed">
+              Sabit kol yok, sarf yok. Aynı sistem üzerinde altı farklı uygulama protokolü.
+            </p>
+          </motion.div>
 
-            {/* Right: stacked editorial rows */}
-            <div className="space-y-0">
-              {modes.map((m, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i * 0.4}
-                  className="border-b border-white/[0.06] last:border-0 overflow-hidden"
-                >
-                  <button
-                    onClick={() => setOpenMode(openMode === i ? null : i)}
-                    className="w-full flex items-center justify-between gap-6 py-8 text-left group hover:bg-sky-400/[0.02] -mx-4 px-4 rounded-xl transition-colors"
+          {/* Mode cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {modes.map((m, i) => (
+              <motion.div
+                key={m.id}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="relative flex flex-col rounded-2xl border overflow-hidden"
+                style={{
+                  background:
+                    m.group === "surgical"
+                      ? "linear-gradient(160deg, rgba(129,140,248,0.07) 0%, rgba(99,102,241,0.03) 100%)"
+                      : m.group === "coring"
+                      ? "linear-gradient(160deg, rgba(56,189,248,0.07) 0%, rgba(14,165,233,0.03) 100%)"
+                      : "rgba(56,189,248,0.035)",
+                  borderColor:
+                    m.group === "surgical"
+                      ? "rgba(129,140,248,0.14)"
+                      : m.group === "coring"
+                      ? "rgba(56,189,248,0.18)"
+                      : "rgba(56,189,248,0.10)",
+                }}
+              >
+                {/* Top accent line */}
+                <div
+                  className="h-[2px] w-full"
+                  style={{
+                    background:
+                      m.group === "surgical"
+                        ? "linear-gradient(90deg, #818cf8 0%, #6366f1 100%)"
+                        : m.group === "coring"
+                        ? "linear-gradient(90deg, #38bdf8 0%, #7dd3fc 100%)"
+                        : "linear-gradient(90deg, rgba(56,189,248,0.4) 0%, rgba(125,211,252,0.6) 100%)",
+                  }}
+                />
+
+                <div className="flex flex-col flex-1 p-5">
+                  {/* Mode name */}
+                  <p
+                    className="font-display font-black text-[1.05rem] leading-tight mb-1"
+                    style={{
+                      color:
+                        m.group === "surgical"
+                          ? "#a5b4fc"
+                          : "#7dd3fc",
+                    }}
                   >
-                    <div className="flex items-center gap-5 flex-1">
-                      <span className="text-[12px] font-mono text-foreground/18 group-hover:text-sky-400/40 transition-colors w-6 flex-shrink-0">
-                        {m.n}
-                      </span>
-                      <div>
-                        <h3 className="font-display font-black text-[1.35rem] text-foreground/85 group-hover:text-foreground transition-colors mb-1">
-                          {m.title}
-                        </h3>
-                        <span className="text-[10px] font-medium tracking-[0.18em] uppercase text-sky-400/45 px-2.5 py-1 rounded-full border border-sky-400/18 bg-sky-400/[0.04]">
-                          {m.tag}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4 flex-shrink-0">
-                      <div className="text-right hidden sm:block">
-                        <p className="text-[9.5px] tracking-widest uppercase text-foreground/22 mb-0.5">İyileşme</p>
-                        <p className="text-[13px] font-semibold text-sky-400/75">{m.downtime}</p>
-                      </div>
-                      <div
-                        className={`w-6 h-6 rounded-full border border-white/10 flex items-center justify-center transition-all ${openMode === i ? "border-sky-400/40 bg-sky-400/10" : ""}`}
+                    {m.name}
+                  </p>
+
+                  {/* Depth label */}
+                  <p className="text-[10px] font-medium tracking-[0.14em] uppercase text-foreground/32 mb-4">
+                    {m.depth}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-[12px] text-foreground/50 leading-[1.7] mb-5 flex-1">
+                    {m.desc}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-col gap-1.5">
+                    {m.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10.5px] text-foreground/38 leading-snug flex items-start gap-1.5"
                       >
                         <span
-                          className={`block w-2.5 border-t border-foreground/30 transition-all duration-300 ${openMode === i ? "rotate-90 border-sky-400" : ""}`}
+                          className="mt-[5px] shrink-0 w-1 h-1 rounded-full"
+                          style={{
+                            background:
+                              m.group === "surgical"
+                                ? "#818cf8"
+                                : "#38bdf8",
+                            opacity: 0.55,
+                          }}
                         />
-                      </div>
-                    </div>
-                  </button>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-                  <motion.div
-                    animate={{ height: openMode === i ? "auto" : 0, opacity: openMode === i ? 1 : 0 }}
-                    initial={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <div className="pb-8 pl-11 pr-4">
-                      <p className="text-[14.5px] text-foreground/52 leading-[1.88] mb-3">{m.desc}</p>
-                      <p className="text-[13px] text-foreground/32 leading-[1.8] italic">{m.detail}</p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
+                {/* Group label at bottom */}
+                <div
+                  className="px-5 py-2.5 text-[9.5px] font-semibold tracking-[0.18em] uppercase border-t"
+                  style={{
+                    borderColor:
+                      m.group === "surgical"
+                        ? "rgba(129,140,248,0.12)"
+                        : m.group === "coring"
+                        ? "rgba(56,189,248,0.14)"
+                        : "rgba(56,189,248,0.08)",
+                    color:
+                      m.group === "surgical"
+                        ? "rgba(165,180,252,0.5)"
+                        : m.group === "coring"
+                        ? "rgba(56,189,248,0.5)"
+                        : "rgba(56,189,248,0.35)",
+                  }}
+                >
+                  {m.group === "surgical"
+                    ? "Surgical Mod"
+                    : m.group === "coring"
+                    ? "Laser-Coring™ Mod"
+                    : "Fraksiyonel Ablatif"}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -520,13 +548,13 @@ export default function UltraClearPage() {
             className="flex flex-col justify-center px-10 md:px-14 lg:px-20 py-20"
           >
             <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-sky-400/65 mb-6">
-              Klinik Üstünlük
+              3DMIRACL® Platform
             </p>
             <h2
               className="font-display font-black leading-[0.93] tracking-[-0.025em] mb-7"
               style={{ fontSize: "clamp(2rem, 3.2vw, 3.2rem)" }}
             >
-              Precison Beyond{" "}
+              Cold Fiber{" "}
               <span
                 style={{
                   background: "linear-gradient(110deg, #7dd3fc 0%, #38bdf8 55%, #818cf8 100%)",
@@ -537,21 +565,22 @@ export default function UltraClearPage() {
                   display: "inline-block",
                 }}
               >
-                CO₂
+                Laser
               </span>
             </h2>
             <p className="text-[15px] text-foreground/44 leading-[1.88] mb-8">
-              Geleneksel ablative lazer tedavilerinde kaçınılamayan ısıl hasar ve uzun iyileşme
-              süreleri, UltraClear'ın cold fiber laser mimarisiyle geçmişte kaldı. Hem ablative
-              etkinlik hem de non-ablative konfor aynı platformda.
+              UltraClear'ın 3DMIRACL® platformu, 2910 nm dalga boyunu cold fiber laser
+              mimarisiyle sunar. 3DIntelliPulse® teknolojisi ablasyon ve koagülasyon
+              enerjisini bağımsız olarak optimize ederek farklı cilt tiplerinde kontrollü
+              uygulama imkanı sağlar.
             </p>
 
             <ul className="space-y-4">
               {[
-                { title: "Tüm Cilt Tipleri", sub: "Hiperpigmentasyon riski olmadan Fitzpatrick I–VI" },
-                { title: "Daha Az Yan Etki", sub: "CO₂'ye göre belirgin daha az komplikasyon profili" },
-                { title: "Esnek Protokol", sub: "Aynı seansta birden fazla mod kombinasyonu" },
-                { title: "Hızlı İyileşme", sub: "Non-ablative modda 0 gün, ablative'de 5–7 gün" },
+                { title: "Tüm Cilt Tipleri", sub: "Fitzpatrick I–VI geniş uygulama aralığı" },
+                { title: "Protokol Esnekliği", sub: "Non-ablative, micro-ablative ve ablative modlar" },
+                { title: "Kontrollü Enerji Sunumu", sub: "3DIntelliPulse® nabız optimizasyonu" },
+                { title: "Geniş Endikasyon Aralığı", sub: "Cilt tonu, doku, pigmentasyon ve sıkılaştırma" },
               ].map((f, i) => (
                 <motion.li
                   key={i}
@@ -691,7 +720,7 @@ export default function UltraClearPage() {
                     <p className="font-semibold text-[13.5px] text-foreground/90 mb-2">Türkiye Yetkili Distribütörü</p>
                     <p className="text-[13px] text-foreground/40 leading-[1.8]">
                       EMCR Medikal Teknolojiler, UltraClear'ın Türkiye yetkili distribütörüdür.
-                      Tüm kurulum, sertifikalı eğitim ve teknik servis hizmetleri kapsamlıdır.
+                      Kurulum, eğitim ve teknik servis hizmetleri kapsamlıdır.
                     </p>
                   </div>
                 </div>
@@ -706,7 +735,7 @@ export default function UltraClearPage() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-5">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-sky-400/65 mb-4">Klinik Kanıt</p>
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-sky-400/65 mb-4">Uygulama Sonuçları</p>
               <h2
                 className="font-display font-black leading-[0.93] tracking-[-0.025em]"
                 style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}
