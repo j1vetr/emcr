@@ -19,7 +19,11 @@ description: Key decisions for the EMCR Medikal React+Vite multi-page site
 ## Design Rules (enforced by user)
 - Teal (`rgba(79,195,195,*)`) for NeoGen; sky-400 for UltraClear — do NOT swap
 - No EVO product, no LinkedIn, no YouTube — Instagram only
-- Dark navy `#080c18`/`#070b17` background, Space Grotesk font-display
+ - The original dark-theme direction is not a constraint on Hakkımızda. The user explicitly authorized a more corporate palette and rejected glass effects and excessive whitespace for that page.
+
+ **Why:** Hakkımızda should convey a grounded corporate identity rather than repeat the product pages' promotional styling.
+
+ **How to apply:** Keep this page-specific direction scoped to Hakkımızda unless the user requests a broader redesign.
 
 ## Asset Alias
 `@assets/` → `../../attached_assets/` (workspace root, via vite.config.ts)
