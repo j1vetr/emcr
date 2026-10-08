@@ -48,10 +48,10 @@ export default function Hakkimizda() {
             <motion.div variants={itemVariants} className="md:col-span-12 bg-[#0B101A] p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-end min-h-[35vh]">
               <span className="block text-xs font-bold tracking-[0.15em] uppercase text-[#B89461] mb-6">Hakkımızda</span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#F2EFE9] mb-6 max-w-4xl leading-[1.05]">
-                Medikal Teknoloji Distribütörü
+                Medikal Teknolojide Tek Yetkili Distribütör
               </h1>
               <p className="text-lg md:text-xl text-[#9AA6B8] max-w-2xl leading-relaxed">
-                EMCR Medikal, NeoGen Plasma ve UltraClear sistemlerinin Türkiye distribütörü olarak kliniklere donanım tedariki ve teknik destek hizmetleri sunmaktadır.
+                EMCR Medikal, NeoGen Plasma ve UltraClear sistemlerinin Türkiye tek yetkili distribütörü olarak kliniklere donanım tedariki ve teknik destek hizmetleri sunmaktadır.
               </p>
             </motion.div>
 
@@ -95,7 +95,7 @@ export default function Hakkimizda() {
             <motion.div variants={itemVariants} className="md:col-span-8 bg-[#0B101A] p-6 sm:p-8 lg:p-12">
               <div className="flex flex-col space-y-6 text-[#F2EFE9] text-base md:text-lg leading-relaxed max-w-3xl">
                 <p>
-                  EMCR Medikal, NeoGen Plasma ve UltraClear sistemlerinin Türkiye distribütörü olarak kliniklere donanım tedariki ve teknik destek hizmetleri sunmaktadır.
+                  EMCR Medikal, NeoGen Plasma ve UltraClear sistemlerinin Türkiye tek yetkili distribütörü olarak kliniklere donanım tedariki ve teknik destek hizmetleri sunmaktadır.
                 </p>
                 <p>
                   Ayrıca düzenlediğimiz{" "}

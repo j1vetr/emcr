@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Instagram, MapPin, Mail, Phone, Hash } from "lucide-react";
+import { Instagram, MapPin, Mail, Phone } from "lucide-react";
 import emcrLogoWhite from "@assets/emcr-logo-white.webp";
 
 export default function Footer() {
@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1 space-y-5">
             <img src={emcrLogoWhite} alt="EMCR Medikal" className="h-11 object-contain" loading="lazy" decoding="async" />
             <p className="text-foreground/35 text-sm leading-relaxed max-w-[220px]">
-              NeoGen Plasma ve UltraClear sistemlerinin Türkiye yetkili distribütörü.
+              NeoGen Plasma ve UltraClear sistemlerinin Türkiye tek yetkili distribütörü.
             </p>
             <a
               href="https://www.instagram.com/emcrmedikal/"
@@ -91,10 +91,6 @@ export default function Footer() {
                 <a href="tel:+902972060272" className="hover:text-primary transition-colors">
                   +90 297 206 02 72
                 </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Hash className="w-4 h-4 text-primary/60 flex-shrink-0" />
-                <span className="text-foreground/30">Beşiktaş V.D. · 297 060 20 72</span>
               </li>
             </ul>
           </div>

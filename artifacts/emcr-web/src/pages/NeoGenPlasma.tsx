@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import {
   ChevronRight, ShieldCheck, Play, Pause, ArrowRight,
-  Zap, Layers, Activity,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -38,30 +37,9 @@ const patients = [
 ];
 
 const mechanisms = [
-  {
-    n: "01",
-    icon: Zap,
-    title: "Cilt Sıkılaştırma",
-    subtitle: "Skin Tightening",
-    desc: "Plazma darbesi cilde çarptığında termal enerji ani bir ısıya dönüşür ve doku kontrakte olur. Bu anlık sıkılaşma kırışıklık görünümünü azaltır.",
-    detail: "Stratum corneum ve epidermal katmanlar bütünlüğünü korur, doğal bir biyolojik pansuman görevi üstlenir. Protokole göre 1–3 gün iyileşme beklenir.",
-  },
-  {
-    n: "02",
-    icon: Layers,
-    title: "Yüzey Yenileme",
-    subtitle: "Skin Resurfacing",
-    desc: "İyileşme bölgesi (Zone of Thermal Damage) ile modifikasyon bölgesi (Zone of Thermal Modification) arasında yeni bir epidermis oluşur.",
-    detail: "Derinin doğal bariyeri korunur. Düşük enerjide 1–2 gün, yüksek enerjide 3–5 gün iyileşme süreci beklenir.",
-  },
-  {
-    n: "03",
-    icon: Activity,
-    title: "Derin Rejenerasyon",
-    subtitle: "Skin Regeneration",
-    desc: "Tüm cilt yüzeyi kapsanır. Retikular dermise kadar uzanan yeniden modelleme kaskadı başlatılır.",
-    detail: "Neokollajenizasyon, neovaskülarizasyon ve fibroblast migrasyonunu kapsayan derin bir dermal yenilenme süreci tetiklenir.",
-  },
+  "Cilt Sıkılaştırma",
+  "Yüzey Yenileme",
+  "Derin Rejenerasyon",
 ];
 
 const indications = [
@@ -78,7 +56,6 @@ const indications = [
 ];
 
 const specs = [
-  { label: "Enerji Tipi", value: "UHF (Ultra Yüksek Frekans) RF" },
   { label: "Gaz", value: "Medikal Kalite Azot (N₂)" },
   { label: "Enerji Aralığı", value: "0.5 J – 4.0 J" },
   { label: "Nabız Hızı", value: "Çift Nabız (Double Pulse)" },
@@ -87,8 +64,6 @@ const specs = [
   { label: "Yüzey Sıcaklığı", value: "70 – 165 °C / 15 ms nabız" },
   { label: "Cihaz Sınıfı", value: "Class IIb" },
   { label: "Cilt Tipi", value: "Fitzpatrick I–VI Tüm Tipler" },
-  { label: "Sistem Ağırlığı", value: "18 kg" },
-  { label: "Boyutlar", value: "470 × 430 × 1060 mm" },
 ];
 
 export default function NeoGenPlasma() {
@@ -303,35 +278,6 @@ export default function NeoGenPlasma() {
                 70–165°C arasında termal etki üretir.
               </p>
 
-              {/* Key differentiator */}
-              <div className="relative p-6 rounded-2xl border border-primary/18 bg-primary/[0.04] mb-8 overflow-hidden">
-                <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b from-primary/60 to-primary/20" />
-                <p className="text-[14px] text-foreground/55 leading-[1.85] pl-2">
-                  <span className="text-primary font-semibold">Kritik fark:</span>{" "}
-                  Azot plazması belirli bir kromofor hedefine veya dalga boyuna bağlı değildir.
-                  Penetrasyon derinliği cildin nem düzeyi ile yönetilir, bu sayede{" "}
-                  <span className="text-foreground/80 font-medium">Fitzpatrick I'den VI'ya tüm cilt tonlarında</span>{" "}
-                  güvenle kullanılır.
-                </p>
-              </div>
-
-              {/* Mini feature pills */}
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { label: "Non-ablative yüzey koruma", detail: "Stratum corneum sağlam kalır" },
-                  { label: "Tüm cilt tipleri", detail: "Fitzpatrick I–VI" },
-                  { label: "Çift nabız teknolojisi", detail: "1.0–2.5 Hz tekrar hızı" },
-                  { label: "Hızlı iyileşme", detail: "1–7 gün protokole göre" },
-                ].map((f, i) => (
-                  <div
-                    key={i}
-                    className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.035] transition-colors"
-                  >
-                    <p className="text-[13px] font-semibold text-foreground/75 mb-1">{f.label}</p>
-                    <p className="text-[11.5px] text-foreground/35">{f.detail}</p>
-                  </div>
-                ))}
-              </div>
             </motion.div>
           </div>
         </div>
@@ -384,47 +330,21 @@ export default function NeoGenPlasma() {
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-5">
-            {mechanisms.map((m, i) => {
-              const Icon = m.icon;
-              return (
+            {mechanisms.map((title, i) => (
                 <motion.div
-                  key={i}
+                  key={title}
                   variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                   custom={i}
-                  className="group relative p-8 rounded-3xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.035] hover:border-primary/25 transition-all duration-400 overflow-hidden"
+                  className="relative flex min-h-[140px] items-center justify-center border border-[#263c42] border-t-2 border-t-primary bg-[#0b1520] px-6 py-8 text-center rounded-xl"
                 >
-                  {/* Teal top accent */}
-                  <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                  {/* Number + icon row */}
-                  <div className="flex items-center justify-between mb-7">
-                    <span className="text-[12px] font-mono text-foreground/18 group-hover:text-primary/35 transition-colors">
-                      {m.n}
-                    </span>
-                    <div className="w-11 h-11 rounded-xl bg-primary/[0.07] border border-primary/[0.12] flex items-center justify-center text-primary/65 group-hover:bg-primary/[0.12] group-hover:text-primary group-hover:border-primary/25 transition-all">
-                      <Icon size={18} />
-                    </div>
-                  </div>
-
-                  <h3 className="font-display font-black text-[1.25rem] text-foreground/90 mb-1 group-hover:text-foreground transition-colors">
-                    {m.title}
+                  <h3 className="font-display font-semibold text-[clamp(1.3rem,2.2vw,1.75rem)] leading-tight tracking-tight text-[#eef3f4]">
+                    {title}
                   </h3>
-                  <p className="text-[9.5px] tracking-[0.2em] uppercase text-primary/40 mb-5 font-medium" lang="en">
-                    {m.subtitle}
-                  </p>
-                  <p className="text-[14px] text-foreground/50 leading-[1.85] mb-5">
-                    {m.desc}
-                  </p>
-                  <p className="text-[13px] text-foreground/32 leading-[1.8] mb-7 italic">
-                    {m.detail}
-                  </p>
-
                 </motion.div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>
@@ -541,10 +461,10 @@ export default function NeoGenPlasma() {
                   <ShieldCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold text-[13.5px] text-foreground/90 mb-2">
-                      Türkiye Yetkili Distribütörü
+                      Türkiye Tek Yetkili Distribütörü
                     </p>
                     <p className="text-[13px] text-foreground/42 leading-[1.8]">
-                      EMCR Medikal Teknolojiler, NeoGen Plasma'nın Türkiye yetkili distribütörüdür.
+                      EMCR Medikal Teknolojiler, NeoGen Plasma'nın Türkiye tek yetkili distribütörüdür.
                       Kurulum, eğitim ve teknik servis hizmetleri kapsamlıdır.
                     </p>
                   </div>

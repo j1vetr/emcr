@@ -31,18 +31,17 @@ const indications = [
   "Doku Ve Ton Düzensizliği",
   "Gözenek Sıkılaştırma",
   "Melazma",
-  "Rosacea Ve Vasküler Lezyonlar",
+  "Göz Kapağı ve Tedavisi",
   "Genel Cilt Kalitesi İyileştirme",
 ];
 
 const specs = [
   { label: "Dalga Boyu", value: "2910 nm (Erbiyum Florür Cam Fiber)" },
-  { label: "Platform", value: "3DMIRACL® Cold Fiber Laser" },
+  { label: "Platform", value: "Cold Fiber Laser" },
   { label: "Nabız", value: "3DIntelliPulse® / Ablasyon ve Koagülasyon Optimizasyonu" },
-  { label: "Tedavi Modu", value: "Non-Ablative / Micro-Ablative / Ablative" },
+  { label: "Tedavi Modu", value: "Ablative" },
   { label: "Cilt Tipi", value: "Fitzpatrick I–VI Tüm Tipler" },
   { label: "Üretici", value: "Acclaro Medical Corporation, Smithfield RI, ABD" },
-  { label: "Kuruluş", value: "2018" },
   { label: "İyileşme", value: "0–7 gün (moda göre)" },
 ];
 
@@ -569,18 +568,18 @@ export default function UltraClearPage() {
               </span>
             </h2>
             <p className="text-[15px] text-foreground/44 leading-[1.88] mb-8">
-              UltraClear'ın 3DMIRACL® platformu, 2910 nm dalga boyunu cold fiber laser
-              mimarisiyle sunar. 3DIntelliPulse® teknolojisi ablasyon ve koagülasyon
+              UltraClear'ın 2910 nm dalga boyu cold fiber laser
+              mimarisiyle sunulur. 3DIntelliPulse® teknolojisi ablasyon ve koagülasyon
               enerjisini bağımsız olarak optimize ederek farklı cilt tiplerinde kontrollü
               uygulama imkanı sağlar.
             </p>
 
             <ul className="space-y-4">
               {[
-                { title: "Tüm Cilt Tipleri", sub: "Fitzpatrick I–VI geniş uygulama aralığı" },
-                { title: "Protokol Esnekliği", sub: "Non-ablative, micro-ablative ve ablative modlar" },
-                { title: "Kontrollü Enerji Sunumu", sub: "3DIntelliPulse® nabız optimizasyonu" },
-                { title: "Geniş Endikasyon Aralığı", sub: "Cilt tonu, doku, pigmentasyon ve sıkılaştırma" },
+                { title: "Tüm Cilt Tipleri" },
+                { title: "Protokol Esnekliği" },
+                { title: "Kontrollü Enerji Sunumu" },
+                { title: "Geniş Endikasyon Aralığı" },
               ].map((f, i) => (
                 <motion.li
                   key={i}
@@ -593,8 +592,7 @@ export default function UltraClearPage() {
                 >
                   <div className="mt-[7px] w-1.5 h-1.5 rounded-full bg-sky-400/65 flex-shrink-0" />
                   <div>
-                    <p className="text-[14px] font-semibold text-foreground/78 mb-0.5">{f.title}</p>
-                    <p className="text-[13px] text-foreground/38">{f.sub}</p>
+                    <p className="text-[14px] font-semibold text-foreground/78">{f.title}</p>
                   </div>
                 </motion.li>
               ))}
@@ -717,9 +715,9 @@ export default function UltraClearPage() {
                 <div className="flex items-start gap-4">
                   <ShieldCheck className="w-5 h-5 text-sky-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-semibold text-[13.5px] text-foreground/90 mb-2">Türkiye Yetkili Distribütörü</p>
+                    <p className="font-semibold text-[13.5px] text-foreground/90 mb-2">Türkiye Tek Yetkili Distribütörü</p>
                     <p className="text-[13px] text-foreground/40 leading-[1.8]">
-                      EMCR Medikal Teknolojiler, UltraClear'ın Türkiye yetkili distribütörüdür.
+                      EMCR Medikal Teknolojiler, UltraClear'ın Türkiye tek yetkili distribütörüdür.
                       Kurulum, eğitim ve teknik servis hizmetleri kapsamlıdır.
                     </p>
                   </div>

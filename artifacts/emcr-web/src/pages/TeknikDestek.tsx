@@ -30,10 +30,6 @@ const faqs = [
     a: "Teknik destek hattımızı arayarak veya info@emcr.com.tr adresine e-posta göndererek talepte bulunabilirsiniz. Hata kodu ve cihaz bilgilerini iletmeniz durumunda teknik ekibimiz en kısa sürede size ulaşır.",
   },
   {
-    q: "Yedek Parça Temin Süresi Ne Kadar?",
-    a: "Standart yedek parçalar Türkiye deposundan 1–3 iş gününde karşılanmaktadır. Özel bileşenler için üretici firmayla koordinasyon sağlanmaktadır. Ortalama temin süresi 5–10 iş günüdür. Tüm parçalar üretici onaylı orijinal parçalardır.",
-  },
-  {
     q: "Operatör Eğitimi Kim Tarafından Verilir?",
     a: "EMCR Medikal ve üretici firmadan sertifikalı eğitmenler tarafından verilen uygulamalı eğitim, cihaz teslimatı ile birlikte yapılmaktadır. İleri seviye protokol eğitimleri için yıllık eğitim takviminize bakabilirsiniz.",
   },
@@ -284,7 +280,7 @@ export default function TeknikDestek() {
               </ul>
             </motion.div>
 
-            {/* Right: decorative panel */}
+            {/* Direct support contact */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -292,39 +288,31 @@ export default function TeknikDestek() {
               transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
-              <div className="relative p-8 rounded-3xl border border-white/[0.07] bg-white/[0.02] overflow-hidden">
-                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent" />
-                <div
-                  className="absolute bottom-0 right-0 w-48 h-48 rounded-full pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse, rgba(20,184,166,0.08) 0%, transparent 70%)" }}
-                />
-                <div className="grid grid-cols-2 gap-4 relative z-10">
-                  {[
-                    { label: "Yılda Ortalama", value: "120+", sub: "Servis Ziyareti" },
-                    { label: "Türkiye Geneli", value: "81", sub: "İlde Hizmet" },
-                    { label: "Stokta Hazır", value: "250+", sub: "Yedek Parça" },
-                    { label: "İlk Müdahale", value: "<24s", sub: "Yanıt Süresi" },
-                  ].map((item, i) => (
-                    <div
-                      key={i}
-                      className="p-5 rounded-2xl border border-white/[0.05] bg-white/[0.025] hover:bg-white/[0.04] transition-colors"
-                    >
-                      <p className="text-[10px] text-foreground/30 tracking-widest uppercase mb-2">{item.label}</p>
-                      <p
-                        className="font-display font-black leading-none mb-1"
-                        style={{
-                          fontSize: "clamp(1.6rem, 2.8vw, 2.5rem)",
-                          background: "linear-gradient(135deg, #14b8a6, #38bdf8)",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          backgroundClip: "text",
-                        }}
-                      >
-                        {item.value}
-                      </p>
-                      <p className="text-[12px] text-foreground/35">{item.sub}</p>
-                    </div>
-                  ))}
+              <div className="border-l-2 border-primary bg-[#0c1622] px-6 py-8 sm:p-10">
+                <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-primary mb-5">
+                  Teknik Destek İletişimi
+                </p>
+                <h3 className="font-display font-semibold text-2xl sm:text-3xl leading-tight text-[#eef2f5] mb-4">
+                  Cihazınızla ilgili<br />ekibimize ulaşın.
+                </h3>
+                <p className="text-[14px] text-[#b6c2ce] leading-relaxed mb-7">
+                  Destek talebinizde cihaz modelini, varsa hata kodunu ve iletişim bilgilerinizi paylaşabilirsiniz.
+                </p>
+                <div className="border-t border-[#2b3b49] divide-y divide-[#2b3b49]">
+                  <a
+                    href="tel:+902972060272"
+                    className="flex items-center gap-3 py-4 text-[#eef2f5] hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                  >
+                    <Phone size={18} className="text-primary shrink-0" />
+                    <span className="text-base font-medium">+90 297 206 02 72</span>
+                  </a>
+                  <a
+                    href="mailto:info@emcr.com.tr"
+                    className="flex items-center gap-3 py-4 text-[#eef2f5] hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                  >
+                    <Mail size={18} className="text-primary shrink-0" />
+                    <span className="text-base font-medium">info@emcr.com.tr</span>
+                  </a>
                 </div>
               </div>
             </motion.div>

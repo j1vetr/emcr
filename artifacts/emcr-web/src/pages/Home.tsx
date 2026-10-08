@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ChevronRight, Activity, Layers, Settings, GraduationCap } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -233,7 +233,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 text-[15px] text-foreground/45 leading-[1.85] max-w-[480px] mx-auto"
             >
-              NeoGen Plasma ve UltraClear sistemlerinin Türkiye yetkili distribütörü.
+              NeoGen Plasma ve UltraClear sistemlerinin Türkiye tek yetkili distribütörü.
               Klinikler için medikal teknoloji, eğitim ve teknik destek.
             </motion.p>
 
@@ -363,28 +363,6 @@ export default function Home() {
                 korunurken derin dermal yenilenme sağlar. Kontrollü termal etki ve
                 protokol esnekliğiyle geniş bir uygulama yelpazesi sunar.
               </p>
-
-              <div className="grid grid-cols-2 gap-3 mb-10">
-                {[
-                  { icon: <Activity className="w-4 h-4" />, title: "Kontrollü Termal Etki", desc: "Epidermisi koruyarak derin dermal ısınma" },
-                  { icon: <Settings className="w-4 h-4" />, title: "Protokol Esnekliği", desc: "Düşükten yükseğe enerjiye geniş yelpaze" },
-                  { icon: <Layers className="w-4 h-4" />, title: "Doku ve Ton Odaklı", desc: "Kapsamlı cilt kalitesi iyileştirmesi" },
-                  { icon: <GraduationCap className="w-4 h-4" />, title: "Klinik Destek", desc: "Sürekli eğitim ve teknik danışmanlık" },
-                ].map((f, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.08, duration: 0.55 }}
-                    className="flex flex-col gap-2 p-4 rounded-xl bg-white/[0.03] border border-white/[0.05] hover:border-primary/25 hover:bg-white/[0.05] transition-all group"
-                  >
-                    <div className="text-primary w-fit group-hover:scale-110 transition-transform">{f.icon}</div>
-                    <h4 className="font-semibold text-[13px] leading-snug">{f.title}</h4>
-                    <p className="text-foreground/45 text-[11px] leading-relaxed">{f.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
 
               <div className="flex items-center gap-4">
                 <Button asChild className="h-11 px-7 text-[13px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-sm">
