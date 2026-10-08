@@ -111,7 +111,7 @@ export default function TeknikDestek() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070b17] text-foreground font-sans">
+    <div className="min-h-screen bg-[#F0F6FC] text-foreground font-sans">
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
@@ -121,14 +121,14 @@ export default function TeknikDestek() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 15% 40%, rgba(20,184,166,0.07) 0%, transparent 65%), radial-gradient(ellipse 50% 40% at 85% 70%, rgba(56,189,248,0.04) 0%, transparent 60%)",
+              "radial-gradient(ellipse 70% 60% at 15% 40%, rgba(36,184,189,0.07) 0%, transparent 65%), radial-gradient(ellipse 50% 40% at 85% 70%, rgba(43,143,208,0.04) 0%, transparent 60%)",
           }}
         />
         {/* Fine grid lines */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.025]"
           style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(rgba(16,36,59,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(16,36,59,0.5) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
           }}
         />
@@ -142,7 +142,7 @@ export default function TeknikDestek() {
               className="inline-flex items-center gap-3 mb-10"
             >
               <div className="h-px w-8 bg-primary/60" />
-              <span className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/70">
+              <span className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1]">
                 Teknik Destek
               </span>
             </motion.div>
@@ -157,7 +157,7 @@ export default function TeknikDestek() {
               Satıştan Sonra Da{" "}
               <span
                 style={{
-                  background: "linear-gradient(110deg, #14b8a6 0%, #5eead4 50%, #38bdf8 100%)",
+                  background: "linear-gradient(110deg, #24B8BD 0%, #1FA3A8 50%, #2B8FD0 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -173,7 +173,7 @@ export default function TeknikDestek() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[17px] text-foreground/45 leading-[1.85] max-w-2xl"
+              className="text-[17px] text-[#607084] leading-[1.85] max-w-2xl"
             >
               EMCR Medikal, kapsamlı kurulum, sertifikalı eğitim, periyodik bakım
               ve teknik servis hizmetleriyle cihazınızın tüm yaşam döngüsü boyunca yanınızdadır.
@@ -185,7 +185,7 @@ export default function TeknikDestek() {
       {/* ── STATS STRIP ──────────────────────────────────────────── */}
       <section className="relative py-0 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/[0.06] border border-white/[0.06] rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/[0.06] border border-[#D9E6EF] rounded-2xl overflow-hidden">
             {stats.map((s, i) => (
               <motion.div
                 key={i}
@@ -194,14 +194,14 @@ export default function TeknikDestek() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={i}
-                className="relative px-8 py-10 bg-white/[0.015] hover:bg-white/[0.03] transition-colors group"
+                className="relative px-8 py-10 bg-white/80 hover:bg-[#E5F0F8] transition-colors group"
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <p
                   className="font-display font-black leading-none tracking-tight mb-1"
                   style={{
                     fontSize: "clamp(2.4rem, 4vw, 3.8rem)",
-                    background: "linear-gradient(135deg, #14b8a6, #38bdf8)",
+                    background: "linear-gradient(135deg, #24B8BD, #2B8FD0)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -212,7 +212,7 @@ export default function TeknikDestek() {
                     <span className="text-[55%] ml-1 opacity-80">{s.unit}</span>
                   )}
                 </p>
-                <p className="text-[12px] text-foreground/40 tracking-wide mt-2">{s.label}</p>
+                <p className="text-[12px] text-[#607084] tracking-wide mt-2">{s.label}</p>
               </motion.div>
             ))}
           </div>
@@ -224,7 +224,7 @@ export default function TeknikDestek() {
         <div
           className="absolute right-0 top-0 bottom-0 w-[40%] pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 80% 70% at 80% 40%, rgba(20,184,166,0.055) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse 80% 70% at 80% 40%, rgba(36,184,189,0.055) 0%, transparent 70%)",
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
@@ -237,7 +237,7 @@ export default function TeknikDestek() {
               viewport={{ once: true }}
               transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-6">
                 Servis Taahhüdümüz
               </p>
               <h2
@@ -247,7 +247,7 @@ export default function TeknikDestek() {
                 EMCR Medikal{" "}
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -258,7 +258,7 @@ export default function TeknikDestek() {
                   Teknik Altyapısı
                 </span>
               </h2>
-              <p className="text-[15px] text-foreground/45 leading-[1.85] mb-8">
+              <p className="text-[15px] text-[#607084] leading-[1.85] mb-8">
                 EMCR Medikal bünyesinde yetiştirilmiş, üretici firmalar tarafından
                 sertifikalandırılmış teknik ekibimiz, kurulum gününden itibaren
                 cihazınızın kesintisiz ve verimli çalışmasını güvence altına alır.
@@ -272,7 +272,7 @@ export default function TeknikDestek() {
                   "Türkiye geneli yerinde servis kapasitesi",
                   "Önleyici bakım ve uzaktan izleme desteği",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3.5 text-[14px] text-foreground/50">
+                  <li key={i} className="flex items-start gap-3.5 text-[14px] text-[#607084]">
                     <div className="mt-[6px] w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0" />
                     {item}
                   </li>
@@ -288,27 +288,27 @@ export default function TeknikDestek() {
               transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
-              <div className="border-l-2 border-primary bg-[#0c1622] px-6 py-8 sm:p-10">
+              <div className="border-l-2 border-primary bg-white px-6 py-8 sm:p-10">
                 <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-primary mb-5">
                   Teknik Destek İletişimi
                 </p>
-                <h3 className="font-display font-semibold text-2xl sm:text-3xl leading-tight text-[#eef2f5] mb-4">
+                <h3 className="font-display font-semibold text-2xl sm:text-3xl leading-tight text-[#10243B] mb-4">
                   Cihazınızla ilgili<br />ekibimize ulaşın.
                 </h3>
-                <p className="text-[14px] text-[#b6c2ce] leading-relaxed mb-7">
+                <p className="text-[14px] text-[#607084] leading-relaxed mb-7">
                   Destek talebinizde cihaz modelini, varsa hata kodunu ve iletişim bilgilerinizi paylaşabilirsiniz.
                 </p>
-                <div className="border-t border-[#2b3b49] divide-y divide-[#2b3b49]">
+                <div className="border-t border-[#D9E6EF] divide-y divide-[#D9E6EF]">
                   <a
                     href="tel:+902972060272"
-                    className="flex items-center gap-3 py-4 text-[#eef2f5] hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                    className="flex items-center gap-3 py-4 text-[#10243B] hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                   >
                     <Phone size={18} className="text-primary shrink-0" />
                     <span className="text-base font-medium">+90 297 206 02 72</span>
                   </a>
                   <a
                     href="mailto:info@emcr.com.tr"
-                    className="flex items-center gap-3 py-4 text-[#eef2f5] hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                    className="flex items-center gap-3 py-4 text-[#10243B] hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                   >
                     <Mail size={18} className="text-primary shrink-0" />
                     <span className="text-base font-medium">info@emcr.com.tr</span>
@@ -321,11 +321,11 @@ export default function TeknikDestek() {
       </section>
 
       {/* ── SERVICES ─────────────────────────────────────────────── */}
-      <section className="py-20 relative overflow-hidden bg-[#080c18]">
+      <section className="py-20 relative overflow-hidden bg-[#F0F6FC]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 60% 50% at 50% 80%, rgba(20,184,166,0.04) 0%, transparent 60%)",
+            background: "radial-gradient(ellipse 60% 50% at 50% 80%, rgba(36,184,189,0.04) 0%, transparent 60%)",
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
@@ -336,7 +336,7 @@ export default function TeknikDestek() {
             className="flex items-end justify-between mb-16 flex-wrap gap-6"
           >
             <div>
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-4">Hizmetler</p>
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-4">Hizmetler</p>
               <h2
                 className="font-display font-black leading-[0.95] tracking-[-0.02em]"
                 style={{ fontSize: "clamp(2rem, 3.5vw, 3.5rem)" }}
@@ -344,7 +344,7 @@ export default function TeknikDestek() {
                 Kapsamlı{" "}
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -356,7 +356,7 @@ export default function TeknikDestek() {
                 </span>
               </h2>
             </div>
-            <p className="text-sm text-foreground/35 max-w-xs leading-relaxed">
+            <p className="text-sm text-[#607084] max-w-xs leading-relaxed">
               Kurulumdan yıllık bakıma, eğitimden acil servise, tüm süreç EMCR güvencesinde.
             </p>
           </motion.div>
@@ -373,15 +373,15 @@ export default function TeknikDestek() {
                   whileInView="visible"
                   viewport={{ once: true }}
                   custom={i * 0.5}
-                  className="group flex items-start gap-6 md:gap-10 py-8 border-b border-white/[0.06] last:border-0 hover:bg-white/[0.01] -mx-4 px-4 rounded-xl transition-colors cursor-default"
+                  className="group flex items-start gap-6 md:gap-10 py-8 border-b border-[#D9E6EF] last:border-0 hover:bg-[#E5F0F8] -mx-4 px-4 rounded-xl transition-colors cursor-default"
                 >
                   {/* Number */}
-                  <span className="text-[13px] font-mono text-foreground/18 pt-1 w-7 flex-shrink-0 group-hover:text-primary/40 transition-colors">
+                  <span className="text-[13px] font-mono text-foreground/18 pt-1 w-7 flex-shrink-0 group-hover:text-[#1A9CA1] transition-colors">
                     {s.num}
                   </span>
 
                   {/* Icon */}
-                  <div className="w-10 h-10 rounded-xl bg-primary/[0.07] border border-primary/[0.12] flex items-center justify-center text-primary/70 flex-shrink-0 group-hover:bg-primary/[0.12] group-hover:border-primary/25 group-hover:text-primary transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-primary/[0.07] border border-primary/[0.12] flex items-center justify-center text-[#1A9CA1] flex-shrink-0 group-hover:bg-primary/[0.12] group-hover:border-primary/25 group-hover:text-primary transition-all">
                     <Icon className="w-4.5 h-4.5" size={18} />
                   </div>
 
@@ -390,7 +390,7 @@ export default function TeknikDestek() {
                     <h3 className="font-display font-bold text-[17px] text-foreground/85 mb-2 group-hover:text-foreground transition-colors">
                       {s.title}
                     </h3>
-                    <p className="text-[14px] text-foreground/40 leading-[1.8] max-w-2xl">
+                    <p className="text-[14px] text-[#607084] leading-[1.8] max-w-2xl">
                       {s.desc}
                     </p>
                   </div>
@@ -398,7 +398,7 @@ export default function TeknikDestek() {
                   {/* Arrow */}
                   <ArrowRight
                     size={16}
-                    className="text-foreground/15 flex-shrink-0 mt-1.5 group-hover:text-primary/50 group-hover:translate-x-1 transition-all"
+                    className="text-foreground/15 flex-shrink-0 mt-1.5 group-hover:text-[#1A9CA1] group-hover:translate-x-1 transition-all"
                   />
                 </motion.div>
               );
@@ -412,7 +412,7 @@ export default function TeknikDestek() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 55% 45% at 10% 60%, rgba(20,184,166,0.045) 0%, transparent 65%)",
+            background: "radial-gradient(ellipse 55% 45% at 10% 60%, rgba(36,184,189,0.045) 0%, transparent 65%)",
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
@@ -425,7 +425,7 @@ export default function TeknikDestek() {
               viewport={{ once: true }}
               className="md:sticky md:top-28"
             >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">SSS</p>
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-6">SSS</p>
               <h2
                 className="font-display font-black leading-[0.95] tracking-[-0.02em] mb-6"
                 style={{ fontSize: "clamp(2rem, 3vw, 3rem)" }}
@@ -434,7 +434,7 @@ export default function TeknikDestek() {
                 <br />
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -445,7 +445,7 @@ export default function TeknikDestek() {
                   Sorular
                 </span>
               </h2>
-              <p className="text-[14px] text-foreground/38 leading-[1.85]">
+              <p className="text-[14px] text-[#607084] leading-[1.85]">
                 Cevap bulamazsanız teknik destek hattımızı arayın veya
                 e-posta gönderin, size 24 saat içinde geri dönelim.
               </p>
@@ -461,14 +461,14 @@ export default function TeknikDestek() {
                   whileInView="visible"
                   viewport={{ once: true }}
                   custom={i * 0.5}
-                  className="rounded-2xl border border-white/[0.07] overflow-hidden bg-white/[0.015]"
+                  className="rounded-2xl border border-[#D9E6EF] overflow-hidden bg-white/80"
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-start justify-between gap-5 px-6 py-5 text-left hover:bg-white/[0.025] transition-colors group"
+                    className="w-full flex items-start justify-between gap-5 px-6 py-5 text-left hover:bg-[#E5F0F8] transition-colors group"
                   >
                     <div className="flex items-start gap-4">
-                      <span className="text-[11px] font-mono text-primary/30 mt-[3px] flex-shrink-0 group-hover:text-primary/60 transition-colors">
+                      <span className="text-[11px] font-mono text-primary/30 mt-[3px] flex-shrink-0 group-hover:text-[#1A9CA1] transition-colors">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="font-medium text-[14.5px] text-foreground/80 group-hover:text-foreground/95 transition-colors leading-snug">
@@ -477,7 +477,7 @@ export default function TeknikDestek() {
                     </div>
                     <ChevronDown
                       size={15}
-                      className={`text-primary/50 flex-shrink-0 mt-0.5 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
+                      className={`text-[#1A9CA1] flex-shrink-0 mt-0.5 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
                     />
                   </button>
                   <AnimatePresence>
@@ -489,8 +489,8 @@ export default function TeknikDestek() {
                         transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 pb-6 border-t border-white/[0.05]">
-                          <p className="text-[13.5px] text-foreground/45 leading-[1.9] pt-4 pl-[calc(11px+1rem)]">
+                        <div className="px-6 pb-6 border-t border-[#D9E6EF]">
+                          <p className="text-[13.5px] text-[#607084] leading-[1.9] pt-4 pl-[calc(11px+1rem)]">
                             {faq.a}
                           </p>
                         </div>
@@ -505,12 +505,12 @@ export default function TeknikDestek() {
       </section>
 
       {/* ── CONTACT ──────────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#080c18]">
+      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
         <div className="absolute inset-0 pointer-events-none">
           <div
             style={{
               position: "absolute", inset: 0,
-              background: "radial-gradient(ellipse 60% 55% at 80% 30%, rgba(20,184,166,0.06) 0%, transparent 65%)",
+              background: "radial-gradient(ellipse 60% 55% at 80% 30%, rgba(36,184,189,0.06) 0%, transparent 65%)",
             }}
           />
         </div>
@@ -525,7 +525,7 @@ export default function TeknikDestek() {
               viewport={{ once: true }}
               transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-6">
                 Destek Talebi
               </p>
               <h2
@@ -535,7 +535,7 @@ export default function TeknikDestek() {
                 Teknik{" "}
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -546,7 +546,7 @@ export default function TeknikDestek() {
                   Destek Formu
                 </span>
               </h2>
-              <p className="text-[15px] text-foreground/42 leading-[1.85] mb-10">
+              <p className="text-[15px] text-[#607084] leading-[1.85] mb-10">
                 Cihazınızla ilgili teknik sorun, bakım talebi veya sorularınız için
                 formu doldurun. Ekibimiz en kısa sürede sizinle iletişime geçecektir.
               </p>
@@ -556,7 +556,7 @@ export default function TeknikDestek() {
                   href="tel:+902972060272"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="w-9 h-9 rounded-xl border border-white/[0.08] bg-white/[0.02] flex items-center justify-center text-primary/60 group-hover:border-primary/25 group-hover:bg-primary/[0.06] group-hover:text-primary transition-all">
+                  <div className="w-9 h-9 rounded-xl border border-[#D9E6EF] bg-white/80 flex items-center justify-center text-[#1A9CA1] group-hover:border-primary/25 group-hover:bg-primary/[0.06] group-hover:text-primary transition-all">
                     <Phone size={14} />
                   </div>
                   <div>
@@ -571,7 +571,7 @@ export default function TeknikDestek() {
                   href="mailto:info@emcr.com.tr"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="w-9 h-9 rounded-xl border border-white/[0.08] bg-white/[0.02] flex items-center justify-center text-primary/60 group-hover:border-primary/25 group-hover:bg-primary/[0.06] group-hover:text-primary transition-all">
+                  <div className="w-9 h-9 rounded-xl border border-[#D9E6EF] bg-white/80 flex items-center justify-center text-[#1A9CA1] group-hover:border-primary/25 group-hover:bg-primary/[0.06] group-hover:text-primary transition-all">
                     <Mail size={14} />
                   </div>
                   <div>
@@ -583,12 +583,12 @@ export default function TeknikDestek() {
                 </a>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-xl border border-white/[0.08] bg-white/[0.02] flex items-center justify-center text-primary/60 flex-shrink-0">
+                  <div className="w-9 h-9 rounded-xl border border-[#D9E6EF] bg-white/80 flex items-center justify-center text-[#1A9CA1] flex-shrink-0">
                     <MapPin size={14} />
                   </div>
                   <div>
                     <p className="text-[11px] text-foreground/28 uppercase tracking-widest mb-0.5">Adres</p>
-                    <p className="text-[13.5px] text-foreground/45 leading-relaxed">
+                    <p className="text-[13.5px] text-[#607084] leading-relaxed">
                       Nispetiye Mah. Aytar Cad.<br />
                       Erdölen İş Merkezi No:38 Kat 1<br />
                       Beşiktaş / İstanbul
@@ -605,7 +605,7 @@ export default function TeknikDestek() {
               viewport={{ once: true }}
               transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="relative p-8 md:p-10 rounded-3xl border border-white/[0.07] bg-white/[0.02] overflow-hidden">
+              <div className="relative p-8 md:p-10 rounded-3xl border border-[#D9E6EF] bg-white/80 overflow-hidden">
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
                 {sent ? (
@@ -614,7 +614,7 @@ export default function TeknikDestek() {
                       <ShieldCheck className="w-7 h-7 text-primary" />
                     </div>
                     <h3 className="font-display font-bold text-xl mb-3">Talebiniz Alındı</h3>
-                    <p className="text-foreground/40 text-sm leading-relaxed max-w-xs mx-auto">
+                    <p className="text-[#607084] text-sm leading-relaxed max-w-xs mx-auto">
                       E-posta istemciniz açıldı. Mesajı göndermek için lütfen onaylayın.
                       Ekibimiz en kısa sürede sizinle iletişime geçecektir.
                     </p>
@@ -630,64 +630,64 @@ export default function TeknikDestek() {
 
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-[10.5px] font-medium text-foreground/35 mb-2.5 tracking-widest uppercase">
+                        <label className="block text-[10.5px] font-medium text-[#607084] mb-2.5 tracking-widest uppercase">
                           Adınız Soyadınız
                         </label>
                         <input
                           required
                           value={form.name}
                           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                          className="w-full h-11 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
+                          className="w-full h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
                           placeholder="Dr. Adı Soyadı"
                         />
                       </div>
                       <div>
-                        <label className="block text-[10.5px] font-medium text-foreground/35 mb-2.5 tracking-widest uppercase">
+                        <label className="block text-[10.5px] font-medium text-[#607084] mb-2.5 tracking-widest uppercase">
                           Telefon
                         </label>
                         <input
                           value={form.phone}
                           onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                          className="w-full h-11 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
+                          className="w-full h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
                           placeholder="+90 5XX XXX XX XX"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-[10.5px] font-medium text-foreground/35 mb-2.5 tracking-widest uppercase">
+                      <label className="block text-[10.5px] font-medium text-[#607084] mb-2.5 tracking-widest uppercase">
                         Klinik / Kurum Adı
                       </label>
                       <input
                         required
                         value={form.clinic}
                         onChange={(e) => setForm((f) => ({ ...f, clinic: e.target.value }))}
-                        className="w-full h-11 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
+                        className="w-full h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
                         placeholder="Klinik Adı"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10.5px] font-medium text-foreground/35 mb-2.5 tracking-widest uppercase">
+                      <label className="block text-[10.5px] font-medium text-[#607084] mb-2.5 tracking-widest uppercase">
                         Cihaz
                       </label>
                       <div className="relative">
                         <select
                           value={form.device}
                           onChange={(e) => setForm((f) => ({ ...f, device: e.target.value }))}
-                          className="w-full h-11 px-4 pr-9 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[13.5px] text-foreground/80 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all appearance-none"
-                          style={{ colorScheme: "dark", backgroundColor: "#0d1422", color: "rgba(255,255,255,0.8)" }}
+                          className="w-full h-11 px-4 pr-9 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all appearance-none"
+                          style={{ colorScheme: "light", backgroundColor: "#10243B", color: "rgba(16,36,59,0.8)" }}
                         >
-                          <option value="NeoGen Plasma" style={{ backgroundColor: "#0d1422", color: "rgba(255,255,255,0.85)" }}>NeoGen Plasma</option>
-                          <option value="UltraClear" style={{ backgroundColor: "#0d1422", color: "rgba(255,255,255,0.85)" }}>UltraClear</option>
-                          <option value="Diğer" style={{ backgroundColor: "#0d1422", color: "rgba(255,255,255,0.85)" }}>Diğer</option>
+                          <option value="NeoGen Plasma" style={{ backgroundColor: "#10243B", color: "rgba(16,36,59,0.85)" }}>NeoGen Plasma</option>
+                          <option value="UltraClear" style={{ backgroundColor: "#10243B", color: "rgba(16,36,59,0.85)" }}>UltraClear</option>
+                          <option value="Diğer" style={{ backgroundColor: "#10243B", color: "rgba(16,36,59,0.85)" }}>Diğer</option>
                         </select>
                         <ChevronDown size={13} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-foreground/30 pointer-events-none" />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-[10.5px] font-medium text-foreground/35 mb-2.5 tracking-widest uppercase">
+                      <label className="block text-[10.5px] font-medium text-[#607084] mb-2.5 tracking-widest uppercase">
                         Sorun / Talep Açıklaması
                       </label>
                       <textarea
@@ -695,15 +695,15 @@ export default function TeknikDestek() {
                         rows={4}
                         value={form.issue}
                         onChange={(e) => setForm((f) => ({ ...f, issue: e.target.value }))}
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all resize-none"
+                        className="w-full px-4 py-3 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all resize-none"
                         placeholder="Lütfen sorun veya talebinizi açıklayın..."
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full h-12 text-[13.5px] font-semibold bg-primary text-[#07090f] hover:bg-primary/90 rounded-xl transition-all flex items-center justify-center gap-2.5"
-                      style={{ boxShadow: "0 0 28px rgba(20,184,166,0.22), 0 4px 14px rgba(0,0,0,0.3)" }}
+                      className="w-full h-12 text-[13.5px] font-semibold bg-primary text-[#10243B] hover:bg-primary/90 rounded-xl transition-all flex items-center justify-center gap-2.5"
+                      style={{ boxShadow: "0 0 28px rgba(36,184,189,0.22), 0 4px 14px rgba(16,36,59,0.075)" }}
                     >
                       Destek Talebi Gönder
                       <ArrowRight size={15} />

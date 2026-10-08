@@ -65,8 +65,8 @@ const events: EventItem[] = [
 ];
 
 const typeStyle: Record<string, { color: string; border: string }> = {
-  Kongre:   { color: "rgba(79,195,195,0.75)",  border: "rgba(79,195,195,0.25)"  },
-  Eğitim:   { color: "rgba(56,189,248,0.75)",  border: "rgba(56,189,248,0.25)"  },
+  Kongre:   { color: "rgba(36,184,189,0.75)",  border: "rgba(36,184,189,0.25)"  },
+  Eğitim:   { color: "rgba(43,143,208,0.75)",  border: "rgba(43,143,208,0.25)"  },
   Workshop: { color: "rgba(168,85,247,0.75)",  border: "rgba(168,85,247,0.25)"  },
 };
 
@@ -78,7 +78,7 @@ export default function Etkinliklerimiz() {
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#04080d] text-foreground font-sans">
+    <div className="min-h-screen bg-[#F0F6FC] text-foreground font-sans">
       <Navbar />
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
@@ -92,22 +92,22 @@ export default function Etkinliklerimiz() {
                 alt=""
                 aria-hidden
                 className="w-full h-full object-cover"
-                style={{ filter: "brightness(0.28) saturate(0.6)" }}
+                style={{ opacity: 0.32 }}
               />
               {/* vertical seam */}
               {i < events.length - 1 && (
-                <div className="absolute right-0 top-0 bottom-0 w-px bg-white/[0.06]" />
+                <div className="absolute right-0 top-0 bottom-0 w-px bg-white/80" />
               )}
             </div>
           ))}
         </div>
 
         {/* Dark gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#04080d]/70 via-transparent to-[#04080d]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#04080d]/60 via-transparent to-[#04080d]/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F0F6FC]/70 via-transparent to-[#F0F6FC]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F0F6FC]/60 via-transparent to-[#F0F6FC]/60" />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 55% at 50% 60%, rgba(20,184,166,0.08) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse 60% 55% at 50% 60%, rgba(36,184,189,0.08) 0%, transparent 70%)" }}
         />
 
         {/* Hero text — centered */}
@@ -117,7 +117,7 @@ export default function Etkinliklerimiz() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-[11px] font-semibold tracking-[0.36em] uppercase text-primary/65 mb-6"
+            className="text-[11px] font-semibold tracking-[0.36em] uppercase text-[#1A9CA1] mb-6"
           >
             EMCR Medikal
           </motion.p>
@@ -134,7 +134,7 @@ export default function Etkinliklerimiz() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.22 }}
-            className="text-foreground/48 text-[15px] leading-relaxed max-w-md"
+            className="text-[#607084] text-[15px] leading-relaxed max-w-md"
           >
             Ulusal ve uluslararası kongre, eğitim ve workshop etkinliklerinden kareler.
           </motion.p>
@@ -174,7 +174,7 @@ export default function Etkinliklerimiz() {
                   className="absolute top-6 pointer-events-none select-none z-0 font-display font-black leading-none"
                   style={{
                     fontSize: "clamp(120px, 16vw, 200px)",
-                    color: "rgba(255,255,255,0.025)",
+                    color: "rgba(16,36,59,0.025)",
                     letterSpacing: "-0.05em",
                     [isEven ? "right" : "left"]: "1.5rem",
                   }}
@@ -209,7 +209,7 @@ export default function Etkinliklerimiz() {
 
                   {/* Info + thumbnails */}
                   <div
-                    className={`flex flex-col justify-center px-10 md:px-16 lg:px-20 py-16 lg:py-20 bg-[#060a14] ${isEven ? "" : "lg:[direction:ltr]"}`}
+                    className={`flex flex-col justify-center px-10 md:px-16 lg:px-20 py-16 lg:py-20 bg-[#F0F6FC] ${isEven ? "" : "lg:[direction:ltr]"}`}
                   >
                     {/* Meta row */}
                     <div className="flex items-center gap-3 mb-8">
@@ -259,7 +259,7 @@ export default function Etkinliklerimiz() {
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-white/[0.05] mx-10 md:mx-14" />
+                <div className="h-px bg-white/80 mx-10 md:mx-14" />
               </motion.article>
             );
           })}
@@ -267,10 +267,10 @@ export default function Etkinliklerimiz() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "#060a14" }}>
+      <section className="py-24 relative overflow-hidden" style={{ background: "#F0F6FC" }}>
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(20,184,166,0.055) 0%, transparent 65%)" }}
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(36,184,189,0.055) 0%, transparent 65%)" }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 text-center relative z-10">
           <motion.div
@@ -286,12 +286,12 @@ export default function Etkinliklerimiz() {
               Etkinlik ve Eğitim Bilgileri{" "}
               <span className="text-primary">için Bize Ulaşın</span>
             </h2>
-            <p className="text-foreground/42 max-w-lg mx-auto mb-8 text-[15px] leading-relaxed">
+            <p className="text-[#607084] max-w-lg mx-auto mb-8 text-[15px] leading-relaxed">
               Yaklaşan etkinliklerimiz veya özel demo talepleri için iletişime geçebilirsiniz.
             </p>
             <a
               href="mailto:info@emcr.com.tr"
-              className="inline-flex items-center gap-2 h-12 px-8 text-[14px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-xl transition-all"
+              className="inline-flex items-center gap-2 h-12 px-8 text-[14px] font-semibold bg-primary text-[#10243B] hover:bg-primary/90 rounded-xl transition-all"
             >
               İletişime Geç
             </a>
@@ -309,7 +309,7 @@ export default function Etkinliklerimiz() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/88 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#10243B]/85 backdrop-blur-sm p-4"
             onClick={() => setLightbox(null)}
           >
             <motion.div
@@ -327,7 +327,7 @@ export default function Etkinliklerimiz() {
               />
               <button
                 onClick={() => setLightbox(null)}
-                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all"
+                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all"
                 aria-label="Kapat"
               >
                 <X size={16} />

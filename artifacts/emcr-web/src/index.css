@@ -54,48 +54,49 @@
   --app-font-display: 'Space Grotesk', sans-serif;
   --radius: 0.75rem;
 
-  --background: 216 30% 6%;
-  --foreground: 220 15% 95%;
+  /* Aydınlık Profesyonel */
+  --background: 210 66.67% 96.47%;        /* #F0F6FC */
+  --foreground: 212.09 57.33% 14.71%;        /* #10243B */
 
-  --card: 216 40% 10%;
-  --card-foreground: 220 15% 95%;
-  --card-border: 216 30% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 212.09 57.33% 14.71%;
+  --card-border: 204.55 40.74% 89.41%;       /* #D9E6EF */
 
-  --popover: 216 40% 10%;
-  --popover-foreground: 220 15% 95%;
-  --popover-border: 216 30% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 212.09 57.33% 14.71%;
+  --popover-border: 204.55 40.74% 89.41%;
 
-  --primary: 180 50% 50%;
-  --primary-foreground: 216 30% 6%;
+  --primary: 181.96 68% 44.12%;           /* #24B8BD */
+  --primary-foreground: 212.09 57.33% 14.71%;
 
-  --secondary: 216 20% 15%;
-  --secondary-foreground: 220 15% 95%;
+  --secondary: 205.26 57.58% 93.53%;         /* #E5F0F8 */
+  --secondary-foreground: 212.09 57.33% 14.71%;
 
-  --muted: 216 30% 15%;
-  --muted-foreground: 216 10% 70%;
+  --muted: 205.26 57.58% 93.53%;
+  --muted-foreground: 213.33 15.79% 44.71%;  /* #607084 */
 
-  --accent: 180 50% 50%;
-  --accent-foreground: 216 30% 6%;
+  --accent: 181.96 68% 44.12%;
+  --accent-foreground: 212.09 57.33% 14.71%;
 
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: 216 30% 18%;
-  --input: 216 30% 18%;
-  --ring: 180 50% 50%;
+  --border: 204.55 40.74% 89.41%;
+  --input: 204.55 40.74% 89.41%;
+  --ring: 181.96 68% 44.12%;
 
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
+  --button-outline: rgba(16,36,59, .10);
+  --badge-outline: rgba(16,36,59, .06);
 
-  --opaque-button-border-intensity: 9;
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
+  --opaque-button-border-intensity: -8;
+  --elevate-1: rgba(16,36,59, .03);
+  --elevate-2: rgba(16,36,59, .07);
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 .dark {
-  /* same as root since we default to dark mode */
+  /* light theme only */
 }
 
 @layer base {

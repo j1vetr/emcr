@@ -37,12 +37,12 @@ export default function SosyalMedyada() {
       <Navbar />
 
       {/* ── Hero: sol başlık + sağ pinli gönderi ─────────────────────── */}
-      <section className="relative pt-24 pb-10 overflow-hidden bg-[#070b17]">
+      <section className="relative pt-24 pb-10 overflow-hidden bg-[#F0F6FC]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 70% at 80% 40%, rgba(225,48,108,0.05) 0%, rgba(20,184,166,0.04) 60%, transparent 100%)",
+              "radial-gradient(ellipse 60% 70% at 80% 40%, rgba(225,48,108,0.05) 0%, rgba(36,184,189,0.04) 60%, transparent 100%)",
           }}
         />
 
@@ -57,7 +57,7 @@ export default function SosyalMedyada() {
             >
               <div className="flex items-center gap-3 mb-7">
                 <Instagram size={17} className="text-[#E1306C]/75" />
-                <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-foreground/40">
+                <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-[#607084]">
                   Sosyal Medyada Biz
                 </p>
               </div>
@@ -79,7 +79,7 @@ export default function SosyalMedyada() {
                 </span>
               </h1>
 
-              <p className="text-foreground/45 text-[15px] leading-relaxed max-w-md mb-10">
+              <p className="text-[#607084] text-[15px] leading-relaxed max-w-md mb-10">
                 Klinik sonuçlar, canlı demonstrasyonlar, etkinlik kareleri ve
                 ürün güncellemeleri için sayfamızı takip edin.
               </p>
@@ -116,8 +116,8 @@ export default function SosyalMedyada() {
                     data-instgrm-permalink={POSTS[0]}
                     data-instgrm-version="14"
                     style={{
-                      background: "#0d1422",
-                      border: "1px solid rgba(255,255,255,0.07)",
+                      background: "#10243B",
+                      border: "1px solid rgba(16,36,59,0.07)",
                       borderRadius: "16px",
                       maxWidth: "380px",
                       width: "100%",
@@ -135,7 +135,7 @@ export default function SosyalMedyada() {
       </section>
 
       {/* ── Diğer postlar — 3'lü grid ─────────────────────────────────── */}
-      <section className="py-16 bg-[#080c18]">
+      <section className="py-16 bg-[#F0F6FC]">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
           <div className="flex items-center justify-between mb-10">
             <p className="text-[10.5px] font-semibold tracking-[0.3em] uppercase text-foreground/30">
@@ -167,8 +167,8 @@ export default function SosyalMedyada() {
                   data-instgrm-permalink={url}
                   data-instgrm-version="14"
                   style={{
-                    background: "#0d1422",
-                    border: "1px solid rgba(255,255,255,0.07)",
+                    background: "#10243B",
+                    border: "1px solid rgba(16,36,59,0.07)",
                     borderRadius: "14px",
                     maxWidth: "480px",
                     width: "100%",

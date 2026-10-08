@@ -137,7 +137,7 @@ export default function Home() {
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen overflow-hidden bg-[#070b17]"
+        className="relative min-h-screen overflow-hidden bg-[#F0F6FC]"
       >
         {/* ── z-0: YouTube video — full-screen cinematic background ── */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -158,25 +158,25 @@ export default function Home() {
 
         {/* ── z-1: Cinematic overlays ───────────────────────────── */}
         {/* Base dark — reduces video to tasteful atmosphere */}
-        <div className="absolute inset-0 z-[1] pointer-events-none bg-[#070b17]/62" />
+        <div className="absolute inset-0 z-[1] pointer-events-none bg-[#F0F6FC]/50" />
         {/* Radial vignette — darker at edges, video peaks through center */}
         <div
           className="absolute inset-0 z-[1] pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 80% 75% at 58% 48%, transparent 0%, rgba(7,11,23,0.45) 55%, rgba(7,11,23,0.85) 90%)",
+            background: "radial-gradient(ellipse 80% 75% at 58% 48%, transparent 0%, rgba(240,246,252,0.35) 55%, rgba(240,246,252,0.75) 90%)",
           }}
         />
         {/* Teal shimmer — subtle brand color in center */}
         <div
           className="absolute inset-0 z-[1] pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 55% 45% at 58% 50%, rgba(20,184,166,0.04) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse 55% 45% at 58% 50%, rgba(36,184,189,0.04) 0%, transparent 70%)",
           }}
         />
 
         {/* ── z-2: Top + bottom edge fades ─────────────────────── */}
-        <div className="absolute inset-x-0 top-0 h-36 z-[2] pointer-events-none bg-gradient-to-b from-[#070b17] to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-52 z-[2] pointer-events-none bg-gradient-to-t from-[#070b17] via-[#070b17]/80 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-36 z-[2] pointer-events-none bg-gradient-to-b from-[#F0F6FC] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-52 z-[2] pointer-events-none bg-gradient-to-t from-[#F0F6FC] via-[#F0F6FC]/80 to-transparent" />
 
         {/* ── Hero content — centered, cinematic ───────────────── */}
         <motion.div
@@ -215,7 +215,7 @@ export default function Home() {
                 className="font-display font-black leading-[0.9] tracking-[-0.025em]"
                 style={{
                   fontSize: "clamp(4rem, 9.5vw, 10rem)",
-                  background: "linear-gradient(110deg, #2dd4bf 0%, #5eead4 40%, #38bdf8 100%)",
+                  background: "linear-gradient(110deg, #24B8BD 0%, #1FA3A8 40%, #2B8FD0 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -231,7 +231,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 text-[15px] text-foreground/45 leading-[1.85] max-w-[480px] mx-auto"
+              className="mt-8 text-[15px] text-[#607084] leading-[1.85] max-w-[480px] mx-auto"
             >
               NeoGen Plasma ve UltraClear sistemlerinin Türkiye tek yetkili distribütörü.
               Klinikler için medikal teknoloji, eğitim ve teknik destek.
@@ -246,15 +246,15 @@ export default function Home() {
             >
               <a
                 href="mailto:info@emcr.com.tr"
-                className="h-12 px-8 inline-flex items-center gap-2.5 text-[13.5px] font-semibold bg-primary text-[#07090f] rounded-xl hover:bg-primary/90 transition-all"
-                style={{ boxShadow: "0 0 36px rgba(20,184,166,0.30), 0 4px 20px rgba(0,0,0,0.35)" }}
+                className="h-12 px-8 inline-flex items-center gap-2.5 text-[13.5px] font-semibold bg-primary text-[#10243B] rounded-xl hover:bg-primary/90 transition-all"
+                style={{ boxShadow: "0 0 36px rgba(36,184,189,0.30), 0 4px 20px rgba(16,36,59,0.087)" }}
               >
                 İletişime Geç
                 <ArrowRight className="w-4 h-4" />
               </a>
               <Link
                 href="/urunler/neogen-plasma"
-                className="h-12 px-8 inline-flex items-center gap-2 text-[13.5px] font-medium text-foreground/65 hover:text-foreground border border-white/[0.14] hover:border-white/25 rounded-xl hover:bg-white/[0.05] transition-all"
+                className="h-12 px-8 inline-flex items-center gap-2 text-[13.5px] font-medium text-foreground/65 hover:text-foreground border border-[#D9E6EF] hover:border-[#D9E6EF] rounded-xl hover:bg-[#E5F0F8] transition-all"
               >
                 Ürünleri Keşfet
                 <ArrowUpRight className="w-4 h-4" />
@@ -271,31 +271,31 @@ export default function Home() {
           >
             <div
               className="flex items-stretch divide-x"
-              style={{ borderLeft: "1px solid rgba(255,255,255,0.07)", borderRight: "1px solid rgba(255,255,255,0.07)" }}
+              style={{ borderLeft: "1px solid rgba(16,36,59,0.07)", borderRight: "1px solid rgba(16,36,59,0.07)" }}
             >
               {/* NeoGen */}
               <Link
                 href="/urunler/neogen-plasma"
-                className="group flex flex-col items-center justify-center gap-3 px-10 py-5 hover:bg-white/[0.03] transition-colors"
-                style={{ borderRight: "1px solid rgba(255,255,255,0.07)" }}
+                className="group flex flex-col items-center justify-center gap-3 px-10 py-5 hover:bg-[#E5F0F8] transition-colors"
+                style={{ borderRight: "1px solid rgba(16,36,59,0.07)" }}
               >
                 <img
                   src={neogenLogo}
                   alt="NeoGen Plasma"
                   className="w-auto object-contain transition-all duration-300 group-hover:opacity-75"
-                  style={{ height: "44px", filter: "invert(1) brightness(0.82)", opacity: 0.5 }}
+                  style={{ height: "44px", opacity: 0.6 }}
                 />
               </Link>
               {/* UltraClear */}
               <Link
                 href="/urunler/ultraclear"
-                className="group flex flex-col items-center justify-center gap-3 px-10 py-5 hover:bg-white/[0.03] transition-colors"
+                className="group flex flex-col items-center justify-center gap-3 px-10 py-5 hover:bg-[#E5F0F8] transition-colors"
               >
                 <img
                   src={ultraClearLogo}
                   alt="UltraClear"
                   className="w-auto object-contain transition-all duration-300 group-hover:opacity-70"
-                  style={{ height: "30px", opacity: 0.42 }}
+                  style={{ height: "30px", opacity: 0.85, filter: "brightness(0) saturate(100%) invert(11%) sepia(38%) saturate(1500%) hue-rotate(184deg) brightness(92%)" }}
                 />
               </Link>
             </div>
@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       {/* ── NEOGEN BRAND ──────────────────────────────────────────── */}
-      <section id="neogen" className="relative overflow-hidden min-h-screen bg-[#070b17]">
+      <section id="neogen" className="relative overflow-hidden min-h-screen bg-[#F0F6FC]">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -326,16 +326,16 @@ export default function Home() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-y-0 right-0 w-[55%] flex items-center justify-center pointer-events-none"
         >
-          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#070b17] to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#F0F6FC] to-transparent z-10" />
           <div className="absolute w-[680px] h-[680px] rounded-full border border-primary/20"
-            style={{ boxShadow: "0 0 80px rgba(79,195,195,0.06), inset 0 0 80px rgba(79,195,195,0.03)" }} />
+            style={{ boxShadow: "0 0 80px rgba(36,184,189,0.06), inset 0 0 80px rgba(36,184,189,0.03)" }} />
           <div className="absolute w-[500px] h-[500px] rounded-full border border-primary/10" />
           <div className="absolute w-[320px] h-[320px] bg-primary/5 blur-[80px] rounded-full" />
           <img
             src={neogenDevicePlatform}
             alt="NeoGen Plasma Device"
             className="relative z-20 w-full h-full object-contain object-center"
-            style={{ filter: "drop-shadow(0 30px 100px rgba(0,0,0,0.7))" }}
+            style={{ filter: "drop-shadow(0 30px 100px rgba(16,36,59,0.175))" }}
             loading="lazy"
             decoding="async"
           />
@@ -350,27 +350,27 @@ export default function Home() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="max-w-[520px]"
             >
-              <img src={neogenLogo} alt="NeoGen" className="w-full max-w-[240px] mb-10 invert opacity-95" />
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-5" lang="en">
+              <img src={neogenLogo} alt="NeoGen" className="w-full max-w-[240px] mb-10 opacity-95" />
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-[#1A9CA1] mb-5" lang="en">
                 Nitrogen Plasma
               </p>
               <h2 className="font-display font-bold leading-[1.05] mb-6" style={{ fontSize: "clamp(2.4rem, 3.6vw, 4rem)" }}>
                 Kontrollü Enerji.<br />
                 <span className="text-primary">Görünür Sonuç.</span>
               </h2>
-              <p className="text-foreground/50 text-base leading-relaxed mb-10">
+              <p className="text-[#607084] text-base leading-relaxed mb-10">
                 NeoGen Plasma, nitrogen gazını plazma enerjisine dönüştürerek cilt yüzeyi
                 korunurken derin dermal yenilenme sağlar. Kontrollü termal etki ve
                 protokol esnekliğiyle geniş bir uygulama yelpazesi sunar.
               </p>
 
               <div className="flex items-center gap-4">
-                <Button asChild className="h-11 px-7 text-[13px] font-semibold bg-primary text-[#0a0e1a] hover:bg-primary/90 rounded-sm">
+                <Button asChild className="h-11 px-7 text-[13px] font-semibold bg-primary text-[#10243B] hover:bg-primary/90 rounded-sm">
                   <Link href="/urunler/neogen-plasma">Detaylı İncele</Link>
                 </Button>
                 <button
                   onClick={() => scrollTo("results")}
-                  className="text-[12px] tracking-widest text-foreground/35 hover:text-foreground/60 transition-colors flex items-center gap-2"
+                  className="text-[12px] tracking-widest text-[#607084] hover:text-foreground/60 transition-colors flex items-center gap-2"
                 >
                   KLİNİK SONUÇLAR <ChevronRight className="w-3 h-3" />
                 </button>
@@ -381,12 +381,12 @@ export default function Home() {
       </section>
 
       {/* ── NEOGEN BEFORE / AFTER ─────────────────────────────────── */}
-      <section id="results" className="relative bg-[#060a15] overflow-hidden py-20">
+      <section id="results" className="relative bg-[#F0F6FC] overflow-hidden py-20">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-primary/4 blur-[120px] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-10">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/60 mb-3">
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-[#1A9CA1] mb-3">
                 NeoGen Plasma
               </p>
               <h2 className="font-display font-bold leading-[1]" style={{ fontSize: "clamp(2.2rem, 4.5vw, 4.5rem)" }}>
@@ -410,9 +410,9 @@ export default function Home() {
                   <button
                     key={di}
                     onClick={() => setActivePatient(p => (p + dir + baPatients.length) % baPatients.length)}
-                    className="w-10 h-10 rounded-full border border-white/10 hover:border-primary/40 hover:bg-white/5 flex items-center justify-center transition-all duration-300"
+                    className="w-10 h-10 rounded-full border border-[#D9E6EF] hover:border-primary/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all duration-300"
                   >
-                    <ChevronRight size={16} className={`text-foreground/50 hover:text-foreground transition-colors ${dir === -1 ? "rotate-180" : ""}`} />
+                    <ChevronRight size={16} className={`text-[#607084] hover:text-foreground transition-colors ${dir === -1 ? "rotate-180" : ""}`} />
                   </button>
                 ))}
               </div>
@@ -435,22 +435,22 @@ export default function Home() {
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
                 <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060a15]/70 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#060a15]/30 via-transparent to-[#060a15]/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F0F6FC]/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#F0F6FC]/30 via-transparent to-[#F0F6FC]/30" />
               </motion.div>
             ))}
             <div className="absolute top-5 left-6 z-20">
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-foreground/70">ÖNCE</span>
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-[#D9E6EF] text-foreground/70">ÖNCE</span>
             </div>
             <div className="absolute top-5 right-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary">SONRA</span>
             </div>
-            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/10 z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/80 z-10 pointer-events-none" />
             <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
-              <p className="text-[10px] tracking-[0.25em] uppercase text-primary/70">
+              <p className="text-[10px] tracking-[0.25em] uppercase text-[#1A9CA1]">
                 NeoGen Plasma · {baPatients[activePatient].label}
               </p>
-              <div className="font-display font-bold text-6xl text-white/5 select-none leading-none tabular-nums">
+              <div className="font-display font-bold text-6xl text-[#10243B]/5 select-none leading-none tabular-nums">
                 {String(activePatient + 1).padStart(2, "0")}
               </div>
             </div>
@@ -467,12 +467,12 @@ export default function Home() {
                 transition={{ delay: i * 0.06, duration: 0.5 }}
                 className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-400 group ${
                   activePatient === i
-                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#060a15]"
+                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#F0F6FC]"
                     : "opacity-50 hover:opacity-80"
                 }`}
               >
                 <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                <div className={`absolute inset-0 transition-all duration-400 ${activePatient === i ? "bg-primary/10" : "bg-black/30"}`} />
+                <div className={`absolute inset-0 transition-all duration-400 ${activePatient === i ? "bg-primary/10" : "bg-white/35"}`} />
                 <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-foreground/60">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -483,9 +483,9 @@ export default function Home() {
       </section>
 
       {/* ── ULTRACLEAR ────────────────────────────────────────────── */}
-      <section id="ultraclear" className="relative overflow-hidden min-h-screen bg-[#040810]">
+      <section id="ultraclear" className="relative overflow-hidden min-h-screen bg-[#F0F6FC]">
         <div className="absolute left-6 top-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
-          <span className="font-display font-black leading-none text-white/[0.025]" style={{ fontSize: "clamp(18rem, 28vw, 32rem)" }}>
+          <span className="font-display font-black leading-none text-[#10243B]/[0.025]" style={{ fontSize: "clamp(18rem, 28vw, 32rem)" }}>
             02
           </span>
         </div>
@@ -497,8 +497,8 @@ export default function Home() {
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-y-0 right-0 w-[58%] pointer-events-none"
         >
-          <div className="absolute inset-y-0 left-0 w-56 bg-gradient-to-r from-[#040810] to-transparent z-10" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#040810] to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-56 bg-gradient-to-r from-[#F0F6FC] to-transparent z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F0F6FC] to-transparent z-10" />
           <img src={ultraClearStudio} alt="UltraClear Laser Device" className="w-full h-full object-cover object-center" loading="lazy" decoding="async" />
 
           <motion.div
@@ -506,9 +506,9 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="absolute z-20 top-[22%] left-20 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/5 border border-sky-400/20"
+            className="absolute z-20 top-[22%] left-20 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/80 border border-sky-600/20"
           >
-            <p className="text-[9px] tracking-[0.25em] uppercase text-sky-400/70 mb-0.5">Dalga Boyu</p>
+            <p className="text-[9px] tracking-[0.25em] uppercase text-sky-600/70 mb-0.5">Dalga Boyu</p>
             <p className="text-[13px] font-semibold text-foreground/90">2910 nm</p>
           </motion.div>
           <motion.div
@@ -516,9 +516,9 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.9, duration: 0.6 }}
-            className="absolute z-20 bottom-[28%] left-12 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/5 border border-white/10"
+            className="absolute z-20 bottom-[28%] left-12 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/80 border border-[#D9E6EF]"
           >
-            <p className="text-[9px] tracking-[0.25em] uppercase text-foreground/40 mb-0.5">Uyumluluk</p>
+            <p className="text-[9px] tracking-[0.25em] uppercase text-[#607084] mb-0.5">Uyumluluk</p>
             <p className="text-[13px] font-semibold text-foreground/80">Tüm Cilt Tipleri</p>
           </motion.div>
         </motion.div>
@@ -533,14 +533,14 @@ export default function Home() {
               className="max-w-[480px]"
             >
               <div className="flex items-center gap-3 mb-7">
-                <div className="w-8 h-px bg-sky-400/60" />
-                <p className="text-[10px] font-semibold tracking-[0.35em] text-sky-400/70">
+                <div className="w-8 h-px bg-sky-600/60" />
+                <p className="text-[10px] font-semibold tracking-[0.35em] text-sky-600/70">
                   2910 NM · COLD FIBER LASER
                 </p>
               </div>
 
               <h2 className="font-display font-bold leading-[1.0] mb-3" style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)" }}>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-200 via-sky-300 to-primary">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-200 via-sky-600 to-primary">
                   UltraClear™
                 </span>
               </h2>
@@ -548,7 +548,7 @@ export default function Home() {
                 Işık Hızında<br />Cilt Yenileme.
               </p>
 
-              <div className="mb-10 border-t border-white/[0.06]">
+              <div className="mb-10 border-t border-[#D9E6EF]">
                 {[
                   { label: "TEKNOLOJİ", value: "Soğuk Ablasyon (Cold Ablation)" },
                   { label: "UYGULAMA", value: "Yenileme · Leke · Sıkılaştırma" },
@@ -561,21 +561,21 @@ export default function Home() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.15 + i * 0.08, duration: 0.55 }}
-                    className="flex items-center gap-5 py-4 border-b border-white/[0.05] group hover:border-sky-400/20 transition-colors"
+                    className="flex items-center gap-5 py-4 border-b border-[#D9E6EF] group hover:border-sky-600/20 transition-colors"
                   >
-                    <span className="text-[9px] tracking-[0.25em] text-sky-400/50 w-20 flex-shrink-0 font-medium">{s.label}</span>
+                    <span className="text-[9px] tracking-[0.25em] text-sky-600/50 w-20 flex-shrink-0 font-medium">{s.label}</span>
                     <span className="text-sm text-foreground/65 group-hover:text-foreground/85 transition-colors">{s.value}</span>
                   </motion.div>
                 ))}
               </div>
 
               <div className="flex items-center gap-5">
-                <Button asChild className="h-11 px-7 text-[13px] font-semibold rounded-sm bg-sky-400/10 border border-sky-400/30 hover:bg-sky-400/20 text-sky-300 hover:text-sky-200 transition-all duration-300">
+                <Button asChild className="h-11 px-7 text-[13px] font-semibold rounded-sm bg-sky-600/10 border border-sky-600/30 hover:bg-sky-600/20 text-sky-600 hover:text-sky-200 transition-all duration-300">
                   <Link href="/urunler/ultraclear">Detaylı İncele</Link>
                 </Button>
                 <button
                   onClick={() => scrollTo("ultraclear-results")}
-                  className="text-[12px] tracking-widest text-foreground/35 hover:text-foreground/60 transition-colors flex items-center gap-2"
+                  className="text-[12px] tracking-widest text-[#607084] hover:text-foreground/60 transition-colors flex items-center gap-2"
                 >
                   KLİNİK SONUÇLAR <ChevronRight className="w-3 h-3" />
                 </button>
@@ -586,12 +586,12 @@ export default function Home() {
       </section>
 
       {/* ── ULTRACLEAR BEFORE / AFTER ─────────────────────────────── */}
-      <section id="ultraclear-results" className="relative bg-[#04080e] overflow-hidden py-20">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] bg-sky-400/3 blur-[100px] pointer-events-none" />
+      <section id="ultraclear-results" className="relative bg-[#F0F6FC] overflow-hidden py-20">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] bg-sky-600/3 blur-[100px] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-10">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-400/60 mb-3">
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-sky-600/60 mb-3">
                 UltraClear™
               </p>
               <h2 className="font-display font-bold leading-[1]" style={{ fontSize: "clamp(2.2rem, 4.5vw, 4.5rem)" }}>
@@ -614,9 +614,9 @@ export default function Home() {
                   <button
                     key={di}
                     onClick={() => setUcActivePatient(p => (p + dir + ucPatients.length) % ucPatients.length)}
-                    className="w-10 h-10 rounded-full border border-white/10 hover:border-sky-400/40 hover:bg-white/5 flex items-center justify-center transition-all duration-300"
+                    className="w-10 h-10 rounded-full border border-[#D9E6EF] hover:border-sky-600/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all duration-300"
                   >
-                    <ChevronRight size={16} className={`text-foreground/50 ${dir === -1 ? "rotate-180" : ""}`} />
+                    <ChevronRight size={16} className={`text-[#607084] ${dir === -1 ? "rotate-180" : ""}`} />
                   </button>
                 ))}
               </div>
@@ -639,22 +639,22 @@ export default function Home() {
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
                 <img src={p.img} alt={`UltraClear hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#04080e]/70 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#04080e]/30 via-transparent to-[#04080e]/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F0F6FC]/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#F0F6FC]/30 via-transparent to-[#F0F6FC]/30" />
               </motion.div>
             ))}
             <div className="absolute top-5 left-6 z-20">
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-foreground/70">ÖNCE</span>
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-[#D9E6EF] text-foreground/70">ÖNCE</span>
             </div>
             <div className="absolute top-5 right-6 z-20">
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-sky-400/20 backdrop-blur-md border border-sky-400/30 text-sky-300">SONRA</span>
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-sky-600/20 backdrop-blur-md border border-sky-600/30 text-sky-600">SONRA</span>
             </div>
-            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/10 z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/80 z-10 pointer-events-none" />
             <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
-              <p className="text-[10px] tracking-[0.25em] uppercase text-sky-400/70">
+              <p className="text-[10px] tracking-[0.25em] uppercase text-sky-600/70">
                 UltraClear™ · {ucPatients[ucActivePatient].label}
               </p>
-              <div className="font-display font-bold text-6xl text-white/5 select-none leading-none tabular-nums">
+              <div className="font-display font-bold text-6xl text-[#10243B]/5 select-none leading-none tabular-nums">
                 {String(ucActivePatient + 1).padStart(2, "0")}
               </div>
             </div>
@@ -671,12 +671,12 @@ export default function Home() {
                 transition={{ delay: i * 0.06, duration: 0.5 }}
                 className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-400 group ${
                   ucActivePatient === i
-                    ? "ring-2 ring-sky-400/60 ring-offset-1 ring-offset-[#04080e]"
+                    ? "ring-2 ring-sky-600/60 ring-offset-1 ring-offset-[#F0F6FC]"
                     : "opacity-50 hover:opacity-80"
                 }`}
               >
                 <img src={p.img} alt={`UltraClear ${i + 1}`} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                <div className={`absolute inset-0 transition-all duration-400 ${ucActivePatient === i ? "bg-sky-400/10" : "bg-black/30"}`} />
+                <div className={`absolute inset-0 transition-all duration-400 ${ucActivePatient === i ? "bg-sky-600/10" : "bg-white/35"}`} />
                 <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-foreground/60">
                   {String(i + 1).padStart(2, "0")}
                 </span>

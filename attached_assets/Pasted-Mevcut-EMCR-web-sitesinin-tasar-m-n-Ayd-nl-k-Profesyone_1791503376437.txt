@@ -1,0 +1,42 @@
+Mevcut EMCR web sitesinin tasarımını **Aydınlık Profesyonel** konseptine göre güncellemeni istiyorum.
+
+Mevcut tasarımın yapısını, section sıralamalarını, içeriklerini, görsellerini, animasyonlarını ve fonksiyonlarını kesinlikle değiştirme. Yalnızca renk paletini ve yeni renklerle uyumlu görsel detayları düzenle.
+
+**RENK PALETİ**
+
+- Ana arka plan: `#F0F6FC`
+- Alternatif section arka planı: `#E5F0F8`
+- Kartlar ve içerik alanları: `#FFFFFF`
+- Başlıklar ve navbar metinleri: `#10243B`
+- Açıklama metinleri: `#607084`
+- Turkuaz vurgu ve butonlar: `#24B8BD`
+- Kart kenarlıkları: `#D9E6EF`
+
+**TASARIM TALİMATLARI**
+
+1. **Navbar:** Açık, hafif transparan buz mavisi arka plan kullan. Logo ve menü bağlantıları koyu lacivert olmalı. İletişim butonu turkuaz kalmalı.
+
+2. **Hero Section:** Mevcut koyu arka planı açık buz mavisi ve beyaz geçişlerle değiştir. Arka plandaki insan yüzü görselini koru ancak açık tasarımla uyumlu hale getir. Ana başlık koyu lacivert, "Geleceği" kelimesi turkuaz olmalı.
+
+3. **NeoGen Plasma Section:** Açık mavi arka plan ve cihazın arkasında yumuşak mavi ışık geçişi kullan. Özellik kartları beyaz veya yarı transparan beyaz olsun. Başlıklar koyu lacivert, vurgular turkuaz olmalı.
+
+4. **NeoGen Klinik Sonuçları:** Arka plan beyaza yakın açık mavi olsun. Öncesi/sonrası görsellerini değiştirme. Galeri butonları, çerçeveleri ve numaralandırmayı yeni renk paletiyle uyumlu hale getir.
+
+5. **UltraClear Section:** Açık buz mavisi arka plan kullan. Cihaz görselini koru ve arkasına hafif mavi gradient ekle. Ürün başlıklarında lacivert ve turkuaz renklerini kullan. Teknik özellik satırlarını ince açık gri çizgilerle ayır.
+
+6. **UltraClear Klinik Sonuçları:** NeoGen sonuç bölümüyle aynı tasarım dilini kullan. Görseller ve galeri yapısı aynen korunmalı.
+
+7. **Footer:** Koyu footer yerine açık mavi/beyaz tonlarında bir footer oluştur. Başlıklar koyu lacivert, açıklamalar gri, ikonlar turkuaz olmalı.
+
+**GENEL KURALLAR**
+
+- Tasarım modern, premium, ferah ve medikal teknoloji sektörüne uygun olmalı.
+- Section geçişleri sert değil, yumuşak ve bütünlüklü olmalı.
+- Beyaz ve açık mavi tonları dengeli kullanılmalı.
+- Buton hover efektleri ve mevcut animasyonlar korunmalı.
+- Metinlerin okunabilirliği ve kontrastı yüksek olmalı.
+- Masaüstü, tablet ve mobil görünümde uyumluluk sağlanmalı.
+- Mevcut görselleri, içerikleri, SEO yapılarını ve fonksiyonları değiştirme.
+- Gereksiz yeni bileşen veya section ekleme.
+
+**ÖNEMLİ:** Sitenin tamamını yeniden tasarlama. Mevcut premium tasarım dilini koruyarak yalnızca koyu temayı açık, aydınlık ve profesyonel bir renk konseptine dönüştür. Tüm sayfalarda ve ortak bileşenlerde aynı renk sistemini kullan.

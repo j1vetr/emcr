@@ -33,8 +33,8 @@ const pressItems: PressItem[] = [
       "EMCR Medikal, NeoGen Plasma ve UltraClear sistemleri ile Türkiye'de medikal estetik alanında çığır açıyor. Nitrojen plazma teknolojisi ve soğuk fiber lazer sistemleri ilk kez ülkemizde hizmet sunmaya başladı.",
     url: "https://elitehayat.com/manset/medical-estetikte-turkiyede-bir-ilk/",
     featured: true,
-    accentColor: "rgba(79,195,195,0.12)",
-    borderColor: "rgba(79,195,195,0.2)",
+    accentColor: "rgba(36,184,189,0.12)",
+    borderColor: "rgba(36,184,189,0.2)",
   },
   {
     publication: "Klass Magazin",
@@ -45,8 +45,8 @@ const pressItems: PressItem[] = [
       "2910 nm dalga boyunda çalışan UltraClear soğuk fiber lazer sistemi, EMCR Medikal aracılığıyla Türkiye pazarına girdi. 3DMIRACL® teknolojisiyle cilt yenileme ve resurfacing alanında yeni bir dönem başlıyor.",
     url: "https://www.klassmagazin.com/ultraclear-turkiyede-ilk-kez-tanitildi",
     featured: false,
-    accentColor: "rgba(56,189,248,0.10)",
-    borderColor: "rgba(56,189,248,0.2)",
+    accentColor: "rgba(43,143,208,0.10)",
+    borderColor: "rgba(43,143,208,0.2)",
   },
 ];
 
@@ -56,18 +56,18 @@ export default function BasindaBiz() {
       <Navbar />
 
       {/* ── Hero ────────────────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-[#070b17]">
+      <section className="relative pt-32 pb-20 overflow-hidden bg-[#F0F6FC]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(79,195,195,0.07) 0%, transparent 70%)",
+              "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(36,184,189,0.07) 0%, transparent 70%)",
           }}
         />
 
         {/* Grid lines */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
+          style={{ backgroundImage: "linear-gradient(rgba(16,36,59,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(16,36,59,0.5) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <motion.div
@@ -77,8 +77,8 @@ export default function BasindaBiz() {
             className="max-w-2xl"
           >
             <div className="flex items-center gap-2.5 mb-5">
-              <Newspaper className="w-4 h-4 text-primary/60" />
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary/60">
+              <Newspaper className="w-4 h-4 text-[#1A9CA1]" />
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-[#1A9CA1]">
                 Basın Haberleri
               </span>
             </div>
@@ -86,7 +86,7 @@ export default function BasindaBiz() {
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight mb-5"
               style={{
-                background: "linear-gradient(135deg, #ffffff 30%, rgba(255,255,255,0.55) 100%)",
+                background: "linear-gradient(135deg, #10243B 30%, rgba(16,36,59,0.55) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -97,7 +97,7 @@ export default function BasindaBiz() {
               Basında Biz
             </h1>
 
-            <p className="text-foreground/45 text-base md:text-lg leading-relaxed max-w-xl">
+            <p className="text-[#607084] text-base md:text-lg leading-relaxed max-w-xl">
               EMCR Medikal ve Türkiye'ye getirdiğimiz medikal estetik teknolojileri hakkında ulusal medyada yer alan haberler.
             </p>
           </motion.div>
@@ -105,7 +105,7 @@ export default function BasindaBiz() {
       </section>
 
       {/* ── Press Cards ─────────────────────────────────────────────────── */}
-      <section className="relative bg-[#070b17] pb-28">
+      <section className="relative bg-[#F0F6FC] pb-28">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
             {pressItems.map((item, i) => (
@@ -121,7 +121,7 @@ export default function BasindaBiz() {
                 variants={fadeUp}
                 className="group relative flex flex-col rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1"
                 style={{
-                  background: `linear-gradient(135deg, ${item.accentColor} 0%, rgba(255,255,255,0.02) 100%)`,
+                  background: `linear-gradient(135deg, ${item.accentColor} 0%, rgba(16,36,59,0.02) 100%)`,
                   borderColor: item.borderColor,
                 }}
               >
@@ -149,17 +149,17 @@ export default function BasindaBiz() {
                   </div>
 
                   {/* Publication */}
-                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-foreground/35 mb-3">
+                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#607084] mb-3">
                     {item.publication}
                   </p>
 
                   {/* Headline */}
-                  <h2 className="text-xl md:text-2xl font-bold leading-snug tracking-tight text-foreground/90 mb-4 group-hover:text-white transition-colors duration-300">
+                  <h2 className="text-xl md:text-2xl font-bold leading-snug tracking-tight text-foreground/90 mb-4 group-hover:text-[#10243B] transition-colors duration-300">
                     {item.headline}
                   </h2>
 
                   {/* Excerpt */}
-                  <p className="text-foreground/45 text-sm leading-relaxed flex-1">
+                  <p className="text-[#607084] text-sm leading-relaxed flex-1">
                     {item.excerpt}
                   </p>
 

@@ -21,15 +21,15 @@ const products: Product[] = [
     label: "NeoGen Plasma",
     href: "/urunler/neogen-plasma",
     logo: neogenLogo,
-    logoInvert: true,
+    logoInvert: false,
     accentClass: "text-primary",
   },
   {
     label: "UltraClear",
     href: "/urunler/ultraclear",
     logo: ultraClearLogo,
-    logoInvert: false,
-    accentClass: "text-sky-300",
+    logoInvert: true,
+    accentClass: "text-sky-600",
   },
 ];
 
@@ -81,7 +81,7 @@ export default function Navbar() {
         <div
           className="h-px transition-opacity duration-500"
           style={{
-            background: "linear-gradient(90deg, transparent 0%, rgba(20,184,166,0.5) 40%, rgba(20,184,166,0.8) 50%, rgba(20,184,166,0.5) 60%, transparent 100%)",
+            background: "linear-gradient(90deg, transparent 0%, rgba(36,184,189,0.5) 40%, rgba(36,184,189,0.8) 50%, rgba(36,184,189,0.5) 60%, transparent 100%)",
             opacity: transparent ? 0.5 : 0.9,
           }}
         />
@@ -89,10 +89,10 @@ export default function Navbar() {
         <div
           className="transition-all duration-500"
           style={{
-            background: transparent ? "transparent" : "rgba(7,11,23,0.97)",
-            backdropFilter: transparent ? "none" : "blur(24px) saturate(160%)",
-            WebkitBackdropFilter: transparent ? "none" : "blur(24px) saturate(160%)",
-            boxShadow: transparent ? "none" : "0 1px 0 rgba(255,255,255,0.04), 0 16px 48px rgba(0,0,0,0.55)",
+            background: transparent ? "rgba(240,246,252,0.55)" : "rgba(240,246,252,0.86)",
+            backdropFilter: transparent ? "blur(14px) saturate(140%)" : "blur(24px) saturate(160%)",
+            WebkitBackdropFilter: transparent ? "blur(14px) saturate(140%)" : "blur(24px) saturate(160%)",
+            boxShadow: transparent ? "none" : "0 1px 0 rgba(16,36,59,0.04), 0 16px 48px rgba(16,36,59,0.138)",
           }}
         >
           <div
@@ -105,7 +105,7 @@ export default function Navbar() {
                 src={emcrLogoWhite}
                 alt="EMCR Medikal"
                 className="object-contain transition-all duration-500"
-                style={{ height: transparent ? "54px" : "38px" }}
+                style={{ height: transparent ? "54px" : "38px", filter: "brightness(0) saturate(100%) invert(11%) sepia(38%) saturate(1500%) hue-rotate(184deg) brightness(92%)" }}
               />
             </Link>
 
@@ -128,7 +128,7 @@ export default function Navbar() {
                       <Link
                         href={item.href}
                         className={`relative flex items-center px-4 py-2 text-[13.5px] font-medium tracking-[0.015em] transition-colors duration-200 ${
-                          active ? "text-foreground" : "text-foreground/55 hover:text-foreground/90"
+                          active ? "text-foreground" : "text-[#607084] hover:text-foreground/90"
                         }`}
                       >
                         {item.label}
@@ -139,7 +139,7 @@ export default function Navbar() {
                     ) : (
                       <button
                         className={`relative flex items-center gap-1 px-4 py-2 text-[13.5px] font-medium tracking-[0.015em] transition-colors duration-200 ${
-                          active ? "text-foreground" : "text-foreground/55 hover:text-foreground/90"
+                          active ? "text-foreground" : "text-[#607084] hover:text-foreground/90"
                         }`}
                       >
                         {item.label}
@@ -164,9 +164,9 @@ export default function Navbar() {
                             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
                             className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[480px] rounded-2xl overflow-hidden"
                             style={{
-                              background: "rgba(6,9,18,0.99)",
-                              border: "1px solid rgba(255,255,255,0.07)",
-                              boxShadow: "0 30px 80px rgba(0,0,0,0.75), 0 0 0 0.5px rgba(255,255,255,0.04)",
+                              background: "rgba(240,246,252,0.99)",
+                              border: "1px solid rgba(16,36,59,0.07)",
+                              boxShadow: "0 30px 80px rgba(16,36,59,0.188), 0 0 0 0.5px rgba(16,36,59,0.04)",
                             }}
                           >
                             <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
@@ -176,7 +176,7 @@ export default function Navbar() {
                                 <Link
                                   key={p.href}
                                   href={p.href}
-                                  className="group relative flex flex-col items-center text-center gap-5 px-6 py-7 rounded-xl transition-all duration-200 border border-transparent hover:border-white/[0.07] hover:bg-white/[0.025]"
+                                  className="group relative flex flex-col items-center text-center gap-5 px-6 py-7 rounded-xl transition-all duration-200 border border-transparent hover:border-[#D9E6EF] hover:bg-[#E5F0F8]"
                                 >
                                   {/* Product logo — centered, large */}
                                   <div className="flex items-center justify-center h-12">
@@ -187,7 +187,7 @@ export default function Navbar() {
                                       style={{
                                         maxHeight: "44px",
                                         maxWidth: "160px",
-                                        filter: p.logoInvert ? "invert(1) brightness(0.9)" : "none",
+                                        filter: p.logoInvert ? "brightness(0) saturate(100%) invert(11%) sepia(38%) saturate(1500%) hue-rotate(184deg) brightness(92%)" : "none",
                                         opacity: 0.72,
                                       }}
                                       loading="lazy"
@@ -214,9 +214,9 @@ export default function Navbar() {
                             transition={{ duration: 0.15 }}
                             className="absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-[210px] rounded-xl overflow-hidden"
                             style={{
-                              background: "rgba(8,12,24,0.99)",
-                              border: "1px solid rgba(255,255,255,0.07)",
-                              boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+                              background: "rgba(240,246,252,0.99)",
+                              border: "1px solid rgba(16,36,59,0.07)",
+                              boxShadow: "0 20px 60px rgba(16,36,59,0.15)",
                             }}
                           >
                             <div className="h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
@@ -224,7 +224,7 @@ export default function Navbar() {
                               <Link
                                 key={s.href}
                                 href={s.href}
-                                className="flex items-center gap-2.5 px-5 py-3.5 text-[12px] tracking-[0.01em] text-foreground/40 hover:text-foreground/85 hover:bg-white/[0.04] transition-all"
+                                className="flex items-center gap-2.5 px-5 py-3.5 text-[12px] tracking-[0.01em] text-[#607084] hover:text-foreground/85 hover:bg-[#E5F0F8] transition-all"
                               >
                                 <span className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
                                 {s.label}
@@ -243,15 +243,15 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-5">
               <a
                 href="tel:+902972060272"
-                className="flex items-center gap-2 text-[12.5px] text-foreground/40 hover:text-foreground/70 transition-colors"
+                className="flex items-center gap-2 text-[12.5px] text-[#607084] hover:text-foreground/70 transition-colors"
               >
-                <Phone size={12} className="text-primary/60 flex-shrink-0" />
+                <Phone size={12} className="text-[#1A9CA1] flex-shrink-0" />
                 +90 297 206 02 72
               </a>
               <Link
                 href="/teknik-destek"
-                className="h-9 px-5 text-[12.5px] font-semibold bg-primary text-[#07090f] rounded-lg inline-flex items-center gap-1.5 hover:bg-primary/90 transition-all"
-                style={{ boxShadow: "0 0 28px rgba(20,184,166,0.22)" }}
+                className="h-9 px-5 text-[12.5px] font-semibold bg-primary text-[#10243B] rounded-lg inline-flex items-center gap-1.5 hover:bg-primary/90 transition-all"
+                style={{ boxShadow: "0 0 28px rgba(36,184,189,0.22)" }}
               >
                 İletişim
                 <ArrowUpRight size={12} />
@@ -260,7 +260,7 @@ export default function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="lg:hidden w-9 h-9 rounded-lg border border-white/[0.1] flex items-center justify-center text-foreground/55 hover:text-foreground/90 transition-all"
+              className="lg:hidden w-9 h-9 rounded-lg border border-[#D9E6EF] flex items-center justify-center text-[#607084] hover:text-foreground/90 transition-all"
               onClick={() => setMobileOpen((p) => !p)}
               aria-label="Menu"
             >
@@ -289,9 +289,9 @@ export default function Navbar() {
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="lg:hidden mx-3 mt-2 rounded-2xl overflow-hidden"
               style={{
-                background: "rgba(6,9,18,0.99)",
-                border: "1px solid rgba(255,255,255,0.07)",
-                boxShadow: "0 24px 80px rgba(0,0,0,0.7)",
+                background: "rgba(240,246,252,0.99)",
+                border: "1px solid rgba(16,36,59,0.07)",
+                boxShadow: "0 24px 80px rgba(16,36,59,0.175)",
                 backdropFilter: "blur(24px)",
               }}
             >
@@ -304,8 +304,8 @@ export default function Navbar() {
                         href={item.href}
                         className={`flex items-center px-4 py-3 rounded-xl text-[13px] font-medium tracking-[0.01em] transition-all ${
                           item.href && isActive(item.href)
-                            ? "bg-white/[0.06] text-foreground/90"
-                            : "text-foreground/50 hover:bg-white/[0.04] hover:text-foreground/80"
+                            ? "bg-white/80 text-foreground/90"
+                            : "text-[#607084] hover:bg-[#E5F0F8] hover:text-foreground/80"
                         }`}
                       >
                         {item.label}
@@ -318,7 +318,7 @@ export default function Navbar() {
                               p === item.label ? null : item.label
                             )
                           }
-                          className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-[13px] font-medium tracking-[0.01em] text-foreground/50 hover:bg-white/[0.04] hover:text-foreground/80 transition-all"
+                          className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-[13px] font-medium tracking-[0.01em] text-[#607084] hover:bg-[#E5F0F8] hover:text-foreground/80 transition-all"
                         >
                           {item.label}
                           <ChevronDown
@@ -341,14 +341,14 @@ export default function Navbar() {
                                     <Link
                                       key={p.href}
                                       href={p.href}
-                                      className="flex items-center gap-4 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+                                      className="flex items-center gap-4 p-4 rounded-xl border border-[#D9E6EF] bg-white/80 hover:bg-[#E5F0F8] transition-colors"
                                     >
                                       <img
                                         src={p.logo}
                                         alt={p.label}
                                         className="h-6 w-auto object-contain flex-shrink-0"
                                         style={{
-                                          filter: p.logoInvert ? "invert(1) brightness(0.85)" : "none",
+                                          filter: p.logoInvert ? "brightness(0) saturate(100%) invert(11%) sepia(38%) saturate(1500%) hue-rotate(184deg) brightness(92%)" : "none",
                                           opacity: 0.72,
                                         }}
                                         loading="lazy"
@@ -367,7 +367,7 @@ export default function Navbar() {
                                     <Link
                                       key={s.href}
                                       href={s.href}
-                                      className="block px-4 py-2.5 text-[12px] tracking-[0.01em] text-foreground/40 hover:text-primary transition-colors"
+                                      className="block px-4 py-2.5 text-[12px] tracking-[0.01em] text-[#607084] hover:text-primary transition-colors"
                                     >
                                       {s.label}
                                     </Link>
@@ -382,18 +382,18 @@ export default function Navbar() {
                   </div>
                 ))}
 
-                <div className="mt-2 pt-3 border-t border-white/[0.05] flex items-center gap-3">
+                <div className="mt-2 pt-3 border-t border-[#D9E6EF] flex items-center gap-3">
                   <a
                     href="mailto:info@emcr.com.tr"
-                    className="flex-1 h-10 bg-primary text-[#07090f] rounded-xl font-semibold text-[13px] flex items-center justify-center gap-1.5"
-                    style={{ boxShadow: "0 0 20px rgba(20,184,166,0.2)" }}
+                    className="flex-1 h-10 bg-primary text-[#10243B] rounded-xl font-semibold text-[13px] flex items-center justify-center gap-1.5"
+                    style={{ boxShadow: "0 0 20px rgba(36,184,189,0.2)" }}
                   >
                     İletişim
                     <ArrowUpRight size={13} />
                   </a>
                   <a
                     href="tel:+902972060272"
-                    className="w-10 h-10 rounded-xl border border-white/[0.1] flex items-center justify-center text-foreground/40 hover:text-primary transition-all"
+                    className="w-10 h-10 rounded-xl border border-[#D9E6EF] flex items-center justify-center text-[#607084] hover:text-primary transition-all"
                   >
                     <Phone size={15} />
                   </a>

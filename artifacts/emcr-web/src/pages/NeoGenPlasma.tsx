@@ -78,16 +78,16 @@ export default function NeoGenPlasma() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070b17] text-foreground font-sans">
+    <div className="min-h-screen bg-[#F0F6FC] text-foreground font-sans">
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#070b17]" style={{ minHeight: "92vh" }}>
+      <section className="relative overflow-hidden bg-[#F0F6FC]" style={{ minHeight: "92vh" }}>
         {/* Subtle teal glow */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 50% 60% at 68% 50%, rgba(20,184,166,0.08) 0%, transparent 65%)",
+            background: "radial-gradient(ellipse 50% 60% at 68% 50%, rgba(36,184,189,0.08) 0%, transparent 65%)",
           }}
         />
 
@@ -108,7 +108,7 @@ export default function NeoGenPlasma() {
                 className="absolute pointer-events-none"
                 style={{
                   width: "460px", height: "460px",
-                  background: "radial-gradient(circle, rgba(20,184,166,0.09) 0%, transparent 70%)",
+                  background: "radial-gradient(circle, rgba(36,184,189,0.09) 0%, transparent 70%)",
                   filter: "blur(60px)",
                   top: "50%", left: "50%",
                   transform: "translate(-50%, -50%)",
@@ -136,13 +136,13 @@ export default function NeoGenPlasma() {
               <img
                 src={neogenLogo}
                 alt="NeoGen"
-                className="w-auto h-8 mb-10 invert opacity-80"
+                className="w-auto h-8 mb-10 opacity-80"
               />
 
               {/* Eyebrow */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px w-5 bg-primary/55" />
-                <span className="text-[10px] font-medium tracking-[0.28em] uppercase text-primary/65" lang="en">
+                <span className="text-[10px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1]" lang="en">
                   Nitrogen Plasma Skin Regeneration
                 </span>
               </div>
@@ -156,7 +156,7 @@ export default function NeoGenPlasma() {
                 <br />
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #5eead4 55%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #1FA3A8 55%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -168,7 +168,7 @@ export default function NeoGenPlasma() {
                 </span>
               </h1>
 
-              <p className="text-[14.5px] text-foreground/42 leading-[1.85] mb-8 max-w-[420px]">
+              <p className="text-[14.5px] text-[#607084] leading-[1.85] mb-8 max-w-[420px]">
                 Azot gazını plazma enerjisine dönüştüren sistem. Cilt yüzeyini
                 korurken derin dermal yenilenme süreci başlatır.
               </p>
@@ -177,15 +177,15 @@ export default function NeoGenPlasma() {
               <div className="flex flex-wrap gap-3">
                 <a
                   href="mailto:info@emcr.com.tr"
-                  className="h-11 px-7 inline-flex items-center gap-2.5 text-[13px] font-semibold bg-primary text-[#07090f] rounded-xl hover:bg-primary/90 transition-all"
-                  style={{ boxShadow: "0 0 28px rgba(20,184,166,0.25), 0 4px 14px rgba(0,0,0,0.3)" }}
+                  className="h-11 px-7 inline-flex items-center gap-2.5 text-[13px] font-semibold bg-primary text-[#10243B] rounded-xl hover:bg-primary/90 transition-all"
+                  style={{ boxShadow: "0 0 28px rgba(36,184,189,0.25), 0 4px 14px rgba(16,36,59,0.075)" }}
                 >
                   Demo Talep Et
                   <ArrowRight size={14} />
                 </a>
                 <Link
                   href="/teknik-destek"
-                  className="h-11 px-7 inline-flex items-center gap-2 text-[13px] font-medium text-foreground/55 hover:text-foreground border border-white/[0.11] hover:border-white/20 rounded-xl hover:bg-white/[0.04] transition-all"
+                  className="h-11 px-7 inline-flex items-center gap-2 text-[13px] font-medium text-[#607084] hover:text-foreground border border-[#D9E6EF] hover:border-[#D9E6EF] rounded-xl hover:bg-[#E5F0F8] transition-all"
                 >
                   Teknik Destek
                   <ChevronRight size={14} />
@@ -196,16 +196,16 @@ export default function NeoGenPlasma() {
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#070b17] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F0F6FC] to-transparent pointer-events-none" />
       </section>
 
       {/* ── PSR TECHNOLOGY ───────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#060a14]">
+      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 55% 50% at 5% 50%, rgba(20,184,166,0.055) 0%, transparent 65%)",
+              "radial-gradient(ellipse 55% 50% at 5% 50%, rgba(36,184,189,0.055) 0%, transparent 65%)",
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
@@ -220,7 +220,7 @@ export default function NeoGenPlasma() {
               className="relative"
             >
               <div
-                className="relative rounded-3xl overflow-hidden border border-white/[0.07]"
+                className="relative rounded-3xl overflow-hidden border border-[#D9E6EF]"
                 style={{ aspectRatio: "1/1" }}
               >
                 <img
@@ -230,11 +230,11 @@ export default function NeoGenPlasma() {
                   loading="lazy"
                   decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060a14]/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F0F6FC]/60 via-transparent to-transparent" />
                 {/* Label overlay */}
                 <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
                   <span
-                    className="text-[10px] font-semibold tracking-[0.25em] uppercase px-3 py-1.5 rounded-full border border-primary/30 bg-black/40 backdrop-blur-md text-primary"
+                    className="text-[10px] font-semibold tracking-[0.25em] uppercase px-3 py-1.5 rounded-full border border-primary/30 bg-white/75 backdrop-blur-md text-primary"
                   >
                     Klinik Uygulama · NeoGen PSR
                   </span>
@@ -249,7 +249,7 @@ export default function NeoGenPlasma() {
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-6">
                 Teknoloji
               </p>
               <h2
@@ -259,7 +259,7 @@ export default function NeoGenPlasma() {
                 Nitrojen Plazma{" "}
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -271,7 +271,7 @@ export default function NeoGenPlasma() {
                 </span>
               </h2>
 
-              <p className="text-[15px] text-foreground/45 leading-[1.85] mb-8">
+              <p className="text-[15px] text-[#607084] leading-[1.85] mb-8">
                 NeoGen, ultra yüksek radyo frekansıyla tüpten gelen medikal kalite azot gazını
                 iyonize ederek nozulda nitrojen plazma oluşturur. Bu plazma, yüzeyi açmadan
                 cildin tüm mimarisini ısıtır ve <strong className="text-foreground/70 font-semibold">15 milisaniyelik kontrollü darbelerle</strong>{" "}
@@ -284,12 +284,12 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── 3 MECHANISMS ─────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#070b17]">
+      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 45% at 50% 100%, rgba(20,184,166,0.05) 0%, transparent 65%)",
+              "radial-gradient(ellipse 60% 45% at 50% 100%, rgba(36,184,189,0.05) 0%, transparent 65%)",
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
@@ -301,7 +301,7 @@ export default function NeoGenPlasma() {
             className="mb-18 flex items-end justify-between flex-wrap gap-6"
           >
             <div>
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-5">
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-5">
                 3 Temel Etki Mekanizması
               </p>
               <h2
@@ -311,7 +311,7 @@ export default function NeoGenPlasma() {
                 Tek Sistemde{" "}
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -323,7 +323,7 @@ export default function NeoGenPlasma() {
                 </span>
               </h2>
             </div>
-            <p className="text-[14px] text-foreground/35 max-w-xs leading-relaxed">
+            <p className="text-[14px] text-[#607084] max-w-xs leading-relaxed">
               NeoGen tek seansta sıkılaştırma, yüzey yenileme ve derin kolajen
               rejenerasyonunu eş zamanlı olarak gerçekleştirir.
             </p>
@@ -338,9 +338,9 @@ export default function NeoGenPlasma() {
                   whileInView="visible"
                   viewport={{ once: true }}
                   custom={i}
-                  className="relative flex min-h-[140px] items-center justify-center border border-[#263c42] border-t-2 border-t-primary bg-[#0b1520] px-6 py-8 text-center rounded-xl"
+                  className="relative flex min-h-[140px] items-center justify-center border border-[#D9E6EF] border-t-2 border-t-primary bg-white px-6 py-8 text-center rounded-xl"
                 >
-                  <h3 className="font-display font-semibold text-[clamp(1.3rem,2.2vw,1.75rem)] leading-tight tracking-tight text-[#eef3f4]">
+                  <h3 className="font-display font-semibold text-[clamp(1.3rem,2.2vw,1.75rem)] leading-tight tracking-tight text-[#10243B]">
                     {title}
                   </h3>
                 </motion.div>
@@ -350,12 +350,12 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── INDICATIONS + SPECS ──────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#070b17]">
+      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 50% 50% at 90% 20%, rgba(20,184,166,0.05) 0%, transparent 65%)",
+              "radial-gradient(ellipse 50% 50% at 90% 20%, rgba(36,184,189,0.05) 0%, transparent 65%)",
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
@@ -368,7 +368,7 @@ export default function NeoGenPlasma() {
               viewport={{ once: true }}
               transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-6">
                 Endikasyonlar
               </p>
               <h2
@@ -378,7 +378,7 @@ export default function NeoGenPlasma() {
                 Hangi Durumlarda{" "}
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -398,9 +398,9 @@ export default function NeoGenPlasma() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     custom={i * 0.4}
-                    className="flex items-center gap-4 py-3.5 border-b border-white/[0.05] group hover:border-primary/18 transition-colors"
+                    className="flex items-center gap-4 py-3.5 border-b border-[#D9E6EF] group hover:border-primary/18 transition-colors"
                   >
-                    <ChevronRight size={13} className="text-primary/50 flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight size={13} className="text-[#1A9CA1] flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
                     <span className="text-[14px] text-foreground/60 group-hover:text-foreground/82 transition-colors flex-1 leading-snug">
                       {ind.label}
                     </span>
@@ -416,7 +416,7 @@ export default function NeoGenPlasma() {
               viewport={{ once: true }}
               transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-6">
                 Teknik Özellikler
               </p>
               <h2
@@ -426,7 +426,7 @@ export default function NeoGenPlasma() {
                 NeoGen{" "}
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -438,16 +438,16 @@ export default function NeoGenPlasma() {
                 </span>
               </h2>
 
-              <div className="rounded-2xl border border-white/[0.07] overflow-hidden bg-white/[0.015]">
+              <div className="rounded-2xl border border-[#D9E6EF] overflow-hidden bg-white/80">
                 {specs.map((s, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-5 px-6 py-3.5 border-b border-white/[0.04] last:border-0 hover:bg-white/[0.025] transition-colors group"
+                    className="flex items-center gap-5 px-6 py-3.5 border-b border-[#D9E6EF] last:border-0 hover:bg-[#E5F0F8] transition-colors group"
                   >
-                    <span className="text-[10px] tracking-[0.18em] uppercase text-primary/40 w-32 flex-shrink-0 font-medium">
+                    <span className="text-[10px] tracking-[0.18em] uppercase text-[#1A9CA1] w-32 flex-shrink-0 font-medium">
                       {s.label}
                     </span>
-                    <span className="text-[13.5px] text-foreground/58 group-hover:text-foreground/78 transition-colors">
+                    <span className="text-[13.5px] text-[#607084] group-hover:text-foreground/78 transition-colors">
                       {s.value}
                     </span>
                   </div>
@@ -463,7 +463,7 @@ export default function NeoGenPlasma() {
                     <p className="font-semibold text-[13.5px] text-foreground/90 mb-2">
                       Türkiye Tek Yetkili Distribütörü
                     </p>
-                    <p className="text-[13px] text-foreground/42 leading-[1.8]">
+                    <p className="text-[13px] text-[#607084] leading-[1.8]">
                       EMCR Medikal Teknolojiler, NeoGen Plasma'nın Türkiye tek yetkili distribütörüdür.
                       Kurulum, eğitim ve teknik servis hizmetleri kapsamlıdır.
                     </p>
@@ -476,12 +476,12 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── DEMO VIDEO ───────────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden bg-[#060a14]">
+      <section className="py-24 relative overflow-hidden bg-[#F0F6FC]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 55% 50% at 50% 50%, rgba(20,184,166,0.05) 0%, transparent 65%)",
+              "radial-gradient(ellipse 55% 50% at 50% 50%, rgba(36,184,189,0.05) 0%, transparent 65%)",
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
@@ -491,7 +491,7 @@ export default function NeoGenPlasma() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-4">Canlı Uygulama</p>
+            <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-4">Canlı Uygulama</p>
             <h2
               className="font-display font-black leading-[0.94] tracking-[-0.022em]"
               style={{ fontSize: "clamp(2rem, 3.5vw, 3.5rem)" }}
@@ -499,7 +499,7 @@ export default function NeoGenPlasma() {
               NeoGen Plasma{" "}
               <span
                 style={{
-                  background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                  background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -517,7 +517,7 @@ export default function NeoGenPlasma() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative rounded-3xl overflow-hidden border border-white/[0.07] bg-black max-w-4xl mx-auto"
+            className="relative rounded-3xl overflow-hidden border border-[#D9E6EF] bg-black max-w-4xl mx-auto"
             style={{ aspectRatio: "16/9" }}
           >
             <video
@@ -533,7 +533,7 @@ export default function NeoGenPlasma() {
               className="absolute inset-0 flex items-center justify-center group"
             >
               <div
-                className={`w-16 h-16 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:bg-primary/10 ${videoPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
+                className={`w-16 h-16 rounded-full border border-white/40 bg-[#10243B]/45 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:bg-primary/10 ${videoPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
               >
                 {videoPlaying
                   ? <Pause size={20} className="text-white" />
@@ -553,10 +553,10 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── BEFORE / AFTER ───────────────────────────────────────── */}
-      <section className="py-24 bg-[#070b17] relative overflow-hidden">
+      <section className="py-24 bg-[#F0F6FC] relative overflow-hidden">
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse, rgba(20,184,166,0.04) 0%, transparent 65%)" }}
+          style={{ background: "radial-gradient(ellipse, rgba(36,184,189,0.04) 0%, transparent 65%)" }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-5">
@@ -565,7 +565,7 @@ export default function NeoGenPlasma() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-4">
+              <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-4">
                 Uygulama Sonuçları
               </p>
               <h2
@@ -575,7 +575,7 @@ export default function NeoGenPlasma() {
                 Gerçek{" "}
                 <span
                   style={{
-                    background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                    background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -598,16 +598,16 @@ export default function NeoGenPlasma() {
                   <button
                     key={di}
                     onClick={() => setActivePatient((p) => (p + dir + patients.length) % patients.length)}
-                    className="w-10 h-10 rounded-full border border-white/10 hover:border-primary/40 hover:bg-white/[0.04] flex items-center justify-center transition-all"
+                    className="w-10 h-10 rounded-full border border-[#D9E6EF] hover:border-primary/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all"
                   >
-                    <ChevronRight size={16} className={`text-foreground/45 ${dir === -1 ? "rotate-180" : ""}`} />
+                    <ChevronRight size={16} className={`text-[#607084] ${dir === -1 ? "rotate-180" : ""}`} />
                   </button>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden mb-4 border border-white/[0.05]" style={{ aspectRatio: "21/9" }}>
+          <div className="relative rounded-3xl overflow-hidden mb-4 border border-[#D9E6EF]" style={{ aspectRatio: "21/9" }}>
             {patients.map((p, i) => (
               <motion.div
                 key={i}
@@ -616,22 +616,22 @@ export default function NeoGenPlasma() {
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
                 <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070b17]/60 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#070b17]/25 via-transparent to-[#070b17]/25" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F0F6FC]/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#F0F6FC]/25 via-transparent to-[#F0F6FC]/25" />
               </motion.div>
             ))}
             <div className="absolute top-5 left-6 z-20">
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-foreground/65">ÖNCE</span>
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-[#D9E6EF] text-foreground/65">ÖNCE</span>
             </div>
             <div className="absolute top-5 right-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary">SONRA</span>
             </div>
-            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/10 z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/80 z-10 pointer-events-none" />
             <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
-              <p className="text-[10px] tracking-[0.25em] uppercase text-primary/70">
+              <p className="text-[10px] tracking-[0.25em] uppercase text-[#1A9CA1]">
                 NeoGen Plasma · {patients[activePatient].label}
               </p>
-              <div className="font-display font-black text-6xl text-white/[0.04] select-none leading-none tabular-nums">
+              <div className="font-display font-black text-6xl text-[#10243B]/[0.04] select-none leading-none tabular-nums">
                 {String(activePatient + 1).padStart(2, "0")}
               </div>
             </div>
@@ -644,13 +644,13 @@ export default function NeoGenPlasma() {
                 onClick={() => setActivePatient(i)}
                 className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-300 group ${
                   activePatient === i
-                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#070b17]"
+                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#F0F6FC]"
                     : "opacity-45 hover:opacity-70"
                 }`}
               >
                 <img src={p.img} alt={`${i + 1}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-                <div className={`absolute inset-0 transition-all ${activePatient === i ? "bg-primary/10" : "bg-black/25"}`} />
-                <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-foreground/55">
+                <div className={`absolute inset-0 transition-all ${activePatient === i ? "bg-primary/10" : "bg-white/35"}`} />
+                <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-[#607084]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </button>
@@ -660,12 +660,12 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#060a14]">
+      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(20,184,166,0.07) 0%, transparent 65%)",
+              "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(36,184,189,0.07) 0%, transparent 65%)",
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10 text-center">
@@ -674,7 +674,7 @@ export default function NeoGenPlasma() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-primary/65 mb-6">
+            <p className="text-[11px] font-medium tracking-[0.28em] uppercase text-[#1A9CA1] mb-6">
               Sıradaki Adım
             </p>
             <h2
@@ -684,7 +684,7 @@ export default function NeoGenPlasma() {
               Kliniğiniz İçin{" "}
               <span
                 style={{
-                  background: "linear-gradient(110deg, #14b8a6 0%, #38bdf8 100%)",
+                  background: "linear-gradient(110deg, #24B8BD 0%, #2B8FD0 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -695,22 +695,22 @@ export default function NeoGenPlasma() {
                 Demo Talep Edin
               </span>
             </h2>
-            <p className="text-[15px] text-foreground/40 max-w-lg mx-auto mb-11 leading-[1.85]">
+            <p className="text-[15px] text-[#607084] max-w-lg mx-auto mb-11 leading-[1.85]">
               NeoGen Plasma'yı kliniğinizde deneyimlemek için bizimle iletişime geçin.
               Yetkili uzmanlarımız size özel sunum ve teklif hazırlasın.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
                 href="mailto:info@emcr.com.tr"
-                className="h-13 px-9 inline-flex items-center gap-2.5 text-[14px] font-semibold bg-primary text-[#07090f] rounded-xl hover:bg-primary/90 transition-all"
-                style={{ boxShadow: "0 0 40px rgba(20,184,166,0.28), 0 4px 20px rgba(0,0,0,0.35)" }}
+                className="h-13 px-9 inline-flex items-center gap-2.5 text-[14px] font-semibold bg-primary text-[#10243B] rounded-xl hover:bg-primary/90 transition-all"
+                style={{ boxShadow: "0 0 40px rgba(36,184,189,0.28), 0 4px 20px rgba(16,36,59,0.087)" }}
               >
                 Demo Talep Et
                 <ArrowRight size={15} />
               </a>
               <Link
                 href="/teknik-destek"
-                className="h-13 px-9 inline-flex items-center gap-2 text-[14px] font-medium text-foreground/60 hover:text-foreground border border-white/[0.13] hover:border-white/22 rounded-xl hover:bg-white/[0.04] transition-all"
+                className="h-13 px-9 inline-flex items-center gap-2 text-[14px] font-medium text-foreground/60 hover:text-foreground border border-[#D9E6EF] hover:border-[#D9E6EF] rounded-xl hover:bg-[#E5F0F8] transition-all"
               >
                 Teknik Destek
                 <ChevronRight size={15} />
