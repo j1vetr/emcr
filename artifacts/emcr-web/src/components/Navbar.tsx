@@ -242,11 +242,11 @@ export default function Navbar() {
             {/* Right CTA */}
             <div className="hidden lg:flex items-center gap-5">
               <a
-                href="tel:+902972060272"
+                href="tel:+905330670001"
                 className="flex items-center gap-2 text-[12.5px] text-[#607084] hover:text-foreground/70 transition-colors"
               >
                 <Phone size={12} className="text-[#1A9CA1] flex-shrink-0" />
-                +90 297 206 02 72
+                +90 533 067 00 01
               </a>
               <Link
                 href="/teknik-destek"
@@ -392,7 +392,7 @@ export default function Navbar() {
                     <ArrowUpRight size={13} />
                   </a>
                   <a
-                    href="tel:+902972060272"
+                    href="tel:+905330670001"
                     className="w-10 h-10 rounded-xl border border-[#D9E6EF] flex items-center justify-center text-[#607084] hover:text-primary transition-all"
                   >
                     <Phone size={15} />

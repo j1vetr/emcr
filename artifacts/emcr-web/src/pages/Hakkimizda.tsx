@@ -170,7 +170,7 @@ export default function Hakkimizda() {
                   </div>
                   <div>
                     <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#607084] mb-3">Telefon</p>
-                    <a href="tel:+902972060272" className="text-[#10243B] hover:text-[#24B8BD] text-sm md:text-base transition-colors motion-reduce:transition-none">+90 297 206 02 72</a>
+                    <a href="tel:+905330670001" className="text-[#10243B] hover:text-[#24B8BD] text-sm md:text-base transition-colors motion-reduce:transition-none">+90 533 067 00 01</a>
                   </div>
                 </div>
               </div>

@@ -300,11 +300,11 @@ export default function TeknikDestek() {
                 </p>
                 <div className="border-t border-[#D9E6EF] divide-y divide-[#D9E6EF]">
                   <a
-                    href="tel:+902972060272"
+                    href="tel:+905330670001"
                     className="flex items-center gap-3 py-4 text-[#10243B] hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                   >
                     <Phone size={18} className="text-primary shrink-0" />
-                    <span className="text-base font-medium">+90 297 206 02 72</span>
+                    <span className="text-base font-medium">+90 533 067 00 01</span>
                   </a>
                   <a
                     href="mailto:info@emcr.com.tr"
@@ -553,7 +553,7 @@ export default function TeknikDestek() {
 
               <div className="space-y-5">
                 <a
-                  href="tel:+902972060272"
+                  href="tel:+905330670001"
                   className="flex items-center gap-4 group"
                 >
                   <div className="w-9 h-9 rounded-xl border border-[#D9E6EF] bg-white/80 flex items-center justify-center text-[#1A9CA1] group-hover:border-primary/25 group-hover:bg-primary/[0.06] group-hover:text-primary transition-all">
@@ -562,7 +562,7 @@ export default function TeknikDestek() {
                   <div>
                     <p className="text-[11px] text-foreground/28 uppercase tracking-widest mb-0.5">Telefon</p>
                     <p className="text-[14px] text-foreground/60 group-hover:text-foreground/90 transition-colors">
-                      +90 297 206 02 72
+                      +90 533 067 00 01
                     </p>
                   </div>
                 </a>
