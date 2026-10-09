@@ -675,12 +675,13 @@ export default function TeknikDestek() {
                         <select
                           value={form.device}
                           onChange={(e) => setForm((f) => ({ ...f, device: e.target.value }))}
-                          className="w-full h-11 px-4 pr-9 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all appearance-none"
-                          style={{ colorScheme: "light", backgroundColor: "#10243B", color: "rgba(16,36,59,0.8)" }}
+                          aria-label="Cihaz"
+                          className="w-full h-11 px-4 pr-9 rounded-xl bg-white border border-[#D9E6EF] text-[13.5px] text-[#10243B] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
+                          style={{ colorScheme: "light" }}
                         >
-                          <option value="NeoGen Plasma" style={{ backgroundColor: "#10243B", color: "rgba(16,36,59,0.85)" }}>NeoGen Plasma</option>
-                          <option value="UltraClear" style={{ backgroundColor: "#10243B", color: "rgba(16,36,59,0.85)" }}>UltraClear</option>
-                          <option value="Diğer" style={{ backgroundColor: "#10243B", color: "rgba(16,36,59,0.85)" }}>Diğer</option>
+                          <option value="NeoGen Plasma" style={{ backgroundColor: "#FFFFFF", color: "#10243B" }}>NeoGen Plasma</option>
+                          <option value="UltraClear" style={{ backgroundColor: "#FFFFFF", color: "#10243B" }}>UltraClear</option>
+                          <option value="Diğer" style={{ backgroundColor: "#FFFFFF", color: "#10243B" }}>Diğer</option>
                         </select>
                         <ChevronDown size={13} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-foreground/30 pointer-events-none" />
                       </div>
