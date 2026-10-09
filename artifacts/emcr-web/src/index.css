@@ -113,3 +113,9 @@
     @apply font-display tracking-tight;
   }
 }
+
+/* Section surface rhythm — white ↔ ice blue */
+@layer utilities {
+  .surface-white { background-color: #FFFFFF; }
+  .surface-ice { background-color: #E5F0F8; }
+}

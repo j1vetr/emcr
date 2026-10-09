@@ -105,7 +105,7 @@ export default function BasindaBiz() {
       </section>
 
       {/* ── Press Cards ─────────────────────────────────────────────────── */}
-      <section className="relative bg-[#F0F6FC] pb-28">
+      <section className="relative surface-white pb-28">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
             {pressItems.map((item, i) => (

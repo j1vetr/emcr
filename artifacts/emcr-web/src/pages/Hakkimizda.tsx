@@ -56,8 +56,8 @@ export default function Hakkimizda() {
             </motion.div>
 
             {/* Photo 1 Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-6 bg-[#F0F6FC] p-2 sm:p-3 md:p-4">
-              <div className="relative aspect-[4/3] w-full overflow-hidden group bg-[#F0F6FC]">
+            <motion.div variants={itemVariants} className="md:col-span-6 surface-white p-2 sm:p-3 md:p-4">
+              <div className="relative aspect-[4/3] w-full overflow-hidden group surface-white">
                 <img 
                   src={getAssetUrl("/events/paris-2026/1.jpg")} 
                   alt="Paris Etkinliği" 
@@ -71,8 +71,8 @@ export default function Hakkimizda() {
             </motion.div>
 
             {/* Photo 2 Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-6 bg-[#F0F6FC] p-2 sm:p-3 md:p-4">
-              <div className="relative aspect-[4/3] w-full overflow-hidden group bg-[#F0F6FC]">
+            <motion.div variants={itemVariants} className="md:col-span-6 surface-white p-2 sm:p-3 md:p-4">
+              <div className="relative aspect-[4/3] w-full overflow-hidden group surface-white">
                 <img 
                   src={getAssetUrl("/events/istanbul-ultraclear-2026/2.jpg")} 
                   alt="İstanbul Etkinliği" 
@@ -86,13 +86,13 @@ export default function Hakkimizda() {
             </motion.div>
 
             {/* Kurumsal Profil Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#F0F6FC] p-6 sm:p-8 lg:p-12">
+            <motion.div variants={itemVariants} className="md:col-span-4 surface-ice p-6 sm:p-8 lg:p-12">
               <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#607084] mb-4">Kurumsal Profil</h2>
               <div className="h-0.5 w-6 bg-[#D9E6EF]"></div>
             </motion.div>
 
             {/* Kurumsal Profil Content Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#F0F6FC] p-6 sm:p-8 lg:p-12">
+            <motion.div variants={itemVariants} className="md:col-span-8 surface-ice p-6 sm:p-8 lg:p-12">
               <div className="flex flex-col space-y-6 text-[#10243B] text-base md:text-lg leading-relaxed max-w-3xl">
                 <p>
                   EMCR Medikal, NeoGen Plasma ve UltraClear sistemlerinin Türkiye tek yetkili distribütörü olarak kliniklere donanım tedariki ve teknik destek hizmetleri sunmaktadır.
@@ -119,13 +119,13 @@ export default function Hakkimizda() {
             </motion.div>
 
             {/* Portföy Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#F0F6FC] p-6 sm:p-8 lg:p-12">
+            <motion.div variants={itemVariants} className="md:col-span-4 surface-white p-6 sm:p-8 lg:p-12">
               <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#607084] mb-4">Portföyümüz</h2>
               <div className="h-0.5 w-6 bg-[#D9E6EF]"></div>
             </motion.div>
 
             {/* Portföy Content Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#F0F6FC] p-0 flex flex-col md:flex-row">
+            <motion.div variants={itemVariants} className="md:col-span-8 surface-white p-0 flex flex-col md:flex-row">
               <Link href="/urunler/neogen-plasma" className="flex-1 p-6 sm:p-8 lg:p-12 border-b md:border-b-0 md:border-r border-[#D9E6EF] group hover:bg-[#10243B] transition-colors motion-reduce:transition-none cursor-pointer flex flex-col justify-between">
                 <div>
                   <h3 className="font-display text-2xl md:text-3xl font-bold text-[#10243B] mb-2 group-hover:text-[#24B8BD] transition-colors motion-reduce:transition-none">NeoGen Plasma</h3>
@@ -147,13 +147,13 @@ export default function Hakkimizda() {
             </motion.div>
 
             {/* İletişim Title Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-4 bg-[#F0F6FC] p-6 sm:p-8 lg:p-12">
+            <motion.div variants={itemVariants} className="md:col-span-4 surface-ice p-6 sm:p-8 lg:p-12">
               <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-[#607084] mb-4">İletişim Bilgileri</h2>
               <div className="h-0.5 w-6 bg-[#D9E6EF]"></div>
             </motion.div>
 
             {/* İletişim Content Cell */}
-            <motion.div variants={itemVariants} className="md:col-span-8 bg-[#F0F6FC] p-6 sm:p-8 lg:p-12">
+            <motion.div variants={itemVariants} className="md:col-span-8 surface-ice p-6 sm:p-8 lg:p-12">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12 text-[#10243B]">
                 <div>
                   <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#607084] mb-3">Merkez Ofis</p>

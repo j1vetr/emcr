@@ -157,9 +157,9 @@ export default function Home() {
         </div>
 
         {/* ── z-1: Cinematic overlays ───────────────────────────── */}
-        {/* Base dark — reduces video to tasteful atmosphere */}
-        <div className="absolute inset-0 z-[1] pointer-events-none bg-[#F0F6FC]/50" />
-        {/* Radial vignette — darker at edges, video peaks through center */}
+        {/* Light overlay keeps the background video subtle */}
+        <div className="absolute inset-0 z-[1] pointer-events-none bg-[#F0F6FC]/60" />
+        {/* Light vignette softens the edges while preserving the center */}
         <div
           className="absolute inset-0 z-[1] pointer-events-none"
           style={{
@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       {/* ── NEOGEN BRAND ──────────────────────────────────────────── */}
-      <section id="neogen" className="relative overflow-hidden min-h-screen bg-[#F0F6FC]">
+      <section id="neogen" className="relative overflow-hidden min-h-screen surface-white">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -326,7 +326,7 @@ export default function Home() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-y-0 right-0 w-[55%] flex items-center justify-center pointer-events-none"
         >
-          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#F0F6FC] to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white to-transparent z-10" />
           <div className="absolute w-[680px] h-[680px] rounded-full border border-primary/20"
             style={{ boxShadow: "0 0 80px rgba(36,184,189,0.06), inset 0 0 80px rgba(36,184,189,0.03)" }} />
           <div className="absolute w-[500px] h-[500px] rounded-full border border-primary/10" />
@@ -381,7 +381,7 @@ export default function Home() {
       </section>
 
       {/* ── NEOGEN BEFORE / AFTER ─────────────────────────────────── */}
-      <section id="results" className="relative bg-[#F0F6FC] overflow-hidden py-20">
+      <section id="results" className="relative surface-ice overflow-hidden py-20">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-primary/4 blur-[120px] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-10">
@@ -467,7 +467,7 @@ export default function Home() {
                 transition={{ delay: i * 0.06, duration: 0.5 }}
                 className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-400 group ${
                   activePatient === i
-                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#F0F6FC]"
+                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#E5F0F8]"
                     : "opacity-50 hover:opacity-80"
                 }`}
               >
@@ -483,7 +483,7 @@ export default function Home() {
       </section>
 
       {/* ── ULTRACLEAR ────────────────────────────────────────────── */}
-      <section id="ultraclear" className="relative overflow-hidden min-h-screen bg-[#F0F6FC]">
+      <section id="ultraclear" className="relative overflow-hidden min-h-screen surface-white">
         <div className="absolute left-6 top-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
           <span className="font-display font-black leading-none text-[#10243B]/[0.025]" style={{ fontSize: "clamp(18rem, 28vw, 32rem)" }}>
             02
@@ -497,8 +497,8 @@ export default function Home() {
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-y-0 right-0 w-[58%] pointer-events-none"
         >
-          <div className="absolute inset-y-0 left-0 w-56 bg-gradient-to-r from-[#F0F6FC] to-transparent z-10" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F0F6FC] to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-56 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
           <img src={ultraClearStudio} alt="UltraClear Laser Device" className="w-full h-full object-cover object-center" loading="lazy" decoding="async" />
 
           <motion.div
@@ -586,7 +586,7 @@ export default function Home() {
       </section>
 
       {/* ── ULTRACLEAR BEFORE / AFTER ─────────────────────────────── */}
-      <section id="ultraclear-results" className="relative bg-[#F0F6FC] overflow-hidden py-20">
+      <section id="ultraclear-results" className="relative surface-ice overflow-hidden py-20">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] bg-sky-600/3 blur-[100px] pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-10">
@@ -671,7 +671,7 @@ export default function Home() {
                 transition={{ delay: i * 0.06, duration: 0.5 }}
                 className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-400 group ${
                   ucActivePatient === i
-                    ? "ring-2 ring-sky-600/60 ring-offset-1 ring-offset-[#F0F6FC]"
+                    ? "ring-2 ring-sky-600/60 ring-offset-1 ring-offset-[#E5F0F8]"
                     : "opacity-50 hover:opacity-80"
                 }`}
               >

@@ -198,11 +198,11 @@ export default function NeoGenPlasma() {
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F0F6FC] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </section>
 
       {/* ── PSR TECHNOLOGY ───────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
+      <section className="py-28 relative overflow-hidden surface-white">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -302,7 +302,7 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── 3 MECHANISMS ─────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
+      <section className="py-28 relative overflow-hidden surface-ice">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -368,7 +368,7 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── INDICATIONS + SPECS ──────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
+      <section className="py-28 relative overflow-hidden surface-white">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -494,7 +494,7 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── DEMO VIDEO ───────────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden bg-[#F0F6FC]">
+      <section className="py-24 relative overflow-hidden surface-ice">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -571,7 +571,7 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── BEFORE / AFTER ───────────────────────────────────────── */}
-      <section className="py-24 bg-[#F0F6FC] relative overflow-hidden">
+      <section className="py-24 surface-white relative overflow-hidden">
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] pointer-events-none"
           style={{ background: "radial-gradient(ellipse, rgba(36,184,189,0.04) 0%, transparent 65%)" }}
@@ -662,7 +662,7 @@ export default function NeoGenPlasma() {
                 onClick={() => setActivePatient(i)}
                 className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-300 group ${
                   activePatient === i
-                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-[#F0F6FC]"
+                    ? "ring-2 ring-primary/60 ring-offset-1 ring-offset-white"
                     : "opacity-45 hover:opacity-70"
                 }`}
               >
@@ -678,7 +678,7 @@ export default function NeoGenPlasma() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
+      <section className="py-28 relative overflow-hidden surface-ice">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

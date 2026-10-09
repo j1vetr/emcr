@@ -152,7 +152,7 @@ export default function Etkinliklerimiz() {
       </section>
 
       {/* ── EVENTS ────────────────────────────────────────────────── */}
-      <section className="pt-10 pb-28">
+      <section className="pt-10 pb-28 surface-white">
         <div className="max-w-[1440px] mx-auto">
           {events.map((ev, i) => {
             const col = typeStyle[ev.type];
@@ -264,7 +264,7 @@ export default function Etkinliklerimiz() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "#F0F6FC" }}>
+      <section className="py-24 relative overflow-hidden surface-ice">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(36,184,189,0.055) 0%, transparent 65%)" }}

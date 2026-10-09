@@ -135,7 +135,7 @@ export default function SosyalMedyada() {
       </section>
 
       {/* ── Diğer postlar — 3'lü grid ─────────────────────────────────── */}
-      <section className="py-16 bg-[#F0F6FC]">
+      <section className="py-16 surface-white">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
           <div className="flex items-center justify-between mb-10">
             <p className="text-[10.5px] font-semibold tracking-[0.3em] uppercase text-foreground/30">

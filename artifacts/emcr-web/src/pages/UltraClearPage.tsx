@@ -224,11 +224,11 @@ export default function UltraClearPage() {
           </div>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#F0F6FC] to-transparent pointer-events-none z-20" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none z-20" />
       </section>
 
       {/* ── 2910 nm — THE TECHNOLOGY MOMENT ─────────────────────── */}
-      <section className="py-0 relative overflow-hidden" style={{ background: "#F0F6FC" }}>
+      <section className="py-0 relative overflow-hidden surface-white">
         <div className="grid md:grid-cols-[1fr_45%]">
 
           {/* Left: giant 2910 editorial */}
@@ -326,8 +326,8 @@ export default function UltraClearPage() {
             transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="relative overflow-hidden min-h-[520px]"
           >
-            <div className="absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-[#F0F6FC] to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 h-28 z-10 bg-gradient-to-t from-[#F0F6FC] to-transparent" />
+            <div className="absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-28 z-10 bg-gradient-to-t from-white to-transparent" />
             <img
               src={ucTreatment2}
               alt="UltraClear Klinik Uygulama"
@@ -346,7 +346,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* ── 6 MOD ────────────────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden" style={{ background: "#F0F6FC" }}>
+      <section className="relative py-28 overflow-hidden surface-ice">
         {/* Subtle atmospheric glow */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -506,7 +506,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* ── IN ACTION — treatment3 full-width editorial ───────────── */}
-      <section className="relative overflow-hidden" style={{ background: "#F0F6FC" }}>
+      <section className="relative overflow-hidden surface-white">
         <div className="grid md:grid-cols-2">
 
           {/* Left image panel */}
@@ -518,8 +518,8 @@ export default function UltraClearPage() {
             className="relative overflow-hidden"
             style={{ minHeight: "520px" }}
           >
-            <div className="absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-[#F0F6FC] to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 h-24 z-10 bg-gradient-to-t from-[#F0F6FC] to-transparent" />
+            <div className="absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-white to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-24 z-10 bg-gradient-to-t from-white to-transparent" />
             <img
               src={ucTreatment3}
               alt="UltraClear Sistem Uygulaması"
@@ -605,7 +605,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* ── INDICATIONS + SPECS ──────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden" style={{ background: "#F0F6FC" }}>
+      <section className="py-28 relative overflow-hidden surface-ice">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 50% 45% at 10% 50%, rgba(43,143,208,0.045) 0%, transparent 65%)" }}
@@ -732,7 +732,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* ── BEFORE / AFTER ───────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "#F0F6FC" }}>
+      <section className="py-24 relative overflow-hidden surface-white">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-5">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -810,7 +810,7 @@ export default function UltraClearPage() {
                 key={i}
                 onClick={() => setActivePatient(i)}
                 className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-300 group ${
-                  activePatient === i ? "ring-2 ring-sky-600/55 ring-offset-1 ring-offset-[#F0F6FC]" : "opacity-45 hover:opacity-70"
+                  activePatient === i ? "ring-2 ring-sky-600/55 ring-offset-1 ring-offset-white" : "opacity-45 hover:opacity-70"
                 }`}
               >
                 <img src={p.img} alt={`${i + 1}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
@@ -825,7 +825,7 @@ export default function UltraClearPage() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden" style={{ background: "#F0F6FC" }}>
+      <section className="py-28 relative overflow-hidden surface-ice">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 65% 60% at 50% 50%, rgba(43,143,208,0.07) 0%, transparent 65%)" }}

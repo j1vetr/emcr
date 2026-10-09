@@ -183,7 +183,7 @@ export default function TeknikDestek() {
       </section>
 
       {/* ── STATS STRIP ──────────────────────────────────────────── */}
-      <section className="relative py-0 overflow-hidden">
+      <section className="relative py-0 overflow-hidden surface-white">
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/[0.06] border border-[#D9E6EF] rounded-2xl overflow-hidden">
             {stats.map((s, i) => (
@@ -220,7 +220,7 @@ export default function TeknikDestek() {
       </section>
 
       {/* ── COMMITMENT ───────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden">
+      <section className="py-28 relative overflow-hidden surface-ice">
         <div
           className="absolute right-0 top-0 bottom-0 w-[40%] pointer-events-none"
           style={{
@@ -321,7 +321,7 @@ export default function TeknikDestek() {
       </section>
 
       {/* ── SERVICES ─────────────────────────────────────────────── */}
-      <section className="py-20 relative overflow-hidden bg-[#F0F6FC]">
+      <section className="py-20 relative overflow-hidden surface-white">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -408,7 +408,7 @@ export default function TeknikDestek() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden">
+      <section className="py-28 relative overflow-hidden surface-ice">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -505,7 +505,7 @@ export default function TeknikDestek() {
       </section>
 
       {/* ── CONTACT ──────────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden bg-[#F0F6FC]">
+      <section className="py-28 relative overflow-hidden surface-white">
         <div className="absolute inset-0 pointer-events-none">
           <div
             style={{
