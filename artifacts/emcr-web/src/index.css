@@ -119,3 +119,13 @@
   .surface-white { background-color: #FFFFFF; }
   .surface-ice { background-color: #E5F0F8; }
 }
+
+/* Mobile safety net */
+@layer base {
+  html, body { overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
+  @media (max-width: 767px) {
+    input, select, textarea { font-size: 16px !important; }
+  }
+}

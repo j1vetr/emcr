@@ -137,7 +137,7 @@ export default function Home() {
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen overflow-hidden bg-[#F0F6FC]"
+        className="relative min-h-[100dvh] overflow-hidden bg-[#F0F6FC]"
       >
         {/* ── z-0: YouTube video — full-screen cinematic background ── */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -181,9 +181,9 @@ export default function Home() {
         {/* ── Hero content — centered, cinematic ───────────────── */}
         <motion.div
           style={{ opacity: heroOpacity, y: heroY }}
-          className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center text-center px-6"
+          className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center justify-center text-center px-6"
         >
-          <div style={{ paddingTop: "clamp(80px,9vh,120px)", paddingBottom: "clamp(80px,9vh,120px)" }}>
+          <div className="pt-28 pb-8 md:pt-[clamp(80px,9vh,120px)] md:pb-[clamp(80px,9vh,120px)]">
 
             {/* Eyebrow */}
             <motion.div
@@ -206,15 +206,13 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               <h1
-                className="font-display font-black leading-[0.9] tracking-[-0.025em] text-foreground"
-                style={{ fontSize: "clamp(4rem, 9.5vw, 10rem)" }}
+                className="font-display font-black leading-[0.9] tracking-[-0.025em] text-foreground text-[clamp(1.85rem,9vw,4rem)] md:text-[clamp(4rem,9.5vw,10rem)]"
               >
                 Medikal Estetiğin
               </h1>
               <h1
-                className="font-display font-black leading-[0.9] tracking-[-0.025em]"
+                className="font-display font-black leading-[0.9] tracking-[-0.025em] text-[clamp(1.85rem,9vw,4rem)] md:text-[clamp(4rem,9.5vw,10rem)]"
                 style={{
-                  fontSize: "clamp(4rem, 9.5vw, 10rem)",
                   background: "linear-gradient(110deg, #24B8BD 0%, #1FA3A8 40%, #2B8FD0 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -267,7 +265,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-20 left-0 right-0 flex items-stretch justify-center z-10"
+            className="relative mt-4 mb-16 md:mb-0 md:mt-0 md:absolute md:bottom-20 md:left-0 md:right-0 flex items-stretch justify-center z-10"
           >
             <div
               className="flex items-stretch divide-x"
@@ -276,7 +274,7 @@ export default function Home() {
               {/* NeoGen */}
               <Link
                 href="/urunler/neogen-plasma"
-                className="group flex flex-col items-center justify-center gap-3 px-10 py-5 hover:bg-[#E5F0F8] transition-colors"
+                className="group flex flex-col items-center justify-center gap-3 px-5 sm:px-10 py-4 sm:py-5 min-h-11 hover:bg-[#E5F0F8] transition-colors"
                 style={{ borderRight: "1px solid rgba(16,36,59,0.07)" }}
               >
                 <img
@@ -289,7 +287,7 @@ export default function Home() {
               {/* UltraClear */}
               <Link
                 href="/urunler/ultraclear"
-                className="group flex flex-col items-center justify-center gap-3 px-10 py-5 hover:bg-[#E5F0F8] transition-colors"
+                className="group flex flex-col items-center justify-center gap-3 px-5 sm:px-10 py-4 sm:py-5 min-h-11 hover:bg-[#E5F0F8] transition-colors"
               >
                 <img
                   src={ultraClearLogo}
@@ -306,7 +304,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="absolute bottom-9 flex flex-col items-center gap-2.5"
+            className="hidden md:flex absolute bottom-9 flex-col items-center gap-2.5"
           >
             <motion.div
               animate={{ scaleY: [1, 1.5, 1], opacity: [0.22, 0.55, 0.22] }}
@@ -318,19 +316,19 @@ export default function Home() {
       </section>
 
       {/* ── NEOGEN BRAND ──────────────────────────────────────────── */}
-      <section id="neogen" className="relative overflow-hidden min-h-screen surface-white">
+      <section id="neogen" className="relative overflow-hidden lg:min-h-screen surface-white pt-16 lg:pt-0">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-y-0 right-0 w-[55%] flex items-center justify-center pointer-events-none"
+          className="relative h-[300px] sm:h-[420px] w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[55%] flex items-center justify-center pointer-events-none"
         >
-          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white to-transparent z-10" />
-          <div className="absolute w-[680px] h-[680px] rounded-full border border-primary/20"
+          <div className="hidden lg:block absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="absolute w-[min(680px,92vw)] h-[min(680px,92vw)] rounded-full border border-primary/20"
             style={{ boxShadow: "0 0 80px rgba(36,184,189,0.06), inset 0 0 80px rgba(36,184,189,0.03)" }} />
-          <div className="absolute w-[500px] h-[500px] rounded-full border border-primary/10" />
-          <div className="absolute w-[320px] h-[320px] bg-primary/5 blur-[80px] rounded-full" />
+          <div className="absolute w-[min(500px,70vw)] h-[min(500px,70vw)] rounded-full border border-primary/10" />
+          <div className="absolute w-[min(320px,50vw)] h-[min(320px,50vw)] bg-primary/5 blur-[80px] rounded-full" />
           <img
             src={neogenDevicePlatform}
             alt="NeoGen Plasma Device"
@@ -341,8 +339,8 @@ export default function Home() {
           />
         </motion.div>
 
-        <div className="relative z-10 min-h-screen flex items-center">
-          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-20">
+        <div className="relative z-10 lg:min-h-screen flex items-center">
+          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-14 lg:py-20">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -410,7 +408,7 @@ export default function Home() {
                   <button
                     key={di}
                     onClick={() => setActivePatient(p => (p + dir + baPatients.length) % baPatients.length)}
-                    className="w-10 h-10 rounded-full border border-[#D9E6EF] hover:border-primary/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all duration-300"
+                    className="w-11 h-11 rounded-full border border-[#D9E6EF] hover:border-primary/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all duration-300"
                   >
                     <ChevronRight size={16} className={`text-[#607084] hover:text-foreground transition-colors ${dir === -1 ? "rotate-180" : ""}`} />
                   </button>
@@ -424,8 +422,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-2xl overflow-hidden mb-4"
-            style={{ aspectRatio: "21/9" }}
+            className="relative rounded-2xl overflow-hidden mb-4 aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]"
           >
             {baPatients.map((p, i) => (
               <motion.div
@@ -439,24 +436,24 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
               </motion.div>
             ))}
-            <div className="absolute top-5 left-6 z-20">
+            <div className="absolute top-3 left-3 sm:top-5 sm:left-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-[#D9E6EF] text-foreground/70">ÖNCE</span>
             </div>
-            <div className="absolute top-5 right-6 z-20">
+            <div className="absolute top-3 right-3 sm:top-5 sm:right-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary">SONRA</span>
             </div>
             <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/80 z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 flex items-end justify-between gap-3">
               <p className="text-[10px] tracking-[0.25em] uppercase text-white">
                 NeoGen Plasma · {baPatients[activePatient].label}
               </p>
-              <div className="font-display font-bold text-6xl text-[#10243B]/5 select-none leading-none tabular-nums">
+              <div className="hidden sm:block font-display font-bold text-6xl text-[#10243B]/5 select-none leading-none tabular-nums">
                 {String(activePatient + 1).padStart(2, "0")}
               </div>
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-6 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {baPatients.map((p, i) => (
               <motion.button
                 key={i}
@@ -483,9 +480,9 @@ export default function Home() {
       </section>
 
       {/* ── ULTRACLEAR ────────────────────────────────────────────── */}
-      <section id="ultraclear" className="relative overflow-hidden min-h-screen surface-white">
+      <section id="ultraclear" className="relative overflow-hidden lg:min-h-screen surface-white pt-16 lg:pt-0">
         <div className="absolute left-6 top-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
-          <span className="font-display font-black leading-none text-[#10243B]/[0.025]" style={{ fontSize: "clamp(18rem, 28vw, 32rem)" }}>
+          <span className="font-display font-black leading-none text-[#10243B]/[0.025]" style={{ fontSize: "clamp(10rem, 28vw, 32rem)" }}>
             02
           </span>
         </div>
@@ -495,9 +492,9 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-y-0 right-0 w-[58%] pointer-events-none"
+          className="relative h-[300px] sm:h-[420px] w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[58%] pointer-events-none"
         >
-          <div className="absolute inset-y-0 left-0 w-56 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="hidden lg:block absolute inset-y-0 left-0 w-56 bg-gradient-to-r from-white to-transparent z-10" />
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
           <img src={ultraClearStudio} alt="UltraClear Laser Device" className="w-full h-full object-cover object-center" loading="lazy" decoding="async" />
 
@@ -506,7 +503,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="absolute z-20 top-[22%] left-20 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/80 border border-sky-600/20"
+            className="absolute z-20 top-[18%] left-4 sm:left-20 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/80 border border-sky-600/20"
           >
             <p className="text-[9px] tracking-[0.25em] uppercase text-sky-600/70 mb-0.5">Dalga Boyu</p>
             <p className="text-[13px] font-semibold text-foreground/90">2910 nm</p>
@@ -516,15 +513,15 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.9, duration: 0.6 }}
-            className="absolute z-20 bottom-[28%] left-12 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/80 border border-[#D9E6EF]"
+            className="absolute z-20 bottom-[24%] left-4 sm:left-12 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/80 border border-[#D9E6EF]"
           >
             <p className="text-[9px] tracking-[0.25em] uppercase text-[#607084] mb-0.5">Uyumluluk</p>
             <p className="text-[13px] font-semibold text-foreground/80">Tüm Cilt Tipleri</p>
           </motion.div>
         </motion.div>
 
-        <div className="relative z-10 min-h-screen flex items-center">
-          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-20">
+        <div className="relative z-10 lg:min-h-screen flex items-center">
+          <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 py-14 lg:py-20">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -614,7 +611,7 @@ export default function Home() {
                   <button
                     key={di}
                     onClick={() => setUcActivePatient(p => (p + dir + ucPatients.length) % ucPatients.length)}
-                    className="w-10 h-10 rounded-full border border-[#D9E6EF] hover:border-sky-600/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all duration-300"
+                    className="w-11 h-11 rounded-full border border-[#D9E6EF] hover:border-sky-600/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all duration-300"
                   >
                     <ChevronRight size={16} className={`text-[#607084] ${dir === -1 ? "rotate-180" : ""}`} />
                   </button>
@@ -628,8 +625,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-2xl overflow-hidden mb-4"
-            style={{ aspectRatio: "21/9" }}
+            className="relative rounded-2xl overflow-hidden mb-4 aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]"
           >
             {ucPatients.map((p, i) => (
               <motion.div
@@ -643,24 +639,24 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
               </motion.div>
             ))}
-            <div className="absolute top-5 left-6 z-20">
+            <div className="absolute top-3 left-3 sm:top-5 sm:left-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-[#D9E6EF] text-foreground/70">ÖNCE</span>
             </div>
-            <div className="absolute top-5 right-6 z-20">
+            <div className="absolute top-3 right-3 sm:top-5 sm:right-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-sky-600/20 backdrop-blur-md border border-sky-600/30 text-sky-600">SONRA</span>
             </div>
             <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/80 z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 flex items-end justify-between gap-3">
               <p className="text-[10px] tracking-[0.25em] uppercase text-white">
                 UltraClear™ · {ucPatients[ucActivePatient].label}
               </p>
-              <div className="font-display font-bold text-6xl text-[#10243B]/5 select-none leading-none tabular-nums">
+              <div className="hidden sm:block font-display font-bold text-6xl text-[#10243B]/5 select-none leading-none tabular-nums">
                 {String(ucActivePatient + 1).padStart(2, "0")}
               </div>
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-6 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {ucPatients.map((p, i) => (
               <motion.button
                 key={i}

@@ -82,7 +82,7 @@ export default function NeoGenPlasma() {
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#F0F6FC]" style={{ minHeight: "92vh" }}>
+      <section className="relative overflow-hidden bg-[#F0F6FC] lg:min-h-[92vh]">
         {/* Subtle teal glow */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -93,8 +93,7 @@ export default function NeoGenPlasma() {
 
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 h-full">
           <div
-            className="grid lg:grid-cols-2 gap-8 items-center"
-            style={{ minHeight: "92vh", paddingTop: "clamp(90px, 11vh, 140px)", paddingBottom: "clamp(60px, 8vh, 100px)" }}
+            className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center pt-24 pb-16 lg:min-h-[92vh] lg:pt-[clamp(90px,11vh,140px)] lg:pb-[clamp(60px,8vh,100px)]"
           >
             {/* ── Sol: cihaz görseli ───────────────────────────── */}
             <motion.div
@@ -107,7 +106,7 @@ export default function NeoGenPlasma() {
               <div
                 className="absolute pointer-events-none"
                 style={{
-                  width: "460px", height: "460px",
+                  width: "min(460px, 90vw)", height: "min(460px, 90vw)",
                   background: "radial-gradient(circle, rgba(36,184,189,0.09) 0%, transparent 70%)",
                   filter: "blur(60px)",
                   top: "50%", left: "50%",
@@ -118,8 +117,8 @@ export default function NeoGenPlasma() {
               <img
                 src={neogenDeviceTransparent}
                 alt="NeoGen Plasma EVO"
-                className="relative w-full object-contain"
-                style={{ maxHeight: "700px", display: "block" }}
+                className="relative w-full max-w-[min(100%,520px)] lg:max-w-none object-contain max-h-[clamp(220px,44dvh,360px)] sm:max-h-[440px] lg:max-h-[700px]"
+                style={{ display: "block" }}
                 fetchPriority="high"
                 decoding="async"
               />
@@ -136,7 +135,7 @@ export default function NeoGenPlasma() {
               <img
                 src={neogenLogo}
                 alt="NeoGen"
-                className="w-auto h-8 mb-10 opacity-80"
+                className="w-auto h-7 lg:h-8 mb-6 lg:mb-10 opacity-80"
               />
 
               {/* Eyebrow */}
@@ -150,7 +149,7 @@ export default function NeoGenPlasma() {
               {/* Headline */}
               <h1
                 className="font-display font-black leading-[0.92] tracking-[-0.025em] mb-7"
-                style={{ fontSize: "clamp(3rem, 5.5vw, 6rem)" }}
+                style={{ fontSize: "clamp(2rem, 5.5vw, 6rem)" }}
               >
                 Yüzeyden Derine
                 <br />
@@ -179,7 +178,7 @@ export default function NeoGenPlasma() {
               <div className="flex flex-wrap gap-3">
                 <a
                   href="mailto:info@emcr.com.tr"
-                  className="h-11 px-7 inline-flex items-center gap-2.5 text-[13px] font-semibold bg-primary text-[#10243B] rounded-xl hover:bg-primary/90 transition-all"
+                  className="h-12 px-7 inline-flex items-center gap-2.5 text-[13px] font-semibold bg-primary text-[#10243B] rounded-xl hover:bg-primary/90 transition-all"
                   style={{ boxShadow: "0 0 28px rgba(36,184,189,0.25), 0 4px 14px rgba(16,36,59,0.075)" }}
                 >
                   Demo Talep Et
@@ -187,7 +186,7 @@ export default function NeoGenPlasma() {
                 </a>
                 <Link
                   href="/teknik-destek"
-                  className="h-11 px-7 inline-flex items-center gap-2 text-[13px] font-medium text-[#607084] hover:text-foreground border border-[#D9E6EF] hover:border-[#D9E6EF] rounded-xl hover:bg-[#E5F0F8] transition-all"
+                  className="h-12 px-7 inline-flex items-center gap-2 text-[13px] font-medium text-[#607084] hover:text-foreground border border-[#D9E6EF] hover:border-[#D9E6EF] rounded-xl hover:bg-[#E5F0F8] transition-all"
                 >
                   Teknik Destek
                   <ChevronRight size={14} />
@@ -211,7 +210,7 @@ export default function NeoGenPlasma() {
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-14 relative z-10">
-          <div className="grid md:grid-cols-[1fr_1.1fr] gap-16 lg:gap-24 items-center">
+          <div className="grid md:grid-cols-[1fr_1.1fr] gap-10 md:gap-16 lg:gap-24 items-center">
 
             {/* Left: Treatment image */}
             <motion.div
@@ -616,7 +615,7 @@ export default function NeoGenPlasma() {
                   <button
                     key={di}
                     onClick={() => setActivePatient((p) => (p + dir + patients.length) % patients.length)}
-                    className="w-10 h-10 rounded-full border border-[#D9E6EF] hover:border-primary/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all"
+                    className="w-11 h-11 rounded-full border border-[#D9E6EF] hover:border-primary/40 hover:bg-[#E5F0F8] flex items-center justify-center transition-all"
                   >
                     <ChevronRight size={16} className={`text-[#607084] ${dir === -1 ? "rotate-180" : ""}`} />
                   </button>
@@ -625,7 +624,7 @@ export default function NeoGenPlasma() {
             </div>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden mb-4 border border-[#D9E6EF]" style={{ aspectRatio: "21/9" }}>
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden mb-4 border border-[#D9E6EF] aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]">
             {patients.map((p, i) => (
               <motion.div
                 key={i}
@@ -638,24 +637,24 @@ export default function NeoGenPlasma() {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
               </motion.div>
             ))}
-            <div className="absolute top-5 left-6 z-20">
+            <div className="absolute top-3 left-3 sm:top-5 sm:left-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-[#D9E6EF] text-foreground/65">ÖNCE</span>
             </div>
-            <div className="absolute top-5 right-6 z-20">
+            <div className="absolute top-3 right-3 sm:top-5 sm:right-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary">SONRA</span>
             </div>
             <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/80 z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 flex items-end justify-between gap-3">
               <p className="text-[10px] tracking-[0.25em] uppercase text-white">
                 NeoGen Plasma · {patients[activePatient].label}
               </p>
-              <div className="font-display font-black text-6xl text-[#10243B]/[0.04] select-none leading-none tabular-nums">
+              <div className="hidden sm:block font-display font-black text-6xl text-[#10243B]/[0.04] select-none leading-none tabular-nums">
                 {String(activePatient + 1).padStart(2, "0")}
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-6 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {patients.map((p, i) => (
               <button
                 key={i}

@@ -71,6 +71,15 @@ export default function Navbar() {
     setOpenDropdown(null);
   }, [location]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMobileOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKey); };
+  }, [mobileOpen]);
+
   const isActive = (href: string) =>
     location === href || location.startsWith(href + "/");
 
@@ -96,7 +105,7 @@ export default function Navbar() {
           }}
         >
           <div
-            className="max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-between transition-all duration-500"
+            className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between transition-all duration-500"
             style={{ height: transparent ? "88px" : "66px" }}
           >
             {/* Logo */}
@@ -105,7 +114,7 @@ export default function Navbar() {
                 src={emcrLogoWhite}
                 alt="EMCR Medikal"
                 className="object-contain transition-all duration-500"
-                style={{ height: transparent ? "54px" : "38px", filter: "brightness(0) saturate(100%) invert(11%) sepia(38%) saturate(1500%) hue-rotate(184deg) brightness(92%)" }}
+                style={{ height: transparent ? "clamp(40px, 11vw, 54px)" : "38px", maxWidth: "58vw", filter: "brightness(0) saturate(100%) invert(11%) sepia(38%) saturate(1500%) hue-rotate(184deg) brightness(92%)" }}
               />
             </Link>
 
@@ -260,9 +269,12 @@ export default function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="lg:hidden w-9 h-9 rounded-lg border border-[#D9E6EF] flex items-center justify-center text-[#607084] hover:text-foreground/90 transition-all"
+              className="lg:hidden w-12 h-12 -mr-1 rounded-xl border border-[#D9E6EF] bg-white/60 flex items-center justify-center text-[#10243B] hover:bg-white transition-all"
               onClick={() => setMobileOpen((p) => !p)}
-              aria-label="Menu"
+              aria-label={mobileOpen ? "Menüyü kapat" : "Menüyü aç"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              data-testid="button-mobile-menu"
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -272,7 +284,7 @@ export default function Navbar() {
                   exit={{ opacity: 0, rotate: 90 }}
                   transition={{ duration: 0.15 }}
                 >
-                  {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+                  {mobileOpen ? <X size={22} /> : <Menu size={22} />}
                 </motion.span>
               </AnimatePresence>
             </button>
@@ -287,7 +299,9 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden mx-3 mt-2 rounded-2xl overflow-hidden"
+              id="mobile-menu"
+              data-testid="nav-mobile-drawer"
+              className="lg:hidden mx-3 mt-2 rounded-2xl overflow-y-auto overscroll-contain max-h-[calc(100dvh-88px)]"
               style={{
                 background: "rgba(240,246,252,0.99)",
                 border: "1px solid rgba(16,36,59,0.07)",
@@ -302,7 +316,7 @@ export default function Navbar() {
                     {item.href ? (
                       <Link
                         href={item.href}
-                        className={`flex items-center px-4 py-3 rounded-xl text-[13px] font-medium tracking-[0.01em] transition-all ${
+                        className={`flex items-center min-h-12 px-4 py-3 rounded-xl text-[15px] sm:text-[13px] font-medium tracking-[0.01em] transition-all ${
                           item.href && isActive(item.href)
                             ? "bg-white/80 text-foreground/90"
                             : "text-[#607084] hover:bg-[#E5F0F8] hover:text-foreground/80"
@@ -318,12 +332,12 @@ export default function Navbar() {
                               p === item.label ? null : item.label
                             )
                           }
-                          className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-[13px] font-medium tracking-[0.01em] text-[#607084] hover:bg-[#E5F0F8] hover:text-foreground/80 transition-all"
+                          className="flex items-center justify-between w-full min-h-12 px-4 py-3 rounded-xl text-[15px] sm:text-[13px] font-medium tracking-[0.01em] text-[#607084] hover:bg-[#E5F0F8] hover:text-foreground/80 transition-all"
                         >
                           {item.label}
                           <ChevronDown
-                            size={12}
-                            className={`opacity-40 transition-transform ${mobileExpanded === item.label ? "rotate-180" : ""}`}
+                            size={16}
+                            className={`opacity-50 transition-transform ${mobileExpanded === item.label ? "rotate-180" : ""}`}
                           />
                         </button>
                         <AnimatePresence>
@@ -367,7 +381,7 @@ export default function Navbar() {
                                     <Link
                                       key={s.href}
                                       href={s.href}
-                                      className="block px-4 py-2.5 text-[12px] tracking-[0.01em] text-[#607084] hover:text-primary transition-colors"
+                                      className="flex items-center min-h-12 px-4 py-2.5 text-[14px] sm:text-[12px] tracking-[0.01em] text-[#607084] hover:text-primary transition-colors"
                                     >
                                       {s.label}
                                     </Link>
@@ -385,7 +399,7 @@ export default function Navbar() {
                 <div className="mt-2 pt-3 border-t border-[#D9E6EF] flex items-center gap-3">
                   <a
                     href="mailto:info@emcr.com.tr"
-                    className="flex-1 h-10 bg-primary text-[#10243B] rounded-xl font-semibold text-[13px] flex items-center justify-center gap-1.5"
+                    className="flex-1 h-12 bg-primary text-[#10243B] rounded-xl font-semibold text-[13px] flex items-center justify-center gap-1.5"
                     style={{ boxShadow: "0 0 20px rgba(36,184,189,0.2)" }}
                   >
                     İletişim
@@ -393,7 +407,8 @@ export default function Navbar() {
                   </a>
                   <a
                     href="tel:+905330670001"
-                    className="w-10 h-10 rounded-xl border border-[#D9E6EF] flex items-center justify-center text-[#607084] hover:text-primary transition-all"
+                    aria-label="Telefon ile ara"
+                    className="w-12 h-12 rounded-xl border border-[#D9E6EF] flex items-center justify-center text-[#607084] hover:text-primary transition-all"
                   >
                     <Phone size={15} />
                   </a>

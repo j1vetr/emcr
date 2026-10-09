@@ -16,6 +16,41 @@ const POSTS = [
   "https://www.instagram.com/p/DPWdtBPjKfz/",
 ];
 
+function InstagramEmbed({ url, radius, maxWidth, testId }: { url: string; radius: number; maxWidth: number; testId: string }) {
+  return (
+    <blockquote
+      className="instagram-media"
+      data-instgrm-permalink={url}
+      data-instgrm-version="14"
+      data-testid={testId}
+      style={{
+        background: "#FFFFFF",
+        border: "1px solid #D9E6EF",
+        borderRadius: `${radius}px`,
+        maxWidth: `${maxWidth}px`,
+        width: "100%",
+        minWidth: 0,
+        margin: "0",
+        padding: "0",
+      }}
+    >
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex min-h-[240px] flex-col items-center justify-center gap-3 px-6 py-10 text-center text-[#607084] hover:text-[#10243B] transition-colors"
+      >
+        <Instagram size={22} className="text-[#E1306C]" />
+        <span className="text-[13px] font-semibold">Gönderiyi Instagram'da Gör</span>
+        <span className="inline-flex items-center gap-1.5 text-[11.5px]">
+          @emcrmedikal
+          <ExternalLink size={11} />
+        </span>
+      </a>
+    </blockquote>
+  );
+}
+
 export default function SosyalMedyada() {
   useEffect(() => {
     const scriptId = "instagram-embed-script";
@@ -64,7 +99,7 @@ export default function SosyalMedyada() {
 
               <h1
                 className="font-display font-bold leading-[1.05] mb-7"
-                style={{ fontSize: "clamp(2.6rem, 4vw, 4.4rem)" }}
+                style={{ fontSize: "clamp(2rem, 4vw, 4.4rem)" }}
               >
                 EMCR Medikal{" "}
                 <span
@@ -110,22 +145,8 @@ export default function SosyalMedyada() {
                     Öne Çıkan Gönderi
                   </p>
                 </div>
-                <div style={{ maxHeight: "520px", overflow: "hidden", borderRadius: "16px" }}>
-                  <blockquote
-                    className="instagram-media"
-                    data-instgrm-permalink={POSTS[0]}
-                    data-instgrm-version="14"
-                    style={{
-                      background: "#10243B",
-                      border: "1px solid rgba(16,36,59,0.07)",
-                      borderRadius: "16px",
-                      maxWidth: "380px",
-                      width: "100%",
-                      minWidth: "260px",
-                      margin: "0",
-                      padding: "0",
-                    }}
-                  />
+                <div className="w-full min-w-0" style={{ maxHeight: "520px", overflow: "hidden", borderRadius: "16px" }}>
+                  <InstagramEmbed url={POSTS[0]} radius={16} maxWidth={380} testId="embed-instagram-featured" />
                 </div>
               </div>
             </motion.div>
@@ -145,7 +166,7 @@ export default function SosyalMedyada() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[11.5px] text-foreground/30 hover:text-primary transition-colors"
+              className="flex items-center gap-1.5 min-h-11 text-[11.5px] text-foreground/30 hover:text-primary transition-colors"
             >
               Tümünü Gör
               <ExternalLink size={11} />
@@ -160,23 +181,9 @@ export default function SosyalMedyada() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-                className="flex justify-center"
+                className="flex justify-center min-w-0"
               >
-                <blockquote
-                  className="instagram-media"
-                  data-instgrm-permalink={url}
-                  data-instgrm-version="14"
-                  style={{
-                    background: "#10243B",
-                    border: "1px solid rgba(16,36,59,0.07)",
-                    borderRadius: "14px",
-                    maxWidth: "480px",
-                    width: "100%",
-                    minWidth: "280px",
-                    margin: "0",
-                    padding: "0",
-                  }}
-                />
+                <InstagramEmbed url={url} radius={14} maxWidth={480} testId={`embed-instagram-${i}`} />
               </motion.div>
             ))}
           </div>

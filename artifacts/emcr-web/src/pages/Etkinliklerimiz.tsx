@@ -126,7 +126,7 @@ export default function Etkinliklerimiz() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display font-black leading-[0.95] tracking-[-0.02em] mb-6"
-            style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}
+            style={{ fontSize: "clamp(2.2rem, 7vw, 6.5rem)" }}
           >
             Etkinliklerimiz
           </motion.h1>
@@ -189,7 +189,7 @@ export default function Etkinliklerimiz() {
                   <div className={`relative flex items-center overflow-hidden bg-[#E5F0F8] ${isEven ? "lg:rounded-r-none" : "lg:rounded-l-none"}`}>
                     <motion.button
                       transition={{ duration: 0.4 }}
-                      className="relative w-full h-[420px] sm:h-[520px] block focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:-outline-offset-2"
+                      className="relative w-full h-[clamp(240px,62vw,420px)] sm:h-[520px] block focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:-outline-offset-2"
                       onClick={() => setLightbox({ src: cover, title: ev.title })}
                       aria-label={`${ev.title} — büyük fotoğraf`}
                     >
@@ -320,11 +320,11 @@ export default function Etkinliklerimiz() {
               <img
                 src={lightbox.src}
                 alt={lightbox.title}
-                className="w-full rounded-2xl object-contain max-h-[82vh]"
+                className="w-full rounded-2xl object-contain max-h-[78dvh] sm:max-h-[82vh]"
               />
               <button
                 onClick={() => setLightbox(null)}
-                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all"
+                className="absolute top-2 right-2 sm:top-3 sm:right-3 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all"
                 aria-label="Kapat"
               >
                 <X size={16} />

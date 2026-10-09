@@ -112,7 +112,7 @@ export default function UltraClearPage() {
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen overflow-hidden flex items-center" style={{ background: "#F0F6FC" }}>
+      <section className="relative lg:min-h-screen overflow-hidden flex flex-col lg:flex-row lg:items-center pt-20 lg:pt-0" style={{ background: "#F0F6FC" }}>
         {/* Atmospheric glow — azure top right */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -123,10 +123,10 @@ export default function UltraClearPage() {
         />
 
         {/* Device image — right panel */}
-        <div className="absolute right-0 top-0 bottom-0 w-[52%] pointer-events-none overflow-hidden">
-          <div className="absolute inset-y-0 left-0 w-72 z-10 bg-gradient-to-r from-[#F0F6FC] to-transparent" />
-          <div className="absolute bottom-0 inset-x-0 h-40 z-10 bg-gradient-to-t from-[#F0F6FC] to-transparent" />
-          <div className="absolute top-0 inset-x-0 h-32 z-10 bg-gradient-to-b from-[#F0F6FC] to-transparent" />
+        <div className="relative w-full h-[clamp(220px,62vw,380px)] sm:h-[400px] lg:h-auto lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[52%] pointer-events-none overflow-hidden">
+          <div className="hidden lg:block absolute inset-y-0 left-0 w-72 z-10 bg-gradient-to-r from-[#F0F6FC] to-transparent" />
+          <div className="absolute bottom-0 inset-x-0 h-16 lg:h-40 z-10 bg-gradient-to-t from-[#F0F6FC] to-transparent" />
+          <div className="absolute top-0 inset-x-0 h-10 lg:h-32 z-10 bg-gradient-to-b from-[#F0F6FC] to-transparent" />
           {/* Azure orb behind device */}
           <div
             className="absolute z-0"
@@ -148,8 +148,7 @@ export default function UltraClearPage() {
 
         {/* Left content */}
         <div
-          className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-14"
-          style={{ paddingTop: "clamp(100px, 12vh, 150px)", paddingBottom: "clamp(80px, 10vh, 120px)" }}
+          className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-14 pt-6 pb-24 lg:pt-[clamp(100px,12vh,150px)] lg:pb-[clamp(80px,10vh,120px)]"
         >
           <div className="max-w-[540px]">
             <motion.div
@@ -158,8 +157,8 @@ export default function UltraClearPage() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             >
               {/* Eyebrow */}
-              <div className="flex items-center gap-3 mb-8">
-                <div className="h-px w-6 bg-sky-600/60" />
+              <div className="flex items-center gap-3 mb-6 lg:mb-8">
+                <div className="h-px w-6 bg-sky-600/60 flex-shrink-0" />
                 <span className="text-[10.5px] font-medium tracking-[0.28em] uppercase text-sky-600/70" lang="en">
                   2910 nm · Cold Fiber Laser · 3DMIRACL®
                 </span>
@@ -168,7 +167,7 @@ export default function UltraClearPage() {
               {/* Brand name */}
               <h1
                 className="font-display font-black tracking-[-0.03em] leading-[0.88] mb-5"
-                style={{ fontSize: "clamp(3.5rem, 7vw, 7.5rem)" }}
+                style={{ fontSize: "clamp(2.6rem, 7vw, 7.5rem)" }}
               >
                 <span
                   style={{
@@ -200,10 +199,10 @@ export default function UltraClearPage() {
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 <a
                   href="mailto:info@emcr.com.tr"
-                  className="h-12 px-7 inline-flex items-center gap-2.5 text-[13.5px] font-semibold rounded-xl transition-all text-[#10243B]"
+                  className="h-12 px-7 inline-flex items-center justify-center gap-2.5 text-[13.5px] font-semibold rounded-xl flex-1 sm:flex-none transition-all text-[#10243B]"
                   style={{
                     background: "#24B8BD",
                     boxShadow: "0 0 32px rgba(43,143,208,0.25), 0 4px 16px rgba(16,36,59,0.087)",
@@ -214,7 +213,7 @@ export default function UltraClearPage() {
                 </a>
                 <Link
                   href="/teknik-destek"
-                  className="h-12 px-7 inline-flex items-center gap-2 text-[13.5px] font-medium text-[#607084] hover:text-foreground border border-[#D9E6EF] hover:border-[#D9E6EF] rounded-xl hover:bg-[#E5F0F8] transition-all"
+                  className="h-12 px-7 inline-flex items-center justify-center gap-2 text-[13.5px] font-medium text-[#607084] flex-1 sm:flex-none whitespace-nowrap hover:text-foreground border border-[#D9E6EF] hover:border-[#D9E6EF] rounded-xl hover:bg-[#E5F0F8] transition-all"
                 >
                   Teknik Destek
                   <ChevronRight size={15} />
@@ -237,7 +236,7 @@ export default function UltraClearPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative px-6 md:px-14 py-24 lg:py-32 flex flex-col justify-center"
+            className="relative px-6 md:px-14 py-16 sm:py-24 lg:py-32 flex flex-col justify-center"
           >
             {/* Giant number — decorative */}
             <div
@@ -303,14 +302,14 @@ export default function UltraClearPage() {
               </div>
 
               {/* Mini specs */}
-              <div className="grid grid-cols-3 gap-3 mt-6">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-6">
                 {[
                   { v: "3DMIRACL®", l: "Platform" },
                   { v: "I–VI", l: "Fitzpatrick" },
                   { v: "0–7", l: "Gün İyileşme" },
                 ].map((s, i) => (
-                  <div key={i} className="p-4 rounded-xl border border-[#D9E6EF] bg-white/80 text-center">
-                    <p className="text-[13px] font-bold text-sky-600/80 mb-1">{s.v}</p>
+                  <div key={i} className="p-2.5 sm:p-4 rounded-xl border border-[#D9E6EF] bg-white/80 text-center min-w-0">
+                    <p className="text-[11.5px] sm:text-[13px] break-words font-bold text-sky-600/80 mb-1">{s.v}</p>
                     <p className="text-[10.5px] text-[#607084]">{s.l}</p>
                   </div>
                 ))}
@@ -324,14 +323,15 @@ export default function UltraClearPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden min-h-[520px]"
+            className="relative overflow-hidden min-h-[300px] sm:min-h-[420px] md:min-h-[520px]"
           >
-            <div className="absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
+            <div className="hidden md:block absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
             <div className="absolute inset-x-0 bottom-0 h-28 z-10 bg-gradient-to-t from-white to-transparent" />
             <img
               src={ucTreatment2}
+              data-testid="img-uc-treatment"
               alt="UltraClear Klinik Uygulama"
-              className="w-full h-full object-cover object-center"
+              className="absolute inset-0 w-full h-full object-cover object-center"
               loading="lazy"
               decoding="async"
             />
@@ -766,7 +766,7 @@ export default function UltraClearPage() {
                   <button
                     key={di}
                     onClick={() => setActivePatient((p) => (p + dir + ucPatients.length) % ucPatients.length)}
-                    className="w-10 h-10 rounded-full border border-[#D9E6EF] hover:border-sky-600/40 hover:bg-sky-600/[0.05] flex items-center justify-center transition-all"
+                    className="w-11 h-11 rounded-full border border-[#D9E6EF] hover:border-sky-600/40 hover:bg-sky-600/[0.05] flex items-center justify-center transition-all"
                   >
                     <ChevronRight size={16} className={`text-[#607084] ${dir === -1 ? "rotate-180" : ""}`} />
                   </button>
@@ -775,7 +775,7 @@ export default function UltraClearPage() {
             </div>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden mb-4 border border-[#D9E6EF]" style={{ aspectRatio: "21/9" }}>
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden mb-4 border border-[#D9E6EF] aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]">
             {ucPatients.map((p, i) => (
               <motion.div
                 key={i}
@@ -787,24 +787,24 @@ export default function UltraClearPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               </motion.div>
             ))}
-            <div className="absolute top-5 left-6 z-20">
+            <div className="absolute top-3 left-3 sm:top-5 sm:left-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-[#D9E6EF] text-foreground/65">ÖNCE</span>
             </div>
-            <div className="absolute top-5 right-6 z-20">
+            <div className="absolute top-3 right-3 sm:top-5 sm:right-6 z-20">
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase px-3 py-1.5 rounded-full bg-sky-600/20 backdrop-blur-md border border-sky-600/30 text-sky-600">SONRA</span>
             </div>
             <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/80 z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 flex items-end justify-between gap-3">
               <p className="text-[10px] tracking-[0.25em] uppercase text-white">
                 UltraClear® · {ucPatients[activePatient].label}
               </p>
-              <div className="font-display font-black text-6xl text-[#10243B]/[0.04] select-none leading-none tabular-nums">
+              <div className="hidden sm:block font-display font-black text-6xl text-[#10243B]/[0.04] select-none leading-none tabular-nums">
                 {String(activePatient + 1).padStart(2, "0")}
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-6 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {ucPatients.map((p, i) => (
               <button
                 key={i}

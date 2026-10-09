@@ -152,7 +152,7 @@ export default function TeknikDestek() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="font-display font-black leading-[0.92] tracking-[-0.025em] mb-8"
-              style={{ fontSize: "clamp(3rem, 6vw, 6.5rem)" }}
+              style={{ fontSize: "clamp(2.2rem, 6vw, 6.5rem)" }}
             >
               Satıştan Sonra Da{" "}
               <span
@@ -194,13 +194,13 @@ export default function TeknikDestek() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={i}
-                className="relative px-8 py-10 bg-white/80 hover:bg-[#E5F0F8] transition-colors group"
+                className="relative px-4 py-7 sm:px-8 sm:py-10 bg-white/80 hover:bg-[#E5F0F8] transition-colors group"
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <p
                   className="font-display font-black leading-none tracking-tight mb-1"
                   style={{
-                    fontSize: "clamp(2.4rem, 4vw, 3.8rem)",
+                    fontSize: "clamp(1.9rem, 4vw, 3.8rem)",
                     background: "linear-gradient(135deg, #24B8BD, #2B8FD0)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
@@ -637,7 +637,7 @@ export default function TeknikDestek() {
                           required
                           value={form.name}
                           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                          className="w-full h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
+                          className="w-full h-12 sm:h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-base sm:text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
                           placeholder="Dr. Adı Soyadı"
                         />
                       </div>
@@ -648,7 +648,7 @@ export default function TeknikDestek() {
                         <input
                           value={form.phone}
                           onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                          className="w-full h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
+                          className="w-full h-12 sm:h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-base sm:text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
                           placeholder="+90 5XX XXX XX XX"
                         />
                       </div>
@@ -662,7 +662,7 @@ export default function TeknikDestek() {
                         required
                         value={form.clinic}
                         onChange={(e) => setForm((f) => ({ ...f, clinic: e.target.value }))}
-                        className="w-full h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
+                        className="w-full h-12 sm:h-11 px-4 rounded-xl bg-white/80 border border-[#D9E6EF] text-base sm:text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all"
                         placeholder="Klinik Adı"
                       />
                     </div>
@@ -676,7 +676,7 @@ export default function TeknikDestek() {
                           value={form.device}
                           onChange={(e) => setForm((f) => ({ ...f, device: e.target.value }))}
                           aria-label="Cihaz"
-                          className="w-full h-11 px-4 pr-9 rounded-xl bg-white border border-[#D9E6EF] text-[13.5px] text-[#10243B] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
+                          className="w-full h-12 sm:h-11 px-4 pr-9 rounded-xl bg-white border border-[#D9E6EF] text-base sm:text-[13.5px] text-[#10243B] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
                           style={{ colorScheme: "light" }}
                         >
                           <option value="NeoGen Plasma" style={{ backgroundColor: "#FFFFFF", color: "#10243B" }}>NeoGen Plasma</option>
@@ -696,7 +696,7 @@ export default function TeknikDestek() {
                         rows={4}
                         value={form.issue}
                         onChange={(e) => setForm((f) => ({ ...f, issue: e.target.value }))}
-                        className="w-full px-4 py-3 rounded-xl bg-white/80 border border-[#D9E6EF] text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all resize-none"
+                        className="w-full px-4 py-3 rounded-xl bg-white/80 border border-[#D9E6EF] text-base sm:text-[13.5px] text-foreground/80 placeholder:text-foreground/20 focus:outline-none focus:border-primary/40 focus:bg-white/[0.055] transition-all resize-none"
                         placeholder="Lütfen sorun veya talebinizi açıklayın..."
                       />
                     </div>

@@ -4,9 +4,9 @@ import emcrLogoWhite from "@assets/emcr-logo-white.webp";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-gradient-to-b from-[#E5F0F8] to-white border-t border-[#D9E6EF] pt-20 pb-10">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
+    <footer id="contact" className="bg-gradient-to-b from-[#E5F0F8] to-white border-t border-[#D9E6EF] pt-16 md:pt-20 pb-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-12 mb-12 md:mb-16">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 space-y-5">
             <img src={emcrLogoWhite} alt="EMCR Medikal" className="h-11 object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(38%) saturate(1500%) hue-rotate(184deg) brightness(92%)" }} loading="lazy" decoding="async" />
@@ -17,7 +17,7 @@ export default function Footer() {
               href="https://www.instagram.com/emcrmedikal/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-9 h-9 rounded-full border border-[#D9E6EF] items-center justify-center text-primary hover:bg-primary hover:text-[#10243B] hover:border-primary transition-all"
+              className="inline-flex w-11 h-11 rounded-full border border-[#D9E6EF] items-center justify-center text-primary hover:bg-primary hover:text-[#10243B] hover:border-primary transition-all"
               aria-label="Instagram"
             >
               <Instagram size={15} />
@@ -27,14 +27,14 @@ export default function Footer() {
           {/* Products */}
           <div>
             <p className="font-semibold text-sm mb-5 text-[#10243B]">Ürünler</p>
-            <ul className="space-y-3 text-sm text-[#607084]">
+            <ul className="space-y-1 md:space-y-3 text-sm text-[#607084]">
               <li>
-                <Link href="/urunler/neogen-plasma" className="hover:text-primary transition-colors">
+                <Link href="/urunler/neogen-plasma" className="inline-flex items-center min-h-9 md:min-h-0 hover:text-primary transition-colors break-words">
                   NeoGen Plasma
                 </Link>
               </li>
               <li>
-                <Link href="/urunler/ultraclear" className="hover:text-primary transition-colors">
+                <Link href="/urunler/ultraclear" className="inline-flex items-center min-h-9 md:min-h-0 hover:text-primary transition-colors break-words">
                   UltraClear
                 </Link>
               </li>
@@ -44,24 +44,24 @@ export default function Footer() {
           {/* Company */}
           <div>
             <p className="font-semibold text-sm mb-5 text-[#10243B]">Şirket</p>
-            <ul className="space-y-3 text-sm text-[#607084]">
+            <ul className="space-y-1 md:space-y-3 text-sm text-[#607084]">
               <li>
-                <Link href="/hakkimizda" className="hover:text-primary transition-colors">
+                <Link href="/hakkimizda" className="inline-flex items-center min-h-9 md:min-h-0 hover:text-primary transition-colors break-words">
                   Hakkımızda
                 </Link>
               </li>
               <li>
-                <Link href="/etkinliklerimiz" className="hover:text-primary transition-colors">
+                <Link href="/etkinliklerimiz" className="inline-flex items-center min-h-9 md:min-h-0 hover:text-primary transition-colors break-words">
                   Etkinliklerimiz
                 </Link>
               </li>
               <li>
-                <Link href="/basinda-biz/sosyal-medyada-biz" className="hover:text-primary transition-colors">
+                <Link href="/basinda-biz/sosyal-medyada-biz" className="inline-flex items-center min-h-9 md:min-h-0 hover:text-primary transition-colors break-words">
                   Sosyal Medyada Biz
                 </Link>
               </li>
               <li>
-                <Link href="/teknik-destek" className="hover:text-primary transition-colors">
+                <Link href="/teknik-destek" className="inline-flex items-center min-h-9 md:min-h-0 hover:text-primary transition-colors break-words">
                   Teknik Destek
                 </Link>
               </li>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <p className="font-semibold text-sm mb-5 text-[#10243B]">İletişim</p>
             <ul className="space-y-4 text-sm text-[#607084]">
               <li className="flex items-start gap-3">
@@ -82,13 +82,13 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#1A9CA1] flex-shrink-0" />
-                <a href="mailto:info@emcr.com.tr" className="hover:text-primary transition-colors">
+                <a href="mailto:info@emcr.com.tr" className="inline-flex items-center min-h-9 md:min-h-0 hover:text-primary transition-colors break-words">
                   info@emcr.com.tr
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#1A9CA1] flex-shrink-0" />
-                <a href="tel:+905330670001" className="hover:text-primary transition-colors">
+                <a href="tel:+905330670001" className="inline-flex items-center min-h-9 md:min-h-0 hover:text-primary transition-colors break-words">
                   +90 533 067 00 01
                 </a>
               </li>
