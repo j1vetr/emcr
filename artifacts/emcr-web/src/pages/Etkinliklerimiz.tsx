@@ -60,7 +60,7 @@ const events: EventItem[] = [
     location: "Paris, Fransa",
     year: "2025",
     type: "Kongre",
-    photoCount: 5,
+    photoCount: 4,
   },
 ];
 
@@ -186,20 +186,17 @@ export default function Etkinliklerimiz() {
                 <div className={`relative z-10 grid lg:grid-cols-2 gap-0 ${isEven ? "" : "lg:[direction:rtl]"}`}>
 
                   {/* Featured photo */}
-                  <div className={`relative overflow-hidden ${isEven ? "lg:rounded-r-none" : "lg:rounded-l-none"}`}
-                    style={{ minHeight: "420px" }}>
+                  <div className={`relative flex items-center overflow-hidden bg-[#E5F0F8] ${isEven ? "lg:rounded-r-none" : "lg:rounded-l-none"}`}>
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.4 }}
-                      className="w-full h-full block focus:outline-none"
-                      style={{ minHeight: "420px" }}
+                      className="relative w-full h-[420px] sm:h-[520px] block focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:-outline-offset-2"
                       onClick={() => setLightbox({ src: cover, title: ev.title })}
                       aria-label={`${ev.title} — büyük fotoğraf`}
                     >
                       <img
                         src={cover}
                         alt={ev.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                         loading="lazy"
                         decoding="async"
                       />
@@ -240,13 +237,13 @@ export default function Etkinliklerimiz() {
                             key={pi}
                             onClick={() => setLightbox({ src, title: ev.title })}
                             aria-label={`${ev.title} fotoğraf ${pi + 2}`}
-                            className="relative overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary group"
+                             className="relative overflow-hidden rounded-lg bg-[#E5F0F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary group"
                             style={{ aspectRatio: "4/3" }}
                           >
                             <img
                               src={src}
                               alt=""
-                              className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-105"
+                              className="w-full h-full object-contain"
                               loading="lazy"
                               decoding="async"
                             />
