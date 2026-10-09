@@ -616,8 +616,8 @@ export default function NeoGenPlasma() {
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
                 <img src={p.img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#F0F6FC]/60 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#F0F6FC]/25 via-transparent to-[#F0F6FC]/25" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
               </motion.div>
             ))}
             <div className="absolute top-5 left-6 z-20">
@@ -628,7 +628,7 @@ export default function NeoGenPlasma() {
             </div>
             <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/80 z-10 pointer-events-none" />
             <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-end justify-between">
-              <p className="text-[10px] tracking-[0.25em] uppercase text-[#1A9CA1]">
+              <p className="text-[10px] tracking-[0.25em] uppercase text-white">
                 NeoGen Plasma · {patients[activePatient].label}
               </p>
               <div className="font-display font-black text-6xl text-[#10243B]/[0.04] select-none leading-none tabular-nums">
@@ -649,8 +649,8 @@ export default function NeoGenPlasma() {
                 }`}
               >
                 <img src={p.img} alt={`${i + 1}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-                <div className={`absolute inset-0 transition-all ${activePatient === i ? "bg-primary/10" : "bg-white/35"}`} />
-                <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-[#607084]">
+                <div className={`absolute inset-0 transition-all ${activePatient === i ? "bg-black/10" : "bg-black/35"}`} />
+                <span className="absolute bottom-1.5 left-2 text-[9px] font-bold tracking-widest text-white">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </button>
