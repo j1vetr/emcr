@@ -355,13 +355,13 @@ export default function Home() {
                 Nitrogen Plasma
               </p>
               <h2 className="font-display font-bold leading-[1.05] mb-6" style={{ fontSize: "clamp(2.4rem, 3.6vw, 4rem)" }}>
-                Kontrollü Enerji.<br />
-                <span className="text-primary">Görünür Sonuç.</span>
+                Yüzeyden Derine<br />
+                <span className="text-primary">Yenilenme.</span>
               </h2>
               <p className="text-[#607084] text-base leading-relaxed mb-10">
-                NeoGen Plasma, nitrogen gazını plazma enerjisine dönüştürerek cilt yüzeyi
-                korunurken derin dermal yenilenme sağlar. Kontrollü termal etki ve
-                protokol esnekliğiyle geniş bir uygulama yelpazesi sunar.
+                NeoGen Plasma, tek bir dalga boyuna bağlı kalmadan epidermisten dermise tüm
+                cilt mimarisini onaran ve lazer olmayan non-invaziv bir teknolojidir.
+                İyonize azot plazması, enerjiyi dokuya kısa süreli, kontrollü ve homojen şekilde aktarır.
               </p>
 
               <div className="flex items-center gap-4">
@@ -545,7 +545,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="font-display font-light text-foreground/60 leading-snug mb-10" style={{ fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)" }}>
-                Işık Hızında<br />Cilt Yenileme.
+                2910 nm dalga boyunda çalışan dünyanın ilk ve tek soğuk fiber lazer teknolojisi.
               </p>
 
               <div className="mb-10 border-t border-[#D9E6EF]">

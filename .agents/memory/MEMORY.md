@@ -1,3 +1,4 @@
 - [EMCR site architecture](emcr-site.md) — multi-page SPA: Navbar+Footer shared components, 7 wouter routes, no EVO/LinkedIn/YouTube
 - [EMCR event photos](emcr-events.md) — real photos in public/events/{slug}/ with numbered filenames; 6 events from 2025-2026
 - [Distributor positioning](distributor-positioning.md) — user specifies “Tek Yetkili Distribütör” for EMCR’s Türkiye representation of NeoGen and UltraClear.
+- [Product copy source](product-copy-source.md) — customer-supplied “Website-Ürünler açıklama” PDF is the basis for NeoGen and UltraClear descriptions.

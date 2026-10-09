@@ -152,7 +152,7 @@ export default function NeoGenPlasma() {
                 className="font-display font-black leading-[0.92] tracking-[-0.025em] mb-7"
                 style={{ fontSize: "clamp(3rem, 5.5vw, 6rem)" }}
               >
-                Plazma ile
+                Yüzeyden Derine
                 <br />
                 <span
                   style={{
@@ -164,13 +164,15 @@ export default function NeoGenPlasma() {
                     display: "inline-block",
                   }}
                 >
-                  Derin Yenilenme
+                  Yenilenme
                 </span>
               </h1>
 
               <p className="text-[14.5px] text-[#607084] leading-[1.85] mb-8 max-w-[420px]">
-                Azot gazını plazma enerjisine dönüştüren sistem. Cilt yüzeyini
-                korurken derin dermal yenilenme süreci başlatır.
+                NeoGen Plasma, tek bir dalga boyuna bağlı kalmadan epidermisten dermise tüm cilt
+                mimarisini onaran ve lazer olmayan non-invaziv bir teknolojidir. Bu özelliği
+                sayesinde cilt yenilemeden kırışıklıklara, akne izlerinden doku ve ton
+                düzensizliklerine, göz çevresinden boyun ve dekolteye kadar geniş bir uygulama alanı sunar.
               </p>
 
               {/* CTAs */}
@@ -272,10 +274,26 @@ export default function NeoGenPlasma() {
               </h2>
 
               <p className="text-[15px] text-[#607084] leading-[1.85] mb-8">
-                NeoGen, ultra yüksek radyo frekansıyla tüpten gelen medikal kalite azot gazını
-                iyonize ederek nozulda nitrojen plazma oluşturur. Bu plazma, yüzeyi açmadan
-                cildin tüm mimarisini ısıtır ve <strong className="text-foreground/70 font-semibold">15 milisaniyelik kontrollü darbelerle</strong>{" "}
-                70–165°C arasında termal etki üretir.
+                Plazma, maddenin katı, sıvı ve gazdan sonra gelen dördüncü halidir.
+              </p>
+              <p className="text-[15px] text-[#607084] leading-[1.85] mb-8">
+                Medikal saflıktaki azot gazı 2,5 GHz ultra yüksek frekanslı radyo frekans (RF)
+                enerjisi ile iyonize edilerek nitrojen plazmasına dönüştürülür. Oluşan nitrojen
+                plazması, enerjiyi dokuya kısa süreli, kontrollü ve homojen şekilde aktarır.
+              </p>
+              <p className="text-[15px] text-[#607084] leading-[1.85] mb-8">
+                Bu kontrollü termal etki, kollajen ve elastin yeniden yapılanmasını destekler,
+                cildin doğal iyileşme mekanizmalarını harekete geçirir ve daha sıkı, daha
+                pürüzsüz ve daha genç görünen bir cilt oluşumuna katkıda bulunur.
+              </p>
+              <p className="text-[15px] text-[#607084] leading-[1.85] mb-8">
+                Lazer sistemlerinden farklı olarak dalga boyuna sahip değildir ve belirli bir
+                kromoforu (melanin, hemoglobin veya su) hedef almaz. Enerji, iyonize azot
+                plazması aracılığıyla dokuya doğrudan kontrollü şekilde iletilir.
+              </p>
+              <p className="text-[15px] text-[#607084] leading-[1.85] mb-8">
+                Kısacası nitrojen plazma, ışık enerjisi kullanan bir lazer değil, iyonize
+                edilmiş azot gazı ile çalışan yenilikçi bir enerji teknolojisidir.
               </p>
 
             </motion.div>
@@ -324,8 +342,8 @@ export default function NeoGenPlasma() {
               </h2>
             </div>
             <p className="text-[14px] text-[#607084] max-w-xs leading-relaxed">
-              NeoGen tek seansta sıkılaştırma, yüzey yenileme ve derin kolajen
-              rejenerasyonunu eş zamanlı olarak gerçekleştirir.
+              Kontrollü termal etki, kollajen ve elastin yeniden yapılanmasını
+              destekleyerek cildin doğal iyileşme mekanizmalarını harekete geçirir.
             </p>
           </motion.div>
 

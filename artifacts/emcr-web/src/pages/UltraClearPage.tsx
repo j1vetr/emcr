@@ -196,9 +196,7 @@ export default function UltraClearPage() {
               </p>
 
               <p className="text-[15px] text-[#607084] leading-[1.9] mb-9 max-w-[420px]">
-                3DMIRACL® platformuyla çalışan UltraClear, suyun maksimum absorpsiyon noktasında
-                çalışarak Fitzpatrick I'den VI'ya tüm cilt tiplerine güvenle uygulanabilen
-                devrimsel fiber lazer sistemidir.
+                2910 nm dalga boyunda çalışan dünyanın ilk ve tek soğuk fiber lazer teknolojisidir.
               </p>
 
               {/* CTAs */}
@@ -269,7 +267,7 @@ export default function UltraClearPage() {
                 className="font-display font-black leading-[0.93] tracking-[-0.025em] mb-8"
                 style={{ fontSize: "clamp(2.2rem, 3.8vw, 4rem)" }}
               >
-                Suyun Zirve{" "}
+                Soğuk Fiber Lazer{" "}
                 <br />
                 <span
                   style={{
@@ -281,15 +279,15 @@ export default function UltraClearPage() {
                     display: "inline-block",
                   }}
                 >
-                  Absorpsiyon Noktası
+                  Nasıl Çalışır?
                 </span>
               </h2>
 
               <p className="text-[15px] text-[#607084] leading-[1.88] mb-7">
-                2910 nm, suyun en yüksek absorpsiyon gösterdiği dalga boyudur. Cilt dokusu büyük oranda
-                sudan oluştuğu için bu dalga boyu doku ile{" "}
-                <span className="text-foreground/72 font-semibold">maksimum etkileşim</span> sağlar.
-                Hem ablasyon hem koagülasyon enerjisi optimize edilir, kollateral ısıl hasar minimumda tutulur.
+                Bu dalga boyu dokuyla etkileşiminde en yüksek düzeyde su emilim oranını yakalar.
+                Bu demektir ki, cildin dış tabakasını anında buharlaştırarak yok eder. Bunu
+                yaparken sıcaklığa bağlı istenmeyen hasarı en aza indirir ve aynı zamanda
+                kanama ve diğer komplikasyonları azaltmak için gerekli pıhtılaşmayı sağlar.
               </p>
 
               {/* Technology note */}
@@ -298,10 +296,9 @@ export default function UltraClearPage() {
                   style={{ background: "linear-gradient(to bottom, #2B8FD0, #4A6FC9)" }}
                 />
                 <p className="text-[13.5px] text-[#607084] leading-[1.85] pl-2">
-                  2910 nm dalga boyu, Erbiyum florür cam fiber teknolojisiyle üretilir. Bu dalga boyunda
-                  hem ablasyon hem koagülasyon enerjisi{" "}
-                  <span className="text-foreground/75 font-medium">bağımsız olarak optimize</span> edilebilir.
-                  3DIntelliPulse® nabız yönetimi kollateral ısıl etkiyi sınırlı tutar.
+                  Üstün ışın kalitesi ve küçük nokta çapı sayesinde yüksek çözünürlüklü ve
+                  homojen bir cilt yenileme elde edilir. Ayrıca bu özellikler ağrının
+                  azalmasına ve iyileşme sürecinin hızlanmasına yardımcı olur.
                 </p>
               </div>
 
@@ -568,10 +565,16 @@ export default function UltraClearPage() {
               </span>
             </h2>
             <p className="text-[15px] text-[#607084] leading-[1.88] mb-8">
-              UltraClear'ın 2910 nm dalga boyu cold fiber laser
-              mimarisiyle sunulur. 3DIntelliPulse® teknolojisi ablasyon ve koagülasyon
-              enerjisini bağımsız olarak optimize ederek farklı cilt tiplerinde kontrollü
-              uygulama imkanı sağlar.
+              Platformun yüksek atım tekrar hızı ve ödüllü tarama teknolojisi, tek geçişte
+              aynı anda yüzeysel ablasyon ve derin kolajen yeniden yapılanmasını
+              destekleyerek son derece tutarlı sonuçlar sağlar.
+            </p>
+            <p className="text-[15px] text-[#607084] leading-[1.88] mb-8">
+              UltraClear’ın gelişmiş hassas enerji kontrolü, kullanıcıların çeşitli doku
+              etkileşim özelliklerini seçip kontrol etmelerine olanak tanır. Bu esnek yapı,
+              hastanın ihtiyaçlarına ve cilt tipine göre özelleştirilebilen hasta dostu
+              seçenekler sunar. Hafif soyma işlemlerinden daha derin kolajen yenilenmesine
+              kadar geniş bir yelpazede daha belirgin sonuçlar elde edilebilir.
             </p>
 
             <ul className="space-y-4">
